@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  LoginVC.h
 //  envirdata
 //
 //  Created by 熊佳佳 on 18/7/3.
@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-
+@interface LoginVC : UIViewController
 
 @end
-
