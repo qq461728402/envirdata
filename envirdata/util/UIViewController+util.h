@@ -13,8 +13,7 @@
 @property (nonatomic,copy) void (^callback)(BOOL issu);
 -(void)networkGet:(NSString*)url parameter:(NSDictionary*)parameter progresHudText:(NSString*)hudText completionBlock:(void (^)(id rep))completionBlock;
 -(void)networkPost:(NSString*)url parameter:(NSDictionary*)parameter progresHudText:(NSString*)hudText completionBlock:(void (^)(id rep))completionBlock;
-//显示返回按钮
--(void)showleft;
 //提示
 -(void)showMsgBox:(NSString *)msg;
+
 @end

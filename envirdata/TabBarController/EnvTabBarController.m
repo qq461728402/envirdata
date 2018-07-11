@@ -7,6 +7,13 @@
 //
 
 #import "EnvTabBarController.h"
+#import "EnvAirQualityVC.h"
+#import "EnvOnlineMonVC.h"
+#import "EnvManagerVC.h"
+#import "EnvAnalysisReportVC.h"
+#import "EnvPersonalCenterVC.h"
+
+
 #import "ViewController.h"
 @interface EnvTabBarController ()<UITabBarControllerDelegate>
 
@@ -16,17 +23,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tabBar.translucent=NO;//设置背景颜色
+    self.tabBar.barTintColor=COLOR_TAB_UNSELECT;//设置背景颜色
+   
+    EnvAirQualityVC *airQuality=[[EnvAirQualityVC alloc]init];
+    airQuality.tabBarItem.title=@"空气质量";
+    airQuality.tabBarItem.image=[PNGIMAGE(@"tab_kqzl") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [airQuality.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
     
-    ViewController *v1=[[ViewController alloc]init];
-    v1.tabBarItem.title=@"首页";
-    v1.tabBarItem.image=PNGIMAGE(@"home");
-    [v1.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_TOP} forState:UIControlStateSelected];
-    [v1.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_TAB_UNSELECT} forState:UIControlStateNormal];
     
-    UINavigationController *v1nav=[[UINavigationController alloc]initWithRootViewController:v1];
+    EnvOnlineMonVC *onlineMon=[[EnvOnlineMonVC alloc]init];
+    onlineMon.tabBarItem.title=@"在线监控";
+    onlineMon.tabBarItem.image=[PNGIMAGE(@"tab_wgjk") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [onlineMon.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
     
-    self.tabBar.tintColor=COLOR_TOP;
-    self.viewControllers=@[v1nav];
+    EnvManagerVC * manager =[[EnvManagerVC alloc]init];
+    manager.tabBarItem.title=@"管理协同";
+    manager.tabBarItem.image=[PNGIMAGE(@"tab_xtgl") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [manager.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
+    
+    EnvAnalysisReportVC *analysisReport =[[EnvAnalysisReportVC alloc]init];
+    analysisReport.tabBarItem.title=@"分析报告";
+    analysisReport.tabBarItem.image=[PNGIMAGE(@"tab_fxbg") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [analysisReport.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
+    
+    EnvPersonalCenterVC *personallCenter=[[EnvPersonalCenterVC alloc]init];
+    personallCenter.tabBarItem.title=@"个人中心";
+    personallCenter.tabBarItem.image=[PNGIMAGE(@"tab_grzx") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [personallCenter.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
+    
+    self.tabBar.tintColor=COLOR_Withe;
+    self.viewControllers=@[airQuality,onlineMon,manager,analysisReport,personallCenter];
+    CGSize indicatorImageSize =CGSizeMake(self.tabBar.bounds.size.width/self.tabBar.items.count, self.tabBar.bounds.size.height);
+    self.tabBar.selectionIndicatorImage=[UIImage imageWithColor:COLOR_TOP size:indicatorImageSize];
     // Do any additional setup after loading the view.
 }
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{

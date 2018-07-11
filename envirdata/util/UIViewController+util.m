@@ -39,29 +39,6 @@
     }];
      
 }
--(void)showleft{
-    UIButton *leftbtn= [[UIButton alloc] initWithFrame:CGRectMake(0,20, 55, 44)];
-    [leftbtn setImage:PNGIMAGE(@"back_btn_n") forState:UIControlStateNormal];
-    [leftbtn setImage:PNGIMAGE(@"back_btn_h") forState:UIControlStateHighlighted];
-    [leftbtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
-    [leftbtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 4, 0, 0)];
-    leftbtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [leftbtn bk_addEventHandler:^(id sender) {
-        if (self.navigationController) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        else
-        {
-            [self dismissViewControllerAnimated:YES completion:^{}];
-        }
-    } forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
-                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                       target:nil action:nil];
-    negativeSpacer.width = 10;
-    self.navigationItem.leftBarButtonItems=@[[[UIBarButtonItem alloc]initWithCustomView:leftbtn],negativeSpacer];
-}
-
 -(void) showMsgBox:(NSString *)msg{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:msg
                                                 delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];

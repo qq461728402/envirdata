@@ -9,6 +9,7 @@
 #ifndef ColorConfig_h
 #define ColorConfig_h
 
+#define COLOR_Withe [UIColor colorWithRGB:0xffffff]
 //顶部和底部的选中颜色
 #define COLOR_TOP [UIColor colorWithRGB:0x42afdf]
 //底部导航菜单的非选中颜色
