@@ -21,6 +21,14 @@
 
 @implementation EnvTabBarController
 
+//- (void)viewWillLayoutSubviews{
+//    CGRect tabFrame = self.tabBar.frame; //self.TabBar is IBOutlet of your TabBar
+//    tabFrame.size.height = 80;
+//    tabFrame.origin.y = self.view.frame.size.height - 80;
+//    self.tabBar.frame = tabFrame;
+//    [self.tabBar bringSubviewToFront:self.bottomToolView];
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBar.translucent=NO;//设置背景颜色

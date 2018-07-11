@@ -31,11 +31,14 @@
     [[AFAppDotNetAPIClient shareClient] POST:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
         NSLog(@"%@",[responseObject mj_JSONString]);
-        completionBlock(responseObject);
+        if (responseObject[@"code"]==0) {
+            completionBlock(responseObject);
+        }else{
+            [self showMsgInfo:responseObject[@"msg"]];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"failure--%@",error);
         [SVProgressHUD showInfoWithStatus:@"加载错误"];
-        completionBlock(nil);
     }];
      
 }
@@ -43,6 +46,9 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:msg
                                                 delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
+}
+-(void)showMsgInfo:(NSString *)msg{
+    [MBProgressHUD showMessage1:msg toView:self.view];
 }
 
 @end

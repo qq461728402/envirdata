@@ -16,4 +16,5 @@
 //提示
 -(void)showMsgBox:(NSString *)msg;
 
+-(void)showMsgInfo:(NSString*)msg;
 @end

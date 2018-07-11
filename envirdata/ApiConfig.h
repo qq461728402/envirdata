@@ -9,8 +9,8 @@
 #ifndef ApiConfig_h
 #define ApiConfig_h
 
-#define BASE_API  @"http://139.159.243.179:22816/"
+#define BASE_API  @"http://139.159.243.179:22816/app/"
 
-#define INDEX_CONFIG @"app/api/checkUser"
+#define API_CHECKUSER @"api/checkUser"
 
 #endif /* ApiConfig_h */

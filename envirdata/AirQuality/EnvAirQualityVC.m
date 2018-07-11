@@ -18,6 +18,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIImageView *bgImage=[[UIImageView alloc]initWithImage:PNGIMAGE(@"sy_bg")];
+    bgImage.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [self.view addSubview:bgImage];
+    
+    
     // Do any additional setup after loading the view.
 }
 

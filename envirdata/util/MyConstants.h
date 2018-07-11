@@ -42,4 +42,9 @@
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
+//
+#define USER_DEFAULTS(NAME) [[NSUserDefaults standardUserDefaults] objectForKey:(NAME)];
+
+#define SCALE(scale)   scale*kScreenWidth/375.0
+
 #endif /* MyConstants_h */

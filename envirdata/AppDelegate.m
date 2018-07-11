@@ -21,9 +21,14 @@
     // 注册 APNs
     [self registerRemoteNotification];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    EnvTabBarController *tabbar=[[EnvTabBarController alloc]init];
-    //LoginVC *loginvc =[[LoginVC alloc]init];
-    self.window.rootViewController=tabbar;
+    NSDictionary *userInfo = USER_DEFAULTS(@"userInfo")
+    if (!userInfo) {
+        EnvTabBarController *tabbar=[[EnvTabBarController alloc]init];
+        self.window.rootViewController=tabbar;
+    }else{
+        LoginVC *loginvc =[[LoginVC alloc]init];
+        self.window.rootViewController=loginvc;
+    }
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;

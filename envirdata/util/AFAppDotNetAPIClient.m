@@ -23,6 +23,7 @@ static AFAppDotNetAPIClient * _afAppDotNetApi;
         _afAppDotNetApi.requestSerializer.timeoutInterval=10;
         //申明返回的数据是JSON类型
         _afAppDotNetApi.responseSerializer =[AFJSONResponseSerializer serializer];
+        _afAppDotNetApi.requestSerializer =[AFJSONRequestSerializer serializer];
     }
     return  _afAppDotNetApi;
 }

@@ -86,6 +86,7 @@
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.minShowTime=0.5;
+    hud.offset=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT-70);
     [UIActivityIndicatorView appearanceWhenContainedInInstancesOfClasses:@[[MBProgressHUD class]]].color=UIColorFromRGB(0xfffffff);
     hud.label.textColor = UIColorFromRGB(0xffffff);
     hud.bezelView.backgroundColor = UIColorFromRGB(0x000000);
@@ -113,4 +114,22 @@
     
     [self hideHUDForView:view animated:YES];
 }
+
+
++(void)showMessage1:(NSString*)message toView:(UIView *)view{
+    
+    if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
+    MBProgressHUD *hud=[MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.mode=MBProgressHUDModeCustomView;
+    hud.animationType=MBProgressHUDAnimationFade;
+    hud.minSize = CGSizeMake(kScreenWidth/4, 24);
+    hud.label.textColor = UIColorFromRGB(0xffffff);
+    hud.bezelView.backgroundColor = UIColorFromRGB(0x000000);
+    hud.margin = 15;
+    hud.label.text = message;
+    hud.removeFromSuperViewOnHide = YES;
+    // 1秒之后再消失
+    [hud hideAnimated:YES afterDelay:1.5];
+}
+
 @end

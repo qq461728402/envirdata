@@ -13,6 +13,7 @@
 		E100802E20F6223900B75514 /* EnvManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E100802D20F6223900B75514 /* EnvManagerVC.m */; };
 		E100803220F6226F00B75514 /* EnvAnalysisReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E100803120F6226F00B75514 /* EnvAnalysisReportVC.m */; };
 		E100803620F622AE00B75514 /* EnvPersonalCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E100803520F622AE00B75514 /* EnvPersonalCenterVC.m */; };
+		E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = E100803920F636DB00B75514 /* UIButton+Bootstrap.m */; };
 		E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E134648920F4E98E006E4144 /* AFAppDotNetAPIClient.m */; };
 		E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */ = {isa = PBXBuildFile; fileRef = E134649020F4F0FA006E4144 /* UIViewController+util.m */; };
 		E134649320F50057006E4144 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649220F50057006E4144 /* UIKit.framework */; };
@@ -44,6 +45,8 @@
 		E100803120F6226F00B75514 /* EnvAnalysisReportVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvAnalysisReportVC.m; path = AnalysisReport/EnvAnalysisReportVC.m; sourceTree = "<group>"; };
 		E100803420F622AE00B75514 /* EnvPersonalCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvPersonalCenterVC.h; path = PersonalCenter/EnvPersonalCenterVC.h; sourceTree = "<group>"; };
 		E100803520F622AE00B75514 /* EnvPersonalCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvPersonalCenterVC.m; path = PersonalCenter/EnvPersonalCenterVC.m; sourceTree = "<group>"; };
+		E100803820F636DB00B75514 /* UIButton+Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Bootstrap.h"; path = "util/UIButton+Bootstrap.h"; sourceTree = "<group>"; };
+		E100803920F636DB00B75514 /* UIButton+Bootstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Bootstrap.m"; path = "util/UIButton+Bootstrap.m"; sourceTree = "<group>"; };
 		E134648820F4E98E006E4144 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFAppDotNetAPIClient.h; path = util/AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
 		E134648920F4E98E006E4144 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFAppDotNetAPIClient.m; path = util/AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
 		E134648B20F4EC4D006E4144 /* ApiConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiConfig.h; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				E134649020F4F0FA006E4144 /* UIViewController+util.m */,
 				E181D85520F5FA0100219D71 /* Config.h */,
 				E181D85620F5FB1900219D71 /* ColorConfig.h */,
+				E100803820F636DB00B75514 /* UIButton+Bootstrap.h */,
+				E100803920F636DB00B75514 /* UIButton+Bootstrap.m */,
 			);
 			name = config;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 				E1BA89A720EB1CAE002CD41B /* main.m in Sources */,
 				E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */,
 				E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */,
+				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
 				E100802E20F6223900B75514 /* EnvManagerVC.m in Sources */,
 				E100802520F621A300B75514 /* EnvAirQualityVC.m in Sources */,
 			);

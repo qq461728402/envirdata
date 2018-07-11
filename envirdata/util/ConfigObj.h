@@ -11,4 +11,6 @@
 #import "SVProgressHUD.h"
 @interface ConfigObj : NSObject
 +(void)configObj;
++(UIImage*)getIconImge;
+
 @end

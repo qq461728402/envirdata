@@ -29,4 +29,6 @@
 
 #define API_NODATA [UIColor colorWithRGB:0xACACAC]
 
+#define LINE_COLOR [UIColor colorWithRGB:0xebeced]
+
 #endif /* ColorConfig_h */
