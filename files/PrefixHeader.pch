@@ -18,6 +18,8 @@
 #import <Foundation/Foundation.h>
 #import "MyConstants.h"
 #import "ApiConfig.h"
+#import "Config.h"
+#import "ColorConfig.h"
 #import "MBProgressHUD+PD.h"
 #import "UIViewController+util.h"
 #import "MJExtension.h"

@@ -9,8 +9,8 @@
 #ifndef ApiConfig_h
 #define ApiConfig_h
 
-#define BASE_API  @"http://weixin.e-cbest.com/mall/"
+#define BASE_API  @"http://139.159.243.179:22816/"
 
-#define INDEX_CONFIG @"api/index/config"
+#define INDEX_CONFIG @"app/api/checkUser"
 
 #endif /* ApiConfig_h */

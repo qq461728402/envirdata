@@ -18,7 +18,12 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[MBProgressHUD showMessage:@"加载中..." toView:self.view];
+    
+    UIImageView *bgImage=[[UIImageView alloc]initWithImage:PNGIMAGE(@"login_bg")];
+    bgImage.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [self.view addSubview:bgImage];
+    
+
     [self networkGet:INDEX_CONFIG parameter:@{} progresHudText:@"加载中..." completionBlock:^(id rep) {
         
     }];

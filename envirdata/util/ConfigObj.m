@@ -24,8 +24,17 @@
     [SVProgressHUD setCornerRadius:8];
     //导航栏配置
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:Font(16)}];
-    [[UINavigationBar appearance] setBackgroundImage:PNGIMAGE(@"顶部背景") forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackIndicatorImage:PNGIMAGE(@"back")];
+    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:PNGIMAGE(@"back")];
     
+    UIBarButtonItem *item = [UIBarButtonItem appearance];
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:0.001],
+                                 
+                                 NSForegroundColorAttributeName:[UIColor clearColor]};
+
+    [item setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:COLOR_TOP];
     //检测网络
     AFNetworkReachabilityManager * networkmanager =[AFNetworkReachabilityManager sharedManager];
     [networkmanager startMonitoring];

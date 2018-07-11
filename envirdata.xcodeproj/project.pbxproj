@@ -22,6 +22,7 @@
 		E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89BD20EB1ED9002CD41B /* LoginVC.m */; };
 		E1BA89C120EB62F3002CD41B /* ConfigObj.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89C020EB62F3002CD41B /* ConfigObj.m */; };
 		E1BA89C520EB6E3F002CD41B /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1BA89C420EB6E3F002CD41B /* iconfont.ttf */; };
+		E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		E134649420F50062006E4144 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E134649620F50664006E4144 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E134649820F50674006E4144 /* envirdata.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = envirdata.entitlements; sourceTree = "<group>"; };
+		E181D85520F5FA0100219D71 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		E181D85620F5FB1900219D71 /* ColorConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConfig.h; sourceTree = "<group>"; };
 		E1AF06BD20F481D5000E93F9 /* MyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyConstants.h; path = util/MyConstants.h; sourceTree = "<group>"; };
 		E1AF06C120F483C9000E93F9 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E1AF06C220F4A76B000E93F9 /* MBProgressHUD+PD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+PD.h"; path = "util/MBProgressHUD+PD.h"; sourceTree = "<group>"; };
@@ -55,6 +58,8 @@
 		E1BA89BF20EB62F3002CD41B /* ConfigObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigObj.h; path = util/ConfigObj.h; sourceTree = "<group>"; };
 		E1BA89C020EB62F3002CD41B /* ConfigObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigObj.m; path = util/ConfigObj.m; sourceTree = "<group>"; };
 		E1BA89C420EB6E3F002CD41B /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
+		E1D6CC7720F5B2F20023F0F0 /* EnvTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvTabBarController.h; path = TabBarController/EnvTabBarController.h; sourceTree = "<group>"; };
+		E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvTabBarController.m; path = TabBarController/EnvTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +88,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E181D85720F6016400219D71 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				E1BA89BC20EB1ED9002CD41B /* LoginVC.h */,
+				E1BA89BD20EB1ED9002CD41B /* LoginVC.m */,
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
 		E1AF06BC20F481A7000E93F9 /* config */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +110,8 @@
 				E134648B20F4EC4D006E4144 /* ApiConfig.h */,
 				E134648F20F4F0FA006E4144 /* UIViewController+util.h */,
 				E134649020F4F0FA006E4144 /* UIViewController+util.m */,
+				E181D85520F5FA0100219D71 /* Config.h */,
+				E181D85620F5FB1900219D71 /* ColorConfig.h */,
 			);
 			name = config;
 			sourceTree = "<group>";
@@ -130,6 +146,8 @@
 		E1BA89A420EB1CAE002CD41B /* envirdata */ = {
 			isa = PBXGroup;
 			children = (
+				E181D85720F6016400219D71 /* login */,
+				E1D6CC7620F5B2A30023F0F0 /* TabBarController */,
 				E134649820F50674006E4144 /* envirdata.entitlements */,
 				E1AF06BC20F481A7000E93F9 /* config */,
 				E1BA89C220EB65A5002CD41B /* Iconfont */,
@@ -141,8 +159,6 @@
 				E1BA89B320EB1CAF002CD41B /* LaunchScreen.storyboard */,
 				E1BA89B620EB1CAF002CD41B /* Info.plist */,
 				E1BA89A520EB1CAE002CD41B /* Supporting Files */,
-				E1BA89BC20EB1ED9002CD41B /* LoginVC.h */,
-				E1BA89BD20EB1ED9002CD41B /* LoginVC.m */,
 			);
 			path = envirdata;
 			sourceTree = "<group>";
@@ -161,6 +177,15 @@
 				E1BA89C420EB6E3F002CD41B /* iconfont.ttf */,
 			);
 			name = Iconfont;
+			sourceTree = "<group>";
+		};
+		E1D6CC7620F5B2A30023F0F0 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				E1D6CC7720F5B2F20023F0F0 /* EnvTabBarController.h */,
+				E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */,
+			);
+			name = TabBarController;
 			sourceTree = "<group>";
 		};
 		F4A2AD87595706B82B99F8DE /* Pods */ = {
@@ -311,6 +336,7 @@
 				E1BA89C120EB62F3002CD41B /* ConfigObj.m in Sources */,
 				E1BA89AD20EB1CAE002CD41B /* ViewController.m in Sources */,
 				E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */,
+				E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */,
 				E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */,
 				E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */,
 				E1BA89A720EB1CAE002CD41B /* main.m in Sources */,
@@ -433,7 +459,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -451,7 +477,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
 				PRODUCT_NAME = "$(TARGET_NAME)";

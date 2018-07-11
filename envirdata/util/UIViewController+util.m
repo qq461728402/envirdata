@@ -37,7 +37,7 @@
         [SVProgressHUD showInfoWithStatus:@"加载错误"];
         completionBlock(nil);
     }];
-    
+     
 }
 -(void)showleft{
     UIButton *leftbtn= [[UIButton alloc] initWithFrame:CGRectMake(0,20, 55, 44)];
