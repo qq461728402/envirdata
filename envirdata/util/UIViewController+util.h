@@ -17,4 +17,7 @@
 -(void)showMsgBox:(NSString *)msg;
 
 -(void)showMsgInfo:(NSString*)msg;
+
+
+- (UIImage *)imageByApplyingAlpha:(CGFloat)alpha  image:(UIImage*)image;
 @end

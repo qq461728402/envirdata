@@ -8,6 +8,7 @@
 
 #import "LoginVC.h"
 #import "UserInfoModel.h"
+#import "AppDelegate.h"
 @interface LoginVC ()
 @property (nonatomic,strong)UILabel *sutitlelb;
 @property (nonatomic,strong)UILabel *titlelb;
@@ -70,7 +71,7 @@
     [onelb setBackgroundColor:LINE_COLOR];
     [loginView addSubview:onelb];
     
-    UILabel *passwordicon=[[UILabel alloc]initWithFrame:CGRectMake(usericon.left,onelb.bottom+5,30,30)];
+    UILabel *passwordicon=[[UILabel alloc]initWithFrame:CGRectMake(usericon.left,onelb.bottom+5,100,30)];
     passwordicon.font=[UIFont fontWithName:@"iconfont" size:24];
     passwordicon.text =@"\U0000e64d";
     passwordicon.textColor=[UIColor grayColor];
@@ -123,6 +124,8 @@
         return;
     }
     [self networkPost:API_CHECKUSER parameter:@{@"passport":usertf.text,@"pwd":passwordtf.text} progresHudText:@"加载中..." completionBlock:^(id rep) {
+        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+        
         //保存用户信息
         [[NSUserDefaults standardUserDefaults] setObject:rep forKey:@"userInfo"];
         UserInfoModel *userInfo = [UserInfoModel mj_objectWithKeyValues:rep];
@@ -133,8 +136,11 @@
         sutitlelb.text = userInfo.appexpand2;
         
        [SingalObj defaultManager].userInfoModel=userInfo;
+       [self performSelector:@selector(gogo) withObject:nil afterDelay:1.0];
     }];
-    
+}
+-(void)gogo{
+    [[AppDelegate Share] gotohome];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

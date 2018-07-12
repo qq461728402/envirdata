@@ -15,6 +15,10 @@
 
 @end
 @implementation AppDelegate
++ (AppDelegate *)Share
+{
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [ConfigObj configObj];
     //个推
@@ -23,20 +27,30 @@
     [self registerRemoteNotification];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     NSDictionary *userInfo = USER_DEFAULTS(@"userInfo")
-    if (!userInfo) {
+    if (userInfo) {
         //存储用户信息
         UserInfoModel *userInfoModel =[UserInfoModel mj_objectWithKeyValues:userInfo];
         [SingalObj defaultManager].userInfoModel=userInfoModel;
-        EnvTabBarController *tabbar=[[EnvTabBarController alloc]init];
-        self.window.rootViewController=tabbar;
+        [self gotohome];
     }else{
-        LoginVC *loginvc =[[LoginVC alloc]init];
-        self.window.rootViewController=loginvc;
+        [self gotologin];
     }
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;
 }
+-(void)gotologin{
+    LoginVC *loginvc =[[LoginVC alloc]init];
+    self.window.rootViewController=loginvc;
+}
+-(void)gotohome{
+    EnvTabBarController *tabbar=[[EnvTabBarController alloc]init];
+    UINavigationController *tab_nav=[[UINavigationController alloc]initWithRootViewController:tabbar];
+    tab_nav.hidesBottomBarWhenPushed=YES;
+    [SingalObj defaultManager].rootNav =tab_nav.navigationController;
+    self.window.rootViewController=tab_nav;
+}
+
 /** 注册 APNs */
 - (void)registerRemoteNotification {
     /*

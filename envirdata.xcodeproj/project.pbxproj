@@ -19,6 +19,11 @@
 		E134649320F50057006E4144 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649220F50057006E4144 /* UIKit.framework */; };
 		E134649520F50062006E4144 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649420F50062006E4144 /* Foundation.framework */; };
 		E134649720F50664006E4144 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649620F50664006E4144 /* MapKit.framework */; };
+		E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0720F77FAC00872ADD /* ForecastAreaModel.m */; };
+		E148BD0B20F78D0F00872ADD /* EnvAreaLevelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0A20F78D0F00872ADD /* EnvAreaLevelVC.m */; };
+		E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0D20F7927000872ADD /* SliderSwitchView.m */; };
+		E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */; };
+		E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1620F79ACA00872ADD /* AreaLevelModel.m */; };
 		E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AF06C320F4A76B000E93F9 /* MBProgressHUD+PD.m */; };
 		E1BA89A720EB1CAE002CD41B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A620EB1CAE002CD41B /* main.m */; };
 		E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A920EB1CAE002CD41B /* AppDelegate.m */; };
@@ -30,6 +35,8 @@
 		E1BA89C520EB6E3F002CD41B /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1BA89C420EB6E3F002CD41B /* iconfont.ttf */; };
 		E1BC41D620F6E96E002B4047 /* SingalObj.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41D520F6E96E002B4047 /* SingalObj.m */; };
 		E1BC41DB20F6EB4A002B4047 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41DA20F6EB4A002B4047 /* UserInfoModel.m */; };
+		E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41DD20F73276002B4047 /* NearestGkzRealModel.m */; };
+		E1BC41E120F74F3D002B4047 /* NearestAreaRealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41E020F74F3D002B4047 /* NearestAreaRealModel.m */; };
 		E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +65,16 @@
 		E134649420F50062006E4144 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E134649620F50664006E4144 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E134649820F50674006E4144 /* envirdata.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = envirdata.entitlements; sourceTree = "<group>"; };
+		E148BD0620F77FAC00872ADD /* ForecastAreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastAreaModel.h; sourceTree = "<group>"; };
+		E148BD0720F77FAC00872ADD /* ForecastAreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastAreaModel.m; sourceTree = "<group>"; };
+		E148BD0920F78D0F00872ADD /* EnvAreaLevelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvAreaLevelVC.h; path = AirQuality/EnvAreaLevelVC.h; sourceTree = "<group>"; };
+		E148BD0A20F78D0F00872ADD /* EnvAreaLevelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvAreaLevelVC.m; path = AirQuality/EnvAreaLevelVC.m; sourceTree = "<group>"; };
+		E148BD0C20F7927000872ADD /* SliderSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SliderSwitchView.h; path = util/SliderSwitchView.h; sourceTree = "<group>"; };
+		E148BD0D20F7927000872ADD /* SliderSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SliderSwitchView.m; path = util/SliderSwitchView.m; sourceTree = "<group>"; };
+		E148BD0F20F7951200872ADD /* EnvAreaLevelListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvAreaLevelListVC.h; path = AirQuality/EnvAreaLevelListVC.h; sourceTree = "<group>"; };
+		E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvAreaLevelListVC.m; path = AirQuality/EnvAreaLevelListVC.m; sourceTree = "<group>"; };
+		E148BD1520F79ACA00872ADD /* AreaLevelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaLevelModel.h; sourceTree = "<group>"; };
+		E148BD1620F79ACA00872ADD /* AreaLevelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaLevelModel.m; sourceTree = "<group>"; };
 		E181D85520F5FA0100219D71 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		E181D85620F5FB1900219D71 /* ColorConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConfig.h; sourceTree = "<group>"; };
 		E1AF06BD20F481D5000E93F9 /* MyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyConstants.h; path = util/MyConstants.h; sourceTree = "<group>"; };
@@ -82,6 +99,10 @@
 		E1BC41D520F6E96E002B4047 /* SingalObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingalObj.m; path = util/SingalObj.m; sourceTree = "<group>"; };
 		E1BC41D920F6EB4A002B4047 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
 		E1BC41DA20F6EB4A002B4047 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
+		E1BC41DC20F73276002B4047 /* NearestGkzRealModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearestGkzRealModel.h; sourceTree = "<group>"; };
+		E1BC41DD20F73276002B4047 /* NearestGkzRealModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearestGkzRealModel.m; sourceTree = "<group>"; };
+		E1BC41DF20F74F3D002B4047 /* NearestAreaRealModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearestAreaRealModel.h; sourceTree = "<group>"; };
+		E1BC41E020F74F3D002B4047 /* NearestAreaRealModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearestAreaRealModel.m; sourceTree = "<group>"; };
 		E1D6CC7720F5B2F20023F0F0 /* EnvTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvTabBarController.h; path = TabBarController/EnvTabBarController.h; sourceTree = "<group>"; };
 		E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvTabBarController.m; path = TabBarController/EnvTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +138,10 @@
 			children = (
 				E100802320F621A200B75514 /* EnvAirQualityVC.h */,
 				E100802420F621A200B75514 /* EnvAirQualityVC.m */,
+				E148BD0920F78D0F00872ADD /* EnvAreaLevelVC.h */,
+				E148BD0A20F78D0F00872ADD /* EnvAreaLevelVC.m */,
+				E148BD0F20F7951200872ADD /* EnvAreaLevelListVC.h */,
+				E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */,
 			);
 			name = AirQuality;
 			sourceTree = "<group>";
@@ -169,6 +194,8 @@
 		E1AF06BC20F481A7000E93F9 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				E148BD0C20F7927000872ADD /* SliderSwitchView.h */,
+				E148BD0D20F7927000872ADD /* SliderSwitchView.m */,
 				E1BA89BF20EB62F3002CD41B /* ConfigObj.h */,
 				E1BA89C020EB62F3002CD41B /* ConfigObj.m */,
 				E1AF06BD20F481D5000E93F9 /* MyConstants.h */,
@@ -261,6 +288,14 @@
 		E1BC41D820F6EB30002B4047 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				E148BD1520F79ACA00872ADD /* AreaLevelModel.h */,
+				E148BD1620F79ACA00872ADD /* AreaLevelModel.m */,
+				E148BD0620F77FAC00872ADD /* ForecastAreaModel.h */,
+				E148BD0720F77FAC00872ADD /* ForecastAreaModel.m */,
+				E1BC41DF20F74F3D002B4047 /* NearestAreaRealModel.h */,
+				E1BC41E020F74F3D002B4047 /* NearestAreaRealModel.m */,
+				E1BC41DC20F73276002B4047 /* NearestGkzRealModel.h */,
+				E1BC41DD20F73276002B4047 /* NearestGkzRealModel.m */,
 				E1BC41D920F6EB4A002B4047 /* UserInfoModel.h */,
 				E1BC41DA20F6EB4A002B4047 /* UserInfoModel.m */,
 			);
@@ -425,15 +460,22 @@
 				E100802A20F621FF00B75514 /* EnvOnlineMonVC.m in Sources */,
 				E100803220F6226F00B75514 /* EnvAnalysisReportVC.m in Sources */,
 				E100803620F622AE00B75514 /* EnvPersonalCenterVC.m in Sources */,
+				E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */,
 				E1BA89AD20EB1CAE002CD41B /* ViewController.m in Sources */,
 				E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */,
 				E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */,
 				E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */,
 				E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */,
+				E1BC41E120F74F3D002B4047 /* NearestAreaRealModel.m in Sources */,
 				E1BA89A720EB1CAE002CD41B /* main.m in Sources */,
 				E1BC41DB20F6EB4A002B4047 /* UserInfoModel.m in Sources */,
+				E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */,
+				E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */,
+				E148BD0B20F78D0F00872ADD /* EnvAreaLevelVC.m in Sources */,
 				E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */,
+				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
 				E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */,
+				E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */,
 				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
 				E100802E20F6223900B75514 /* EnvManagerVC.m in Sources */,
 				E100802520F621A300B75514 /* EnvAirQualityVC.m in Sources */,

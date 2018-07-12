@@ -28,7 +28,14 @@
 //    self.tabBar.frame = tabFrame;
 //    [self.tabBar bringSubviewToFront:self.bottomToolView];
 //}
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBar.translucent=NO;//设置背景颜色
@@ -64,10 +71,16 @@
     self.viewControllers=@[airQuality,onlineMon,manager,analysisReport,personallCenter];
     CGSize indicatorImageSize =CGSizeMake(self.tabBar.bounds.size.width/self.tabBar.items.count, self.tabBar.bounds.size.height);
     self.tabBar.selectionIndicatorImage=[UIImage imageWithColor:COLOR_TOP size:indicatorImageSize];
+    self.delegate=self;
     // Do any additional setup after loading the view.
 }
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     [self.navigationItem setTitle:viewController.title];
+    if (self.selectedIndex!=3) {
+        self.navigationController.navigationBar.hidden = YES;
+    }else{
+        self.navigationController.navigationBar.hidden = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

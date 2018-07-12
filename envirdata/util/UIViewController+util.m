@@ -38,7 +38,7 @@
     [[AFAppDotNetAPIClient shareClient] POST:url parameters: parameterdic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
         NSLog(@"%@",[responseObject mj_JSONString]);
-        if (responseObject[@"code"]==0) {
+        if ([responseObject[@"code"] intValue]==0) {
             completionBlock(responseObject[@"data"]);
         }else{
             [self showMsgInfo:responseObject[@"msg"]];
@@ -53,6 +53,30 @@
                                                 delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 }
+
+- (UIImage *)imageByApplyingAlpha:(CGFloat)alpha  image:(UIImage*)image
+{
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0f);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGRect area = CGRectMake(0, 0, image.size.width, image.size.height);
+    
+    CGContextScaleCTM(ctx, 1, -1);
+    CGContextTranslateCTM(ctx, 0, -area.size.height);
+    
+    CGContextSetBlendMode(ctx, kCGBlendModeMultiply);
+    
+    CGContextSetAlpha(ctx, alpha);
+    
+    CGContextDrawImage(ctx, area, image.CGImage);
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 -(void)showMsgInfo:(NSString *)msg{
     [MBProgressHUD showMessage1:msg toView:self.view];
 }

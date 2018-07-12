@@ -12,5 +12,6 @@
 @interface ConfigObj : NSObject
 +(void)configObj;
 +(UIImage*)getIconImge;
-
++(float)font_sizeWith:(float)fontsize strLong:(int)strLong;
++(NSString*)getWeekDay:(NSString*)currentStr;
 @end

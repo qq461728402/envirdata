@@ -17,7 +17,8 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate,GeTuiSdkDelegate,UNUserNotificationCenterDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-
++ (AppDelegate *)Share;
+-(void)gotologin;
+-(void)gotohome;
 @end
 
