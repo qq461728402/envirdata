@@ -17,12 +17,16 @@
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [ConfigObj configObj];
+    //个推
     [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
     // 注册 APNs
     [self registerRemoteNotification];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     NSDictionary *userInfo = USER_DEFAULTS(@"userInfo")
     if (!userInfo) {
+        //存储用户信息
+        UserInfoModel *userInfoModel =[UserInfoModel mj_objectWithKeyValues:userInfo];
+        [SingalObj defaultManager].userInfoModel=userInfoModel;
         EnvTabBarController *tabbar=[[EnvTabBarController alloc]init];
         self.window.rootViewController=tabbar;
     }else{
@@ -60,16 +64,11 @@
         [[UIApplication sharedApplication] registerForRemoteNotifications];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
 #endif
-    } else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+    } else {
         UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge);
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    } else {
-        UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert |
-                                                                       UIRemoteNotificationTypeSound |
-                                                                       UIRemoteNotificationTypeBadge);
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
     }
 }
 

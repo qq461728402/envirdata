@@ -22,8 +22,11 @@ static AFAppDotNetAPIClient * _afAppDotNetApi;
         //请求超时时间
         _afAppDotNetApi.requestSerializer.timeoutInterval=10;
         //申明返回的数据是JSON类型
+        //请求设置Conten-Type
+         [_afAppDotNetApi.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         _afAppDotNetApi.responseSerializer =[AFJSONResponseSerializer serializer];
-        _afAppDotNetApi.requestSerializer =[AFJSONRequestSerializer serializer];
+//        _afAppDotNetApi.requestSerializer =[AFJSONRequestSerializer serializer];
+       
     }
     return  _afAppDotNetApi;
 }

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface EnvAirQualityVC : UIViewController
-
+#import <BMKLocationkit/BMKLocationComponent.h>
+@interface EnvAirQualityVC : UIViewController<BMKLocationAuthDelegate,BMKLocationManagerDelegate>
+@property (nonatomic,strong)BMKLocationManager *locationManager;
 @end

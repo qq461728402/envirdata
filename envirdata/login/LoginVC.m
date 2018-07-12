@@ -7,15 +7,16 @@
 //
 
 #import "LoginVC.h"
-
+#import "UserInfoModel.h"
 @interface LoginVC ()
 @property (nonatomic,strong)UILabel *sutitlelb;
+@property (nonatomic,strong)UILabel *titlelb;
 @property (nonatomic,strong)UITextField *usertf;
 @property (nonatomic,strong)UITextField *passwordtf;
 @end
 
 @implementation LoginVC
-@synthesize sutitlelb,usertf,passwordtf;
+@synthesize titlelb,sutitlelb,usertf,passwordtf;
 - (void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor whiteColor]];
 }
@@ -30,19 +31,19 @@
     iconImage.centerX=SCREEN_WIDTH/2.0;
     [self.view addSubview:iconImage];
     
-    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
-    title.top=iconImage.bottom+10;
-    title.font=BoldFont(30);
-    title.textAlignment=NSTextAlignmentCenter;
-    title.textColor=COLOR_TOP;
-    title.text=@"重庆市四北地区";
-    [self.view addSubview:title];
+    titlelb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    titlelb.top=iconImage.bottom+10;
+    titlelb.font=BoldFont(30);
+    titlelb.textAlignment=NSTextAlignmentCenter;
+    titlelb.textColor=COLOR_TOP;
+    titlelb.text=@"";
+    [self.view addSubview:titlelb];
     
-    sutitlelb=[[UILabel alloc]initWithFrame:CGRectMake(30, title.bottom, SCREEN_WIDTH-60, 30)];
+    sutitlelb=[[UILabel alloc]initWithFrame:CGRectMake(30, titlelb.bottom, SCREEN_WIDTH-60, 30)];
     sutitlelb.font=Font(24);
     sutitlelb.textAlignment=NSTextAlignmentCenter;
     sutitlelb.textColor=COLOR_TOP;
-    sutitlelb.text=@"大气污染防治协同平台";
+    sutitlelb.text=@"";
     [self.view addSubview:sutitlelb];
     
     UIView *loginView=[[UIView alloc]initWithFrame:CGRectMake(SCALE(30), sutitlelb.bottom+10, SCREEN_WIDTH-SCALE(60), 80)];
@@ -105,8 +106,11 @@
     zclb.textColor=[UIColor colorWithRGB:0xc6c6c6];
     zclb.text=@"技术支持：重庆广睿达科技有限公司";
     [self.view addSubview:zclb];
-    
-
+    NSDictionary *untiInfo=USER_DEFAULTS(@"unitInfo");
+    if (untiInfo) {
+        titlelb.text = untiInfo[@"appexpand1"];
+        sutitlelb.text = untiInfo[@"appexpand2"];
+    }
     // Do any additional setup after loading the view.
 }
 #pragma mark----------登录--------
@@ -118,8 +122,17 @@
          [self showMsgInfo:@"请输入密码"];
         return;
     }
-    [self networkPost:API_CHECKUSER parameter:@{@"passport":usertf.text,@"pwd":[passwordtf.text md5String]} progresHudText:@"加载中..." completionBlock:^(id rep) {
-    
+    [self networkPost:API_CHECKUSER parameter:@{@"passport":usertf.text,@"pwd":passwordtf.text} progresHudText:@"加载中..." completionBlock:^(id rep) {
+        //保存用户信息
+        [[NSUserDefaults standardUserDefaults] setObject:rep forKey:@"userInfo"];
+        UserInfoModel *userInfo = [UserInfoModel mj_objectWithKeyValues:rep];
+        //保存单位信息
+        [[NSUserDefaults standardUserDefaults] setObject:@{@"appexpand1":userInfo.appexpand1,@"appexpand2":userInfo.appexpand2}
+                                                  forKey:@"unitInfo"];
+        titlelb.text = userInfo.appexpand1;
+        sutitlelb.text = userInfo.appexpand2;
+        
+       [SingalObj defaultManager].userInfoModel=userInfo;
     }];
     
 }

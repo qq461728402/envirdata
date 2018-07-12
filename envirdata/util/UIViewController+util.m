@@ -14,10 +14,16 @@
     if (hudText!=nil) {
         [SVProgressHUD showWithStatus:hudText];
     }
-    [[AFAppDotNetAPIClient shareClient] GET:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+     NSDictionary * parameterdic = @{@"param":[parameter mj_JSONString]};
+    
+    [[AFAppDotNetAPIClient shareClient] GET:url parameters:parameterdic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
         NSLog(@"%@",[responseObject mj_JSONString]);
-        completionBlock(responseObject);
+        if (responseObject[@"code"]==0) {
+            completionBlock(responseObject[@"data"]);
+        }else{
+            [self showMsgInfo:responseObject[@"msg"]];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"failure--%@",error);
         [SVProgressHUD showInfoWithStatus:@"加载错误"];
@@ -28,11 +34,12 @@
     if (hudText!=nil) {
         [SVProgressHUD showWithStatus:hudText];
     }
-    [[AFAppDotNetAPIClient shareClient] POST:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSDictionary * parameterdic = @{@"param":[parameter mj_JSONString]};
+    [[AFAppDotNetAPIClient shareClient] POST:url parameters: parameterdic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
         NSLog(@"%@",[responseObject mj_JSONString]);
         if (responseObject[@"code"]==0) {
-            completionBlock(responseObject);
+            completionBlock(responseObject[@"data"]);
         }else{
             [self showMsgInfo:responseObject[@"msg"]];
         }
@@ -40,7 +47,6 @@
         NSLog(@"failure--%@",error);
         [SVProgressHUD showInfoWithStatus:@"加载错误"];
     }];
-     
 }
 -(void) showMsgBox:(NSString *)msg{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:msg

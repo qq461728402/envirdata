@@ -28,6 +28,8 @@
 		E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89BD20EB1ED9002CD41B /* LoginVC.m */; };
 		E1BA89C120EB62F3002CD41B /* ConfigObj.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89C020EB62F3002CD41B /* ConfigObj.m */; };
 		E1BA89C520EB6E3F002CD41B /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1BA89C420EB6E3F002CD41B /* iconfont.ttf */; };
+		E1BC41D620F6E96E002B4047 /* SingalObj.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41D520F6E96E002B4047 /* SingalObj.m */; };
+		E1BC41DB20F6EB4A002B4047 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41DA20F6EB4A002B4047 /* UserInfoModel.m */; };
 		E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,10 @@
 		E1BA89BF20EB62F3002CD41B /* ConfigObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigObj.h; path = util/ConfigObj.h; sourceTree = "<group>"; };
 		E1BA89C020EB62F3002CD41B /* ConfigObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigObj.m; path = util/ConfigObj.m; sourceTree = "<group>"; };
 		E1BA89C420EB6E3F002CD41B /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
+		E1BC41D420F6E96E002B4047 /* SingalObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingalObj.h; path = util/SingalObj.h; sourceTree = "<group>"; };
+		E1BC41D520F6E96E002B4047 /* SingalObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingalObj.m; path = util/SingalObj.m; sourceTree = "<group>"; };
+		E1BC41D920F6EB4A002B4047 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
+		E1BC41DA20F6EB4A002B4047 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		E1D6CC7720F5B2F20023F0F0 /* EnvTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvTabBarController.h; path = TabBarController/EnvTabBarController.h; sourceTree = "<group>"; };
 		E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvTabBarController.m; path = TabBarController/EnvTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,6 +183,8 @@
 				E181D85620F5FB1900219D71 /* ColorConfig.h */,
 				E100803820F636DB00B75514 /* UIButton+Bootstrap.h */,
 				E100803920F636DB00B75514 /* UIButton+Bootstrap.m */,
+				E1BC41D420F6E96E002B4047 /* SingalObj.h */,
+				E1BC41D520F6E96E002B4047 /* SingalObj.m */,
 			);
 			name = config;
 			sourceTree = "<group>";
@@ -211,6 +219,7 @@
 		E1BA89A420EB1CAE002CD41B /* envirdata */ = {
 			isa = PBXGroup;
 			children = (
+				E1BC41D820F6EB30002B4047 /* entity */,
 				E100803320F6227A00B75514 /* Personal */,
 				E100802F20F6224700B75514 /* AnalysisReport */,
 				E100802B20F6220D00B75514 /* Management */,
@@ -247,6 +256,15 @@
 				E1BA89C420EB6E3F002CD41B /* iconfont.ttf */,
 			);
 			name = Iconfont;
+			sourceTree = "<group>";
+		};
+		E1BC41D820F6EB30002B4047 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				E1BC41D920F6EB4A002B4047 /* UserInfoModel.h */,
+				E1BC41DA20F6EB4A002B4047 /* UserInfoModel.m */,
+			);
+			path = entity;
 			sourceTree = "<group>";
 		};
 		E1D6CC7620F5B2A30023F0F0 /* TabBarController */ = {
@@ -413,11 +431,13 @@
 				E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */,
 				E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */,
 				E1BA89A720EB1CAE002CD41B /* main.m in Sources */,
+				E1BC41DB20F6EB4A002B4047 /* UserInfoModel.m in Sources */,
 				E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */,
 				E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */,
 				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
 				E100802E20F6223900B75514 /* EnvManagerVC.m in Sources */,
 				E100802520F621A300B75514 /* EnvAirQualityVC.m in Sources */,
+				E1BC41D620F6E96E002B4047 /* SingalObj.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
