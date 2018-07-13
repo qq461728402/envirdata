@@ -14,6 +14,11 @@
 		E100803220F6226F00B75514 /* EnvAnalysisReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E100803120F6226F00B75514 /* EnvAnalysisReportVC.m */; };
 		E100803620F622AE00B75514 /* EnvPersonalCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E100803520F622AE00B75514 /* EnvPersonalCenterVC.m */; };
 		E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = E100803920F636DB00B75514 /* UIButton+Bootstrap.m */; };
+		E12A38D320F8C44F00085665 /* QRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A38CE20F8C44F00085665 /* QRadioButton.m */; };
+		E12A38D420F8C44F00085665 /* radio_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38CF20F8C44F00085665 /* radio_checked.png */; };
+		E12A38D520F8C44F00085665 /* radio_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38D020F8C44F00085665 /* radio_checked@2x.png */; };
+		E12A38D620F8C44F00085665 /* radio_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38D120F8C44F00085665 /* radio_unchecked.png */; };
+		E12A38D720F8C44F00085665 /* radio_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38D220F8C44F00085665 /* radio_unchecked@2x.png */; };
 		E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E134648920F4E98E006E4144 /* AFAppDotNetAPIClient.m */; };
 		E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */ = {isa = PBXBuildFile; fileRef = E134649020F4F0FA006E4144 /* UIViewController+util.m */; };
 		E134649320F50057006E4144 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649220F50057006E4144 /* UIKit.framework */; };
@@ -24,6 +29,8 @@
 		E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0D20F7927000872ADD /* SliderSwitchView.m */; };
 		E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */; };
 		E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1620F79ACA00872ADD /* AreaLevelModel.m */; };
+		E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5EA20F88116007E045A /* AreaLevelCell.m */; };
+		E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5ED20F8A420007E045A /* EnvAreaLevelHistoryVC.m */; };
 		E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AF06C320F4A76B000E93F9 /* MBProgressHUD+PD.m */; };
 		E1BA89A720EB1CAE002CD41B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A620EB1CAE002CD41B /* main.m */; };
 		E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A920EB1CAE002CD41B /* AppDelegate.m */; };
@@ -56,6 +63,12 @@
 		E100803520F622AE00B75514 /* EnvPersonalCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvPersonalCenterVC.m; path = PersonalCenter/EnvPersonalCenterVC.m; sourceTree = "<group>"; };
 		E100803820F636DB00B75514 /* UIButton+Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Bootstrap.h"; path = "util/UIButton+Bootstrap.h"; sourceTree = "<group>"; };
 		E100803920F636DB00B75514 /* UIButton+Bootstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Bootstrap.m"; path = "util/UIButton+Bootstrap.m"; sourceTree = "<group>"; };
+		E12A38CD20F8C44F00085665 /* QRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRadioButton.h; sourceTree = "<group>"; };
+		E12A38CE20F8C44F00085665 /* QRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRadioButton.m; sourceTree = "<group>"; };
+		E12A38CF20F8C44F00085665 /* radio_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_checked.png; sourceTree = "<group>"; };
+		E12A38D020F8C44F00085665 /* radio_checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_checked@2x.png"; sourceTree = "<group>"; };
+		E12A38D120F8C44F00085665 /* radio_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_unchecked.png; sourceTree = "<group>"; };
+		E12A38D220F8C44F00085665 /* radio_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_unchecked@2x.png"; sourceTree = "<group>"; };
 		E134648820F4E98E006E4144 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFAppDotNetAPIClient.h; path = util/AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
 		E134648920F4E98E006E4144 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFAppDotNetAPIClient.m; path = util/AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
 		E134648B20F4EC4D006E4144 /* ApiConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiConfig.h; sourceTree = "<group>"; };
@@ -75,6 +88,10 @@
 		E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvAreaLevelListVC.m; path = AirQuality/EnvAreaLevelListVC.m; sourceTree = "<group>"; };
 		E148BD1520F79ACA00872ADD /* AreaLevelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaLevelModel.h; sourceTree = "<group>"; };
 		E148BD1620F79ACA00872ADD /* AreaLevelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaLevelModel.m; sourceTree = "<group>"; };
+		E16EE5E920F88116007E045A /* AreaLevelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AreaLevelCell.h; path = cells/AreaLevelCell.h; sourceTree = "<group>"; };
+		E16EE5EA20F88116007E045A /* AreaLevelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AreaLevelCell.m; path = cells/AreaLevelCell.m; sourceTree = "<group>"; };
+		E16EE5EC20F8A420007E045A /* EnvAreaLevelHistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvAreaLevelHistoryVC.h; path = AirQuality/EnvAreaLevelHistoryVC.h; sourceTree = "<group>"; };
+		E16EE5ED20F8A420007E045A /* EnvAreaLevelHistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvAreaLevelHistoryVC.m; path = AirQuality/EnvAreaLevelHistoryVC.m; sourceTree = "<group>"; };
 		E181D85520F5FA0100219D71 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		E181D85620F5FB1900219D71 /* ColorConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConfig.h; sourceTree = "<group>"; };
 		E1AF06BD20F481D5000E93F9 /* MyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyConstants.h; path = util/MyConstants.h; sourceTree = "<group>"; };
@@ -142,6 +159,8 @@
 				E148BD0A20F78D0F00872ADD /* EnvAreaLevelVC.m */,
 				E148BD0F20F7951200872ADD /* EnvAreaLevelListVC.h */,
 				E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */,
+				E16EE5EC20F8A420007E045A /* EnvAreaLevelHistoryVC.h */,
+				E16EE5ED20F8A420007E045A /* EnvAreaLevelHistoryVC.m */,
 			);
 			name = AirQuality;
 			sourceTree = "<group>";
@@ -182,6 +201,29 @@
 			name = Personal;
 			sourceTree = "<group>";
 		};
+		E12A38CC20F8C44F00085665 /* QRadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				E12A38CD20F8C44F00085665 /* QRadioButton.h */,
+				E12A38CE20F8C44F00085665 /* QRadioButton.m */,
+				E12A38CF20F8C44F00085665 /* radio_checked.png */,
+				E12A38D020F8C44F00085665 /* radio_checked@2x.png */,
+				E12A38D120F8C44F00085665 /* radio_unchecked.png */,
+				E12A38D220F8C44F00085665 /* radio_unchecked@2x.png */,
+			);
+			name = QRadioButton;
+			path = util/QRadioButton;
+			sourceTree = "<group>";
+		};
+		E16EE5E820F880EA007E045A /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				E16EE5E920F88116007E045A /* AreaLevelCell.h */,
+				E16EE5EA20F88116007E045A /* AreaLevelCell.m */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
 		E181D85720F6016400219D71 /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +236,7 @@
 		E1AF06BC20F481A7000E93F9 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				E12A38CC20F8C44F00085665 /* QRadioButton */,
 				E148BD0C20F7927000872ADD /* SliderSwitchView.h */,
 				E148BD0D20F7927000872ADD /* SliderSwitchView.m */,
 				E1BA89BF20EB62F3002CD41B /* ConfigObj.h */,
@@ -246,6 +289,7 @@
 		E1BA89A420EB1CAE002CD41B /* envirdata */ = {
 			isa = PBXGroup;
 			children = (
+				E16EE5E820F880EA007E045A /* cells */,
 				E1BC41D820F6EB30002B4047 /* entity */,
 				E100803320F6227A00B75514 /* Personal */,
 				E100802F20F6224700B75514 /* AnalysisReport */,
@@ -396,7 +440,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E12A38D720F8C44F00085665 /* radio_unchecked@2x.png in Resources */,
+				E12A38D620F8C44F00085665 /* radio_unchecked.png in Resources */,
+				E12A38D520F8C44F00085665 /* radio_checked@2x.png in Resources */,
 				E1BA89C520EB6E3F002CD41B /* iconfont.ttf in Resources */,
+				E12A38D420F8C44F00085665 /* radio_checked.png in Resources */,
 				E1BA89B520EB1CAF002CD41B /* LaunchScreen.storyboard in Resources */,
 				E1BA89B220EB1CAF002CD41B /* Assets.xcassets in Resources */,
 			);
@@ -415,6 +463,7 @@
 				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/PGDatePicker/PGDatePicker/PGDatePicker.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/iOS-Echarts/iOS-Echarts.bundle",
 			);
@@ -423,6 +472,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PGDatePicker.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/iOS-Echarts.bundle",
 			);
@@ -469,8 +519,10 @@
 				E1BC41E120F74F3D002B4047 /* NearestAreaRealModel.m in Sources */,
 				E1BA89A720EB1CAE002CD41B /* main.m in Sources */,
 				E1BC41DB20F6EB4A002B4047 /* UserInfoModel.m in Sources */,
+				E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */,
 				E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */,
 				E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */,
+				E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */,
 				E148BD0B20F78D0F00872ADD /* EnvAreaLevelVC.m in Sources */,
 				E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */,
 				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
@@ -478,6 +530,7 @@
 				E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */,
 				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
 				E100802E20F6223900B75514 /* EnvManagerVC.m in Sources */,
+				E12A38D320F8C44F00085665 /* QRadioButton.m in Sources */,
 				E100802520F621A300B75514 /* EnvAirQualityVC.m in Sources */,
 				E1BC41D620F6E96E002B4047 /* SingalObj.m in Sources */,
 			);

@@ -30,4 +30,6 @@
 #import "BlocksKit.h"
 #import "BlocksKit+UIKit.h"
 #import "SingalObj.h"
+#import "Masonry.h"
+#import "iOS-Echarts.h"
 #endif

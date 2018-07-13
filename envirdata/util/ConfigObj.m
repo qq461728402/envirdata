@@ -7,8 +7,9 @@
 //
 
 #import "ConfigObj.h"
-
 @implementation ConfigObj
+
+
 +(void)configObj{
     //设置状态栏颜色
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -87,6 +88,82 @@
     return[weekdays objectAtIndex:theComponents.weekday];
     
 }
-
++(int)getLevelByAQI:(double)aqiD{
+    
+    double aqi = 0;
+    if(aqiD){
+        aqi = aqiD;
+    }
+    if(aqi < 1){
+        return 0; // 表示离线
+    }else if(aqi <= [AQI_NUM[2] intValue]){ // 优 绿色 一级
+        return 1;
+    }else if(aqi <= [AQI_NUM[3] intValue]){ // 良 黄色 二级
+        return 2;
+    }else if(aqi <= [AQI_NUM[4] intValue]){ // 轻度污染 橙色 三级
+        return 3;
+    }else if(aqi <= [AQI_NUM[5] intValue]){ // 中度污染 红色 四级
+        return 4;
+    }else if(aqi <= [AQI_NUM[6] intValue]){ // 重度污染 紫色 五级
+        return 5;
+    }else{ // 严重污染 褐红色 六级
+        return 6;
+    }
+    return 0;
+}
++(NSString*)getLevelName:(int)level{
+    NSString *result =@"";
+    switch (level){
+        case 1:
+            result = @"优";
+            break;
+        case 2:
+            result = @"良";
+            break;
+        case 3:
+            result = @"轻度污染";
+            break;
+        case 4:
+            result = @"中度污染";
+            break;
+        case 5:
+            result = @"重度污染";
+            break;
+        case 6:
+            result = @"严重污染";
+            break;
+        default:
+            result = @"--";
+            break;
+    }
+    return  result;
+}
++(UIColor*)getColorByLevel:(int)level{
+    UIColor *result =[UIColor new];
+    switch (level){
+        case 1:
+            result = API_LEVEL1;
+            break;
+        case 2:
+            result = API_LEVEL2;
+            break;
+        case 3:
+            result = API_LEVEL3;
+            break;
+        case 4:
+            result = API_LEVEL4;
+            break;
+        case 5:
+            result = API_LEVEL5;
+            break;
+        case 6:
+            result = API_LEVEL6;
+            break;
+        default:
+            result = API_NODATA;
+            break;
+    }
+    return result;
+}
 
 @end

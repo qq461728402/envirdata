@@ -12,5 +12,6 @@
 @property (nonatomic, copy) void (^callback)(UIViewController *pushview);
 @property (nonatomic,strong)NSString *areaid;
 @property (nonatomic,strong)NSString *api;
+@property (nonatomic,strong)NSString *type;
 -(void)getdataInfo;
 @end

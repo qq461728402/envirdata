@@ -21,6 +21,6 @@
 @property (nonatomic, strong) NSNumber * pm25;
 @property (nonatomic, strong) NSNumber * so2;
 @property (nonatomic, strong) NSString * time;
-
+@property (nonatomic, strong) NSString *showtime;
 
 @end

@@ -16,6 +16,8 @@ target 'envirdata' do
   pod 'YYKit', '~> 1.0.9'
   pod 'BlocksKit', '~> 2.2.5'
   pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'Masonry', '~> 1.1.0'
   pod 'GTSDK'
+  pod 'PGDatePicker'
   pod 'iOS-Echarts'
 end

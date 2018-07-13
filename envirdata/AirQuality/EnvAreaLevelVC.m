@@ -27,7 +27,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    curntnum=0;
     tableList_arr=[[NSMutableArray alloc]init];
     typeList =[[NSMutableArray alloc]init];
     
@@ -35,6 +35,7 @@
     envArealevel.areaid=areaid;
     envArealevel.title=@"区域实时监控";
     envArealevel.api=API_GETAREALEVELAIRQUALITY;
+    envArealevel.type=@"region";
     envArealevel.callback=^(UIViewController *pushview)
     {
         [self.navigationController pushViewController:pushview animated:YES];
@@ -43,7 +44,8 @@
     EnvAreaLevelListVC *envArealevel1=[[EnvAreaLevelListVC alloc]init];
     envArealevel1.areaid=areaid;
     envArealevel1.title=@"站点实时监控";
-    envArealevel1.api=API_GETAREALEVELAIRQUALITY;
+    envArealevel1.api=API_GETCITYGKZPOINTS;
+    envArealevel1.type=@"point";
     envArealevel1.callback=^(UIViewController *pushview)
     {
        [self.navigationController pushViewController:pushview animated:YES];
@@ -64,6 +66,10 @@
     slideSwitchView.tabItemSelectedColor = COLOR_TOP;
     slideSwitchView.hdColor=COLOR_TOP;
     [slideSwitchView buildUI];//创建srcolltop按钮
+    //默认加载第一个列表
+    EnvAreaLevelListVC *vc = [tableList_arr objectAtIndex:curntnum];
+    [vc getdataInfo];
+    
 }
 - (void)slideSwitchView:(SliderSwitchView *)view didselectTab:(NSUInteger)number
 {

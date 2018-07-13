@@ -16,5 +16,7 @@
 #define API_GETNEARESTAREAREAL @"api/getNearestAreaReal" //当前行政区域实况接口
 #define API_GETFORECASTAREA @"api/getForecastArea" //预报数据接口
 #define API_GETAREALEVELAIRQUALITY @"api/getAreaLevelAirQuality" //行政区监测实况接口
-#define API_GETUNITONLINESTATE @"api/getUnitOnlineState" // 站点实时监控状态接口
+#define API_GETCITYGKZPOINTS @"api/getCityGkzPoints" // 站点实时监控状态接口
+#define API_GETHISTORYVALUEDATA @"api/getHistoryValueData" //区域（国控站）历史接口
+
 #endif /* ApiConfig_h */

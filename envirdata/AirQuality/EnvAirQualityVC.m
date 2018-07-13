@@ -509,8 +509,8 @@
          areaLb.text =[NSString stringWithFormat:@"%@ \U0000e611",nearestGkz.uname];
          time.text=[NSString stringWithFormat:@"%@ 时",nearestGkz.time];
          aqi.text=[NSString stringWithFormat:@"%@",nearestGkz.aqi];
-        level.backgroundColor=oneline1.backgroundColor=oneline2.backgroundColor=oneline3.backgroundColor=oneline4.backgroundColor=oneline5.backgroundColor=oneline6.backgroundColor=nearestGkz.level==1?API_LEVEL1:nearestGkz.level==2?API_LEVEL2:nearestGkz.level==3?API_LEVEL3:nearestGkz.level==4?API_LEVEL4:nearestGkz.level==5?API_LEVEL5:nearestGkz.level==6?API_LEVEL6:API_NODATA;
-        level.text=nearestGkz.level==1?@"优":nearestGkz.level==2?@"良":nearestGkz.level==3?@"轻":nearestGkz.level==4?@"中":nearestGkz.level==5?@"重":nearestGkz.level==6?@"严重":@"--";
+        level.backgroundColor=oneline1.backgroundColor=oneline2.backgroundColor=oneline3.backgroundColor=oneline4.backgroundColor=oneline5.backgroundColor=oneline6.backgroundColor=[ConfigObj getColorByLevel:nearestGkz.level];
+        level.text=[ConfigObj getLevelName:nearestGkz.level];
         pm25v.text=[NSString stringWithFormat:@"%@",nearestGkz.pm25];
         pm10v.text=[NSString stringWithFormat:@"%@",nearestGkz.pm10];
         SO2v.text=[NSString stringWithFormat:@"%@",nearestGkz.so2];
@@ -538,9 +538,8 @@
         a_primary_pollu.text=areaRealModel.primary_pollu;
         a_tiem.text=[NSString stringWithFormat:@"%@ 时",areaRealModel.time];
         a_aqi.text=[NSString stringWithFormat:@"%@",areaRealModel.aqi];
-        a_level.backgroundColor=a_oneline1.backgroundColor=a_oneline2.backgroundColor=a_oneline3.backgroundColor=a_oneline4.backgroundColor=a_oneline5.backgroundColor=a_oneline6.backgroundColor=areaRealModel.level==1?API_LEVEL1:areaRealModel.level==2?API_LEVEL2:areaRealModel.level==3?API_LEVEL3:areaRealModel.level==4?API_LEVEL4:areaRealModel.level==5?API_LEVEL5:areaRealModel.level==6?API_LEVEL6:API_NODATA;
-        a_level.text=areaRealModel.level==1?@"优":areaRealModel.level==2?@"良":areaRealModel.level==3?@"轻":areaRealModel.level==4?@"中":areaRealModel.level==5?@"重":areaRealModel.level==6?@"严重":@"--";
-        
+        a_level.backgroundColor=a_oneline1.backgroundColor=a_oneline2.backgroundColor=a_oneline3.backgroundColor=a_oneline4.backgroundColor=a_oneline5.backgroundColor=a_oneline6.backgroundColor=[ConfigObj getColorByLevel:areaRealModel.level];
+        a_level.text=[ConfigObj getLevelName:areaRealModel.level];
         a_pm25v.text=[NSString stringWithFormat:@"%@",areaRealModel.pm25];
         a_pm10v.text=[NSString stringWithFormat:@"%@",areaRealModel.pm10];
         a_so2v.text=[NSString stringWithFormat:@"%@",areaRealModel.so2];
@@ -583,10 +582,9 @@
             f_levellb.textAlignment=NSTextAlignmentCenter;
             ViewRadius(f_levellb, 4);
             f_levellb.centerX=wdlb.centerX;
-            f_levellb.backgroundColor=foreModel.level==1?API_LEVEL1:foreModel.level==2?API_LEVEL2:foreModel.level==3?API_LEVEL3:foreModel.level==4?API_LEVEL4:foreModel.level==5?API_LEVEL5:foreModel.level==6?API_LEVEL6:API_NODATA;
-            f_levellb.text=foreModel.level==1?@"优":foreModel.level==2?@"良":foreModel.level==3?@"轻":foreModel.level==4?@"中":foreModel.level==5?@"重":foreModel.level==6?@"严重":@"--";
+            f_levellb.backgroundColor=[ConfigObj getColorByLevel:foreModel.level];
+            f_levellb.text=[ConfigObj getLevelName:foreModel.level];
             [f_dataView addSubview:f_levellb];
-            
             UILabel *f_primary_pollu=[[UILabel alloc]initWithFrame:CGRectMake(namelb.left, f_levellb.bottom, namelb.width, namelb.height)];
             f_primary_pollu.textColor=COLOR_TOP;
             f_primary_pollu.font=Font(14);

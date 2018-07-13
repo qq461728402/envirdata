@@ -88,13 +88,6 @@ static UIButton *selectBtn;
 }
 #pragma mark - 顶部滚动视图逻辑方法
 
-/*!
- * @method 选中tab时间
- * @abstract
- * @discussion
- * @param 按钮
- * @result
- */
 - (void)selectNameButton:(UIButton *)sender
 {
     //如果点击的tab文字显示不全，调整滚动视图x坐标使用使tab文字显示全
@@ -116,7 +109,7 @@ static UIButton *selectBtn;
         } completion:^(BOOL finished) {
             //设置新页出现
             if (!_isRootScroll) {
-                [rootScrollView setContentOffset:CGPointMake((sender.tag - 100)*self.bounds.size.width, 0) animated:NO];
+                [rootScrollView setContentOffset:CGPointMake((sender.tag - 100)*self.bounds.size.width, 0) animated:YES];
             }
             _isRootScroll = NO;
             if (self.slideSwitchViewDelegate && [self.slideSwitchViewDelegate respondsToSelector:@selector(slideSwitchView:didselectTab:)]) {
@@ -126,13 +119,7 @@ static UIButton *selectBtn;
     }
 }
 
-/*!
- * @method 调整顶部滚动视图x位置
- * @abstract
- * @discussion
- * @param
- * @result
- */
+
 - (void)adjustScrollViewContentX:(UIButton *)sender
 {
     if (isScroll==YES) {

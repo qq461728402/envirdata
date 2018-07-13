@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "68A1795F454A44E9E20104A6C513F5E9"
+               BlueprintIdentifier = "F1D6F26844B0D21DA272BDEB66CD7CA4"
                BlueprintName = "Pods-envirdata"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-envirdata.a">

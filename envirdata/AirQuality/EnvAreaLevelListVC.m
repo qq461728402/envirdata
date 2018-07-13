@@ -8,13 +8,15 @@
 
 #import "EnvAreaLevelListVC.h"
 #import "AreaLevelModel.h"
+#import "AreaLevelCell.h"
+#import "EnvAreaLevelHistoryVC.h"
 @interface EnvAreaLevelListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *arealevelTb;
 @property (nonatomic,strong)NSMutableArray *arelevelList;
 @end
 
 @implementation EnvAreaLevelListVC
-@synthesize api,areaid,arealevelTb,arelevelList;
+@synthesize api,areaid,arealevelTb,arelevelList,type;
 
 
 - (void)viewDidLayoutSubviews{
@@ -50,26 +52,41 @@
         [headerView addSubview:label];
     }
     [self.view addSubview:headerView];
-    arealevelTb=[[UITableView alloc]initWithFrame:CGRectMake(0, headerView.bottom, self.view.width, self.view.height-headerView.bottom)   style:UITableViewStyleGrouped];
+    NSLog(@"%f=====%f", self.view.bounds.size.height,self.view.frame.size.height);
+    
+    
+    arealevelTb=[[UITableView alloc]initWithFrame:CGRectMake(0, headerView.bottom, self.view.width, self.view.height) style:UITableViewStyleGrouped];
+    arealevelTb.translatesAutoresizingMaskIntoConstraints=NO;
     arealevelTb.delegate=self;
     arealevelTb.dataSource=self;
     [self.view addSubview:arealevelTb];
-    __unsafe_unretained __typeof(self) weakSelf = self;
-    arealevelTb.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf getnetworkInfo];
+    
+    __weak __typeof(self) weakSelf = self;//这里用一个弱引用来表示self，用于下面的Block中
+    //先确定view_1的约束
+    [arealevelTb mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.view.mas_top).with.offset(SCALE(30));
+        make.bottom.equalTo(weakSelf.view.mas_bottom);
+        make.right.equalTo(weakSelf.view.mas_right);
+        make.left.equalTo(weakSelf.view.mas_left); //view_1de左，距离self.view是30px
     }];
-     [self getnetworkInfo];
+    
+    __unsafe_unretained __typeof(self) weakSelf1 = self;
+    arealevelTb.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf1 getnetworkInfo:YES];
+    }];
     arealevelTb.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     // Do any additional setup after loading the view.
 }
 -(void)getdataInfo{
-    [self getnetworkInfo];
+    if (arelevelList.count==0) {
+        [self getnetworkInfo:NO];
+    }
 }
 #pragma mark------------数据加载------------
--(void)getnetworkInfo{
+-(void)getnetworkInfo:(BOOL)isrefesh{
     arelevelList=[[NSMutableArray alloc]init];
     NSDictionary *parmeter =@{@"areaid":areaid};
-    [self networkPost:api parameter:parmeter progresHudText:nil completionBlock:^(id rep) {
+    [self networkPost:api parameter:parmeter progresHudText:isrefesh==YES?nil:@"加载中..." completionBlock:^(id rep) {
         for (NSDictionary *repdic in rep) {
             AreaLevelModel *areaLevel = [AreaLevelModel mj_objectWithKeyValues:repdic];
             areaLevel.pm25=repdic[@"pm2.5"];
@@ -114,17 +131,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"NoticeCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    AreaLevelCell *cell = (AreaLevelCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[AreaLevelCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.areaLevelModel=arelevelList[indexPath.row];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    AreaLevelModel * areaLevelModel= arelevelList[indexPath.row];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.callback) {
+        EnvAreaLevelHistoryVC *envAreaLevel=[[EnvAreaLevelHistoryVC alloc]init];
+        envAreaLevel.title=[NSString stringWithFormat:@"%@历史记录",areaLevelModel.name];
+        envAreaLevel.a_id=areaLevelModel.id;
+        envAreaLevel.type=type;
+        self.callback(envAreaLevel);
+    }
 }
 
 

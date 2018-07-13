@@ -33,30 +33,12 @@
 
 @optional
 
-/*!
- * @method 滑动左边界时传递手势
- * @abstract
- * @discussion
- * @param   手势
- * @result
- */
+
 - (void)slideSwitchView:(SliderSwitchView *)view panLeftEdge:(UIPanGestureRecognizer*) panParam;
 
-/*!
- * @method 滑动右边界时传递手势
- * @abstract
- * @discussion
- * @param   手势
- * @result
- */
+
 - (void)slideSwitchView:(SliderSwitchView *)view panRightEdge:(UIPanGestureRecognizer*) panParam;
 
-/*!
- * @method 点击tab
- * @abstract
- * @discussion
- * @param tab索引
- * @result
- */
+
 - (void)slideSwitchView:(SliderSwitchView *)view didselectTab:(NSUInteger)number;
 @end
