@@ -11,6 +11,7 @@
 #import "OnlineMonModel.h"
 #import "StatePointAnnotation.h"
 #import "PointPointAnnotation.h"
+#import "WarnPointAnnotation.h"
 #import "DkeyModel.h"
 #import "LBpopView.h"
 @interface EnvOnlineMapVC ()<BMKMapViewDelegate,BMKLocationServiceDelegate,LBpopDelegate>
@@ -19,14 +20,17 @@
 @property (nonatomic,strong)LBpopView *lbpopView;
 @property (nonatomic,strong)NSString *utype;//筛选类型
 @property (nonatomic,strong)NSArray *onlinelistAry;
+@property (nonatomic,strong)NSArray *warningAry;
 @property (nonatomic,strong)NSMutableArray *dkeylistAry;
 @property (nonatomic,assign)int utypeindex;
+@property (nonatomic,strong)NSMutableArray *allpointAry;//保存所有标记点
 @end
 
 @implementation EnvOnlineMapVC
-@synthesize onlineMap,utype,onlinelistAry,dkeylistAry,lbpopView,utypeindex;
+@synthesize onlineMap,utype,onlinelistAry,dkeylistAry,lbpopView,utypeindex,allpointAry,warningAry;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    allpointAry=[[NSMutableArray alloc]init];
     utype=@"";
     utypeindex=0;
     _locService = [[BMKLocationService alloc]init];
@@ -93,7 +97,6 @@
 #pragma mark----------获取Typelist----------------------
 -(void)getTypeDescipt{
     [self networkPost:API_GETTYPEDESCIPT parameter:@{@"dkey":@"utype"} progresHudText:nil completionBlock:^(id rep) {
-        
         DkeyModel *dkeyMode=[[DkeyModel alloc]init];
         dkeyMode.dkid=[NSNumber numberWithString:@""];
         dkeyMode.dval=@"全部";
@@ -102,6 +105,8 @@
     }];
 }
 -(void)getdataInfo{
+    [onlineMap removeAnnotations:allpointAry];
+    [allpointAry removeAllObjects];
     NSString *areaid =[NSString stringWithFormat:@"%@",[SingalObj defaultManager].userInfoModel.areaid];
     [self networkPost:API_GETUNITONLINESTATE parameter:@{@"areaid":areaid,@"utype":utype} progresHudText:@"加载中..." completionBlock:^(id rep) {
         onlinelistAry = [OnlineMonModel mj_objectArrayWithKeyValuesArray:rep];
@@ -110,21 +115,36 @@
                 CLLocationCoordinate2D coor;
                 coor.latitude = [onlineMon.wd doubleValue];
                 coor.longitude = [onlineMon.jd doubleValue];
-                StatePointAnnotation *statePoint =[[StatePointAnnotation alloc]initWithCoordinate:coor title:onlineMon.uname uid:onlineMon.uid];
+                StatePointAnnotation *statePoint =[[StatePointAnnotation alloc]initWithCoordinate:coor title:onlineMon.uname uid:onlineMon];
                 [onlineMap addAnnotation:statePoint];
+                [allpointAry addObject:statePoint];
                 
             }else if ([onlineMon.status intValue]==0){//其他站点
                 CLLocationCoordinate2D coor;
                 coor.latitude = [onlineMon.wd doubleValue];
                 coor.longitude = [onlineMon.jd doubleValue];
-                PointPointAnnotation *pointPoint =[[PointPointAnnotation alloc]initWithCoordinate:coor title:onlineMon.uname uid:onlineMon.uid];
+                PointPointAnnotation *pointPoint =[[PointPointAnnotation alloc]initWithCoordinate:coor title:onlineMon.uname uid:onlineMon];
                 [onlineMap addAnnotation:pointPoint];
+                [allpointAry addObject:pointPoint];
             }else if ([onlineMon.status intValue]==1){//表示异常
             
                 
             }
         }
     }];
+    //获取预警点数据
+    [self networkPost:API_GETUNITWARNINGPICS parameter:@{@"areaid":areaid,@"utype":utype} progresHudText:@"加载中..." completionBlock:^(id rep) {
+        warningAry =[OnlineMonModel mj_objectArrayWithKeyValuesArray:rep];
+        [warningAry bk_each:^(OnlineMonModel * onlineMon) {
+            CLLocationCoordinate2D coor;
+            coor.latitude = [onlineMon.wd doubleValue];
+            coor.longitude = [onlineMon.jd doubleValue];
+            WarnPointAnnotation *pointPoint =[[WarnPointAnnotation alloc]initWithCoordinate:coor title:onlineMon.uname uid:onlineMon];
+            [onlineMap addAnnotation:pointPoint];
+            [allpointAry addObject:pointPoint];
+        }];
+    }];
+    
 }
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation{
     if ([annotation isKindOfClass:[StatePointAnnotation class]]) {
@@ -149,6 +169,18 @@
         annotationView.canShowCallout=NO;
         annotationView.image = PNGIMAGE(@"point-2");
         return annotationView;
+    }else if ([annotation isKindOfClass:[WarnPointAnnotation class]]){
+        static NSString *reuseIndetifier = @"warnIndetifier";
+        BMKAnnotationView *annotationView = (BMKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
+        if (annotationView == nil)
+        {
+            annotationView = [[BMKAnnotationView alloc] initWithAnnotation:annotation
+                                                           reuseIdentifier:reuseIndetifier];
+        }
+        annotationView.canShowCallout=NO;
+        annotationView.image = PNGIMAGE(@"预警");
+        return annotationView;
+    
     }
     return nil;
 }

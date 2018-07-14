@@ -8,5 +8,7 @@
 
 #import "OnlineMonModel.h"
 @implementation OnlineMonModel
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{@"warinid":@"id"};
+}
 @end

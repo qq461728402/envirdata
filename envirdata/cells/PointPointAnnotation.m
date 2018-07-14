@@ -9,15 +9,14 @@
 #import "PointPointAnnotation.h"
 
 @implementation PointPointAnnotation
--(id)initWithCoordinate:(CLLocationCoordinate2D)coordinate title:(NSString*)title uid:(NSString*)uid
+-(id)initWithCoordinate:(CLLocationCoordinate2D)coordinate title:(NSString*)title uid:(OnlineMonModel*)onlineModel
 {
     self=[super init];
     if (self) {
         self.coordinate=coordinate;
         self.title=title;
-        self.uid=uid;
+        self.onlineModel=onlineModel;
     }
     return self;
 }
-
 @end

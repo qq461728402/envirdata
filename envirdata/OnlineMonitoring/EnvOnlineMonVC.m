@@ -34,16 +34,16 @@
     
     EnvOnlienListVC *envArealevel=[[EnvOnlienListVC alloc]init];
     envArealevel.title=@"监测列表";
-    envArealevel.callback=^(UIViewController *pushview)
-    {
-        [self.navigationController pushViewController:pushview animated:YES];
+    envArealevel.callback=^(UIViewController *pushview){
+        UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
+        [nav pushViewController:pushview animated:YES];
     };
     [tableList_arr addObject:envArealevel];
     EnvOnlineMapVC *envArealevel1=[[EnvOnlineMapVC alloc]init];
     envArealevel1.title=@"监测地图";
-    envArealevel1.callback=^(UIViewController *pushview)
-    {
-        [self.navigationController pushViewController:pushview animated:YES];
+    envArealevel1.callback=^(UIViewController *pushview){
+        UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
+        [nav pushViewController:pushview animated:YES];
     };
     [tableList_arr addObject:envArealevel1];
     [self initsunslideview];

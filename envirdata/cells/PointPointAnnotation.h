@@ -7,7 +7,8 @@
 //
 
 #import "BMKPointAnnotation.h"
+#import "OnlineMonModel.h"
 @interface PointPointAnnotation : BMKPointAnnotation
-@property (nonatomic,strong)NSString *uid;
--(id)initWithCoordinate:(CLLocationCoordinate2D)coordinate title:(NSString*)title uid:(NSString*)uid;
+@property (nonatomic,strong)OnlineMonModel *onlineModel;
+-(id)initWithCoordinate:(CLLocationCoordinate2D)coordinate title:(NSString*)title uid:(OnlineMonModel*)onlineModel;
 @end

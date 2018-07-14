@@ -55,7 +55,8 @@ static UIButton *selectBtn;
         [rootScrollView addSubview:listVC.view];
     }
     if (isNoMainScroll==YES) {
-        [rootScrollView setContentSize:CGSizeMake(0, 0)];
+        rootScrollView.scrollEnabled = NO;
+        [rootScrollView setContentSize:CGSizeMake([viewArray count]*rootScrollView.width, 0)];
     }else{
         [rootScrollView setContentSize:CGSizeMake([viewArray count]*rootScrollView.width, 0)];
     }

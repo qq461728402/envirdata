@@ -9,6 +9,8 @@
 #import "EnvOnlienListVC.h"
 #import "OnlineCell.h"
 #import "OnlineMonModel.h"
+#import "EnvUnitDataTimeVC.h"
+#import "EnvCameraInfoVC.h"
 @interface EnvOnlienListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *onlineTb;
 @property (nonatomic,strong)NSArray *onlinelistAry;
@@ -134,14 +136,20 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    AreaLevelModel * areaLevelModel= arelevelList[indexPath.row];
+    OnlineMonModel * onlineModel= onlinelistAry[indexPath.row];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (self.callback) {
-//        EnvAreaLevelHistoryVC *envAreaLevel=[[EnvAreaLevelHistoryVC alloc]init];
-//        envAreaLevel.title=[NSString stringWithFormat:@"%@历史记录",areaLevelModel.name];
-//        envAreaLevel.a_id=areaLevelModel.id;
-//        envAreaLevel.type=type;
-//        self.callback(envAreaLevel);
+        if ([onlineModel.utype intValue]==1) {//表示国控点
+            EnvUnitDataTimeVC *unitDataTime=[[EnvUnitDataTimeVC alloc]init];
+            unitDataTime.uid=onlineModel.uid;
+            unitDataTime.title=onlineModel.uname;
+            self.callback(unitDataTime);
+        }else{//其他站点类型 包括异常和正常
+            EnvCameraInfoVC *cameraInfo=[[EnvCameraInfoVC alloc]init];
+            cameraInfo.uid=onlineModel.uid;
+            cameraInfo.title=onlineModel.uname;
+            self.callback(cameraInfo);
+        }
     }
 }
 - (void)didReceiveMemoryWarning {

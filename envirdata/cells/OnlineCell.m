@@ -25,7 +25,8 @@
 {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        iconImg=[[UIImageView alloc]initWithFrame:CGRectMake(SCALE(10), SCALE(5), SCALE(30), SCALE(30))];
+        iconImg=[[UIImageView alloc]initWithFrame:CGRectMake(SCALE(10), SCALE(10), SCALE(20), SCALE(20))];
+        [iconImg setImage:PNGIMAGE(@"gk")];
         [self.contentView addSubview:iconImg];
         
         statusLb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15 strLong:5], SCALE(40))];
@@ -62,9 +63,13 @@
     unameLb.text=onlineMonModel.uname;
     if ([onlineMonModel.utype intValue]==1) {//表示国控点
          unameLb.font=Font(15);
+        iconImg.hidden=NO;
+        unameLb.left=iconImg.right+SCALE(5);
     }else{
         utype_dvalLb.text=onlineMonModel.utype_dval;
         unameLb.font=Font(13);
+        unameLb.left=iconImg.right+SCALE(10);
+        iconImg.hidden=YES;
     }
     if ([onlineMonModel.status intValue]==0) {
         statusLb.textColor=COLOR_TOP;

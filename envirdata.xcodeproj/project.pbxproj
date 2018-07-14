@@ -41,6 +41,10 @@
 		E181740720F9BB3B00604652 /* PointPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E181740620F9BB3B00604652 /* PointPointAnnotation.m */; };
 		E181740A20F9CEF300604652 /* DkeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E181740920F9CEF300604652 /* DkeyModel.m */; };
 		E181740E20F9D04100604652 /* LBpopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E181740D20F9D04100604652 /* LBpopView.m */; };
+		E181741120FA2F7300604652 /* EnvCameraInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E181741020FA2F7300604652 /* EnvCameraInfoVC.m */; };
+		E181741420FA318600604652 /* WarnPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E181741320FA318600604652 /* WarnPointAnnotation.m */; };
+		E181741720FA372C00604652 /* EnvUnitDataTimeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E181741620FA372C00604652 /* EnvUnitDataTimeVC.m */; };
+		E181741A20FA3A4800604652 /* UnitDataTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E181741920FA3A4800604652 /* UnitDataTimeModel.m */; };
 		E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AF06C320F4A76B000E93F9 /* MBProgressHUD+PD.m */; };
 		E1BA89A720EB1CAE002CD41B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A620EB1CAE002CD41B /* main.m */; };
 		E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A920EB1CAE002CD41B /* AppDelegate.m */; };
@@ -120,6 +124,14 @@
 		E181740920F9CEF300604652 /* DkeyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DkeyModel.m; sourceTree = "<group>"; };
 		E181740C20F9D04100604652 /* LBpopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBpopView.h; sourceTree = "<group>"; };
 		E181740D20F9D04100604652 /* LBpopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBpopView.m; sourceTree = "<group>"; };
+		E181740F20FA2F7300604652 /* EnvCameraInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvCameraInfoVC.h; path = OnlineMonitoring/EnvCameraInfoVC.h; sourceTree = "<group>"; };
+		E181741020FA2F7300604652 /* EnvCameraInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvCameraInfoVC.m; path = OnlineMonitoring/EnvCameraInfoVC.m; sourceTree = "<group>"; };
+		E181741220FA318600604652 /* WarnPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WarnPointAnnotation.h; path = cells/WarnPointAnnotation.h; sourceTree = "<group>"; };
+		E181741320FA318600604652 /* WarnPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WarnPointAnnotation.m; path = cells/WarnPointAnnotation.m; sourceTree = "<group>"; };
+		E181741520FA372C00604652 /* EnvUnitDataTimeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvUnitDataTimeVC.h; path = OnlineMonitoring/EnvUnitDataTimeVC.h; sourceTree = "<group>"; };
+		E181741620FA372C00604652 /* EnvUnitDataTimeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvUnitDataTimeVC.m; path = OnlineMonitoring/EnvUnitDataTimeVC.m; sourceTree = "<group>"; };
+		E181741820FA3A4800604652 /* UnitDataTimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitDataTimeModel.h; sourceTree = "<group>"; };
+		E181741920FA3A4800604652 /* UnitDataTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitDataTimeModel.m; sourceTree = "<group>"; };
 		E181D85520F5FA0100219D71 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		E181D85620F5FB1900219D71 /* ColorConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConfig.h; sourceTree = "<group>"; };
 		E1AF06BD20F481D5000E93F9 /* MyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyConstants.h; path = util/MyConstants.h; sourceTree = "<group>"; };
@@ -206,6 +218,10 @@
 				E18173F320F98ABF00604652 /* EnvOnlienListVC.m */,
 				E18173F520F98AD900604652 /* EnvOnlineMapVC.h */,
 				E18173F620F98AD900604652 /* EnvOnlineMapVC.mm */,
+				E181740F20FA2F7300604652 /* EnvCameraInfoVC.h */,
+				E181741020FA2F7300604652 /* EnvCameraInfoVC.m */,
+				E181741520FA372C00604652 /* EnvUnitDataTimeVC.h */,
+				E181741620FA372C00604652 /* EnvUnitDataTimeVC.m */,
 			);
 			name = OnlineMonitoring;
 			sourceTree = "<group>";
@@ -262,6 +278,8 @@
 				E181740320F9B98900604652 /* StatePointAnnotation.m */,
 				E181740520F9BB3B00604652 /* PointPointAnnotation.h */,
 				E181740620F9BB3B00604652 /* PointPointAnnotation.m */,
+				E181741220FA318600604652 /* WarnPointAnnotation.h */,
+				E181741320FA318600604652 /* WarnPointAnnotation.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -385,6 +403,8 @@
 		E1BC41D820F6EB30002B4047 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				E181741820FA3A4800604652 /* UnitDataTimeModel.h */,
+				E181741920FA3A4800604652 /* UnitDataTimeModel.m */,
 				E18173FB20F9991E00604652 /* OnlineMonModel.h */,
 				E18173FC20F9991E00604652 /* OnlineMonModel.m */,
 				E148BD1520F79ACA00872ADD /* AreaLevelModel.h */,
@@ -566,6 +586,8 @@
 				E1BA89C120EB62F3002CD41B /* ConfigObj.m in Sources */,
 				E100802A20F621FF00B75514 /* EnvOnlineMonVC.m in Sources */,
 				E100803220F6226F00B75514 /* EnvAnalysisReportVC.m in Sources */,
+				E181741A20FA3A4800604652 /* UnitDataTimeModel.m in Sources */,
+				E181741420FA318600604652 /* WarnPointAnnotation.m in Sources */,
 				E100803620F622AE00B75514 /* EnvPersonalCenterVC.m in Sources */,
 				E181740720F9BB3B00604652 /* PointPointAnnotation.m in Sources */,
 				E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */,
@@ -590,10 +612,12 @@
 				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
 				E181740420F9B98900604652 /* StatePointAnnotation.m in Sources */,
 				E18173FD20F9991E00604652 /* OnlineMonModel.m in Sources */,
+				E181741120FA2F7300604652 /* EnvCameraInfoVC.m in Sources */,
 				E181740A20F9CEF300604652 /* DkeyModel.m in Sources */,
 				E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */,
 				E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */,
 				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
+				E181741720FA372C00604652 /* EnvUnitDataTimeVC.m in Sources */,
 				E100802E20F6223900B75514 /* EnvManagerVC.m in Sources */,
 				E12A38D320F8C44F00085665 /* QRadioButton.m in Sources */,
 				E100802520F621A300B75514 /* EnvAirQualityVC.m in Sources */,

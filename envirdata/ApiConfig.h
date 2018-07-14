@@ -14,6 +14,7 @@
 #define API_CHECKUSER @"api/checkUser"  //登录接口
 #define API_BINDDEVICE @"api/bindDevice" //绑定设备号
 
+//空气质量
 #define API_GETNEARESTGKZREAL @"api/getNearestGkzReal" //最近国控站实况接口
 #define API_GETNEARESTAREAREAL @"api/getNearestAreaReal" //当前行政区域实况接口
 #define API_GETFORECASTAREA @"api/getForecastArea" //预报数据接口
@@ -24,8 +25,10 @@
 //在线监控
 #define API_GETUNITONLINESTATE @"api/getUnitOnlineState" //站点实时监控状态接口
 #define API_GETUNITWARNINGPICS @"api/getUnitWarningPics" //预警点的数据接口
-#define API_GETTYPEDESCIPT @"api/getTypeDescipt" //
-
+#define API_GETTYPEDESCIPT @"api/getTypeDescipt" //站点类型
+#define API_GETCAMERAINFO  @"api/getCameraInfo" //获取摄像头信息
+#define API_GETUNITDATATIME @"api/getUnitDataTime" //获取监测站点的实时监测数据
+#define API_GETUNITPICSADDRESS @"api/getUnitPicsAddress" //站点监测图片列表接口
 
 
 
