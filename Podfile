@@ -10,7 +10,7 @@ target 'envirdata' do
   pod 'MJExtension', '~> 3.0.13'
   pod 'IQKeyboardManager', '~> 5.0.7'
   pod 'MJRefresh', '~> 3.1.15.1'
-  pod 'BaiduMapKit', '~> 3.4.2'
+  pod 'BaiduMapKit', '~> 3.4.4'
   pod 'BMKLocationKit'
   pod 'SVProgressHUD', '~> 2.1.1'
   pod 'YYKit', '~> 1.0.9'

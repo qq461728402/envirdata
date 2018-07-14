@@ -24,6 +24,7 @@
 @property (nonatomic,strong)UIImage *tabItemSelectedBackgroundImage;//选中时tab的背景
 @property (nonatomic,strong)NSMutableArray *viewArray;//主视图的子视图数组
 @property (nonatomic,assign) BOOL isScroll;//是否需要滑动
+@property (nonatomic,assign) BOOL isNoMainScroll;
 
 @property (nonatomic,strong)UIImageView *shadowImageView;
 

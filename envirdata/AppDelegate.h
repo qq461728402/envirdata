@@ -14,7 +14,9 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,GeTuiSdkDelegate,UNUserNotificationCenterDelegate>
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate,GeTuiSdkDelegate,UNUserNotificationCenterDelegate,BMKGeneralDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 + (AppDelegate *)Share;

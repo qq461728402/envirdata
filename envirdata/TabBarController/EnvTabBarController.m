@@ -64,6 +64,7 @@
     
     EnvPersonalCenterVC *personallCenter=[[EnvPersonalCenterVC alloc]init];
     personallCenter.tabBarItem.title=@"个人中心";
+    personallCenter.title=@"个人中心";
     personallCenter.tabBarItem.image=[PNGIMAGE(@"tab_grzx") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [personallCenter.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
     
@@ -76,7 +77,7 @@
 }
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     [self.navigationItem setTitle:viewController.title];
-    if (self.selectedIndex!=3) {
+    if (self.selectedIndex!=4) {
         self.navigationController.navigationBar.hidden = YES;
     }else{
         self.navigationController.navigationBar.hidden = NO;

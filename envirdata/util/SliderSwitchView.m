@@ -9,7 +9,7 @@
 #import "SliderSwitchView.h"
 
 @implementation SliderSwitchView
-@synthesize bbScrollView,rootScrollView,isBuildUI,tabItemNormalColor,tabItemSelectedColor,tabItemNormalBackgroundImage,tabItemSelectedBackgroundImage,viewArray,shadowImageView,isScroll,hdColor;
+@synthesize bbScrollView,rootScrollView,isBuildUI,tabItemNormalColor,tabItemSelectedColor,tabItemNormalBackgroundImage,tabItemSelectedBackgroundImage,viewArray,shadowImageView,isScroll,hdColor,isNoMainScroll;
 static UIButton *selectBtn;
 
 - (id)initWithFrame:(CGRect)frame
@@ -54,7 +54,12 @@ static UIButton *selectBtn;
         listVC.view.frame = CGRectMake(self.width*i, 0,rootScrollView.width,rootScrollView.height);
         [rootScrollView addSubview:listVC.view];
     }
-    [rootScrollView setContentSize:CGSizeMake([viewArray count]*rootScrollView.width, 0)];
+    if (isNoMainScroll==YES) {
+        [rootScrollView setContentSize:CGSizeMake(0, 0)];
+    }else{
+        [rootScrollView setContentSize:CGSizeMake([viewArray count]*rootScrollView.width, 0)];
+    }
+    
     //创建按钮
     CGFloat xOffset = 10;
     float buttonK=self.width/viewArray.count;

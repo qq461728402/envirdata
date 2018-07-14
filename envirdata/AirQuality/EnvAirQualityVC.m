@@ -526,6 +526,9 @@
     NSDictionary *paramter = @{@"cur_lon":@(location.coordinate.longitude),@"cur_lat":@(location.coordinate.latitude)};
     [self networkPost:API_GETNEARESTAREAREAL parameter:paramter progresHudText:@"加载中..." completionBlock:^(id rep) {
         areaRealModel=[NearestAreaRealModel mj_objectWithKeyValues:rep];
+        //实时监控需要区域ID
+//        [SingalObj defaultManager].areaid=[NSString stringWithFormat:@"%@",areaRealModel.areaid];
+        
         a_areanamelb.text=[NSString stringWithFormat:@"%@ \U0000e7b7",areaRealModel.areaname];
         a_areanamelb.userInteractionEnabled=YES;
         [a_areanamelb bk_whenTapped:^{

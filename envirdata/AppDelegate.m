@@ -11,9 +11,11 @@
 #import "EnvTabBarController.h"
 #import "LoginVC.h"
 #import "ConfigObj.h"
+#import <BaiduMapAPI_Base/BMKMapManager.h>
 @interface AppDelegate ()
 
 @end
+BMKMapManager* _mapManager;
 @implementation AppDelegate
 + (AppDelegate *)Share
 {
@@ -23,6 +25,14 @@
     [ConfigObj configObj];
     //个推
     [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
+    //启动百度地图
+    _mapManager = [[BMKMapManager alloc]init];
+    
+    BOOL ret = [_mapManager start:BaiduAK generalDelegate:self];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+    
     // 注册 APNs
     [self registerRemoteNotification];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -145,6 +155,26 @@
     
     NSString *msg = [NSString stringWithFormat:@"taskId=%@,messageId:%@,payloadMsg:%@%@",taskId,msgId, payloadMsg,offLine ? @"<离线消息>" : @""];
     NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
+}
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"联网成功");
+    }
+    else{
+        NSLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"授权成功");
+    }
+    else {
+        NSLog(@"onGetPermissionState %d",iError);
+    }
 }
 
 

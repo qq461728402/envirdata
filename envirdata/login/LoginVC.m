@@ -142,6 +142,14 @@
 -(void)gogo{
     [[AppDelegate Share] gotohome];
 }
+-(void)bindDeviece{
+    [self networkPost:API_BINDDEVICE parameter:@{@"userid":[SingalObj defaultManager].userInfoModel.userid,@"clientid":[NSString stringWithUUID]} progresHudText:nil completionBlock:^(id rep) {
+        
+    }];
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

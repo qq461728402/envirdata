@@ -184,10 +184,10 @@
             [o3 addObject:areaLevel.o3];
             if ([timetype isEqualToString:@"hour"]) {
                 areaLevel.showtime=[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd HH"] stringWithFormat:@"MM-dd HH"];
-                [time1 addObject:[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd HH"] stringWithFormat:@"MM-dd"]];
+                [time1 addObject:[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd HH"] stringWithFormat:@"HH:mm"]];
             }else{
-                areaLevel.showtime=[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd HH"] stringWithFormat:@"MM-dd HH"];
-                [time1 addObject:[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd HH"] stringWithFormat:@"yyyy-MM-dd"]];
+                areaLevel.showtime=[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd"] stringWithFormat:@"MM-dd HH"];
+                [time1 addObject:[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd"] stringWithFormat:@"yyyy-MM-dd"]];
             }
         }
         [pyEchartsView setOption:[self irregularLineOption:pm25 :pm10 :so :no :co :o3 :time1]];
@@ -249,16 +249,7 @@
             grid.y2=@(50);
             grid.x2=@(30);
         }])
-        .dataZoomEqual([PYDataZoom initPYDataZoomWithBlock:^(PYDataZoom *dataZoom) {
-            dataZoom.showEqual(YES)
-            .backgroundColorEqual([PYColor colorWithHexString:@"#ffffff"])
-            .dataBackgroundColorEqual([PYColor colorWithHexString:@"bebebe"])
-            .realtimeEqual(YES)
-            .startEqual(@0)
-            .heightEqual(@20)
-            .endEqual(@20)
-            .yEqual(@0);
-        }])
+        
         .addXAxis([PYAxis initPYAxisWithBlock:^(PYAxis *axis) {
             axis.typeEqual(PYAxisTypeCategory)
             .boundaryGapEqual(@NO).addDataArr(time1);
@@ -268,6 +259,18 @@
         }])
         .seriesEqual([NSMutableArray arrayWithArray:@[pm25series,pm10series,soseries,noseries,coseries,oseries]]);
     }];
+    
+//    .dataZoomEqual([PYDataZoom initPYDataZoomWithBlock:^(PYDataZoom *dataZoom) {
+//        dataZoom.showEqual(o3.count>10)
+//        .backgroundColorEqual([PYColor colorWithHexString:@"#ffffff"])
+//        .dataBackgroundColorEqual([PYColor colorWithHexString:@"bebebe"])
+//        .realtimeEqual(YES)
+//        .startEqual(@0)
+//        .heightEqual(@20)
+//        .endEqual(@20)
+//        .yEqual(@0);
+//    }])
+    
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {

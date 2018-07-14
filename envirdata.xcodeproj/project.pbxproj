@@ -31,6 +31,16 @@
 		E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1620F79ACA00872ADD /* AreaLevelModel.m */; };
 		E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5EA20F88116007E045A /* AreaLevelCell.m */; };
 		E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5ED20F8A420007E045A /* EnvAreaLevelHistoryVC.m */; };
+		E18173F420F98ABF00604652 /* EnvOnlienListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E18173F320F98ABF00604652 /* EnvOnlienListVC.m */; };
+		E18173F720F98AD900604652 /* EnvOnlineMapVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = E18173F620F98AD900604652 /* EnvOnlineMapVC.mm */; };
+		E18173FA20F996E400604652 /* OnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18173F920F996E400604652 /* OnlineCell.m */; };
+		E18173FD20F9991E00604652 /* OnlineMonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18173FC20F9991E00604652 /* OnlineMonModel.m */; };
+		E181740020F9A49D00604652 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E18173FE20F9A49D00604652 /* libcrypto.a */; };
+		E181740120F9A49D00604652 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E18173FF20F9A49D00604652 /* libssl.a */; };
+		E181740420F9B98900604652 /* StatePointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E181740320F9B98900604652 /* StatePointAnnotation.m */; };
+		E181740720F9BB3B00604652 /* PointPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E181740620F9BB3B00604652 /* PointPointAnnotation.m */; };
+		E181740A20F9CEF300604652 /* DkeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E181740920F9CEF300604652 /* DkeyModel.m */; };
+		E181740E20F9D04100604652 /* LBpopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E181740D20F9D04100604652 /* LBpopView.m */; };
 		E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AF06C320F4A76B000E93F9 /* MBProgressHUD+PD.m */; };
 		E1BA89A720EB1CAE002CD41B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A620EB1CAE002CD41B /* main.m */; };
 		E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A920EB1CAE002CD41B /* AppDelegate.m */; };
@@ -92,6 +102,24 @@
 		E16EE5EA20F88116007E045A /* AreaLevelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AreaLevelCell.m; path = cells/AreaLevelCell.m; sourceTree = "<group>"; };
 		E16EE5EC20F8A420007E045A /* EnvAreaLevelHistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvAreaLevelHistoryVC.h; path = AirQuality/EnvAreaLevelHistoryVC.h; sourceTree = "<group>"; };
 		E16EE5ED20F8A420007E045A /* EnvAreaLevelHistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvAreaLevelHistoryVC.m; path = AirQuality/EnvAreaLevelHistoryVC.m; sourceTree = "<group>"; };
+		E18173F220F98ABF00604652 /* EnvOnlienListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvOnlienListVC.h; path = OnlineMonitoring/EnvOnlienListVC.h; sourceTree = "<group>"; };
+		E18173F320F98ABF00604652 /* EnvOnlienListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvOnlienListVC.m; path = OnlineMonitoring/EnvOnlienListVC.m; sourceTree = "<group>"; };
+		E18173F520F98AD900604652 /* EnvOnlineMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvOnlineMapVC.h; path = OnlineMonitoring/EnvOnlineMapVC.h; sourceTree = "<group>"; };
+		E18173F620F98AD900604652 /* EnvOnlineMapVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EnvOnlineMapVC.mm; path = OnlineMonitoring/EnvOnlineMapVC.mm; sourceTree = "<group>"; };
+		E18173F820F996E400604652 /* OnlineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnlineCell.h; path = cells/OnlineCell.h; sourceTree = "<group>"; };
+		E18173F920F996E400604652 /* OnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnlineCell.m; path = cells/OnlineCell.m; sourceTree = "<group>"; };
+		E18173FB20F9991E00604652 /* OnlineMonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineMonModel.h; sourceTree = "<group>"; };
+		E18173FC20F9991E00604652 /* OnlineMonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineMonModel.m; sourceTree = "<group>"; };
+		E18173FE20F9A49D00604652 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../../../../Volumes/扩展内存/QQ内容下载/thirdlibs/libcrypto.a"; sourceTree = "<group>"; };
+		E18173FF20F9A49D00604652 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../../../../Volumes/扩展内存/QQ内容下载/thirdlibs/libssl.a"; sourceTree = "<group>"; };
+		E181740220F9B98900604652 /* StatePointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatePointAnnotation.h; path = cells/StatePointAnnotation.h; sourceTree = "<group>"; };
+		E181740320F9B98900604652 /* StatePointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatePointAnnotation.m; path = cells/StatePointAnnotation.m; sourceTree = "<group>"; };
+		E181740520F9BB3B00604652 /* PointPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointPointAnnotation.h; path = cells/PointPointAnnotation.h; sourceTree = "<group>"; };
+		E181740620F9BB3B00604652 /* PointPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PointPointAnnotation.m; path = cells/PointPointAnnotation.m; sourceTree = "<group>"; };
+		E181740820F9CEF300604652 /* DkeyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DkeyModel.h; sourceTree = "<group>"; };
+		E181740920F9CEF300604652 /* DkeyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DkeyModel.m; sourceTree = "<group>"; };
+		E181740C20F9D04100604652 /* LBpopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBpopView.h; sourceTree = "<group>"; };
+		E181740D20F9D04100604652 /* LBpopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBpopView.m; sourceTree = "<group>"; };
 		E181D85520F5FA0100219D71 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		E181D85620F5FB1900219D71 /* ColorConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConfig.h; sourceTree = "<group>"; };
 		E1AF06BD20F481D5000E93F9 /* MyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyConstants.h; path = util/MyConstants.h; sourceTree = "<group>"; };
@@ -129,6 +157,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E181740020F9A49D00604652 /* libcrypto.a in Frameworks */,
+				E181740120F9A49D00604652 /* libssl.a in Frameworks */,
 				E134649520F50062006E4144 /* Foundation.framework in Frameworks */,
 				E134649320F50057006E4144 /* UIKit.framework in Frameworks */,
 				E134649720F50664006E4144 /* MapKit.framework in Frameworks */,
@@ -142,6 +172,8 @@
 		BC03B9AAE6C1B1C6EA3E8BA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E18173FE20F9A49D00604652 /* libcrypto.a */,
+				E18173FF20F9A49D00604652 /* libssl.a */,
 				E134649620F50664006E4144 /* MapKit.framework */,
 				E134649420F50062006E4144 /* Foundation.framework */,
 				E134649220F50057006E4144 /* UIKit.framework */,
@@ -170,6 +202,10 @@
 			children = (
 				E100802820F621FF00B75514 /* EnvOnlineMonVC.h */,
 				E100802920F621FF00B75514 /* EnvOnlineMonVC.m */,
+				E18173F220F98ABF00604652 /* EnvOnlienListVC.h */,
+				E18173F320F98ABF00604652 /* EnvOnlienListVC.m */,
+				E18173F520F98AD900604652 /* EnvOnlineMapVC.h */,
+				E18173F620F98AD900604652 /* EnvOnlineMapVC.mm */,
 			);
 			name = OnlineMonitoring;
 			sourceTree = "<group>";
@@ -220,8 +256,24 @@
 			children = (
 				E16EE5E920F88116007E045A /* AreaLevelCell.h */,
 				E16EE5EA20F88116007E045A /* AreaLevelCell.m */,
+				E18173F820F996E400604652 /* OnlineCell.h */,
+				E18173F920F996E400604652 /* OnlineCell.m */,
+				E181740220F9B98900604652 /* StatePointAnnotation.h */,
+				E181740320F9B98900604652 /* StatePointAnnotation.m */,
+				E181740520F9BB3B00604652 /* PointPointAnnotation.h */,
+				E181740620F9BB3B00604652 /* PointPointAnnotation.m */,
 			);
 			name = cells;
+			sourceTree = "<group>";
+		};
+		E181740B20F9D04100604652 /* PopView */ = {
+			isa = PBXGroup;
+			children = (
+				E181740C20F9D04100604652 /* LBpopView.h */,
+				E181740D20F9D04100604652 /* LBpopView.m */,
+			);
+			name = PopView;
+			path = util/PopView;
 			sourceTree = "<group>";
 		};
 		E181D85720F6016400219D71 /* login */ = {
@@ -236,6 +288,7 @@
 		E1AF06BC20F481A7000E93F9 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				E181740B20F9D04100604652 /* PopView */,
 				E12A38CC20F8C44F00085665 /* QRadioButton */,
 				E148BD0C20F7927000872ADD /* SliderSwitchView.h */,
 				E148BD0D20F7927000872ADD /* SliderSwitchView.m */,
@@ -332,6 +385,8 @@
 		E1BC41D820F6EB30002B4047 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				E18173FB20F9991E00604652 /* OnlineMonModel.h */,
+				E18173FC20F9991E00604652 /* OnlineMonModel.m */,
 				E148BD1520F79ACA00872ADD /* AreaLevelModel.h */,
 				E148BD1620F79ACA00872ADD /* AreaLevelModel.m */,
 				E148BD0620F77FAC00872ADD /* ForecastAreaModel.h */,
@@ -342,6 +397,8 @@
 				E1BC41DD20F73276002B4047 /* NearestGkzRealModel.m */,
 				E1BC41D920F6EB4A002B4047 /* UserInfoModel.h */,
 				E1BC41DA20F6EB4A002B4047 /* UserInfoModel.m */,
+				E181740820F9CEF300604652 /* DkeyModel.h */,
+				E181740920F9CEF300604652 /* DkeyModel.m */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -510,22 +567,30 @@
 				E100802A20F621FF00B75514 /* EnvOnlineMonVC.m in Sources */,
 				E100803220F6226F00B75514 /* EnvAnalysisReportVC.m in Sources */,
 				E100803620F622AE00B75514 /* EnvPersonalCenterVC.m in Sources */,
+				E181740720F9BB3B00604652 /* PointPointAnnotation.m in Sources */,
 				E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */,
 				E1BA89AD20EB1CAE002CD41B /* ViewController.m in Sources */,
 				E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */,
 				E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */,
 				E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */,
 				E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */,
+				E18173FA20F996E400604652 /* OnlineCell.m in Sources */,
 				E1BC41E120F74F3D002B4047 /* NearestAreaRealModel.m in Sources */,
 				E1BA89A720EB1CAE002CD41B /* main.m in Sources */,
+				E18173F720F98AD900604652 /* EnvOnlineMapVC.mm in Sources */,
 				E1BC41DB20F6EB4A002B4047 /* UserInfoModel.m in Sources */,
 				E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */,
 				E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */,
 				E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */,
+				E181740E20F9D04100604652 /* LBpopView.m in Sources */,
 				E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */,
 				E148BD0B20F78D0F00872ADD /* EnvAreaLevelVC.m in Sources */,
 				E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */,
+				E18173F420F98ABF00604652 /* EnvOnlienListVC.m in Sources */,
 				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
+				E181740420F9B98900604652 /* StatePointAnnotation.m in Sources */,
+				E18173FD20F9991E00604652 /* OnlineMonModel.m in Sources */,
+				E181740A20F9CEF300604652 /* DkeyModel.m in Sources */,
 				E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */,
 				E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */,
 				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
@@ -647,10 +712,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = envirdata/envirdata.entitlements;
 				DEVELOPMENT_TEAM = 3AD3NZVGH6;
+				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -665,10 +732,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = envirdata/envirdata.entitlements;
 				DEVELOPMENT_TEAM = 3AD3NZVGH6;
+				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
 				PRODUCT_NAME = "$(TARGET_NAME)";

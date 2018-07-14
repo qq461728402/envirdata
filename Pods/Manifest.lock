@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - BaiduMapKit (3.4.2)
+  - BaiduMapKit (3.4.4)
   - BlocksKit (2.2.5):
     - BlocksKit/All (= 2.2.5)
   - BlocksKit/All (2.2.5):
@@ -48,7 +48,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
-  - BaiduMapKit (~> 3.4.2)
+  - BaiduMapKit (~> 3.4.4)
   - BlocksKit (~> 2.2.5)
   - BMKLocationKit
   - GTSDK
@@ -82,7 +82,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  BaiduMapKit: f61b19ecf07a3f2deede72b221b366bf698739ed
+  BaiduMapKit: 4ac88f5a363500760392825b69709f4a0125f81e
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   BMKLocationKit: 043a9eaf3767916a692708804324adcfe86e281d
   GTSDK: 16f570807190eca9846653886a1f399cb0485061
@@ -97,6 +97,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: f69a1bfc0d36742a9423f6db09bc8a10cfec14af
+PODFILE CHECKSUM: d8d5aa513c39db60b769a3926fb099e10ae083b3
 
 COCOAPODS: 1.5.3
