@@ -1,0 +1,6 @@
+framework module Mcu_sdk {
+  umbrella header "Mcu_sdk.h"
+
+  export *
+  module * { export * }
+}

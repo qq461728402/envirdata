@@ -9,6 +9,7 @@
 #import "EnvPersonalCenterVC.h"
 #import "UserInfoModel.h"
 #import "AppDelegate.h"
+#import <Mcu_sdk/MCUVmsNetSDK.h>
 @interface EnvPersonalCenterVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)NSArray *personary;
 @property (nonatomic,strong)UITableView *settingTb;
@@ -126,6 +127,12 @@
             if (buttonIndex==0) {
                 [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userInfo"];
                 [[AppDelegate Share] gotologin];
+                //退出海康威视
+                [[MCUVmsNetSDK shareInstance] logoutMsp:^(id object) {
+                    NSLog(@"%@,",[object mj_JSONObject]);
+                } failure:^(NSError *error) {
+                    
+                }];
             }
         }];
         [outlogin show];

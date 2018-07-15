@@ -19,6 +19,23 @@
 		E12A38D520F8C44F00085665 /* radio_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38D020F8C44F00085665 /* radio_checked@2x.png */; };
 		E12A38D620F8C44F00085665 /* radio_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38D120F8C44F00085665 /* radio_unchecked.png */; };
 		E12A38D720F8C44F00085665 /* radio_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38D220F8C44F00085665 /* radio_unchecked@2x.png */; };
+		E13458E820FB640F00D6B549 /* Mcu_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458E720FB640F00D6B549 /* Mcu_sdk.framework */; };
+		E13458EA20FB642400D6B549 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458E920FB642400D6B549 /* libbz2.tbd */; };
+		E13458EC20FB643000D6B549 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458EB20FB643000D6B549 /* CoreGraphics.framework */; };
+		E13458EE20FB644700D6B549 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458ED20FB644700D6B549 /* AudioToolbox.framework */; };
+		E13458F020FB645000D6B549 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458EF20FB645000D6B549 /* OpenAL.framework */; };
+		E13458F220FB645C00D6B549 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458F120FB645C00D6B549 /* OpenGLES.framework */; };
+		E13458F420FB646700D6B549 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458F320FB646700D6B549 /* VideoToolbox.framework */; };
+		E13458F620FB646F00D6B549 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458F520FB646F00D6B549 /* CoreVideo.framework */; };
+		E13458F820FB647900D6B549 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458F720FB647900D6B549 /* CoreMedia.framework */; };
+		E13458FA20FB648100D6B549 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458F920FB648100D6B549 /* GLKit.framework */; };
+		E13458FC20FB649100D6B549 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458FB20FB649100D6B549 /* libiconv.tbd */; };
+		E13458FE20FB649800D6B549 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458FD20FB649800D6B549 /* libz.tbd */; };
+		E134590020FB64A200D6B549 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458FF20FB64A200D6B549 /* libstdc++.6.0.9.tbd */; };
+		E134590220FB64AC00D6B549 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E134590120FB64AC00D6B549 /* libstdc++.tbd */; };
+		E134590420FB64B700D6B549 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E134590320FB64B700D6B549 /* libc++.tbd */; };
+		E134590820FB65C800D6B549 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = E134590720FB65C800D6B549 /* XMLReader.m */; };
+		E134590C20FB69D900D6B549 /* PlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = E134590B20FB69D900D6B549 /* PlayView.m */; };
 		E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E134648920F4E98E006E4144 /* AFAppDotNetAPIClient.m */; };
 		E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */ = {isa = PBXBuildFile; fileRef = E134649020F4F0FA006E4144 /* UIViewController+util.m */; };
 		E134649320F50057006E4144 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649220F50057006E4144 /* UIKit.framework */; };
@@ -29,6 +46,7 @@
 		E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0D20F7927000872ADD /* SliderSwitchView.m */; };
 		E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */; };
 		E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1620F79ACA00872ADD /* AreaLevelModel.m */; };
+		E167B3F820FB853900FD7F75 /* TaskTreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E167B3F720FB853900FD7F75 /* TaskTreeModel.m */; };
 		E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5EA20F88116007E045A /* AreaLevelCell.m */; };
 		E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5ED20F8A420007E045A /* EnvAreaLevelHistoryVC.m */; };
 		E18173F420F98ABF00604652 /* EnvOnlienListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E18173F320F98ABF00604652 /* EnvOnlienListVC.m */; };
@@ -92,6 +110,25 @@
 		E12A38D020F8C44F00085665 /* radio_checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_checked@2x.png"; sourceTree = "<group>"; };
 		E12A38D120F8C44F00085665 /* radio_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_unchecked.png; sourceTree = "<group>"; };
 		E12A38D220F8C44F00085665 /* radio_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_unchecked@2x.png"; sourceTree = "<group>"; };
+		E13458E720FB640F00D6B549 /* Mcu_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mcu_sdk.framework; sourceTree = "<group>"; };
+		E13458E920FB642400D6B549 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		E13458EB20FB643000D6B549 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E13458ED20FB644700D6B549 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E13458EF20FB645000D6B549 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		E13458F120FB645C00D6B549 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E13458F320FB646700D6B549 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		E13458F520FB646F00D6B549 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		E13458F720FB647900D6B549 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E13458F920FB648100D6B549 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		E13458FB20FB649100D6B549 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		E13458FD20FB649800D6B549 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E13458FF20FB64A200D6B549 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		E134590120FB64AC00D6B549 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		E134590320FB64B700D6B549 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		E134590620FB65C800D6B549 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		E134590720FB65C800D6B549 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		E134590A20FB69D900D6B549 /* PlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayView.h; sourceTree = "<group>"; };
+		E134590B20FB69D900D6B549 /* PlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayView.m; sourceTree = "<group>"; };
 		E134648820F4E98E006E4144 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFAppDotNetAPIClient.h; path = util/AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
 		E134648920F4E98E006E4144 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFAppDotNetAPIClient.m; path = util/AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
 		E134648B20F4EC4D006E4144 /* ApiConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiConfig.h; sourceTree = "<group>"; };
@@ -111,6 +148,8 @@
 		E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvAreaLevelListVC.m; path = AirQuality/EnvAreaLevelListVC.m; sourceTree = "<group>"; };
 		E148BD1520F79ACA00872ADD /* AreaLevelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaLevelModel.h; sourceTree = "<group>"; };
 		E148BD1620F79ACA00872ADD /* AreaLevelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaLevelModel.m; sourceTree = "<group>"; };
+		E167B3F620FB853900FD7F75 /* TaskTreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTreeModel.h; sourceTree = "<group>"; };
+		E167B3F720FB853900FD7F75 /* TaskTreeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTreeModel.m; sourceTree = "<group>"; };
 		E16EE5E920F88116007E045A /* AreaLevelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AreaLevelCell.h; path = cells/AreaLevelCell.h; sourceTree = "<group>"; };
 		E16EE5EA20F88116007E045A /* AreaLevelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AreaLevelCell.m; path = cells/AreaLevelCell.m; sourceTree = "<group>"; };
 		E16EE5EC20F8A420007E045A /* EnvAreaLevelHistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvAreaLevelHistoryVC.h; path = AirQuality/EnvAreaLevelHistoryVC.h; sourceTree = "<group>"; };
@@ -196,10 +235,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E134590420FB64B700D6B549 /* libc++.tbd in Frameworks */,
+				E134590220FB64AC00D6B549 /* libstdc++.tbd in Frameworks */,
+				E134590020FB64A200D6B549 /* libstdc++.6.0.9.tbd in Frameworks */,
+				E13458FE20FB649800D6B549 /* libz.tbd in Frameworks */,
+				E13458FC20FB649100D6B549 /* libiconv.tbd in Frameworks */,
+				E13458FA20FB648100D6B549 /* GLKit.framework in Frameworks */,
+				E13458F820FB647900D6B549 /* CoreMedia.framework in Frameworks */,
+				E13458F620FB646F00D6B549 /* CoreVideo.framework in Frameworks */,
+				E13458F420FB646700D6B549 /* VideoToolbox.framework in Frameworks */,
+				E13458F220FB645C00D6B549 /* OpenGLES.framework in Frameworks */,
+				E13458F020FB645000D6B549 /* OpenAL.framework in Frameworks */,
+				E13458EE20FB644700D6B549 /* AudioToolbox.framework in Frameworks */,
+				E134649320F50057006E4144 /* UIKit.framework in Frameworks */,
+				E13458EC20FB643000D6B549 /* CoreGraphics.framework in Frameworks */,
+				E13458EA20FB642400D6B549 /* libbz2.tbd in Frameworks */,
 				E181740020F9A49D00604652 /* libcrypto.a in Frameworks */,
+				E13458E820FB640F00D6B549 /* Mcu_sdk.framework in Frameworks */,
 				E181740120F9A49D00604652 /* libssl.a in Frameworks */,
 				E134649520F50062006E4144 /* Foundation.framework in Frameworks */,
-				E134649320F50057006E4144 /* UIKit.framework in Frameworks */,
 				E134649720F50664006E4144 /* MapKit.framework in Frameworks */,
 				1F109A17AD132AD2EEF97DEA /* libPods-envirdata.a in Frameworks */,
 			);
@@ -211,6 +265,21 @@
 		BC03B9AAE6C1B1C6EA3E8BA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E134590320FB64B700D6B549 /* libc++.tbd */,
+				E134590120FB64AC00D6B549 /* libstdc++.tbd */,
+				E13458FF20FB64A200D6B549 /* libstdc++.6.0.9.tbd */,
+				E13458FD20FB649800D6B549 /* libz.tbd */,
+				E13458FB20FB649100D6B549 /* libiconv.tbd */,
+				E13458F920FB648100D6B549 /* GLKit.framework */,
+				E13458F720FB647900D6B549 /* CoreMedia.framework */,
+				E13458F520FB646F00D6B549 /* CoreVideo.framework */,
+				E13458F320FB646700D6B549 /* VideoToolbox.framework */,
+				E13458F120FB645C00D6B549 /* OpenGLES.framework */,
+				E13458EF20FB645000D6B549 /* OpenAL.framework */,
+				E13458ED20FB644700D6B549 /* AudioToolbox.framework */,
+				E13458EB20FB643000D6B549 /* CoreGraphics.framework */,
+				E13458E920FB642400D6B549 /* libbz2.tbd */,
+				E13458E720FB640F00D6B549 /* Mcu_sdk.framework */,
 				E18173FE20F9A49D00604652 /* libcrypto.a */,
 				E18173FF20F9A49D00604652 /* libssl.a */,
 				E134649620F50664006E4144 /* MapKit.framework */,
@@ -298,6 +367,26 @@
 			path = util/QRadioButton;
 			sourceTree = "<group>";
 		};
+		E134590520FB65C800D6B549 /* XmlReader */ = {
+			isa = PBXGroup;
+			children = (
+				E134590620FB65C800D6B549 /* XMLReader.h */,
+				E134590720FB65C800D6B549 /* XMLReader.m */,
+			);
+			name = XmlReader;
+			path = util/XmlReader;
+			sourceTree = "<group>";
+		};
+		E134590920FB69D900D6B549 /* Mcu */ = {
+			isa = PBXGroup;
+			children = (
+				E134590A20FB69D900D6B549 /* PlayView.h */,
+				E134590B20FB69D900D6B549 /* PlayView.m */,
+			);
+			name = Mcu;
+			path = views/Mcu;
+			sourceTree = "<group>";
+		};
 		E16EE5E820F880EA007E045A /* cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +428,7 @@
 		E188A52520FAE7AD00B68701 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				E134590920FB69D900D6B549 /* Mcu */,
 				E188A52620FAE7E600B68701 /* ListView.h */,
 				E188A52720FAE7E600B68701 /* ListView.m */,
 				E188A52920FAEE9500B68701 /* HourDataView.h */,
@@ -350,6 +440,7 @@
 		E1AF06BC20F481A7000E93F9 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				E134590520FB65C800D6B549 /* XmlReader */,
 				E181740B20F9D04100604652 /* PopView */,
 				E12A38CC20F8C44F00085665 /* QRadioButton */,
 				E148BD0C20F7927000872ADD /* SliderSwitchView.h */,
@@ -448,6 +539,8 @@
 		E1BC41D820F6EB30002B4047 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				E167B3F620FB853900FD7F75 /* TaskTreeModel.h */,
+				E167B3F720FB853900FD7F75 /* TaskTreeModel.m */,
 				E188A53820FB26C900B68701 /* HistoryViolationPictureModel.h */,
 				E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */,
 				E188A52F20FB13AA00B68701 /* HistoryDataModel.h */,
@@ -651,6 +744,7 @@
 				E188A53420FB23B800B68701 /* HistoryViolationPictureVC.m in Sources */,
 				E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */,
 				E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */,
+				E134590820FB65C800D6B549 /* XMLReader.m in Sources */,
 				E188A53A20FB26C900B68701 /* HistoryViolationPictureModel.m in Sources */,
 				E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */,
 				E18173FA20F996E400604652 /* OnlineCell.m in Sources */,
@@ -671,11 +765,13 @@
 				E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */,
 				E18173F420F98ABF00604652 /* EnvOnlienListVC.m in Sources */,
 				E188A52120FAE60000B68701 /* CameraInfoModel.m in Sources */,
+				E134590C20FB69D900D6B549 /* PlayView.m in Sources */,
 				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
 				E181740420F9B98900604652 /* StatePointAnnotation.m in Sources */,
 				E18173FD20F9991E00604652 /* OnlineMonModel.m in Sources */,
 				E181741120FA2F7300604652 /* EnvCameraInfoVC.m in Sources */,
 				E181740A20F9CEF300604652 /* DkeyModel.m in Sources */,
+				E167B3F820FB853900FD7F75 /* TaskTreeModel.m in Sources */,
 				E188A53120FB13AA00B68701 /* HistoryDataModel.m in Sources */,
 				E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */,
 				E188A52820FAE7E600B68701 /* ListView.m in Sources */,
@@ -800,12 +896,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = envirdata/envirdata.entitlements;
 				DEVELOPMENT_TEAM = 3AD3NZVGH6;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -820,12 +921,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = envirdata/envirdata.entitlements;
 				DEVELOPMENT_TEAM = 3AD3NZVGH6;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
 				PRODUCT_NAME = "$(TARGET_NAME)";

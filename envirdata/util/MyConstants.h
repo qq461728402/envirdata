@@ -49,4 +49,30 @@
 
 #define WEAKSELF     typeof(self) __weak weakSelf = self;
 
+// 偏差定义为9像素
+#define kMaxVariance        9
+// 轻扫事件最大时间间隔
+#define kMaxSwipeInterval   0.2f
+// 轻扫自动停止时间间隔
+#define kAutoStopInterval   0.5f
+// 捏合展开操作自动停止时间
+#define kMaxDelayInterval   1.0f
+
+#define PTZ_COMMAND_ZOOM_IN             11      //焦距增大
+#define PTZ_COMMAND_ZOOM_OUT            12      //焦距减小
+#define PTZ_COMMAND_FOCUS_NEAR          13      //聚焦增大
+#define PTZ_COMMAND_FOCUS_FAR           14      //聚焦减小
+#define PTZ_COMMAND_IRIS_OPEN           15      //光圈增大
+#define PTZ_COMMAND_IRIS_CLOSE          16      //光圈减小
+
+#define PTZ_COMMAND_TILT_UP             21
+#define PTZ_COMMAND_TILT_DOWN           22
+#define PTZ_COMMAND_PAN_LEFT            23
+#define PTZ_COMMAND_PAN_RIGHT           24
+#define PTZ_COMMAND_UP_LEFT             25
+#define PTZ_COMMAND_UP_RIGHT            26
+#define PTZ_COMMAND_DOWN_LEFT           27
+#define PTZ_COMMAND_DOWN_RIGHT          28
+
+
 #endif /* MyConstants_h */

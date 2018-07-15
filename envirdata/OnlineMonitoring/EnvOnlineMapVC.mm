@@ -98,11 +98,11 @@
 {
     [onlineMap updateLocationData:userLocation];
     
-//    onlineMap.centerCoordinate = userLocation.location.coordinate;
-    
-    
-   
-    onlineMap.centerCoordinate = [SingalObj defaultManager].userLocation.coordinate;
+    if (![SingalObj defaultManager].userLocation) {
+        
+        [SingalObj defaultManager].userLocation=userLocation.location;
+        onlineMap.centerCoordinate = [SingalObj defaultManager].userLocation.coordinate;
+    }
 }
 #pragma mark----------获取Typelist----------------------
 -(void)getTypeDescipt{

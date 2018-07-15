@@ -12,6 +12,8 @@
 #import "LoginVC.h"
 #import "ConfigObj.h"
 #import <BaiduMapAPI_Base/BMKMapManager.h>
+#import <Mcu_sdk/MCUVmsNetSDK.h>
+#import <Mcu_sdk/VideoPlaySDK.h>
 @interface AppDelegate ()
 
 @end
@@ -32,6 +34,19 @@ BMKMapManager* _mapManager;
     if (!ret) {
         NSLog(@"manager start failed!");
     }
+    //海康威视
+    
+    //初始化
+     VP_InitSDK();
+    //MSP 的 IP 端口配置
+    [[MCUVmsNetSDK shareInstance] configMspWithAddress:MSP_ADDRESS port:MSP_PORT];
+    //登录接口
+    [[MCUVmsNetSDK shareInstance] loginMspWithUsername:MSP_USERNAME password:MSP_PASSWORD success:^(id object) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
     
     // 注册 APNs
     [self registerRemoteNotification];

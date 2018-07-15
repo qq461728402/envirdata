@@ -15,7 +15,32 @@
 #import "HistoryViolationPictureVC.h"
 #import "GKPhotoBrowser.h"
 #import "GKCover.h"
-@interface EnvCameraInfoVC ()<GKPhotoBrowserDelegate>
+//海康威视
+#import "Mcu_sdk/RealPlayManager.h"
+#import "Mcu_sdk/RealPlayManagerEx.h"
+#import "Mcu_sdk/VPCaptureInfo.h"
+#import "Mcu_sdk/VPRecordInfo.h"
+#import "PlayView.h"
+
+
+static dispatch_queue_t video_intercom_queue() {
+    static dispatch_queue_t url_request_queue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        url_request_queue = dispatch_queue_create("voice.intercom.queue", DISPATCH_QUEUE_SERIAL);
+    });
+    
+    return url_request_queue;
+}
+
+@interface EnvCameraInfoVC ()<GKPhotoBrowserDelegate,PlayViewDelegate,RealPlayManagerDelegate,RealPlayManagerExDelegate>
+{
+    PlayView * g_playView;/**< 播放块*/
+    RealPlayManager *g_playMamager;/**<  预览管理类对象*/
+    RealPlayManagerEx *g_playManagerEx;
+    UIActivityIndicatorView *g_activity;
+    VP_STREAM_TYPE  g_currentQuality;/**< 当前播放码流*/
+}
 @property (nonatomic,strong)UIScrollView *mainScr;
 @property (nonatomic,strong)NSArray *unitAry;
 @property (nonatomic,strong)ListView *unameview;
@@ -27,18 +52,18 @@
 @property (nonatomic, weak) UIView *fromView;
 @property (nonatomic, assign) BOOL isLandspace;
 @property (nonatomic,strong)NSString *navname;
+@property (nonatomic,strong)CameraInfoModel *carmeraInfo;
 @end
 
 @implementation EnvCameraInfoVC
 @synthesize uid,u_type,coordinate;
 @synthesize mainScr,unitAry;
-@synthesize unameview,manageview,linkPhoneview,onlineStates,hourView,navname;
+@synthesize unameview,manageview,linkPhoneview,onlineStates,hourView,navname,carmeraInfo;
 -(void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor colorWithRGB:0xedeeef]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     navname=self.title;
     UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
     but.frame =CGRectMake(0,0, 60, 44);
@@ -77,13 +102,35 @@
     
     hourView =[[UIView alloc]initWithFrame:CGRectMake(0, camerInfoView.bottom+5, SCREEN_WIDTH, SCALE(40))];
     [mainScr addSubview:hourView];
+    
+    //创建视频
+    g_playView = [[PlayView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+    g_playView.delegate = self;
+    g_playView.hidden=YES;
+    [g_playView setBackgroundColor:[UIColor blackColor]];
+    [mainScr addSubview:g_playView];
+    
+    g_activity = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    g_activity.hidesWhenStopped = YES;
+    g_activity.center=CGPointMake(g_playView.width/2.0, g_playView.height/2.0);
+    [g_playView addSubview:g_activity];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopRealPlay) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetRealPlay) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+    
     [self getCameraInfo];
+    
+    
+    
+    
+    
     // Do any additional setup after loading the view.
 }
 #pragma mark--------------根据站点获取摄像头信息-----------
 -(void)getCameraInfo{
     [self networkPost:API_GETCAMERAINFO parameter:@{@"uid":uid} progresHudText:@"加载中..." completionBlock:^(id rep) {
-        CameraInfoModel *carmeraInfo =[CameraInfoModel mj_objectWithKeyValues:rep];
+        carmeraInfo =[CameraInfoModel mj_objectWithKeyValues:rep];
         unameview.valuelb.text=carmeraInfo.address;
         manageview.valuelb.text=carmeraInfo.manager;
         linkPhoneview.valuelb.text=carmeraInfo.phone;
@@ -92,7 +139,29 @@
         if ([carmeraInfo.address isNotBlank]) {
             navname=carmeraInfo.address;
         }
-        
+        //初始化数据
+        g_playMamager = [[RealPlayManager alloc] initWithDelegate:self];
+        g_playManagerEx = [[RealPlayManagerEx alloc] initWithDelegate:self];
+        [g_activity startAnimating];
+        g_currentQuality = STREAM_MAG;
+        [g_playMamager startRealPlay:carmeraInfo.syscode videoType:g_currentQuality playView:g_playView complete:^(BOOL finish, NSString *message) {
+            if (finish) {
+                NSLog(@"调用预览成功%@", message);
+#warning  刷新UI操作必须在主线程操作
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [g_activity stopAnimating];
+                });
+                
+            } else {
+                NSLog(@"调用预览失败 %@",message);
+                dispatch_async(dispatch_get_main_queue(), ^{
+#warning  刷新UI操作必须在主线程操作
+                    [g_activity stopAnimating];
+//                    g_refreshButton.hidden = NO;
+                });
+                
+            }
+        }];
     }];
     [self networkPost:API_GETNEWUNITPICHOURDATA parameter:@{@"uid":uid,@"unit_type":[u_type numberValue]} progresHudText:@"加载中..." completionBlock:^(id rep) {
         unitAry =[NewUnitPicHourDataModel mj_objectArrayWithKeyValuesArray:rep];
@@ -158,7 +227,10 @@
             [self.navigationController pushViewController:histroy animated:YES];
         }];
         [mainScr addSubview:hourDataView];
-        
+        g_playView.hidden=NO;
+        g_playView.top=hourDataView.bottom+10;
+//        mainScr.height=g_playView.bottom;
+        [mainScr setContentSize:CGSizeMake(mainScr.width, g_playView.bottom+20)];
     }];
 }
 - (void)photoBrowser:(GKPhotoBrowser *)browser longPressWithIndex:(NSInteger)index {
@@ -288,11 +360,204 @@
     NSString *urlsting =[[NSString stringWithFormat:@"baidumap://map/direction?origin={{我的位置}}&destination=latlng:%f,%f|name=目的地&mode=driving&coord_type=gcj02",coordinate.latitude,coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlsting]];
 }
+#pragma mark------------开始云台控制---------
+-(void)ptzOperationInControl:(int)ptzCommand stop:(BOOL)stop end:(BOOL)end
+{
+    if (end) {
+        [g_playMamager stopPtzControl:ptzCommand withParam1:5];
+        
+    }else{
+        [g_playMamager startPtzControl:ptzCommand withParam1:5];
+    }
+}
+#pragma mark - RealPlayManagerDelegate播放库预览状态回调代理方法和语音对讲回调
+/**
+ 播放库预览状态回调
+ 
+ 用户可通过播放库返回的不同播放状态进行自己的业务处理
+ 
+ @param playState 当前播放状态
+ @param realPlayManager 预览管理类
+ */
+- (void)realPlayCallBack:(PLAY_STATE)playState realManager:(RealPlayManager *)realPlayManager {
+    [g_activity stopAnimating];
+    switch (playState) {
+        case PLAY_STATE_PLAYING: {//正在播放
+            NSLog(@"playing");
+            break;
+        }
+        case PLAY_STATE_STOPED: {//停止播放
+            NSLog(@"stoped");
+            //g_refreshButton.hidden = NO;
+            break;
+        }
+        case PLAY_STATE_STARTED: {//开始播放
+            NSLog(@"started");
+            break;
+        }
+        case PLAY_STATE_FAILED: {//播放失败
+            NSLog(@"failed");
+            //g_refreshButton.hidden = NO;
+            break;
+        }
+        case PLAY_STATE_EXCEPTION: {//播放异常
+            NSLog(@"exception");
+            //g_refreshButton.hidden = NO;
+            break;
+        }
+        default:
+            break;
+    }
+}
+#pragma mark -- RealPlayManagerExDelegate播放库预览状态回调代理方法和语音对讲回调
+- (void)realPlayCallBackEx:(PLAY_STATE)playState realManager:(RealPlayManagerEx *)realPlayManager  {
+    [g_activity stopAnimating];
+    switch (playState) {
+        case PLAY_STATE_PLAYING: {//正在播放
+            NSLog(@"playing");
+            break;
+        }
+        case PLAY_STATE_STOPED: {//停止播放
+            NSLog(@"stoped");
+            //g_refreshButton.hidden = NO;
+            break;
+        }
+        case PLAY_STATE_STARTED: {//开始播放
+            NSLog(@"started");
+            break;
+        }
+        case PLAY_STATE_FAILED: {//播放失败
+            NSLog(@"failed");
+            //g_refreshButton.hidden = NO;
+            break;
+        }
+        case PLAY_STATE_EXCEPTION: {//播放异常
+            NSLog(@"exception");
+            //g_refreshButton.hidden = NO;
+            break;
+        }
+        default:
+            break;
+    }
+}
+//- (void)ptzPresetPositionOperation:(int)command index:(int)index {
+//    if (g_ptzPanel.isPanAutoState) {
+//        [g_playMamager stopPtzControl:29 withParam1:5];
+//        g_ptzPanel.isPanAutoState = NO;
+//    }
+//    [g_playMamager startPtzControl:command withParam1:index];
+//}
+
+
+
+
+#pragma mark --停止预览操作
+/**
+ 对预览画面停止预览操作.
+ 
+ 停止预览实质上是退出播放库的登录状态. 当播放功能停止使用时,停止预览操作是必须的.这可以有效的避免由于播放库的内存问题导致的程序异常.
+ 停止预览操作实现: 调用预览管理类RealPlayManager方法
+ - stopRealPlay;
+ */
+- (void)stopRealPlay:(UIButton *)sender {
+    //停止播放前,如果在对讲,请先停止对讲,防止出现内存问题
+    if ([sender.titleLabel.text  isEqualToString:@"停止"]) {
+        //如果在进行对讲操作,请关闭对讲
+        if (g_playView.isTalking) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                g_playView.isTalking = NO;
+            });
+            //停止对讲
+            dispatch_async(video_intercom_queue(), ^{
+                [g_playMamager stopTalking];
+                //                [g_playManagerEx stopTalking];
+            });
+        }
+        
+        [sender setTitle:@"开始" forState:UIControlStateNormal];
+        
+        //停止预览操作
+        BOOL result = [g_playMamager stopRealPlay];
+        //        BOOL result = [g_playManagerEx stopRealPlay];
+        if (result) {
+            NSLog(@"停止成功");
+        } else {
+            NSLog(@"停止失败");
+        }
+    }
+    else{
+        [sender setTitle:@"停止" forState:UIControlStateNormal];
+        
+        //开始预览操作
+        [g_playMamager startRealPlay:carmeraInfo.syscode videoType:g_currentQuality playView:g_playView.playView complete:^(BOOL finish,NSString *message) {
+            if (finish) {
+#warning 刷新UI必须在主线程操作
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"调用预览成功");
+                    [g_activity stopAnimating];
+                });
+            } else {
+#warning 刷新UI必须在主线程操作
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"调用预览失败 %@",message);
+                    [g_activity stopAnimating];
+                });
+            }
+        }];
+    }
+}
+//程序变为活跃状态时,重新开始预览
+- (void)resetRealPlay {
+    if (carmeraInfo.syscode != nil) {
+        [self refreshRealPlay];
+    }
+}
+//程序进入后台时,停止预览操作
+- (void)stopRealPlay {
+    //如果在进行对讲操作,请关闭对讲
+    if (g_playView.isTalking) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.talkButton setBackgroundColor:[UIColor blueColor]];
+            g_playView.isTalking = NO;
+        });
+        //停止对讲
+        dispatch_async(video_intercom_queue(), ^{
+            [g_playMamager stopTalking];
+        });
+    }
+    [g_playMamager stopRealPlay];
+}
+#pragma mark --重新预览
+/**
+ 重新预览 就是重新调用开始预览的方法
+ */
+- (void)refreshRealPlay {
+    g_activity.hidden = NO;
+    [g_activity startAnimating];
+//    g_refreshButton.hidden = YES;
+    [g_playMamager startRealPlay:carmeraInfo.syscode videoType:STREAM_SUB playView:g_playView.playView complete:^(BOOL finish,NSString *message) {
+        if (finish) {
+            NSLog(@"调用预览成功");
+#warning 刷新UI必须在主线程操作
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [g_activity stopAnimating];
+            });
+        } else {
+            NSLog(@"调用预览失败 %@",message);
+#warning 刷新UI必须在主线程操作
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [g_activity stopAnimating];
+//                g_refreshButton.hidden = NO;
+            });
+        }
+    }];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 /*
 #pragma mark - Navigation
 
