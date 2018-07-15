@@ -491,6 +491,8 @@
     [_locationManager requestLocationWithReGeocode:YES withNetworkState:YES completionBlock:^(BMKLocation * _Nullable location, BMKLocationNetworkState state, NSError * _Nullable error) {
         if (location) {//得到定位信息，添加annotation
             if (location.location) {
+                [SingalObj defaultManager].userLocation=location.location;
+                
                 NSLog(@"LOC = %@",location.location);}
             [self getNearestGkzReal:location.location];
                       if (location.rgcData) {

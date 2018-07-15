@@ -11,4 +11,5 @@
 @interface EnvCameraInfoVC : UIViewController
 @property (nonatomic,strong)NSString *uid;
 @property (nonatomic,strong)NSString *u_type;//站点类型
+@property (nonatomic,assign)CLLocationCoordinate2D coordinate;
 @end

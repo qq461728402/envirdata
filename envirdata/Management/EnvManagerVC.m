@@ -18,8 +18,18 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getMonitorTaskTree3];
     // Do any additional setup after loading the view.
 }
+#pragma mark-----------添加树形结构-------
+- (void)getMonitorTaskTree3{
+    UserInfoModel *userfin=[SingalObj defaultManager].userInfoModel;
+    [self networkPost:API_GETMONITORTASKTREE3 parameter:@{@"userid":userfin.userid} progresHudText:@"加载中..." completionBlock:^(id rep) {
+        
+    }];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

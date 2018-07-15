@@ -13,4 +13,5 @@
 +(SingalObj*)defaultManager;
 @property (nonatomic,strong)UserInfoModel *userInfoModel;
 @property (nonatomic,strong)UINavigationController *rootNav;
+@property (nonatomic,strong)CLLocation *userLocation;
 @end

@@ -33,4 +33,8 @@
 #define API_GETHISTORDATAMULTIINDEX @"api/getHistorDataMultiIndex" //站点浓度监测历史接口
 #define API_GETHISTORYVIOLATIONPICTURE @"api/getHistoryViolationPicture"//站点历史违规图片
 
+//管理协同
+#define API_GETMONITORTASKTREE3  @"api/getMonitorTaskTree3"
+
+
 #endif /* ApiConfig_h */

@@ -47,4 +47,6 @@
 
 #define SCALE(scale)   scale*kScreenWidth/375.0
 
+#define WEAKSELF     typeof(self) __weak weakSelf = self;
+
 #endif /* MyConstants_h */

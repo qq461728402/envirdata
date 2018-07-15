@@ -13,7 +13,9 @@
 #import "HourDataView.h"
 #import "HistoryDataMultIndexVC.h"
 #import "HistoryViolationPictureVC.h"
-@interface EnvCameraInfoVC ()
+#import "GKPhotoBrowser.h"
+#import "GKCover.h"
+@interface EnvCameraInfoVC ()<GKPhotoBrowserDelegate>
 @property (nonatomic,strong)UIScrollView *mainScr;
 @property (nonatomic,strong)NSArray *unitAry;
 @property (nonatomic,strong)ListView *unameview;
@@ -21,17 +23,32 @@
 @property (nonatomic,strong)ListView *linkPhoneview;
 @property (nonatomic,strong)ListView *onlineStates;
 @property (nonatomic,strong)UIView *hourView;
+@property (nonatomic, weak) UIView *actionSheet;
+@property (nonatomic, weak) UIView *fromView;
+@property (nonatomic, assign) BOOL isLandspace;
+@property (nonatomic,strong)NSString *navname;
 @end
 
 @implementation EnvCameraInfoVC
-@synthesize uid,u_type;
+@synthesize uid,u_type,coordinate;
 @synthesize mainScr,unitAry;
-@synthesize unameview,manageview,linkPhoneview,onlineStates,hourView;
+@synthesize unameview,manageview,linkPhoneview,onlineStates,hourView,navname;
 -(void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor colorWithRGB:0xedeeef]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    navname=self.title;
+    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+    but.frame =CGRectMake(0,0, 60, 44);
+    [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    but.titleLabel.font=Font(16);
+    [but addTarget:self action:@selector(gotoNav) forControlEvents:UIControlEventTouchUpInside];
+    [but setTitle:@"导航"forState:UIControlStateNormal];
+    UIBarButtonItem  *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
+    self.navigationItem.rightBarButtonItem = barBut;
+    
     mainScr=[[UIScrollView alloc]init];
     mainScr.translatesAutoresizingMaskIntoConstraints=NO;
     [self.view addSubview:mainScr];
@@ -72,10 +89,14 @@
         linkPhoneview.valuelb.text=carmeraInfo.phone;
         linkPhoneview.islink=YES;
         onlineStates.valuelb.text=[carmeraInfo.onlinestatus intValue]==0?@"离线":[carmeraInfo.onlinestatus intValue]==1?@"在线":@"未知";
+        if ([carmeraInfo.address isNotBlank]) {
+            navname=carmeraInfo.address;
+        }
+        
     }];
     [self networkPost:API_GETNEWUNITPICHOURDATA parameter:@{@"uid":uid,@"unit_type":[u_type numberValue]} progresHudText:@"加载中..." completionBlock:^(id rep) {
         unitAry =[NewUnitPicHourDataModel mj_objectArrayWithKeyValuesArray:rep];
-        
+    
         float temph=0.0;
         for (int i=0; i<unitAry.count; i++) {
             NewUnitPicHourDataModel *newunit=unitAry[i];
@@ -104,6 +125,22 @@
                     [self.navigationController pushViewController:historyData animated:YES];
                 }else if ([newunit.type intValue]==2&&[newunit.value isNotBlank]){//查看异常图片
                     
+                    NSArray *urlAry  = [newunit.value componentsSeparatedByString:@","];
+                    
+                    if (urlAry.count>0) {
+                        NSMutableArray *photos = [NSMutableArray new];
+                        [urlAry enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            GKPhoto *photo = [GKPhoto new];
+                            photo.url = [NSURL URLWithString:obj];
+                            [photos addObject:photo];
+                        }];
+                        GKPhotoBrowser *browser = [GKPhotoBrowser photoBrowserWithPhotos:photos currentIndex:0];
+                        browser.delegate=self;
+                        browser.showStyle = GKPhotoBrowserShowStyleNone;
+                        [browser showFromVC:self];
+                    }
+                    
+                    
                     
                 }
             }];
@@ -124,7 +161,133 @@
         
     }];
 }
+- (void)photoBrowser:(GKPhotoBrowser *)browser longPressWithIndex:(NSInteger)index {
+    NSLog(@"%@",browser.photos[index]);
+    
+    if (self.fromView) return;
+    UIView *contentView = browser.contentView;
+    
+    UIView *fromView = [UIView new];
+    fromView.backgroundColor = [UIColor clearColor];
+    self.fromView = fromView;
+    CGFloat actionSheetH = 0;
+    if (self.isLandspace) {
+        actionSheetH = 100;
+        fromView.frame = contentView.bounds;
+        [contentView addSubview:fromView];
+    }else {
+        actionSheetH = 100 + kSaveBottomSpace;
+        fromView.frame = browser.view.bounds;
+        [browser.view addSubview:fromView];
+    }
+    
+    UIView *actionSheet = [[UIView alloc] initWithFrame:CGRectMake(0, 0, contentView.bounds.size.width, actionSheetH)];
+    actionSheet.backgroundColor = [UIColor whiteColor];
+    self.actionSheet = actionSheet;
+    
+    UIButton *saveBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, actionSheet.width, 50)];
+    [saveBtn setTitle:@"保存图片" forState:UIControlStateNormal];
+    [saveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [saveBtn bk_addEventHandler:^(id sender) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            GKPhoto *photo =  browser.photos[index];
+            UIImageWriteToSavedPhotosAlbum(photo.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        });
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    saveBtn.backgroundColor = [UIColor whiteColor];
+    [actionSheet addSubview:saveBtn];
+    
+    UIButton *cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, actionSheet.width, 50)];
+    [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelBtn bk_addEventHandler:^(id sender) {
+        [GKCover hideCover];
+    } forControlEvents:UIControlEventTouchUpInside];
+    cancelBtn.backgroundColor = [UIColor whiteColor];
+    [actionSheet addSubview:cancelBtn];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 50, actionSheet.width, 0.5)];
+    lineView.backgroundColor = [UIColor grayColor];
+    [actionSheet addSubview:lineView];
+    
+    [GKCover coverFrom:fromView
+           contentView:actionSheet
+                 style:GKCoverStyleTranslucent
+             showStyle:GKCoverShowStyleBottom
+         showAnimStyle:GKCoverShowAnimStyleBottom
+         hideAnimStyle:GKCoverHideAnimStyleBottom
+              notClick:NO
+             showBlock:nil
+             hideBlock:^{
+                 [self.fromView removeFromSuperview];
+                 self.fromView = nil;
+             }];
+    
+}
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error) {
+        [SVProgressHUD showErrorWithStatus:@"保存失败"];
+    } else {
+        [SVProgressHUD showSuccessWithStatus:@"成功保存到相册"];
+    }
+    [GKCover hideCover];
+}
+#pragma mark------------进入导航--------
+-(void)gotoNav{
+    
+    WEAKSELF
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"导航到设备" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"苹果自带地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf appleNaiWithCoordinate:coordinate andWithMapTitle:navname];
+        
+    }]];
+    //判断是否安装了高德地图，如果安装了高德地图，则使用高德地图导航
+    if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"iosamap://"]]) {
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"高德地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            NSLog(@"alertController -- 高德地图");
+           [weakSelf aNaviWithCoordinate:coordinate andWithMapTitle:navname];
+            
+        }]];
+    }
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"baidumap://"]]) {
+        [alertController addAction:[UIAlertAction actionWithTitle:@"百度地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSLog(@"alertController -- 百度地图");
+            [weakSelf baiduNaviWithCoordinate:coordinate andWithMapTitle:navname];
+            
+        }]];
+    }
+    //添加取消选项
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+//唤醒苹果自带导航
+- (void)appleNaiWithCoordinate:(CLLocationCoordinate2D)coordinate andWithMapTitle:(NSString *)map_title{
+    
+    MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+    MKMapItem *tolocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil]];
+    tolocation.name = map_title;
+    [MKMapItem openMapsWithItems:@[currentLocation,tolocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving,
+                                                                               MKLaunchOptionsShowsTrafficKey:[NSNumber numberWithBool:YES]}];
+}
+/**
+ 高德导航
+ */
+- (void)aNaviWithCoordinate:(CLLocationCoordinate2D)coordinate andWithMapTitle:(NSString *)map_title{
+    
+    NSString *urlsting =[[NSString stringWithFormat:@"iosamap://navi?sourceApplication= &backScheme= &lat=%f&lon=%f&dev=0&style=2",coordinate.latitude,coordinate.longitude]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[UIApplication  sharedApplication]openURL:[NSURL URLWithString:urlsting]];
+}
 
+- (void)baiduNaviWithCoordinate:(CLLocationCoordinate2D)coordinate andWithMapTitle:(NSString *)map_title{
+    NSString *urlsting =[[NSString stringWithFormat:@"baidumap://map/direction?origin={{我的位置}}&destination=latlng:%f,%f|name=目的地&mode=driving&coord_type=gcj02",coordinate.latitude,coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlsting]];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

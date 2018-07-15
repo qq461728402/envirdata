@@ -9,9 +9,14 @@
 #import "HistoryViolationPictureVC.h"
 #import "HistoryViolationCell.h"
 #import "HistoryViolationPictureModel.h"
-@interface HistoryViolationPictureVC ()<UITableViewDelegate,UITableViewDataSource>
+#import "GKPhotoBrowser.h"
+#import "GKCover.h"
+@interface HistoryViolationPictureVC ()<UITableViewDelegate,UITableViewDataSource,GKPhotoBrowserDelegate>
 @property (nonatomic,strong)UITableView *historyviltb;
 @property (nonatomic,strong)NSArray *historyvilary;
+@property (nonatomic, weak) UIView *actionSheet;
+@property (nonatomic, weak) UIView *fromView;
+@property (nonatomic, assign) BOOL isLandspace;
 @end
 
 @implementation HistoryViolationPictureVC
@@ -96,8 +101,94 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    HistoryViolationPictureModel *historyVio =historyvilary[indexPath.row];
+    NSArray *urlAry  =[historyVio.url componentsSeparatedByString:@","];
+    if (urlAry.count>0) {
+        NSMutableArray *photos = [NSMutableArray new];
+        [urlAry enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            GKPhoto *photo = [GKPhoto new];
+            photo.url = [NSURL URLWithString:obj];
+            [photos addObject:photo];
+        }];
+        GKPhotoBrowser *browser = [GKPhotoBrowser photoBrowserWithPhotos:photos currentIndex:0];
+        browser.delegate=self;
+        browser.showStyle = GKPhotoBrowserShowStyleNone;
+        [browser showFromVC:self];
+    }
 }
-
+- (void)photoBrowser:(GKPhotoBrowser *)browser longPressWithIndex:(NSInteger)index {
+    NSLog(@"%@",browser.photos[index]);
+    
+    if (self.fromView) return;
+    UIView *contentView = browser.contentView;
+    
+    UIView *fromView = [UIView new];
+    fromView.backgroundColor = [UIColor clearColor];
+    self.fromView = fromView;
+     CGFloat actionSheetH = 0;
+    if (self.isLandspace) {
+        actionSheetH = 100;
+        fromView.frame = contentView.bounds;
+        [contentView addSubview:fromView];
+    }else {
+        actionSheetH = 100 + kSaveBottomSpace;
+        fromView.frame = browser.view.bounds;
+        [browser.view addSubview:fromView];
+    }
+    
+    UIView *actionSheet = [[UIView alloc] initWithFrame:CGRectMake(0, 0, contentView.bounds.size.width, actionSheetH)];
+    actionSheet.backgroundColor = [UIColor whiteColor];
+    self.actionSheet = actionSheet;
+    
+    UIButton *saveBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, actionSheet.width, 50)];
+    [saveBtn setTitle:@"保存图片" forState:UIControlStateNormal];
+    [saveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [saveBtn bk_addEventHandler:^(id sender) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            GKPhoto *photo =  browser.photos[index];
+            UIImageWriteToSavedPhotosAlbum(photo.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        });
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    saveBtn.backgroundColor = [UIColor whiteColor];
+    [actionSheet addSubview:saveBtn];
+    
+    UIButton *cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, actionSheet.width, 50)];
+    [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelBtn bk_addEventHandler:^(id sender) {
+         [GKCover hideCover];
+    } forControlEvents:UIControlEventTouchUpInside];
+    cancelBtn.backgroundColor = [UIColor whiteColor];
+    [actionSheet addSubview:cancelBtn];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 50, actionSheet.width, 0.5)];
+    lineView.backgroundColor = [UIColor grayColor];
+    [actionSheet addSubview:lineView];
+    
+    [GKCover coverFrom:fromView
+           contentView:actionSheet
+                 style:GKCoverStyleTranslucent
+             showStyle:GKCoverShowStyleBottom
+         showAnimStyle:GKCoverShowAnimStyleBottom
+         hideAnimStyle:GKCoverHideAnimStyleBottom
+              notClick:NO
+             showBlock:nil
+             hideBlock:^{
+                 [self.fromView removeFromSuperview];
+                 self.fromView = nil;
+             }];
+    
+}
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error) {
+        [SVProgressHUD showErrorWithStatus:@"保存失败"];
+    } else {
+        [SVProgressHUD showSuccessWithStatus:@"成功保存到相册"];
+    }
+    [GKCover hideCover];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

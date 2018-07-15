@@ -14,6 +14,8 @@
 #import "WarnPointAnnotation.h"
 #import "DkeyModel.h"
 #import "LBpopView.h"
+#import "EnvCameraInfoVC.h"
+#import "EnvUnitDataTimeVC.h"
 @interface EnvOnlineMapVC ()<BMKMapViewDelegate,BMKLocationServiceDelegate,LBpopDelegate>
 @property (nonatomic,strong)BMKLocationService *locService;
 @property (nonatomic,strong)BMKMapView *onlineMap;
@@ -38,6 +40,9 @@
     [_locService startUserLocationService];
     onlineMap =[[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     onlineMap.zoomLevel = 13;//缩放等级
+    if ([SingalObj defaultManager].userLocation) {
+        onlineMap.centerCoordinate = [SingalObj defaultManager].userLocation.coordinate;
+    }
     [onlineMap setMapType:BMKMapTypeStandard];//地图类型
     onlineMap.userTrackingMode=BMKUserTrackingModeNone;
     onlineMap.showsUserLocation=YES;//显示定位图层
@@ -92,7 +97,12 @@
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
     [onlineMap updateLocationData:userLocation];
-    onlineMap.centerCoordinate = userLocation.location.coordinate;
+    
+//    onlineMap.centerCoordinate = userLocation.location.coordinate;
+    
+    
+   
+    onlineMap.centerCoordinate = [SingalObj defaultManager].userLocation.coordinate;
 }
 #pragma mark----------获取Typelist----------------------
 -(void)getTypeDescipt{
@@ -127,7 +137,7 @@
                 [onlineMap addAnnotation:pointPoint];
                 [allpointAry addObject:pointPoint];
             }else if ([onlineMon.status intValue]==1){//表示异常
-            
+                
                 
             }
         }
@@ -188,9 +198,25 @@
     if ([view.annotation isKindOfClass:[PointPointAnnotation class]]) {
         PointPointAnnotation *pointPointA=(PointPointAnnotation*)view.annotation;
         NSLog(@"%@",pointPointA.title);
+        OnlineMonModel *onlineModel = pointPointA.onlineModel;
+        EnvCameraInfoVC *cameraInfo=[[EnvCameraInfoVC alloc]init];
+        cameraInfo.uid=onlineModel.uid;
+        CLLocationCoordinate2D coor;
+        coor.latitude = [onlineModel.wd doubleValue];
+        coor.longitude = [onlineModel.jd doubleValue];
+        cameraInfo.coordinate=coor;
+        cameraInfo.u_type=[onlineModel.utype stringValue];
+        cameraInfo.title=onlineModel.uname;
+        self.callback(cameraInfo);
+        
     }else if ([view.annotation isKindOfClass:[StatePointAnnotation class]]){
         StatePointAnnotation *pointPointA=(StatePointAnnotation*)view.annotation;
         NSLog(@"%@",pointPointA.title);
+        OnlineMonModel *onlineModel = pointPointA.onlineModel;
+        EnvUnitDataTimeVC *unitDataTime=[[EnvUnitDataTimeVC alloc]init];
+        unitDataTime.uid=onlineModel.uid;
+        unitDataTime.title=onlineModel.uname;
+        self.callback(unitDataTime);
     }
 }
 #pragma mark------------------popViewdelegate----------------

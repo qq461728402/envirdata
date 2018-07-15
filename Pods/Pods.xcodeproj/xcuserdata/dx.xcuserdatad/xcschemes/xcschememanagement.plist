@@ -14,6 +14,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FLAnimatedImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GKCover.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GKPhotoBrowser.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,6 +69,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,12 +97,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>037F38D81E2192F4EC3C900CBF2B287E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>14DC8444924FF5CDD55CFAC1CC1D5520</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>175B076ED45EB1A3E40F58BA14036467</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>3AF218FD7A134D8063D84CB10E60FB47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>42CD49D5F4E4FC579C40C14B714BDE3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +142,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69AF4044241C90C2E2B51166E3256A3D</key>
+		<key>74E077E1019102B4DF87450257B66087</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>79706CF8097D4B135E7B3FD71B4AFEA2</key>
+		<key>76969C41B25B6D8EA12748300371BEA5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +172,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E99F35D46275D04DFD566593CECC7304</key>
+		<key>B6CBAB7577BC5ACE3DEF9CF9286A87B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F1D6F26844B0D21DA272BDEB66CD7CA4</key>
+		<key>CD137AE82446D0F4001DE934D6585521</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E99F35D46275D04DFD566593CECC7304</key>
 		<dict>
 			<key>primary</key>
 			<true/>
