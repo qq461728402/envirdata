@@ -45,6 +45,15 @@
 		E181741420FA318600604652 /* WarnPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E181741320FA318600604652 /* WarnPointAnnotation.m */; };
 		E181741720FA372C00604652 /* EnvUnitDataTimeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E181741620FA372C00604652 /* EnvUnitDataTimeVC.m */; };
 		E181741A20FA3A4800604652 /* UnitDataTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E181741920FA3A4800604652 /* UnitDataTimeModel.m */; };
+		E188A52120FAE60000B68701 /* CameraInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A52020FAE60000B68701 /* CameraInfoModel.m */; };
+		E188A52420FAE68400B68701 /* NewUnitPicHourDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A52320FAE68400B68701 /* NewUnitPicHourDataModel.m */; };
+		E188A52820FAE7E600B68701 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A52720FAE7E600B68701 /* ListView.m */; };
+		E188A52B20FAEE9500B68701 /* HourDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A52A20FAEE9500B68701 /* HourDataView.m */; };
+		E188A52E20FAF64300B68701 /* HistoryDataMultIndexVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A52D20FAF64300B68701 /* HistoryDataMultIndexVC.m */; };
+		E188A53120FB13AA00B68701 /* HistoryDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53020FB13AA00B68701 /* HistoryDataModel.m */; };
+		E188A53420FB23B800B68701 /* HistoryViolationPictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53320FB23B800B68701 /* HistoryViolationPictureVC.m */; };
+		E188A53720FB254300B68701 /* HistoryViolationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53620FB254300B68701 /* HistoryViolationCell.m */; };
+		E188A53A20FB26C900B68701 /* HistoryViolationPictureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */; };
 		E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AF06C320F4A76B000E93F9 /* MBProgressHUD+PD.m */; };
 		E1BA89A720EB1CAE002CD41B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A620EB1CAE002CD41B /* main.m */; };
 		E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A920EB1CAE002CD41B /* AppDelegate.m */; };
@@ -134,6 +143,24 @@
 		E181741920FA3A4800604652 /* UnitDataTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitDataTimeModel.m; sourceTree = "<group>"; };
 		E181D85520F5FA0100219D71 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		E181D85620F5FB1900219D71 /* ColorConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConfig.h; sourceTree = "<group>"; };
+		E188A51F20FAE60000B68701 /* CameraInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraInfoModel.h; sourceTree = "<group>"; };
+		E188A52020FAE60000B68701 /* CameraInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraInfoModel.m; sourceTree = "<group>"; };
+		E188A52220FAE68400B68701 /* NewUnitPicHourDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUnitPicHourDataModel.h; sourceTree = "<group>"; };
+		E188A52320FAE68400B68701 /* NewUnitPicHourDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUnitPicHourDataModel.m; sourceTree = "<group>"; };
+		E188A52620FAE7E600B68701 /* ListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListView.h; path = views/ListView.h; sourceTree = "<group>"; };
+		E188A52720FAE7E600B68701 /* ListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListView.m; path = views/ListView.m; sourceTree = "<group>"; };
+		E188A52920FAEE9500B68701 /* HourDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HourDataView.h; path = views/HourDataView.h; sourceTree = "<group>"; };
+		E188A52A20FAEE9500B68701 /* HourDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HourDataView.m; path = views/HourDataView.m; sourceTree = "<group>"; };
+		E188A52C20FAF64300B68701 /* HistoryDataMultIndexVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryDataMultIndexVC.h; path = OnlineMonitoring/HistoryDataMultIndexVC.h; sourceTree = "<group>"; };
+		E188A52D20FAF64300B68701 /* HistoryDataMultIndexVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryDataMultIndexVC.m; path = OnlineMonitoring/HistoryDataMultIndexVC.m; sourceTree = "<group>"; };
+		E188A52F20FB13AA00B68701 /* HistoryDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDataModel.h; sourceTree = "<group>"; };
+		E188A53020FB13AA00B68701 /* HistoryDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDataModel.m; sourceTree = "<group>"; };
+		E188A53220FB23B800B68701 /* HistoryViolationPictureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViolationPictureVC.h; path = OnlineMonitoring/HistoryViolationPictureVC.h; sourceTree = "<group>"; };
+		E188A53320FB23B800B68701 /* HistoryViolationPictureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryViolationPictureVC.m; path = OnlineMonitoring/HistoryViolationPictureVC.m; sourceTree = "<group>"; };
+		E188A53520FB254300B68701 /* HistoryViolationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViolationCell.h; path = cells/HistoryViolationCell.h; sourceTree = "<group>"; };
+		E188A53620FB254300B68701 /* HistoryViolationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryViolationCell.m; path = cells/HistoryViolationCell.m; sourceTree = "<group>"; };
+		E188A53820FB26C900B68701 /* HistoryViolationPictureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViolationPictureModel.h; sourceTree = "<group>"; };
+		E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViolationPictureModel.m; sourceTree = "<group>"; };
 		E1AF06BD20F481D5000E93F9 /* MyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyConstants.h; path = util/MyConstants.h; sourceTree = "<group>"; };
 		E1AF06C120F483C9000E93F9 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E1AF06C220F4A76B000E93F9 /* MBProgressHUD+PD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+PD.h"; path = "util/MBProgressHUD+PD.h"; sourceTree = "<group>"; };
@@ -222,6 +249,10 @@
 				E181741020FA2F7300604652 /* EnvCameraInfoVC.m */,
 				E181741520FA372C00604652 /* EnvUnitDataTimeVC.h */,
 				E181741620FA372C00604652 /* EnvUnitDataTimeVC.m */,
+				E188A52C20FAF64300B68701 /* HistoryDataMultIndexVC.h */,
+				E188A52D20FAF64300B68701 /* HistoryDataMultIndexVC.m */,
+				E188A53220FB23B800B68701 /* HistoryViolationPictureVC.h */,
+				E188A53320FB23B800B68701 /* HistoryViolationPictureVC.m */,
 			);
 			name = OnlineMonitoring;
 			sourceTree = "<group>";
@@ -280,6 +311,8 @@
 				E181740620F9BB3B00604652 /* PointPointAnnotation.m */,
 				E181741220FA318600604652 /* WarnPointAnnotation.h */,
 				E181741320FA318600604652 /* WarnPointAnnotation.m */,
+				E188A53520FB254300B68701 /* HistoryViolationCell.h */,
+				E188A53620FB254300B68701 /* HistoryViolationCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -301,6 +334,17 @@
 				E1BA89BD20EB1ED9002CD41B /* LoginVC.m */,
 			);
 			name = login;
+			sourceTree = "<group>";
+		};
+		E188A52520FAE7AD00B68701 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				E188A52620FAE7E600B68701 /* ListView.h */,
+				E188A52720FAE7E600B68701 /* ListView.m */,
+				E188A52920FAEE9500B68701 /* HourDataView.h */,
+				E188A52A20FAEE9500B68701 /* HourDataView.m */,
+			);
+			name = views;
 			sourceTree = "<group>";
 		};
 		E1AF06BC20F481A7000E93F9 /* config */ = {
@@ -360,6 +404,7 @@
 		E1BA89A420EB1CAE002CD41B /* envirdata */ = {
 			isa = PBXGroup;
 			children = (
+				E188A52520FAE7AD00B68701 /* views */,
 				E16EE5E820F880EA007E045A /* cells */,
 				E1BC41D820F6EB30002B4047 /* entity */,
 				E100803320F6227A00B75514 /* Personal */,
@@ -403,6 +448,14 @@
 		E1BC41D820F6EB30002B4047 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				E188A53820FB26C900B68701 /* HistoryViolationPictureModel.h */,
+				E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */,
+				E188A52F20FB13AA00B68701 /* HistoryDataModel.h */,
+				E188A53020FB13AA00B68701 /* HistoryDataModel.m */,
+				E188A52220FAE68400B68701 /* NewUnitPicHourDataModel.h */,
+				E188A52320FAE68400B68701 /* NewUnitPicHourDataModel.m */,
+				E188A51F20FAE60000B68701 /* CameraInfoModel.h */,
+				E188A52020FAE60000B68701 /* CameraInfoModel.m */,
 				E181741820FA3A4800604652 /* UnitDataTimeModel.h */,
 				E181741920FA3A4800604652 /* UnitDataTimeModel.m */,
 				E18173FB20F9991E00604652 /* OnlineMonModel.h */,
@@ -538,6 +591,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-envirdata/Pods-envirdata-resources.sh",
 				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
+				"${PODS_ROOT}/GKPhotoBrowser/GKPhotoBrowser/GKPhotoBrowser.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/PGDatePicker/PGDatePicker/PGDatePicker.bundle",
@@ -547,6 +601,7 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GKPhotoBrowser.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PGDatePicker.bundle",
@@ -593,15 +648,21 @@
 				E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */,
 				E1BA89AD20EB1CAE002CD41B /* ViewController.m in Sources */,
 				E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */,
+				E188A53420FB23B800B68701 /* HistoryViolationPictureVC.m in Sources */,
 				E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */,
 				E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */,
+				E188A53A20FB26C900B68701 /* HistoryViolationPictureModel.m in Sources */,
 				E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */,
 				E18173FA20F996E400604652 /* OnlineCell.m in Sources */,
+				E188A52420FAE68400B68701 /* NewUnitPicHourDataModel.m in Sources */,
 				E1BC41E120F74F3D002B4047 /* NearestAreaRealModel.m in Sources */,
 				E1BA89A720EB1CAE002CD41B /* main.m in Sources */,
+				E188A53720FB254300B68701 /* HistoryViolationCell.m in Sources */,
 				E18173F720F98AD900604652 /* EnvOnlineMapVC.mm in Sources */,
+				E188A52E20FAF64300B68701 /* HistoryDataMultIndexVC.m in Sources */,
 				E1BC41DB20F6EB4A002B4047 /* UserInfoModel.m in Sources */,
 				E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */,
+				E188A52B20FAEE9500B68701 /* HourDataView.m in Sources */,
 				E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */,
 				E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */,
 				E181740E20F9D04100604652 /* LBpopView.m in Sources */,
@@ -609,12 +670,15 @@
 				E148BD0B20F78D0F00872ADD /* EnvAreaLevelVC.m in Sources */,
 				E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */,
 				E18173F420F98ABF00604652 /* EnvOnlienListVC.m in Sources */,
+				E188A52120FAE60000B68701 /* CameraInfoModel.m in Sources */,
 				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
 				E181740420F9B98900604652 /* StatePointAnnotation.m in Sources */,
 				E18173FD20F9991E00604652 /* OnlineMonModel.m in Sources */,
 				E181741120FA2F7300604652 /* EnvCameraInfoVC.m in Sources */,
 				E181740A20F9CEF300604652 /* DkeyModel.m in Sources */,
+				E188A53120FB13AA00B68701 /* HistoryDataModel.m in Sources */,
 				E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */,
+				E188A52820FAE7E600B68701 /* ListView.m in Sources */,
 				E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */,
 				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
 				E181741720FA372C00604652 /* EnvUnitDataTimeVC.m in Sources */,

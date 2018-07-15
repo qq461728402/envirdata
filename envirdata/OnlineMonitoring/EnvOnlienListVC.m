@@ -147,6 +147,7 @@
         }else{//其他站点类型 包括异常和正常
             EnvCameraInfoVC *cameraInfo=[[EnvCameraInfoVC alloc]init];
             cameraInfo.uid=onlineModel.uid;
+            cameraInfo.u_type=[onlineModel.utype stringValue];
             cameraInfo.title=onlineModel.uname;
             self.callback(cameraInfo);
         }

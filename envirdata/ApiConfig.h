@@ -27,9 +27,10 @@
 #define API_GETUNITWARNINGPICS @"api/getUnitWarningPics" //预警点的数据接口
 #define API_GETTYPEDESCIPT @"api/getTypeDescipt" //站点类型
 #define API_GETCAMERAINFO  @"api/getCameraInfo" //获取摄像头信息
+#define API_GETNEWUNITPICHOURDATA @"api/getNewUnitPicHourData"//站点监测要素及值
 #define API_GETUNITDATATIME @"api/getUnitDataTime" //获取监测站点的实时监测数据
 #define API_GETUNITPICSADDRESS @"api/getUnitPicsAddress" //站点监测图片列表接口
-
-
+#define API_GETHISTORDATAMULTIINDEX @"api/getHistorDataMultiIndex" //站点浓度监测历史接口
+#define API_GETHISTORYVIOLATIONPICTURE @"api/getHistoryViolationPicture"//站点历史违规图片
 
 #endif /* ApiConfig_h */
