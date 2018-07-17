@@ -18,13 +18,9 @@
 #define BaiduAK @"EVVswanbL0jGOQqqAHeURvl9InrHai01"
 
 //海康威视
-#define MSP_ADDRESS     @"MSP_8710_Address"
-#define MSP_PORT        @"MSP_871_Port"
-#define MSP_USERNAME    @"MSP_871_username"
-#define MSP_PASSWORD    @"MSP_871_password"
-#define DEFAULT_MSP_PORT @"443"
-#define PUSH_SERVER_ADDRESS @"60.191.22.218"
-#define PUSH_SERVER_PORT @"8443"
-
+#define MSP_ADDRESS     @"139.159.247.230"
+#define MSP_PORT        @"443"
+#define MSP_USERNAME    @"admin"
+#define MSP_PASSWORD    @"Grand403"
 
 #endif /* BaiduMapConfig_h */

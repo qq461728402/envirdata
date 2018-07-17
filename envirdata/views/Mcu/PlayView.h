@@ -20,11 +20,8 @@ typedef enum
     DownLeft,
     DownRight
 }Direction;
-
 @interface PlayView : UIView<UIScrollViewDelegate>
-
 @property(nonatomic, retain)UIView *playView;
-
 @property(nonatomic, assign)BOOL isRecording;/**< 是否在录像*/
 @property(nonatomic, assign)BOOL isPausing;/**< 是否暂停*/
 @property(nonatomic, assign)BOOL isAudioing;/**< 是否开启声音*/
@@ -32,9 +29,7 @@ typedef enum
 @property(nonatomic, assign)BOOL isChangeQuality;/**<是否改变播放码流*/
 @property(nonatomic, assign)BOOL isPtz;                 /**<是否进行云台控制*/
 @property (nonatomic, assign) BOOL    isTalking; /**< 是否进行对讲*/
-
 @property(nonatomic, assign)BOOL addGesture;/**< 是否添加手势*/
-
 @property(nonatomic, assign)id<PlayViewDelegate> delegate;
 
 /**
@@ -57,5 +52,7 @@ typedef enum
  @param end  是否结束
  */
 -(void)ptzOperationInControl:(int)ptzCommand stop:(BOOL)stop end:(BOOL)end;
+-(void)playrefreshRealPlay;
+
 
 @end

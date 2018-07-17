@@ -41,6 +41,7 @@
 		E134649320F50057006E4144 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649220F50057006E4144 /* UIKit.framework */; };
 		E134649520F50062006E4144 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649420F50062006E4144 /* Foundation.framework */; };
 		E134649720F50664006E4144 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649620F50664006E4144 /* MapKit.framework */; };
+		E13AD74820FCED450046A499 /* DealPalyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E13AD74720FCED450046A499 /* DealPalyView.m */; };
 		E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0720F77FAC00872ADD /* ForecastAreaModel.m */; };
 		E148BD0B20F78D0F00872ADD /* EnvAreaLevelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0A20F78D0F00872ADD /* EnvAreaLevelVC.m */; };
 		E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0D20F7927000872ADD /* SliderSwitchView.m */; };
@@ -72,6 +73,7 @@
 		E188A53420FB23B800B68701 /* HistoryViolationPictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53320FB23B800B68701 /* HistoryViolationPictureVC.m */; };
 		E188A53720FB254300B68701 /* HistoryViolationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53620FB254300B68701 /* HistoryViolationCell.m */; };
 		E188A53A20FB26C900B68701 /* HistoryViolationPictureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */; };
+		E1ACF21A20FC63450027B274 /* UnusuallyPonitAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1ACF21920FC63450027B274 /* UnusuallyPonitAnnotation.m */; };
 		E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AF06C320F4A76B000E93F9 /* MBProgressHUD+PD.m */; };
 		E1BA89A720EB1CAE002CD41B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A620EB1CAE002CD41B /* main.m */; };
 		E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A920EB1CAE002CD41B /* AppDelegate.m */; };
@@ -138,6 +140,8 @@
 		E134649420F50062006E4144 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E134649620F50664006E4144 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E134649820F50674006E4144 /* envirdata.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = envirdata.entitlements; sourceTree = "<group>"; };
+		E13AD74620FCED450046A499 /* DealPalyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealPalyView.h; sourceTree = "<group>"; };
+		E13AD74720FCED450046A499 /* DealPalyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealPalyView.m; sourceTree = "<group>"; };
 		E148BD0620F77FAC00872ADD /* ForecastAreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastAreaModel.h; sourceTree = "<group>"; };
 		E148BD0720F77FAC00872ADD /* ForecastAreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastAreaModel.m; sourceTree = "<group>"; };
 		E148BD0920F78D0F00872ADD /* EnvAreaLevelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvAreaLevelVC.h; path = AirQuality/EnvAreaLevelVC.h; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 		E188A53620FB254300B68701 /* HistoryViolationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryViolationCell.m; path = cells/HistoryViolationCell.m; sourceTree = "<group>"; };
 		E188A53820FB26C900B68701 /* HistoryViolationPictureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViolationPictureModel.h; sourceTree = "<group>"; };
 		E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViolationPictureModel.m; sourceTree = "<group>"; };
+		E1ACF21820FC63450027B274 /* UnusuallyPonitAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnusuallyPonitAnnotation.h; path = cells/UnusuallyPonitAnnotation.h; sourceTree = "<group>"; };
+		E1ACF21920FC63450027B274 /* UnusuallyPonitAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnusuallyPonitAnnotation.m; path = cells/UnusuallyPonitAnnotation.m; sourceTree = "<group>"; };
 		E1AF06BD20F481D5000E93F9 /* MyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyConstants.h; path = util/MyConstants.h; sourceTree = "<group>"; };
 		E1AF06C120F483C9000E93F9 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E1AF06C220F4A76B000E93F9 /* MBProgressHUD+PD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+PD.h"; path = "util/MBProgressHUD+PD.h"; sourceTree = "<group>"; };
@@ -382,6 +388,8 @@
 			children = (
 				E134590A20FB69D900D6B549 /* PlayView.h */,
 				E134590B20FB69D900D6B549 /* PlayView.m */,
+				E13AD74620FCED450046A499 /* DealPalyView.h */,
+				E13AD74720FCED450046A499 /* DealPalyView.m */,
 			);
 			name = Mcu;
 			path = views/Mcu;
@@ -402,6 +410,8 @@
 				E181741320FA318600604652 /* WarnPointAnnotation.m */,
 				E188A53520FB254300B68701 /* HistoryViolationCell.h */,
 				E188A53620FB254300B68701 /* HistoryViolationCell.m */,
+				E1ACF21820FC63450027B274 /* UnusuallyPonitAnnotation.h */,
+				E1ACF21920FC63450027B274 /* UnusuallyPonitAnnotation.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -732,6 +742,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1BA89C120EB62F3002CD41B /* ConfigObj.m in Sources */,
+				E13AD74820FCED450046A499 /* DealPalyView.m in Sources */,
 				E100802A20F621FF00B75514 /* EnvOnlineMonVC.m in Sources */,
 				E100803220F6226F00B75514 /* EnvAnalysisReportVC.m in Sources */,
 				E181741A20FA3A4800604652 /* UnitDataTimeModel.m in Sources */,
@@ -759,6 +770,7 @@
 				E188A52B20FAEE9500B68701 /* HourDataView.m in Sources */,
 				E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */,
 				E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */,
+				E1ACF21A20FC63450027B274 /* UnusuallyPonitAnnotation.m in Sources */,
 				E181740E20F9D04100604652 /* LBpopView.m in Sources */,
 				E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */,
 				E148BD0B20F78D0F00872ADD /* EnvAreaLevelVC.m in Sources */,
@@ -906,7 +918,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -931,7 +943,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
 				PRODUCT_NAME = "$(TARGET_NAME)";

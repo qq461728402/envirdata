@@ -16,6 +16,7 @@
 #import "LBpopView.h"
 #import "EnvCameraInfoVC.h"
 #import "EnvUnitDataTimeVC.h"
+#import "UnusuallyPonitAnnotation.h"
 @interface EnvOnlineMapVC ()<BMKMapViewDelegate,BMKLocationServiceDelegate,LBpopDelegate>
 @property (nonatomic,strong)BMKLocationService *locService;
 @property (nonatomic,strong)BMKMapView *onlineMap;
@@ -87,6 +88,15 @@
         make.top.equalTo(weakSelf.view.mas_top).with.offset(70);
         make.right.equalTo(weakSelf.view.mas_right).with.offset(-10);
     }];
+    
+    UIImageView *warinImge=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 70)];
+    [warinImge setImage:PNGIMAGE(@"icon_legend.png")];
+    warinImge.translatesAutoresizingMaskIntoConstraints=NO;
+    [self.view addSubview:warinImge];
+    [warinImge mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(weakSelf.view.mas_bottom);
+        make.right.equalTo(weakSelf.view.mas_right);
+    }];
     [self getTypeDescipt];
     // Do any additional setup after loading the view.
 }
@@ -137,8 +147,12 @@
                 [onlineMap addAnnotation:pointPoint];
                 [allpointAry addObject:pointPoint];
             }else if ([onlineMon.status intValue]==1){//表示异常
-                
-                
+                CLLocationCoordinate2D coor;
+                coor.latitude = [onlineMon.wd doubleValue];
+                coor.longitude = [onlineMon.jd doubleValue];
+                UnusuallyPonitAnnotation *pointPoint =[[UnusuallyPonitAnnotation alloc]initWithCoordinate:coor title:onlineMon.uname uid:onlineMon];
+                [onlineMap addAnnotation:pointPoint];
+                [allpointAry addObject:pointPoint];
             }
         }
     }];
@@ -166,7 +180,7 @@
                                                            reuseIdentifier:reuseIndetifier];
         }
         annotationView.canShowCallout=NO;
-        annotationView.image = PNGIMAGE(@"标注");
+        annotationView.image = PNGIMAGE(@"icon_gk_03");
         return annotationView;
     }else if ([annotation isKindOfClass:[PointPointAnnotation class]]){
         static NSString *reuseIndetifier = @"pointIndetifier";
@@ -177,9 +191,23 @@
                                                            reuseIdentifier:reuseIndetifier];
         }
         annotationView.canShowCallout=NO;
-        annotationView.image = PNGIMAGE(@"point-2");
+        annotationView.image = PNGIMAGE(@"icon_jc_02");
         return annotationView;
-    }else if ([annotation isKindOfClass:[WarnPointAnnotation class]]){
+    }
+    else if ([annotation isKindOfClass:[UnusuallyPonitAnnotation class]]){
+        static NSString *reuseIndetifier = @"warnIndetifier";
+        BMKAnnotationView *annotationView = (BMKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
+        if (annotationView == nil)
+        {
+            annotationView = [[BMKAnnotationView alloc] initWithAnnotation:annotation
+                                                           reuseIdentifier:reuseIndetifier];
+        }
+        annotationView.canShowCallout=NO;
+        annotationView.image = PNGIMAGE(@"icon_jc_02_1");
+        return annotationView;
+        
+    }
+    else if ([annotation isKindOfClass:[WarnPointAnnotation class]]){
         static NSString *reuseIndetifier = @"warnIndetifier";
         BMKAnnotationView *annotationView = (BMKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
         if (annotationView == nil)

@@ -41,13 +41,11 @@ BMKMapManager* _mapManager;
     //MSP 的 IP 端口配置
     [[MCUVmsNetSDK shareInstance] configMspWithAddress:MSP_ADDRESS port:MSP_PORT];
     //登录接口
-    [[MCUVmsNetSDK shareInstance] loginMspWithUsername:MSP_USERNAME password:MSP_PASSWORD success:^(id object) {
+    [[MCUVmsNetSDK shareInstance] loginMspWithUsername:MSP_USERNAME password:[MSP_PASSWORD md5String] success:^(id object) {
         
     } failure:^(NSError *error) {
         
     }];
-
-    
     // 注册 APNs
     [self registerRemoteNotification];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

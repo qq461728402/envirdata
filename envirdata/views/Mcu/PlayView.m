@@ -14,7 +14,8 @@
     UIImageView                 *g_ptzDirectionImageView;/**<手势图片*/
     UIImageView                 *g_ptzZoomImageView;/**< 手势图片*/
     
-    UIPanGestureRecognizer      *g_panGestureRecognizer;/**< 滑动手势*/
+    
+//    UIPanGestureRecognizer      *g_panGestureRecognizer;/**< 滑动手势*/
     UIPinchGestureRecognizer    *g_pinchGestureRecognizer;/**< 捏合手势*/
     
     CGPoint _gestureStartPoint;
@@ -26,9 +27,9 @@
     int _ptzDirection;
 }
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
         g_playScrollView = [[UIScrollView alloc]init];
         g_playScrollView.minimumZoomScale = 1.0;
@@ -38,36 +39,35 @@
         g_playScrollView.showsVerticalScrollIndicator = NO;
         g_playScrollView.delegate = self;
         [self addSubview:g_playScrollView];
-        
         _playView= [[UIView alloc]init];
         [_playView setBackgroundColor:[UIColor blackColor]];
         [g_playScrollView addSubview:_playView];
-        
-        // 添加滑动手势识别器
-        g_panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureHandle:)];
-        g_panGestureRecognizer.maximumNumberOfTouches = 1;
-        
+        //播放暂停
+       
+    
         // 添加捏合手势识别器
         g_pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGestureHandle:)];
-        
         g_ptzDirectionImageView = [[UIImageView alloc] init];
         g_ptzDirectionImageView.bounds = CGRectMake(0, 0, 55, 55);
         [self addSubview:g_ptzDirectionImageView];
         
         g_ptzZoomImageView = [[UIImageView alloc] init];
         [self addSubview:g_ptzZoomImageView];
+        
+        g_playScrollView.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
+        _playView.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
+        [g_playScrollView setZoomScale:1.0];
+        
+        g_playScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.frame),0);
+        
+
     }
     return self;
 }
-
 - (void)layoutSubviews {
     [super layoutSubviews];
-    g_playScrollView.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
-    _playView.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
-    [g_playScrollView setZoomScale:1.0];
-    g_playScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.frame),0);
+    
 }
-
 #pragma mark - Custom delegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
     return _playView;
@@ -78,6 +78,37 @@
 }
 
 #pragma mark - Event Response
+-(void)ptzDirection:(UIButton*)button{
+    int ptzDirection=0;
+    if (button.tag==1000) {//left
+        ptzDirection =PTZ_COMMAND_PAN_LEFT;
+    }else if (button.tag==1001){//top
+        ptzDirection =PTZ_COMMAND_TILT_UP;
+    }else if (button.tag==1002){//right
+        ptzDirection =PTZ_COMMAND_PAN_RIGHT;
+    }else if (button.tag==1003){//bottom
+        ptzDirection =PTZ_COMMAND_TILT_DOWN;
+    }
+    if (ptzDirection!=0) {
+        [self ptzOperation:ptzDirection stop:YES end:NO];
+        double delayInSeconds = 3.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            //执行事件    
+            [self ptzOperation:ptzDirection stop:YES end:YES];
+        });
+    }
+}
+-(void)replayVodio{
+    if (self.delegate) {
+        [self.delegate playrefreshRealPlay];
+    }
+}
+
+
+
+
+
 //滑动手势
 - (void)panGestureHandle:(UIPanGestureRecognizer *)panGesture
 {
@@ -241,25 +272,7 @@
 
 // 根据云台操作命令,设置播放视图上的自定义播放动画状态
 - (void)ptzOperation:(int)ptzCommand stop:(BOOL)stop end:(BOOL)end {
-    if (ptzCommand == PTZ_COMMAND_TILT_UP ||
-        ptzCommand == PTZ_COMMAND_TILT_DOWN	||
-        ptzCommand == PTZ_COMMAND_PAN_LEFT ||
-        ptzCommand == PTZ_COMMAND_PAN_RIGHT	||
-        ptzCommand == PTZ_COMMAND_UP_LEFT ||
-        ptzCommand == PTZ_COMMAND_UP_RIGHT ||
-        ptzCommand == PTZ_COMMAND_DOWN_LEFT	||
-        ptzCommand == PTZ_COMMAND_DOWN_RIGHT)
-    {
-        if (stop)
-        {
-            [self stopPtzDirectionAnimation];
-        }
-        else
-        {
-            [self startPtzDirectionAnimation:ptzCommand];
-        }
-    }
-    else if (ptzCommand == PTZ_COMMAND_ZOOM_IN || ptzCommand == PTZ_COMMAND_ZOOM_OUT)
+     if (ptzCommand == PTZ_COMMAND_ZOOM_IN || ptzCommand == PTZ_COMMAND_ZOOM_OUT)
     {
         if (stop)
         {
@@ -273,27 +286,16 @@
     [self.delegate ptzOperationInControl:ptzCommand stop:stop end:end];
     
     if (end && !stop)
-    {// 先关闭动画
+    {
+        // 先关闭动画
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, kAutoStopInterval * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            if (ptzCommand == PTZ_COMMAND_TILT_UP ||
-                ptzCommand == PTZ_COMMAND_TILT_DOWN	||
-                ptzCommand == PTZ_COMMAND_PAN_LEFT ||
-                ptzCommand == PTZ_COMMAND_PAN_RIGHT	||
-                ptzCommand == PTZ_COMMAND_UP_LEFT ||
-                ptzCommand == PTZ_COMMAND_UP_RIGHT ||
-                ptzCommand == PTZ_COMMAND_DOWN_LEFT	||
-                ptzCommand == PTZ_COMMAND_DOWN_RIGHT)
-            {
-                [self stopPtzDirectionAnimation];
-            }
-            else if (ptzCommand == PTZ_COMMAND_ZOOM_IN || ptzCommand == PTZ_COMMAND_ZOOM_OUT)
+            if (ptzCommand == PTZ_COMMAND_ZOOM_IN || ptzCommand == PTZ_COMMAND_ZOOM_OUT)
             {
                 [self stopPtzZoomAnimation];
             }
         });
     }
 }
-
 
 // 捏合手势动画
 - (void)startPtzZoomAnimation:(BOOL)zoomIn
@@ -302,11 +304,9 @@
     {
         [g_ptzZoomImageView stopAnimating];
     }
-    
     UIImage *image1 = [UIImage imageNamed:(zoomIn ? @"focus_amplify_1.png" : @"focus_lessen_1.png")];
     UIImage *image2 = [UIImage imageNamed:(zoomIn ? @"focus_amplify_2.png" : @"focus_lessen_2.png")];
     UIImage *image3 = [UIImage imageNamed:(zoomIn ? @"focus_amplify_3.png" : @"focus_lessen_3.png")];
-    
     g_ptzZoomImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
     g_ptzZoomImageView.animationImages = [NSArray arrayWithObjects:image1, image2, image3, image3, nil];
     g_ptzZoomImageView.animationDuration = 1.0f;
@@ -425,14 +425,20 @@
 
 - (void)setAddGesture:(BOOL)addGesture {
     if (addGesture) {
-        [_playView addGestureRecognizer:g_panGestureRecognizer];
+//        [_playView addGestureRecognizer:g_panGestureRecognizer];
         [_playView addGestureRecognizer:g_pinchGestureRecognizer];
     }else{
-        [_playView removeGestureRecognizer:g_panGestureRecognizer];
+//        [_playView removeGestureRecognizer:g_panGestureRecognizer];
         [_playView removeGestureRecognizer:g_pinchGestureRecognizer];
     }
     _addGesture = addGesture;
 }
+
+
+
+
+
+
 
 - (void)setIsPtz:(BOOL)isPtz {
     self.addGesture = isPtz;
