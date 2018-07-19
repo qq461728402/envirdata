@@ -167,4 +167,17 @@
     return result;
 }
 
+/// 百度坐标转高德坐标
++ (CLLocationCoordinate2D)GCJ02FromBD09:(CLLocationCoordinate2D)coor
+{
+    CLLocationDegrees x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+    CLLocationDegrees x = coor.longitude - 0.0065, y = coor.latitude - 0.006;
+    CLLocationDegrees z = sqrt(x * x + y * y) - 0.00002 * sin(y * x_pi);
+    CLLocationDegrees theta = atan2(y, x) - 0.000003 * cos(x * x_pi);
+    CLLocationDegrees gg_lon = z * cos(theta);
+    CLLocationDegrees gg_lat = z * sin(theta);
+    return CLLocationCoordinate2DMake(gg_lat, gg_lon);
+}
+
+
 @end

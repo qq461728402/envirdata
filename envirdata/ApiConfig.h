@@ -13,6 +13,7 @@
 
 #define API_CHECKUSER @"api/checkUser"  //登录接口
 #define API_BINDDEVICE @"api/bindDevice" //绑定设备号
+#define FILE_UPLOADING @"uploadImg" //图片上传
 
 //空气质量
 #define API_GETNEARESTGKZREAL @"api/getNearestGkzReal" //最近国控站实况接口
@@ -35,6 +36,14 @@
 
 //管理协同
 #define API_GETMONITORTASKTREE3  @"api/getMonitorTaskTree3"
+#define API_GETMONITORTASKLIST @"api/getMonitorTaskList" //任务列表
+#define API_GETMONITORUSER @"api/getMonitorUser" //获取人员信息
+#define API_GETREGIONTASKLIST @"api/getRegionTaskList" //区域内任务列表  //regionid
+#define API_ADDMONITORTASK @"api/addMonitorTask"//添加任务
+#define API_UPDMONITORTASK @"api/updMonitorTask" //处置任务
+#define API_FINISHTASK @"api/finishTask"//任务销号处理
+//GPS轨迹
+
 
 
 #endif /* ApiConfig_h */

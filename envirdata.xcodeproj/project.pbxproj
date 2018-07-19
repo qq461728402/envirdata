@@ -42,6 +42,16 @@
 		E134649520F50062006E4144 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649420F50062006E4144 /* Foundation.framework */; };
 		E134649720F50664006E4144 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134649620F50664006E4144 /* MapKit.framework */; };
 		E13AD74820FCED450046A499 /* DealPalyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E13AD74720FCED450046A499 /* DealPalyView.m */; };
+		E142B1FD20FF0B980033BFF4 /* EnvChooseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E142B1FC20FF0B980033BFF4 /* EnvChooseListVC.m */; };
+		E146D9D220FE0785004227AA /* EnvPersonInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E146D9D120FE0785004227AA /* EnvPersonInfoVC.m */; };
+		E146D9D520FE07AD004227AA /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E146D9D420FE07AD004227AA /* AddTaskViewController.m */; };
+		E146D9D820FE07C5004227AA /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E146D9D720FE07C5004227AA /* TaskListViewController.m */; };
+		E146D9DB20FE0C46004227AA /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E146D9DA20FE0C46004227AA /* TaskCell.m */; };
+		E146D9DE20FE0EAB004227AA /* GegionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E146D9DD20FE0EAB004227AA /* GegionVC.m */; };
+		E146D9E120FE28C4004227AA /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E146D9E020FE28C4004227AA /* TaskModel.m */; };
+		E146D9E420FE3328004227AA /* MonitorUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E146D9E320FE3328004227AA /* MonitorUserModel.m */; };
+		E146D9E820FE3D4E004227AA /* CTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E146D9E720FE3D4E004227AA /* CTextField.m */; };
+		E146D9EC20FE3E51004227AA /* UITextViewPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = E146D9EB20FE3E51004227AA /* UITextViewPlaceHolder.m */; };
 		E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0720F77FAC00872ADD /* ForecastAreaModel.m */; };
 		E148BD0B20F78D0F00872ADD /* EnvAreaLevelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0A20F78D0F00872ADD /* EnvAreaLevelVC.m */; };
 		E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0D20F7927000872ADD /* SliderSwitchView.m */; };
@@ -50,6 +60,25 @@
 		E167B3F820FB853900FD7F75 /* TaskTreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E167B3F720FB853900FD7F75 /* TaskTreeModel.m */; };
 		E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5EA20F88116007E045A /* AreaLevelCell.m */; };
 		E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5ED20F8A420007E045A /* EnvAreaLevelHistoryVC.m */; };
+		E17DA5B520FDA0B800FA4222 /* ACell.m in Sources */ = {isa = PBXBuildFile; fileRef = E17DA5B420FDA0B800FA4222 /* ACell.m */; };
+		E17DA5B820FDA0CA00FA4222 /* PCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E17DA5B720FDA0CA00FA4222 /* PCell.m */; };
+		E17DA5D020FDDD3300FA4222 /* AddImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E17DA5BB20FDDD3300FA4222 /* AddImageCell.m */; };
+		E17DA5D120FDDD3300FA4222 /* ImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E17DA5BD20FDDD3300FA4222 /* ImgCell.m */; };
+		E17DA5D220FDDD3300FA4222 /* PictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = E17DA5BF20FDDD3300FA4222 /* PictureView.m */; };
+		E17DA5D320FDDD3300FA4222 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5C220FDDD3300FA4222 /* 2.png */; };
+		E17DA5D420FDDD3300FA4222 /* AssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5C320FDDD3300FA4222 /* AssetsPickerChecked@2x.png */; };
+		E17DA5D520FDDD3300FA4222 /* AssetsPickerChecked~iOS6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5C420FDDD3300FA4222 /* AssetsPickerChecked~iOS6@2x.png */; };
+		E17DA5D620FDDD3300FA4222 /* AssetsPickerLocked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5C520FDDD3300FA4222 /* AssetsPickerLocked@2x.png */; };
+		E17DA5D720FDDD3300FA4222 /* AssetsPickerVideo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5C620FDDD3300FA4222 /* AssetsPickerVideo@2x.png */; };
+		E17DA5D820FDDD3300FA4222 /* complete.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5C720FDDD3300FA4222 /* complete.png */; };
+		E17DA5D920FDDD3300FA4222 /* delete-circular.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5C820FDDD3300FA4222 /* delete-circular.png */; };
+		E17DA5DA20FDDD3300FA4222 /* delete-circular1.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5C920FDDD3300FA4222 /* delete-circular1.png */; };
+		E17DA5DB20FDDD3300FA4222 /* fanhui.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5CA20FDDD3300FA4222 /* fanhui.png */; };
+		E17DA5DC20FDDD3300FA4222 /* No.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5CB20FDDD3300FA4222 /* No.png */; };
+		E17DA5DD20FDDD3300FA4222 /* OK.png in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5CC20FDDD3300FA4222 /* OK.png */; };
+		E17DA5DE20FDDD3300FA4222 /* ZYQAssetPicker.Bundle in Resources */ = {isa = PBXBuildFile; fileRef = E17DA5CD20FDDD3300FA4222 /* ZYQAssetPicker.Bundle */; };
+		E17DA5DF20FDDD3300FA4222 /* ZYQAssetPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E17DA5CF20FDDD3300FA4222 /* ZYQAssetPickerController.m */; };
+		E17DA5E120FDDD9C00FA4222 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17DA5E020FDDD9C00FA4222 /* AssetsLibrary.framework */; };
 		E18173F420F98ABF00604652 /* EnvOnlienListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E18173F320F98ABF00604652 /* EnvOnlienListVC.m */; };
 		E18173F720F98AD900604652 /* EnvOnlineMapVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = E18173F620F98AD900604652 /* EnvOnlineMapVC.mm */; };
 		E18173FA20F996E400604652 /* OnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18173F920F996E400604652 /* OnlineCell.m */; };
@@ -88,6 +117,10 @@
 		E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41DD20F73276002B4047 /* NearestGkzRealModel.m */; };
 		E1BC41E120F74F3D002B4047 /* NearestAreaRealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41E020F74F3D002B4047 /* NearestAreaRealModel.m */; };
 		E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */; };
+		E1FCBD9420FF823200DCBE13 /* TaskDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FCBD9320FF823200DCBE13 /* TaskDetailVC.m */; };
+		E1FCBD9720FF9F3B00DCBE13 /* GegionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FCBD9620FF9F3B00DCBE13 /* GegionModel.m */; };
+		E1FCBD9A20FF9F7B00DCBE13 /* GegionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FCBD9920FF9F7B00DCBE13 /* GegionCell.m */; };
+		E1FCBD9D20FFA13700DCBE13 /* GegionDetialVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FCBD9C20FFA13700DCBE13 /* GegionDetialVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +175,26 @@
 		E134649820F50674006E4144 /* envirdata.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = envirdata.entitlements; sourceTree = "<group>"; };
 		E13AD74620FCED450046A499 /* DealPalyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealPalyView.h; sourceTree = "<group>"; };
 		E13AD74720FCED450046A499 /* DealPalyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealPalyView.m; sourceTree = "<group>"; };
+		E142B1FB20FF0B980033BFF4 /* EnvChooseListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvChooseListVC.h; path = Management/EnvChooseListVC.h; sourceTree = "<group>"; };
+		E142B1FC20FF0B980033BFF4 /* EnvChooseListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvChooseListVC.m; path = Management/EnvChooseListVC.m; sourceTree = "<group>"; };
+		E146D9D020FE0785004227AA /* EnvPersonInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvPersonInfoVC.h; path = Management/EnvPersonInfoVC.h; sourceTree = "<group>"; };
+		E146D9D120FE0785004227AA /* EnvPersonInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvPersonInfoVC.m; path = Management/EnvPersonInfoVC.m; sourceTree = "<group>"; };
+		E146D9D320FE07AD004227AA /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTaskViewController.h; path = Management/AddTaskViewController.h; sourceTree = "<group>"; };
+		E146D9D420FE07AD004227AA /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTaskViewController.m; path = Management/AddTaskViewController.m; sourceTree = "<group>"; };
+		E146D9D620FE07C5004227AA /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskListViewController.h; path = Management/TaskListViewController.h; sourceTree = "<group>"; };
+		E146D9D720FE07C5004227AA /* TaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskListViewController.m; path = Management/TaskListViewController.m; sourceTree = "<group>"; };
+		E146D9D920FE0C46004227AA /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCell.h; path = cells/TaskCell.h; sourceTree = "<group>"; };
+		E146D9DA20FE0C46004227AA /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCell.m; path = cells/TaskCell.m; sourceTree = "<group>"; };
+		E146D9DC20FE0EAB004227AA /* GegionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GegionVC.h; path = Management/GegionVC.h; sourceTree = "<group>"; };
+		E146D9DD20FE0EAB004227AA /* GegionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GegionVC.m; path = Management/GegionVC.m; sourceTree = "<group>"; };
+		E146D9DF20FE28C4004227AA /* TaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
+		E146D9E020FE28C4004227AA /* TaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
+		E146D9E220FE3328004227AA /* MonitorUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorUserModel.h; sourceTree = "<group>"; };
+		E146D9E320FE3328004227AA /* MonitorUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonitorUserModel.m; sourceTree = "<group>"; };
+		E146D9E620FE3D4E004227AA /* CTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTextField.h; sourceTree = "<group>"; };
+		E146D9E720FE3D4E004227AA /* CTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTextField.m; sourceTree = "<group>"; };
+		E146D9EA20FE3E51004227AA /* UITextViewPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextViewPlaceHolder.h; sourceTree = "<group>"; };
+		E146D9EB20FE3E51004227AA /* UITextViewPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextViewPlaceHolder.m; sourceTree = "<group>"; };
 		E148BD0620F77FAC00872ADD /* ForecastAreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastAreaModel.h; sourceTree = "<group>"; };
 		E148BD0720F77FAC00872ADD /* ForecastAreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastAreaModel.m; sourceTree = "<group>"; };
 		E148BD0920F78D0F00872ADD /* EnvAreaLevelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvAreaLevelVC.h; path = AirQuality/EnvAreaLevelVC.h; sourceTree = "<group>"; };
@@ -158,6 +211,31 @@
 		E16EE5EA20F88116007E045A /* AreaLevelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AreaLevelCell.m; path = cells/AreaLevelCell.m; sourceTree = "<group>"; };
 		E16EE5EC20F8A420007E045A /* EnvAreaLevelHistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvAreaLevelHistoryVC.h; path = AirQuality/EnvAreaLevelHistoryVC.h; sourceTree = "<group>"; };
 		E16EE5ED20F8A420007E045A /* EnvAreaLevelHistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvAreaLevelHistoryVC.m; path = AirQuality/EnvAreaLevelHistoryVC.m; sourceTree = "<group>"; };
+		E17DA5B320FDA0B700FA4222 /* ACell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACell.h; path = cells/ACell.h; sourceTree = "<group>"; };
+		E17DA5B420FDA0B800FA4222 /* ACell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACell.m; path = cells/ACell.m; sourceTree = "<group>"; };
+		E17DA5B620FDA0CA00FA4222 /* PCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PCell.h; path = cells/PCell.h; sourceTree = "<group>"; };
+		E17DA5B720FDA0CA00FA4222 /* PCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PCell.m; path = cells/PCell.m; sourceTree = "<group>"; };
+		E17DA5BA20FDDD3300FA4222 /* AddImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddImageCell.h; sourceTree = "<group>"; };
+		E17DA5BB20FDDD3300FA4222 /* AddImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddImageCell.m; sourceTree = "<group>"; };
+		E17DA5BC20FDDD3300FA4222 /* ImgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgCell.h; sourceTree = "<group>"; };
+		E17DA5BD20FDDD3300FA4222 /* ImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgCell.m; sourceTree = "<group>"; };
+		E17DA5BE20FDDD3300FA4222 /* PictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureView.h; sourceTree = "<group>"; };
+		E17DA5BF20FDDD3300FA4222 /* PictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureView.m; sourceTree = "<group>"; };
+		E17DA5C220FDDD3300FA4222 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		E17DA5C320FDDD3300FA4222 /* AssetsPickerChecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AssetsPickerChecked@2x.png"; sourceTree = "<group>"; };
+		E17DA5C420FDDD3300FA4222 /* AssetsPickerChecked~iOS6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AssetsPickerChecked~iOS6@2x.png"; sourceTree = "<group>"; };
+		E17DA5C520FDDD3300FA4222 /* AssetsPickerLocked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AssetsPickerLocked@2x.png"; sourceTree = "<group>"; };
+		E17DA5C620FDDD3300FA4222 /* AssetsPickerVideo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AssetsPickerVideo@2x.png"; sourceTree = "<group>"; };
+		E17DA5C720FDDD3300FA4222 /* complete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = complete.png; sourceTree = "<group>"; };
+		E17DA5C820FDDD3300FA4222 /* delete-circular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete-circular.png"; sourceTree = "<group>"; };
+		E17DA5C920FDDD3300FA4222 /* delete-circular1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete-circular1.png"; sourceTree = "<group>"; };
+		E17DA5CA20FDDD3300FA4222 /* fanhui.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fanhui.png; sourceTree = "<group>"; };
+		E17DA5CB20FDDD3300FA4222 /* No.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No.png; sourceTree = "<group>"; };
+		E17DA5CC20FDDD3300FA4222 /* OK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OK.png; sourceTree = "<group>"; };
+		E17DA5CD20FDDD3300FA4222 /* ZYQAssetPicker.Bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZYQAssetPicker.Bundle; sourceTree = "<group>"; };
+		E17DA5CE20FDDD3300FA4222 /* ZYQAssetPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYQAssetPickerController.h; sourceTree = "<group>"; };
+		E17DA5CF20FDDD3300FA4222 /* ZYQAssetPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYQAssetPickerController.m; sourceTree = "<group>"; };
+		E17DA5E020FDDD9C00FA4222 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		E18173F220F98ABF00604652 /* EnvOnlienListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvOnlienListVC.h; path = OnlineMonitoring/EnvOnlienListVC.h; sourceTree = "<group>"; };
 		E18173F320F98ABF00604652 /* EnvOnlienListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvOnlienListVC.m; path = OnlineMonitoring/EnvOnlienListVC.m; sourceTree = "<group>"; };
 		E18173F520F98AD900604652 /* EnvOnlineMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvOnlineMapVC.h; path = OnlineMonitoring/EnvOnlineMapVC.h; sourceTree = "<group>"; };
@@ -234,6 +312,14 @@
 		E1BC41E020F74F3D002B4047 /* NearestAreaRealModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearestAreaRealModel.m; sourceTree = "<group>"; };
 		E1D6CC7720F5B2F20023F0F0 /* EnvTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvTabBarController.h; path = TabBarController/EnvTabBarController.h; sourceTree = "<group>"; };
 		E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvTabBarController.m; path = TabBarController/EnvTabBarController.m; sourceTree = "<group>"; };
+		E1FCBD9220FF823200DCBE13 /* TaskDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskDetailVC.h; path = Management/TaskDetailVC.h; sourceTree = "<group>"; };
+		E1FCBD9320FF823200DCBE13 /* TaskDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskDetailVC.m; path = Management/TaskDetailVC.m; sourceTree = "<group>"; };
+		E1FCBD9520FF9F3B00DCBE13 /* GegionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GegionModel.h; sourceTree = "<group>"; };
+		E1FCBD9620FF9F3B00DCBE13 /* GegionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GegionModel.m; sourceTree = "<group>"; };
+		E1FCBD9820FF9F7B00DCBE13 /* GegionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GegionCell.h; path = cells/GegionCell.h; sourceTree = "<group>"; };
+		E1FCBD9920FF9F7B00DCBE13 /* GegionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GegionCell.m; path = cells/GegionCell.m; sourceTree = "<group>"; };
+		E1FCBD9B20FFA13700DCBE13 /* GegionDetialVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GegionDetialVC.h; path = Management/GegionDetialVC.h; sourceTree = "<group>"; };
+		E1FCBD9C20FFA13700DCBE13 /* GegionDetialVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GegionDetialVC.m; path = Management/GegionDetialVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +327,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E17DA5E120FDDD9C00FA4222 /* AssetsLibrary.framework in Frameworks */,
 				E134590420FB64B700D6B549 /* libc++.tbd in Frameworks */,
 				E134590220FB64AC00D6B549 /* libstdc++.tbd in Frameworks */,
 				E134590020FB64A200D6B549 /* libstdc++.6.0.9.tbd in Frameworks */,
@@ -271,6 +358,7 @@
 		BC03B9AAE6C1B1C6EA3E8BA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E17DA5E020FDDD9C00FA4222 /* AssetsLibrary.framework */,
 				E134590320FB64B700D6B549 /* libc++.tbd */,
 				E134590120FB64AC00D6B549 /* libstdc++.tbd */,
 				E13458FF20FB64A200D6B549 /* libstdc++.6.0.9.tbd */,
@@ -337,6 +425,20 @@
 			children = (
 				E100802C20F6223900B75514 /* EnvManagerVC.h */,
 				E100802D20F6223900B75514 /* EnvManagerVC.m */,
+				E146D9D020FE0785004227AA /* EnvPersonInfoVC.h */,
+				E146D9D120FE0785004227AA /* EnvPersonInfoVC.m */,
+				E146D9D320FE07AD004227AA /* AddTaskViewController.h */,
+				E146D9D420FE07AD004227AA /* AddTaskViewController.m */,
+				E146D9D620FE07C5004227AA /* TaskListViewController.h */,
+				E146D9D720FE07C5004227AA /* TaskListViewController.m */,
+				E146D9DC20FE0EAB004227AA /* GegionVC.h */,
+				E146D9DD20FE0EAB004227AA /* GegionVC.m */,
+				E142B1FB20FF0B980033BFF4 /* EnvChooseListVC.h */,
+				E142B1FC20FF0B980033BFF4 /* EnvChooseListVC.m */,
+				E1FCBD9220FF823200DCBE13 /* TaskDetailVC.h */,
+				E1FCBD9320FF823200DCBE13 /* TaskDetailVC.m */,
+				E1FCBD9B20FFA13700DCBE13 /* GegionDetialVC.h */,
+				E1FCBD9C20FFA13700DCBE13 /* GegionDetialVC.m */,
 			);
 			name = Management;
 			sourceTree = "<group>";
@@ -395,6 +497,26 @@
 			path = views/Mcu;
 			sourceTree = "<group>";
 		};
+		E146D9E520FE3D4E004227AA /* CTextField */ = {
+			isa = PBXGroup;
+			children = (
+				E146D9E620FE3D4E004227AA /* CTextField.h */,
+				E146D9E720FE3D4E004227AA /* CTextField.m */,
+			);
+			name = CTextField;
+			path = util/CTextField;
+			sourceTree = "<group>";
+		};
+		E146D9E920FE3E51004227AA /* TextViewPlaceHolder */ = {
+			isa = PBXGroup;
+			children = (
+				E146D9EA20FE3E51004227AA /* UITextViewPlaceHolder.h */,
+				E146D9EB20FE3E51004227AA /* UITextViewPlaceHolder.m */,
+			);
+			name = TextViewPlaceHolder;
+			path = util/TextViewPlaceHolder;
+			sourceTree = "<group>";
+		};
 		E16EE5E820F880EA007E045A /* cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,8 +534,60 @@
 				E188A53620FB254300B68701 /* HistoryViolationCell.m */,
 				E1ACF21820FC63450027B274 /* UnusuallyPonitAnnotation.h */,
 				E1ACF21920FC63450027B274 /* UnusuallyPonitAnnotation.m */,
+				E17DA5B320FDA0B700FA4222 /* ACell.h */,
+				E17DA5B420FDA0B800FA4222 /* ACell.m */,
+				E17DA5B620FDA0CA00FA4222 /* PCell.h */,
+				E17DA5B720FDA0CA00FA4222 /* PCell.m */,
+				E146D9D920FE0C46004227AA /* TaskCell.h */,
+				E146D9DA20FE0C46004227AA /* TaskCell.m */,
+				E1FCBD9820FF9F7B00DCBE13 /* GegionCell.h */,
+				E1FCBD9920FF9F7B00DCBE13 /* GegionCell.m */,
 			);
 			name = cells;
+			sourceTree = "<group>";
+		};
+		E17DA5B920FDDD3300FA4222 /* PictureCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E17DA5BA20FDDD3300FA4222 /* AddImageCell.h */,
+				E17DA5BB20FDDD3300FA4222 /* AddImageCell.m */,
+				E17DA5BC20FDDD3300FA4222 /* ImgCell.h */,
+				E17DA5BD20FDDD3300FA4222 /* ImgCell.m */,
+				E17DA5BE20FDDD3300FA4222 /* PictureView.h */,
+				E17DA5BF20FDDD3300FA4222 /* PictureView.m */,
+			);
+			name = PictureCollectionView;
+			path = util/PictureCollectionView;
+			sourceTree = "<group>";
+		};
+		E17DA5C020FDDD3300FA4222 /* ZYQAssetPickerController */ = {
+			isa = PBXGroup;
+			children = (
+				E17DA5C120FDDD3300FA4222 /* Images */,
+				E17DA5CD20FDDD3300FA4222 /* ZYQAssetPicker.Bundle */,
+				E17DA5CE20FDDD3300FA4222 /* ZYQAssetPickerController.h */,
+				E17DA5CF20FDDD3300FA4222 /* ZYQAssetPickerController.m */,
+			);
+			name = ZYQAssetPickerController;
+			path = util/ZYQAssetPickerController;
+			sourceTree = "<group>";
+		};
+		E17DA5C120FDDD3300FA4222 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E17DA5C220FDDD3300FA4222 /* 2.png */,
+				E17DA5C320FDDD3300FA4222 /* AssetsPickerChecked@2x.png */,
+				E17DA5C420FDDD3300FA4222 /* AssetsPickerChecked~iOS6@2x.png */,
+				E17DA5C520FDDD3300FA4222 /* AssetsPickerLocked@2x.png */,
+				E17DA5C620FDDD3300FA4222 /* AssetsPickerVideo@2x.png */,
+				E17DA5C720FDDD3300FA4222 /* complete.png */,
+				E17DA5C820FDDD3300FA4222 /* delete-circular.png */,
+				E17DA5C920FDDD3300FA4222 /* delete-circular1.png */,
+				E17DA5CA20FDDD3300FA4222 /* fanhui.png */,
+				E17DA5CB20FDDD3300FA4222 /* No.png */,
+				E17DA5CC20FDDD3300FA4222 /* OK.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		E181740B20F9D04100604652 /* PopView */ = {
@@ -450,6 +624,10 @@
 		E1AF06BC20F481A7000E93F9 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				E146D9E920FE3E51004227AA /* TextViewPlaceHolder */,
+				E146D9E520FE3D4E004227AA /* CTextField */,
+				E17DA5B920FDDD3300FA4222 /* PictureCollectionView */,
+				E17DA5C020FDDD3300FA4222 /* ZYQAssetPickerController */,
 				E134590520FB65C800D6B549 /* XmlReader */,
 				E181740B20F9D04100604652 /* PopView */,
 				E12A38CC20F8C44F00085665 /* QRadioButton */,
@@ -549,6 +727,12 @@
 		E1BC41D820F6EB30002B4047 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				E1FCBD9520FF9F3B00DCBE13 /* GegionModel.h */,
+				E1FCBD9620FF9F3B00DCBE13 /* GegionModel.m */,
+				E146D9E220FE3328004227AA /* MonitorUserModel.h */,
+				E146D9E320FE3328004227AA /* MonitorUserModel.m */,
+				E146D9DF20FE28C4004227AA /* TaskModel.h */,
+				E146D9E020FE28C4004227AA /* TaskModel.m */,
 				E167B3F620FB853900FD7F75 /* TaskTreeModel.h */,
 				E167B3F720FB853900FD7F75 /* TaskTreeModel.m */,
 				E188A53820FB26C900B68701 /* HistoryViolationPictureModel.h */,
@@ -673,13 +857,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E17DA5DE20FDDD3300FA4222 /* ZYQAssetPicker.Bundle in Resources */,
 				E12A38D720F8C44F00085665 /* radio_unchecked@2x.png in Resources */,
 				E12A38D620F8C44F00085665 /* radio_unchecked.png in Resources */,
+				E17DA5D320FDDD3300FA4222 /* 2.png in Resources */,
+				E17DA5D620FDDD3300FA4222 /* AssetsPickerLocked@2x.png in Resources */,
+				E17DA5D820FDDD3300FA4222 /* complete.png in Resources */,
 				E12A38D520F8C44F00085665 /* radio_checked@2x.png in Resources */,
+				E17DA5DA20FDDD3300FA4222 /* delete-circular1.png in Resources */,
+				E17DA5D720FDDD3300FA4222 /* AssetsPickerVideo@2x.png in Resources */,
+				E17DA5DB20FDDD3300FA4222 /* fanhui.png in Resources */,
+				E17DA5D920FDDD3300FA4222 /* delete-circular.png in Resources */,
+				E17DA5DC20FDDD3300FA4222 /* No.png in Resources */,
+				E17DA5D420FDDD3300FA4222 /* AssetsPickerChecked@2x.png in Resources */,
 				E1BA89C520EB6E3F002CD41B /* iconfont.ttf in Resources */,
 				E12A38D420F8C44F00085665 /* radio_checked.png in Resources */,
 				E1BA89B520EB1CAF002CD41B /* LaunchScreen.storyboard in Resources */,
 				E1BA89B220EB1CAF002CD41B /* Assets.xcassets in Resources */,
+				E17DA5D520FDDD3300FA4222 /* AssetsPickerChecked~iOS6@2x.png in Resources */,
+				E17DA5DD20FDDD3300FA4222 /* OK.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,10 +945,14 @@
 				E181741420FA318600604652 /* WarnPointAnnotation.m in Sources */,
 				E100803620F622AE00B75514 /* EnvPersonalCenterVC.m in Sources */,
 				E181740720F9BB3B00604652 /* PointPointAnnotation.m in Sources */,
+				E17DA5B820FDA0CA00FA4222 /* PCell.m in Sources */,
 				E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */,
 				E1BA89AD20EB1CAE002CD41B /* ViewController.m in Sources */,
+				E146D9EC20FE3E51004227AA /* UITextViewPlaceHolder.m in Sources */,
 				E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */,
 				E188A53420FB23B800B68701 /* HistoryViolationPictureVC.m in Sources */,
+				E146D9D820FE07C5004227AA /* TaskListViewController.m in Sources */,
+				E17DA5D020FDDD3300FA4222 /* AddImageCell.m in Sources */,
 				E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */,
 				E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */,
 				E134590820FB65C800D6B549 /* XMLReader.m in Sources */,
@@ -760,23 +960,32 @@
 				E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */,
 				E18173FA20F996E400604652 /* OnlineCell.m in Sources */,
 				E188A52420FAE68400B68701 /* NewUnitPicHourDataModel.m in Sources */,
+				E146D9E120FE28C4004227AA /* TaskModel.m in Sources */,
+				E17DA5D120FDDD3300FA4222 /* ImgCell.m in Sources */,
+				E146D9DE20FE0EAB004227AA /* GegionVC.m in Sources */,
 				E1BC41E120F74F3D002B4047 /* NearestAreaRealModel.m in Sources */,
 				E1BA89A720EB1CAE002CD41B /* main.m in Sources */,
 				E188A53720FB254300B68701 /* HistoryViolationCell.m in Sources */,
+				E146D9D220FE0785004227AA /* EnvPersonInfoVC.m in Sources */,
 				E18173F720F98AD900604652 /* EnvOnlineMapVC.mm in Sources */,
 				E188A52E20FAF64300B68701 /* HistoryDataMultIndexVC.m in Sources */,
 				E1BC41DB20F6EB4A002B4047 /* UserInfoModel.m in Sources */,
 				E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */,
 				E188A52B20FAEE9500B68701 /* HourDataView.m in Sources */,
+				E146D9D520FE07AD004227AA /* AddTaskViewController.m in Sources */,
+				E1FCBD9D20FFA13700DCBE13 /* GegionDetialVC.m in Sources */,
+				E1FCBD9720FF9F3B00DCBE13 /* GegionModel.m in Sources */,
 				E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */,
 				E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */,
 				E1ACF21A20FC63450027B274 /* UnusuallyPonitAnnotation.m in Sources */,
+				E17DA5DF20FDDD3300FA4222 /* ZYQAssetPickerController.m in Sources */,
 				E181740E20F9D04100604652 /* LBpopView.m in Sources */,
 				E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */,
 				E148BD0B20F78D0F00872ADD /* EnvAreaLevelVC.m in Sources */,
 				E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */,
 				E18173F420F98ABF00604652 /* EnvOnlienListVC.m in Sources */,
 				E188A52120FAE60000B68701 /* CameraInfoModel.m in Sources */,
+				E17DA5D220FDDD3300FA4222 /* PictureView.m in Sources */,
 				E134590C20FB69D900D6B549 /* PlayView.m in Sources */,
 				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
 				E181740420F9B98900604652 /* StatePointAnnotation.m in Sources */,
@@ -786,14 +995,21 @@
 				E167B3F820FB853900FD7F75 /* TaskTreeModel.m in Sources */,
 				E188A53120FB13AA00B68701 /* HistoryDataModel.m in Sources */,
 				E134649120F4F0FA006E4144 /* UIViewController+util.m in Sources */,
+				E17DA5B520FDA0B800FA4222 /* ACell.m in Sources */,
 				E188A52820FAE7E600B68701 /* ListView.m in Sources */,
 				E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */,
 				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
 				E181741720FA372C00604652 /* EnvUnitDataTimeVC.m in Sources */,
+				E142B1FD20FF0B980033BFF4 /* EnvChooseListVC.m in Sources */,
 				E100802E20F6223900B75514 /* EnvManagerVC.m in Sources */,
+				E1FCBD9A20FF9F7B00DCBE13 /* GegionCell.m in Sources */,
+				E146D9E820FE3D4E004227AA /* CTextField.m in Sources */,
 				E12A38D320F8C44F00085665 /* QRadioButton.m in Sources */,
+				E146D9DB20FE0C46004227AA /* TaskCell.m in Sources */,
 				E100802520F621A300B75514 /* EnvAirQualityVC.m in Sources */,
 				E1BC41D620F6E96E002B4047 /* SingalObj.m in Sources */,
+				E1FCBD9420FF823200DCBE13 /* TaskDetailVC.m in Sources */,
+				E146D9E420FE3328004227AA /* MonitorUserModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,7 +1134,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -943,7 +1159,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
 				PRODUCT_NAME = "$(TARGET_NAME)";

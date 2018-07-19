@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "IQKeyboardManager.h"
 #import "SVProgressHUD.h"
-
+#import "BMKLocation.h"
 static NSString const *AQI_NUM[8] = {@"0",@"50",@"100",@"150",@"200",@"300",@"400",@"500"};
 @interface ConfigObj : NSObject
 +(void)configObj;
@@ -24,5 +24,7 @@ static NSString const *AQI_NUM[8] = {@"0",@"50",@"100",@"150",@"200",@"300",@"40
 //根据等级获取颜色值
 +(UIColor*)getColorByLevel:(int)level;
 
+/// 百度坐标转高德坐标
++ (CLLocationCoordinate2D)GCJ02FromBD09:(CLLocationCoordinate2D)coor;
 
 @end

@@ -15,6 +15,7 @@
 #import "HistoryViolationPictureVC.h"
 #import "GKPhotoBrowser.h"
 #import "GKCover.h"
+#import "AddTaskViewController.h"
 //海康威视
 #import "Mcu_sdk/RealPlayManager.h"
 #import "Mcu_sdk/RealPlayManagerEx.h"
@@ -108,8 +109,7 @@ static dispatch_queue_t video_intercom_queue() {
     [mainScr addSubview:hourView];
     
     //创建视频
-    g_playView = [[PlayView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
-//    g_playView.delegate = self;
+    g_playView = [[PlayView alloc]initWithFrame:CGRectMake(SCALE(10), 0, SCREEN_WIDTH-SCALE(20), SCALE(200))];
     g_playView.hidden=YES;
     [g_playView setBackgroundColor:[UIColor blackColor]];
     [mainScr addSubview:g_playView];
@@ -117,7 +117,7 @@ static dispatch_queue_t video_intercom_queue() {
     deal_playView =[[DealPalyView alloc]initWithFrame:g_playView.frame];
     deal_playView.delegate=self;
     deal_playView.hidden=YES;
-    [deal_playView setBackgroundColor:[UIColor blackColor]];
+    [deal_playView setBackgroundColor:[UIColor clearColor]];
     [mainScr addSubview:deal_playView];
     
     g_activity = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -562,6 +562,18 @@ static dispatch_queue_t video_intercom_queue() {
         NSLog(@"截图成功，图片路径:%@",captureInfo.strCapturePath);
         NSData * data = [NSData dataWithContentsOfFile:captureInfo.strCapturePath];
         UIImage *image =[UIImage imageWithData:data];
+        WEAKSELF
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选择操作" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"发起任务" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            AddTaskViewController *addTaskVc=[[AddTaskViewController alloc]init];
+            addTaskVc.title=@"发起任务";
+            addTaskVc.kind=@"1";
+            addTaskVc.pricrAry=[NSMutableArray arrayWithObject:image];
+            [weakSelf.navigationController pushViewController:addTaskVc animated:YES];
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"添加站点警告" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
     } else {
         NSLog(@"截图失败");
     }

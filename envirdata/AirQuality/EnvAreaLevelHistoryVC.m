@@ -48,7 +48,7 @@
     qradio1.tag=1001;
     [qradio1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     qradio1.frame=CGRectMake(qradio.right+SCALE(10), SCALE(5), 40, SCALE(35));
-    [qradio1 setTitle:@"月" forState:UIControlStateNormal];
+    [qradio1 setTitle:@"周" forState:UIControlStateNormal];
     qradio1.titleLabel.font=Font(14);
     [headerView addSubview:qradio1];
     
@@ -56,7 +56,7 @@
     qradio2.tag=1002;
     [qradio2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     qradio2.frame=CGRectMake(qradio1.right+SCALE(10), SCALE(5), 40, SCALE(35));
-    [qradio2 setTitle:@"年" forState:UIControlStateNormal];
+    [qradio2 setTitle:@"月" forState:UIControlStateNormal];
     qradio2.titleLabel.font=Font(14);
     [headerView addSubview:qradio2];
     

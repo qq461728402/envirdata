@@ -21,4 +21,5 @@
 @property (nonatomic, strong) NSNumber * todonum;
 @property (nonatomic, strong) NSMutableArray *chlidren;//chlidren
 @property (nonatomic, assign) BOOL isExpanded;//是否打开
+@property (nonatomic, assign) int creatLevle;
 @end

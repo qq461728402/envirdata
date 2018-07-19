@@ -473,9 +473,9 @@
     //设置delegate
     _locationManager.delegate = self;
     //设置返回位置的坐标系类型
-    _locationManager.coordinateType = BMKLocationCoordinateTypeBMK09LL;
-    //设置距离过滤参数
-    _locationManager.distanceFilter = kCLDistanceFilterNone;
+//    _locationManager.coordinateType = BMKLocationCoordinateTypeBMK09LL;
+    //设置距离过滤参数（M）
+    _locationManager.distanceFilter = 10;
     //设置预期精度参数
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     //设置应用位置类型

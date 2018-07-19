@@ -32,10 +32,17 @@
     _islink=islink;
     if (islink==YES) {
         if ([self.valuelb.text isNotBlank]) {
-            NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",self.valuelb.text];
-            UIWebView *callWebview = [[UIWebView alloc] init];
-            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
-            [self addSubview:callWebview];
+            NSMutableAttributedString *valueAttri=[[NSMutableAttributedString alloc]initWithString:self.valuelb.text];
+            [valueAttri addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, self.valuelb.text.length)];
+            [valueAttri addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, self.valuelb.text.length)];
+            [self.valuelb setAttributedText:valueAttri];
+            self.valuelb.userInteractionEnabled=YES;
+            [self.valuelb bk_whenTapped:^{
+                NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",self.valuelb.text];
+                UIWebView *callWebview = [[UIWebView alloc] init];
+                [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+                [self addSubview:callWebview];
+            }];
         }
     }
 }
