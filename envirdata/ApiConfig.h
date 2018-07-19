@@ -43,7 +43,7 @@
 #define API_UPDMONITORTASK @"api/updMonitorTask" //处置任务
 #define API_FINISHTASK @"api/finishTask"//任务销号处理
 //GPS轨迹
-
-
-
+#define API_GETTRACKID @"api/getTrackId"//请求轨迹ID
+#define API_APPPIONT @"api/addPoints" //上传轨迹点
+#define API_GETTRACKLIST @"api/getTrackList" //指定日期的轨迹列表
 #endif /* ApiConfig_h */

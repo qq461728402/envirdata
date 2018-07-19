@@ -12,6 +12,7 @@
 @interface SingalObj : NSObject
 +(SingalObj*)defaultManager;
 @property (nonatomic,strong)UserInfoModel *userInfoModel;
+@property (nonatomic,strong)NSString *trackid;//保存轨迹ID
 @property (nonatomic,strong)UINavigationController *rootNav;
 @property (nonatomic,strong)CLLocation *userLocation;
 @end

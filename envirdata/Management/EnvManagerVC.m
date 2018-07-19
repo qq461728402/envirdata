@@ -14,6 +14,7 @@
 #import "GegionVC.h"
 #import "EnvPersonInfoVC.h"
 #import "AddTaskViewController.h"
+#import "RailLineMapVC.h"
 @interface EnvManagerVC ()<UITableViewDelegate,UITableViewDataSource,ACellDelegate,PCellDelegate>
 @property (nonatomic,strong)NSMutableArray *assemblyAry;
 @property (nonatomic,strong)NSMutableArray *dataAry;
@@ -117,10 +118,15 @@
     [wdgjbtn bootstrapNoborderStyle:[UIColor clearColor] titleColor:[UIColor colorWithRGB:0x2e4057] andbtnFont:Font(14)];
     ViewBorderRadius(wdgjbtn, 4, 1, COLOR_TOP);
     [wdgjbtn setTitle:@"我的轨迹" forState:UIControlStateNormal];
+    [wdgjbtn bk_addEventHandler:^(id sender) {
+        RailLineMapVC *railLineMap =[[RailLineMapVC alloc]init];
+        railLineMap.title=@"我的轨迹";
+        railLineMap.userId=[[SingalObj defaultManager].userInfoModel.userid stringValue];
+        UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
+        [nav pushViewController:railLineMap animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:wdgjbtn];
-    
     wdgjbtn.centerX=SCREEN_WIDTH/8.0*5;
-    
     UIButton *xzrwbtn=[UIButton buttonWithType:UIButtonTypeCustom];
     xzrwbtn.frame=CGRectMake(0, 10, 75, 30);
     [xzrwbtn bootstrapNoborderStyle:[UIColor clearColor] titleColor:[UIColor colorWithRGB:0x2e4057] andbtnFont:Font(14)];

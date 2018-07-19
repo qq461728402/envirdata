@@ -25,7 +25,7 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"failure--%@",error);
-        [SVProgressHUD showInfoWithStatus:@"加载错误"];
+//        [SVProgressHUD showInfoWithStatus:@"加载错误"];
         completionBlock(nil);
     }];
 }
@@ -47,10 +47,25 @@
         
         NSData *data = error.userInfo[@"com.alamofire.serialization.response.error.data"] ;
         NSString *errorStr = [[ NSString alloc ] initWithData:data encoding:NSUTF8StringEncoding];
-    
         NSLog(@"failure--%@",errorStr);
-        
-        [SVProgressHUD showInfoWithStatus:@"加载错误"];
+//        [SVProgressHUD showInfoWithStatus:@"加载错误"];
+    }];
+}
+-(void)networkPostAll:(NSString*)url parameter:(NSDictionary*)parameter progresHudText:(NSString*)hudText completionBlock:(void (^)(id rep))completionBlock{
+    if (hudText!=nil) {
+        [SVProgressHUD showWithStatus:hudText];
+    }
+    NSDictionary * parameterdic = @{@"param":[parameter mj_JSONString]};
+    [[AFAppDotNetAPIClient shareClient] POST:url parameters: parameterdic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
+        NSLog(@"%@",[responseObject mj_JSONString]);
+        completionBlock(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"failure--%@",error);
+        NSData *data = error.userInfo[@"com.alamofire.serialization.response.error.data"] ;
+        NSString *errorStr = [[ NSString alloc ] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"failure--%@",errorStr);
+//        [SVProgressHUD showInfoWithStatus:@"加载错误"];
     }];
 }
 //只支持单张图片上传

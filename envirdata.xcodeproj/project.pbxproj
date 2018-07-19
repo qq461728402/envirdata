@@ -104,6 +104,7 @@
 		E188A53A20FB26C900B68701 /* HistoryViolationPictureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */; };
 		E1ACF21A20FC63450027B274 /* UnusuallyPonitAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1ACF21920FC63450027B274 /* UnusuallyPonitAnnotation.m */; };
 		E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AF06C320F4A76B000E93F9 /* MBProgressHUD+PD.m */; };
+		E1B3AAFA210079A700A2FE1E /* RailLineMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B3AAF9210079A700A2FE1E /* RailLineMapVC.m */; };
 		E1BA89A720EB1CAE002CD41B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A620EB1CAE002CD41B /* main.m */; };
 		E1BA89AA20EB1CAE002CD41B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89A920EB1CAE002CD41B /* AppDelegate.m */; };
 		E1BA89AD20EB1CAE002CD41B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA89AC20EB1CAE002CD41B /* ViewController.m */; };
@@ -288,6 +289,8 @@
 		E1AF06C120F483C9000E93F9 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E1AF06C220F4A76B000E93F9 /* MBProgressHUD+PD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+PD.h"; path = "util/MBProgressHUD+PD.h"; sourceTree = "<group>"; };
 		E1AF06C320F4A76B000E93F9 /* MBProgressHUD+PD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+PD.m"; path = "util/MBProgressHUD+PD.m"; sourceTree = "<group>"; };
+		E1B3AAF8210079A700A2FE1E /* RailLineMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RailLineMapVC.h; path = Management/RailLineMapVC.h; sourceTree = "<group>"; };
+		E1B3AAF9210079A700A2FE1E /* RailLineMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RailLineMapVC.m; path = Management/RailLineMapVC.m; sourceTree = "<group>"; };
 		E1BA89A220EB1CAE002CD41B /* envirdata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = envirdata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BA89A620EB1CAE002CD41B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E1BA89A820EB1CAE002CD41B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -439,6 +442,8 @@
 				E1FCBD9320FF823200DCBE13 /* TaskDetailVC.m */,
 				E1FCBD9B20FFA13700DCBE13 /* GegionDetialVC.h */,
 				E1FCBD9C20FFA13700DCBE13 /* GegionDetialVC.m */,
+				E1B3AAF8210079A700A2FE1E /* RailLineMapVC.h */,
+				E1B3AAF9210079A700A2FE1E /* RailLineMapVC.m */,
 			);
 			name = Management;
 			sourceTree = "<group>";
@@ -990,6 +995,7 @@
 				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
 				E181740420F9B98900604652 /* StatePointAnnotation.m in Sources */,
 				E18173FD20F9991E00604652 /* OnlineMonModel.m in Sources */,
+				E1B3AAFA210079A700A2FE1E /* RailLineMapVC.m in Sources */,
 				E181741120FA2F7300604652 /* EnvCameraInfoVC.m in Sources */,
 				E181740A20F9CEF300604652 /* DkeyModel.m in Sources */,
 				E167B3F820FB853900FD7F75 /* TaskTreeModel.m in Sources */,

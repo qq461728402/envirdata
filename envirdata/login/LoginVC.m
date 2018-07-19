@@ -125,7 +125,6 @@
     }
     [self networkPost:API_CHECKUSER parameter:@{@"passport":usertf.text,@"pwd":passwordtf.text} progresHudText:@"加载中..." completionBlock:^(id rep) {
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-        
         //保存用户信息
         [[NSUserDefaults standardUserDefaults] setObject:rep forKey:@"userInfo"];
         UserInfoModel *userInfo = [UserInfoModel mj_objectWithKeyValues:rep];
@@ -134,11 +133,14 @@
                                                   forKey:@"unitInfo"];
         titlelb.text = userInfo.appexpand1;
         sutitlelb.text = userInfo.appexpand2;
-        
        [SingalObj defaultManager].userInfoModel=userInfo;
+        [self bindDeviece];
+        [self getTrackId];
        [self performSelector:@selector(gogo) withObject:nil afterDelay:1.0];
     }];
 }
+
+
 -(void)gogo{
     [[AppDelegate Share] gotohome];
 }
@@ -147,7 +149,14 @@
         
     }];
 }
-
+//请求轨迹ID
+-(void)getTrackId{
+    [self networkPost:API_GETTRACKID parameter:@{} progresHudText:nil completionBlock:^(id rep) {
+        //保存用户信息
+        [[NSUserDefaults standardUserDefaults] setObject:rep[@"trackid"] forKey:@"trackid"];
+        [SingalObj defaultManager].trackid=rep[@"trackid"];
+    }];
+}
 
 
 - (void)didReceiveMemoryWarning {

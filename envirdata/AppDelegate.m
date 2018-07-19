@@ -51,6 +51,7 @@ BMKMapManager* _mapManager;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     NSDictionary *userInfo = USER_DEFAULTS(@"userInfo")
     if (userInfo) {
+        [SingalObj defaultManager].trackid = USER_DEFAULTS(@"trackid");
         //存储用户信息
         UserInfoModel *userInfoModel =[UserInfoModel mj_objectWithKeyValues:userInfo];
         [SingalObj defaultManager].userInfoModel=userInfoModel;
