@@ -7,10 +7,8 @@
 //
 
 #import "ConfigObj.h"
-
+#import <QuickLook/QuickLook.h>
 @implementation ConfigObj
-
-
 +(void)configObj{
     //设置状态栏颜色
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -39,6 +37,16 @@
     [item setTitleTextAttributes:attributes forState:UIControlStateNormal];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBarTintColor:COLOR_TOP];
+//    [[UINavigationBar appearanceWhenContainedIn:[QLPreviewController class], nil]
+//     setTintColor:[UIColor blackColor]];
+    //设置文件浏览器导航栏
+    UIBarButtonItem *qlitme =[UIBarButtonItem appearanceWhenContainedIn:[QLPreviewController class], nil];
+    NSDictionary *qlitmeattributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14],
+                                 
+                                 NSForegroundColorAttributeName:[UIColor whiteColor]};
+    [qlitme setTitleTextAttributes:qlitmeattributes forState:UIControlStateNormal];
+    [[UINavigationBar appearanceWhenContainedIn:[QLPreviewController class], nil] setBackgroundImage:[UIImage imageWithColor:COLOR_TOP] forBarMetrics:UIBarMetricsDefault];
+    
     //检测网络
     AFNetworkReachabilityManager * networkmanager =[AFNetworkReachabilityManager sharedManager];
     [networkmanager startMonitoring];
@@ -62,6 +70,11 @@
     CGSize  StrSize  =[str sizeWithAttributes:@{NSFontAttributeName:Font(fontsize)}];
     return StrSize.width;
 }
++(float)font_sizeWithStr:(float)fontsize str:(NSString*)str{
+    CGSize  StrSize  =[str sizeWithAttributes:@{NSFontAttributeName:Font(fontsize)}];
+    return StrSize.width;
+}
+
 
 
 +(NSString*)getWeekDay:(NSString*)currentStr
@@ -97,15 +110,15 @@
     }
     if(aqi < 1){
         return 0; // 表示离线
-    }else if(aqi <= [AQI_NUM[2] intValue]){ // 优 绿色 一级
+    }else if(aqi <= [AQI_NUM[1] intValue]){ // 优 绿色 一级
         return 1;
-    }else if(aqi <= [AQI_NUM[3] intValue]){ // 良 黄色 二级
+    }else if(aqi <= [AQI_NUM[2] intValue]){ // 良 黄色 二级
         return 2;
-    }else if(aqi <= [AQI_NUM[4] intValue]){ // 轻度污染 橙色 三级
+    }else if(aqi <= [AQI_NUM[3] intValue]){ // 轻度污染 橙色 三级
         return 3;
-    }else if(aqi <= [AQI_NUM[5] intValue]){ // 中度污染 红色 四级
+    }else if(aqi <= [AQI_NUM[4] intValue]){ // 中度污染 红色 四级
         return 4;
-    }else if(aqi <= [AQI_NUM[6] intValue]){ // 重度污染 紫色 五级
+    }else if(aqi <= [AQI_NUM[5] intValue]){ // 重度污染 紫色 五级
         return 5;
     }else{ // 严重污染 褐红色 六级
         return 6;

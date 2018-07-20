@@ -9,6 +9,7 @@
 #ifndef ApiConfig_h
 #define ApiConfig_h
 
+#define HOST_API @"http://139.159.243.179:22816/"
 #define BASE_API  @"http://139.159.243.179:22816/app/"
 
 #define API_CHECKUSER @"api/checkUser"  //登录接口
@@ -50,5 +51,10 @@
 //分析报告
 #define API_GETYESTERDAYCOUNT2 @"api/getYesterdayCount2"//昨日汇总
 #define API_GETREPORTLIST @"api/getReportList" //分析报告
+//个人中心
+#define API_GETVERSION @"api/getVersion"//检测接口
+#define API_GETFEEDBACKLIST @"app/api/getFeedbackList"//意见反馈列表
+#define API_SUBMITFEEDBACK @"api/submitFeedback"//意见反馈接口
+#define API_HANDBOOK @"static/handbook/沙坪坝区环境监控移动平台用户操作手册.html"
 
 #endif /* ApiConfig_h */

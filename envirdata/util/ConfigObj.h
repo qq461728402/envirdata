@@ -15,6 +15,9 @@ static NSString const *AQI_NUM[8] = {@"0",@"50",@"100",@"150",@"200",@"300",@"40
 +(void)configObj;
 +(UIImage*)getIconImge;
 +(float)font_sizeWith:(float)fontsize strLong:(int)strLong;
+
++(float)font_sizeWithStr:(float)fontsize str:(NSString*)str;
+
 +(NSString*)getWeekDay:(NSString*)currentStr;
 
 //获取AQI等级

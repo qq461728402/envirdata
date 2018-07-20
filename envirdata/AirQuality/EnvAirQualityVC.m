@@ -66,18 +66,24 @@
     [super viewDidLoad];
     [[BMKLocationAuth sharedInstance] checkPermisionWithKey:BaiduAK authDelegate:self];
     [self baiduConfig];
+    UIFont *defont=Font(14);
+    
     //背景图片
     UIImageView *bgImage=[[UIImageView alloc]initWithImage:PNGIMAGE(@"sy_bg")];
     bgImage.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     [self.view addSubview:bgImage];
     
+    WEAKSELF
     mainScr =[[UIScrollView alloc]initWithFrame:self.view.bounds];
+    mainScr.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf baiduConfig];
+    }];
     [self.view addSubview:mainScr];
     
     //定位区域
-    areaLb =[[UILabel alloc]initWithFrame:CGRectMake(0, SCALE(30), SCALE(120), SCALE(40))];
+    areaLb =[[UILabel alloc]initWithFrame:CGRectMake(0, SCALE(30), SCALE(140), SCALE(40))];
     areaLb.centerX=SCREEN_WIDTH/2.0;
-    areaLb.font=[UIFont fontWithName:@"iconfont" size:20];
+    areaLb.font=[UIFont fontWithName:@"iconfont" size:24];
     areaLb.textColor=[UIColor whiteColor];
     areaLb.backgroundColor=COLOR_TOP;
     areaLb.textAlignment=NSTextAlignmentCenter;
@@ -150,7 +156,7 @@
     UILabel *dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
-    dw.font=Font(13);
+    dw.font=defont;
     [primary_view addSubview:dw];
     pm25v =[[UILabel alloc]initWithFrame:dw.frame];
     pm25v.textColor=COLOR_TOP;
@@ -169,7 +175,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
-    dw.font=Font(13);
+    dw.font=defont;
     [primary_view addSubview:dw];
     pm10v =[[UILabel alloc]initWithFrame:dw.frame];
     pm10v.textColor=COLOR_TOP;
@@ -188,7 +194,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
-    dw.font=Font(13);
+    dw.font=defont;
     [primary_view addSubview:dw];
     SO2v =[[UILabel alloc]initWithFrame:dw.frame];
     SO2v.textColor=COLOR_TOP;
@@ -207,7 +213,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
-    dw.font=Font(13);
+    dw.font=defont;
     [primary_view addSubview:dw];
     NO2v =[[UILabel alloc]initWithFrame:dw.frame];
     NO2v.textColor=COLOR_TOP;
@@ -227,7 +233,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
-    dw.font=Font(13);
+    dw.font=defont;
     [primary_view addSubview:dw];
     O3v =[[UILabel alloc]initWithFrame:dw.frame];
     O3v.textColor=COLOR_TOP;
@@ -247,7 +253,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
-    dw.font=Font(13);
+    dw.font=defont;
     [primary_view addSubview:dw];
     COv =[[UILabel alloc]initWithFrame:dw.frame];
     COv.textColor=COLOR_TOP;
@@ -335,7 +341,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;
-    dw.font=Font(13);
+    dw.font=defont;
     [a_bgview addSubview:dw];
     a_pm25v =[[UILabel alloc]initWithFrame:dw.frame];
     a_pm25v.textColor=a_primary.textColor;
@@ -355,7 +361,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;;
-    dw.font=Font(13);
+    dw.font=defont;
     [a_bgview addSubview:dw];
     a_pm10v =[[UILabel alloc]initWithFrame:dw.frame];
     a_pm10v.textColor=a_primary.textColor;;
@@ -376,7 +382,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;;
-    dw.font=Font(13);
+    dw.font=defont;
     [a_bgview addSubview:dw];
     a_so2v =[[UILabel alloc]initWithFrame:dw.frame];
     a_so2v.textColor=a_primary.textColor;
@@ -396,7 +402,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;;
-    dw.font=Font(13);
+    dw.font=defont;
     [a_bgview addSubview:dw];
     a_no2v =[[UILabel alloc]initWithFrame:dw.frame];
     a_no2v.textColor=a_primary.textColor;
@@ -417,7 +423,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;;
-    dw.font=Font(13);
+    dw.font=defont;
     [a_bgview addSubview:dw];
     a_o3v =[[UILabel alloc]initWithFrame:dw.frame];
     a_o3v.textColor=a_primary.textColor;
@@ -437,7 +443,7 @@
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;
-    dw.font=Font(13);
+    dw.font=defont;
     [a_bgview addSubview:dw];
     a_cov =[[UILabel alloc]initWithFrame:dw.frame];
     a_cov.textColor=a_primary.textColor;
@@ -552,6 +558,7 @@
         a_no2v.text=[NSString stringWithFormat:@"%@",areaRealModel.no2];
         a_o3v.text=[NSString stringWithFormat:@"%@",areaRealModel.o3];
         a_cov.text=[NSString stringWithFormat:@"%@",areaRealModel.co];
+        [mainScr.mj_header endRefreshing];
         [self getforecastArea:location];
     }];
 }
@@ -633,6 +640,7 @@
     NSString *trackid =[SingalObj defaultManager].trackid;
     if (![trackid isNotBlank]) {
         [self getTrackId];
+        return;
     }
     NSString *mac =[NSString stringWithUUID];
     NSString *gps =[points mj_JSONObject];

@@ -10,10 +10,14 @@
 #import "LMJDropdownMenu.h"
 #import "QRadioButton.h"
 #import "ReportModel.h"
-@interface ReportVC ()<LMJDropdownMenuDelegate,QRadioButtonDelegate,UITableViewDelegate,UITableViewDataSource>
+#import "ReportCell.h"
+#import <QuickLook/QuickLook.h>
+@interface ReportVC ()<LMJDropdownMenuDelegate,QRadioButtonDelegate,UITableViewDelegate,UITableViewDataSource,UIDocumentInteractionControllerDelegate,QLPreviewControllerDataSource>
 @property (nonatomic,assign)int page;
 @property (nonatomic,strong)UITableView *reportTb;
 @property (nonatomic,strong)NSMutableArray *reportAry;
+@property (nonatomic,strong)QLPreviewController  *documentController;
+@property (nonatomic,strong)NSString *openURL;
 @end
 
 @implementation ReportVC
@@ -37,16 +41,15 @@
         [self.view addSubview:dropdownMenu];
         left=dropdownMenu.right+SCALE(8);
     }
-    QRadioButton *weekQ=[[QRadioButton alloc]initWithDelegate:self groupId:@"js"];
+    QRadioButton *weekQ=[[QRadioButton alloc]initWithDelegate:nil groupId:[NSString stringWithFormat:@"js%@",typeId]];
     weekQ.tag=1000;
-    weekQ.selected=YES;
     [weekQ setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     weekQ.frame=CGRectMake(left, SCALE(5), 60, SCALE(30));
     [weekQ setTitle:@"周报" forState:UIControlStateNormal];
     weekQ.titleLabel.font=Font(14);
     [headerView addSubview:weekQ];
     
-    QRadioButton *monthQ=[[QRadioButton alloc]initWithDelegate:self groupId:@"js"];
+    QRadioButton *monthQ=[[QRadioButton alloc]initWithDelegate:self groupId:[NSString stringWithFormat:@"js%@",typeId]];
     monthQ.tag=1001;
     [monthQ setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     monthQ.frame=CGRectMake(weekQ.right+SCALE(5), SCALE(5), 60, SCALE(30));
@@ -54,7 +57,7 @@
     monthQ.titleLabel.font=Font(14);
     [headerView addSubview:monthQ];
     if ([typeId intValue]==11) {
-        QRadioButton *yearQ=[[QRadioButton alloc]initWithDelegate:self groupId:@"js"];
+        QRadioButton *yearQ=[[QRadioButton alloc]initWithDelegate:self groupId:[NSString stringWithFormat:@"js%@",typeId]];
         yearQ.tag=1002;
         [yearQ setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         yearQ.frame=CGRectMake(monthQ.right+SCALE(5), SCALE(5), 60, SCALE(30));
@@ -62,7 +65,9 @@
         yearQ.titleLabel.font=Font(14);
         [headerView addSubview:yearQ];
     }
-    reportTb=[[UITableView alloc]initWithFrame:CGRectMake(0, headerView.bottom, self.view.width, self.view.height) style:UITableViewStyleGrouped];
+    weekQ.checked=YES;
+    weekQ.delegate=self;
+    reportTb=[[UITableView alloc]initWithFrame:CGRectMake(0, headerView.bottom, self.view.width, SCREEN_HEIGHT-headerView.bottom-49) style:UITableViewStyleGrouped];
     reportTb.translatesAutoresizingMaskIntoConstraints=NO;
     reportTb.delegate=self;
     reportTb.dataSource=self;
@@ -75,7 +80,6 @@
         make.right.equalTo(weakSelf.view.mas_right);
         make.left.equalTo(weakSelf.view.mas_left);
     }];
-    
     reportTb.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         page=1;
         [weakSelf getReportList:YES];
@@ -93,7 +97,8 @@
     [reportTb.mj_header beginRefreshing];
 }
 -(void)didSelectedRadioButton:(QRadioButton *)radio groupId:(NSString *)groupId{
-    if ([groupId isEqualToString:@"js"]) {
+    NSString *types= [NSString stringWithFormat:@"js%@",typeId];
+    if ([groupId isEqualToString:types]) {
         if (radio.tag==1000) {
             timeType =@"2";
         }else if (radio.tag==1001){
@@ -105,7 +110,6 @@
     }
 }
 -(void)getReportList:(BOOL)isrefrsh{
-    
     NSMutableDictionary *paramter =[[NSMutableDictionary alloc]initWithDictionary:@{@"page":@(page),@"num":@(20),@"roleid":[roleid numberValue],@"typeId":[typeId numberValue],@"timeType":[timeType numberValue]}];
     if ([sonTypeId intValue]!=0) {
         [paramter setObject:[sonTypeId numberValue] forKey:@"sonTypeId"];
@@ -153,15 +157,57 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"NoticeCell";
-    UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
+    ReportCell *cell = (ReportCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[ReportCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.reportModel=reportAry[indexPath.row];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ReportModel *repotModel = reportAry[indexPath.row];
+    [SVProgressHUD showWithStatus:@"文件打开中..."];
+    self.openURL=[self saveFile:repotModel.url];
+    [SVProgressHUD dismiss];
+    _documentController = [[QLPreviewController alloc]init];
+    _documentController.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+//    _documentController.navigationController.navigationBar.barTintColor = [UIColor redColor];
+    _documentController.dataSource = self;// 遵循代理
+    // 直接打开预览文档
+    UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
+   [nav presentViewController:_documentController animated:YES completion:nil];
+}
+#pragma mark------------存入文件--------
+-(NSString *)saveFile:(NSString*)url{
+    NSArray *array = [url componentsSeparatedByString:@"/"]; //从字符/中分隔成多个元素的数组
+    NSString *fileName = [array lastObject];
+    //文件路劲
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString *filePath =[NSString stringWithFormat:@"%@/%@", documentsDirectory, fileName];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    //存入文件
+    if (![fileManager fileExistsAtPath:filePath]) {
+        NSURL *targetURL = [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSError* err = nil;
+        NSData* fileData = [[NSData alloc] initWithContentsOfURL:targetURL options:NSDataReadingUncached error:&err];
+        [fileData writeToFile:filePath atomically:YES];
+    }
+    return filePath;
+}
+#pragma mark QLPreviewControllerDataSource
+- (NSInteger) numberOfPreviewItemsInPreviewController: (QLPreviewController *) controller
+{
+    return 1;
+}
+
+- (id <QLPreviewItem>)previewController: (QLPreviewController *)controller previewItemAtIndex:(NSInteger)index
+{
+    return [NSURL fileURLWithPath:self.openURL];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

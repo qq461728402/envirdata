@@ -14,6 +14,7 @@
 #import <BaiduMapAPI_Base/BMKMapManager.h>
 #import <Mcu_sdk/MCUVmsNetSDK.h>
 #import <Mcu_sdk/VideoPlaySDK.h>
+#import "VersionModel.h"
 @interface AppDelegate ()
 
 @end
@@ -59,6 +60,7 @@ BMKMapManager* _mapManager;
     }else{
         [self gotologin];
     }
+    [self getvison];
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;
@@ -74,7 +76,31 @@ BMKMapManager* _mapManager;
     [SingalObj defaultManager].rootNav =tab_nav.navigationController;
     self.window.rootViewController=tab_nav;
 }
-
+#pragma mark----------版本更新----------------
+-(void)getvison{
+    [self networkPost:API_GETVERSION parameter:@{@"apptype":@(1)} progresHudText:@"加载中..." completionBlock:^(id rep) {
+        
+        VersionModel *versionModel=[[VersionModel alloc]init];
+        if ([rep isKindOfClass:[NSArray class]]) {
+            NSArray * versonAry=[VersionModel mj_objectArrayWithKeyValuesArray:rep];
+            if (versonAry.count>0) {
+                versionModel=versonAry[0];
+            }
+        }else{
+             versionModel = [VersionModel mj_objectWithKeyValues:rep];
+        }
+        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+        NSString *currentVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
+        if (![versionModel.versioncode isEqualToString:currentVersion]) {
+            UIAlertView *alert=[UIAlertView bk_showAlertViewWithTitle:@"温馨提示" message:versionModel.descript cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                if (buttonIndex==1) {
+                    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:versionModel.url]];
+                }
+            }];
+            [alert show];
+        }
+    }];
+}
 /** 注册 APNs */
 - (void)registerRemoteNotification {
     /*
@@ -220,4 +246,24 @@ BMKMapManager* _mapManager;
 }
 
 
+-(void)networkPost:(NSString*)url parameter:(NSDictionary*)parameter progresHudText:(NSString*)hudText completionBlock:(void (^)(id rep))completionBlock{
+    if (hudText!=nil) {
+        [SVProgressHUD showWithStatus:hudText];
+    }
+    NSDictionary * parameterdic = @{@"param":[parameter mj_JSONString]};
+    [[AFAppDotNetAPIClient shareClient] POST:url parameters: parameterdic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
+        NSLog(@"%@",[responseObject mj_JSONString]);
+        if ([responseObject[@"code"] intValue]==0) {
+            completionBlock(responseObject[@"data"]);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"failure--%@",error);
+        
+        NSData *data = error.userInfo[@"com.alamofire.serialization.response.error.data"] ;
+        NSString *errorStr = [[ NSString alloc ] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"failure--%@",errorStr);
+        //        [SVProgressHUD showInfoWithStatus:@"加载错误"];
+    }];
+}
 @end

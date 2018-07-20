@@ -12,7 +12,7 @@
 #import "ReportVC.h"
 @interface EnvAnalysisReportVC ()<SUNSlideSwitchViewDelegate>
 {
-    SliderSwitchView *slideSwitchView;
+    SliderSwitchView *slideSwitchView12;
     NSMutableArray *tableList_arr;
     NSMutableArray *typeList;
     NSDictionary *typedic;
@@ -58,14 +58,14 @@
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
     [view setBackgroundColor:COLOR_TOP];
     [self.view addSubview:view];
-    slideSwitchView=[[SliderSwitchView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight-20-49)];
-    slideSwitchView.viewArray=tableList_arr;
-    slideSwitchView.slideSwitchViewDelegate=self;
-    [self.view addSubview:slideSwitchView];
-    slideSwitchView.tabItemNormalColor = UIColorFromRGB(0x868686);
-    slideSwitchView.tabItemSelectedColor = COLOR_TOP;
-    slideSwitchView.hdColor=COLOR_TOP;
-    [slideSwitchView buildUI];//创建srcolltop按钮
+    slideSwitchView12=[[SliderSwitchView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight-20-49)];
+    slideSwitchView12.viewArray=tableList_arr;
+    slideSwitchView12.slideSwitchViewDelegate=self;
+    [self.view addSubview:slideSwitchView12];
+    slideSwitchView12.tabItemNormalColor = UIColorFromRGB(0x868686);
+    slideSwitchView12.tabItemSelectedColor = COLOR_TOP;
+    slideSwitchView12.hdColor=COLOR_TOP;
+    [slideSwitchView12 buildUI];//创建srcolltop按钮
     //默认加载第一个列表
     if([[tableList_arr objectAtIndex:curntnum] isKindOfClass:[StatisticsVC class]]){//表示昨日统计
         StatisticsVC *onlineList =   [tableList_arr objectAtIndex:curntnum];

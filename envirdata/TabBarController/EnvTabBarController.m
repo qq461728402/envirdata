@@ -30,7 +30,11 @@
 //}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
+    if (self.selectedIndex!=4) {
+        self.navigationController.navigationBar.hidden = YES;
+    }else{
+        self.navigationController.navigationBar.hidden = NO;
+    }
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];

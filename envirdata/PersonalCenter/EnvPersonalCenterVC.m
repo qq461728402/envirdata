@@ -9,7 +9,11 @@
 #import "EnvPersonalCenterVC.h"
 #import "UserInfoModel.h"
 #import "AppDelegate.h"
+#import "HelpBookVC.h"
+#import "FeedBookVC.h"
+#import "AboutUsVC.h"
 #import <Mcu_sdk/MCUVmsNetSDK.h>
+#import "VersionModel.h"
 @interface EnvPersonalCenterVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)NSArray *personary;
 @property (nonatomic,strong)UITableView *settingTb;
@@ -136,11 +140,46 @@
             }
         }];
         [outlogin show];
+    }else if ([@"帮助中心" isEqualToString:itemStr]){
+        HelpBookVC *helpBook=[[HelpBookVC alloc]init];
+        helpBook.title=itemStr;
+        UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
+        [nav pushViewController:helpBook animated:YES];
+    }else if ([@"意见反馈" isEqualToString:itemStr]){
+        FeedBookVC *helpBook=[[FeedBookVC alloc]init];
+        helpBook.title=itemStr;
+        UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
+        [nav pushViewController:helpBook animated:YES];
+    }else if ([@"关于我们" isEqualToString:itemStr]){
+        AboutUsVC *helpBook=[[AboutUsVC alloc]init];
+        helpBook.title=itemStr;
+        UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
+        [nav pushViewController:helpBook animated:YES];
+    }else if ([@"当前版本" isEqualToString:itemStr]){
+        [self networkPost:API_GETVERSION parameter:@{@"apptype":@(1)} progresHudText:@"加载中..." completionBlock:^(id rep) {
+            
+            VersionModel *versionModel=[[VersionModel alloc]init];
+            if ([rep isKindOfClass:[NSArray class]]) {
+                NSArray * versonAry=[VersionModel mj_objectArrayWithKeyValuesArray:rep];
+                if (versonAry.count>0) {
+                    versionModel=versonAry[0];
+                }
+            }else{
+                versionModel = [VersionModel mj_objectWithKeyValues:rep];
+            }
+            NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+            NSString *currentVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
+            if (![versionModel.versioncode isEqualToString:currentVersion]) {
+                UIAlertView *alert=[UIAlertView bk_showAlertViewWithTitle:@"温馨提示" message:versionModel.descript cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                    if (buttonIndex==1) {
+                        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:versionModel.url]];
+                    }
+                }];
+                [alert show];
+            }
+        }];
     }
-    
 }
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

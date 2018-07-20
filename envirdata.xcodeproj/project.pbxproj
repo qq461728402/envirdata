@@ -64,6 +64,11 @@
 		E1576D892100DF1B00B3FFD8 /* dropdownMenu_cornerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E1576D862100DF1B00B3FFD8 /* dropdownMenu_cornerIcon.png */; };
 		E1576D8A2100DF1B00B3FFD8 /* LMJDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D882100DF1B00B3FFD8 /* LMJDropdownMenu.m */; };
 		E1576D8D2100ECBE00B3FFD8 /* ReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D8C2100ECBE00B3FFD8 /* ReportModel.m */; };
+		E1602D6E21021B61007EAFBA /* YesterDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1602D6D21021B61007EAFBA /* YesterDayModel.m */; };
+		E1602D71210228F7007EAFBA /* HelpBookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1602D70210228F7007EAFBA /* HelpBookVC.m */; };
+		E1602D7421022AD5007EAFBA /* FeedBookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1602D7321022AD5007EAFBA /* FeedBookVC.m */; };
+		E1602D7721022B10007EAFBA /* AboutUsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1602D7621022B10007EAFBA /* AboutUsVC.m */; };
+		E1602D7A21022EEF007EAFBA /* VersionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1602D7921022EEF007EAFBA /* VersionModel.m */; };
 		E167B3F820FB853900FD7F75 /* TaskTreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E167B3F720FB853900FD7F75 /* TaskTreeModel.m */; };
 		E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5EA20F88116007E045A /* AreaLevelCell.m */; };
 		E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5ED20F8A420007E045A /* EnvAreaLevelHistoryVC.m */; };
@@ -125,6 +130,8 @@
 		E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41DD20F73276002B4047 /* NearestGkzRealModel.m */; };
 		E1BC41E120F74F3D002B4047 /* NearestAreaRealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41E020F74F3D002B4047 /* NearestAreaRealModel.m */; };
 		E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */; };
+		E1F520DB2101BB4E00458A08 /* ReportCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F520DA2101BB4E00458A08 /* ReportCell.m */; };
+		E1F520DD2101C17500458A08 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F520DC2101C17500458A08 /* QuickLook.framework */; };
 		E1FCBD9420FF823200DCBE13 /* TaskDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FCBD9320FF823200DCBE13 /* TaskDetailVC.m */; };
 		E1FCBD9720FF9F3B00DCBE13 /* GegionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FCBD9620FF9F3B00DCBE13 /* GegionModel.m */; };
 		E1FCBD9A20FF9F7B00DCBE13 /* GegionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FCBD9920FF9F7B00DCBE13 /* GegionCell.m */; };
@@ -226,6 +233,16 @@
 		E1576D882100DF1B00B3FFD8 /* LMJDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMJDropdownMenu.m; sourceTree = "<group>"; };
 		E1576D8B2100ECBE00B3FFD8 /* ReportModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportModel.h; sourceTree = "<group>"; };
 		E1576D8C2100ECBE00B3FFD8 /* ReportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportModel.m; sourceTree = "<group>"; };
+		E1602D6C21021B61007EAFBA /* YesterDayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YesterDayModel.h; sourceTree = "<group>"; };
+		E1602D6D21021B61007EAFBA /* YesterDayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YesterDayModel.m; sourceTree = "<group>"; };
+		E1602D6F210228F7007EAFBA /* HelpBookVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpBookVC.h; path = PersonalCenter/HelpBookVC.h; sourceTree = "<group>"; };
+		E1602D70210228F7007EAFBA /* HelpBookVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpBookVC.m; path = PersonalCenter/HelpBookVC.m; sourceTree = "<group>"; };
+		E1602D7221022AD5007EAFBA /* FeedBookVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedBookVC.h; path = PersonalCenter/FeedBookVC.h; sourceTree = "<group>"; };
+		E1602D7321022AD5007EAFBA /* FeedBookVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedBookVC.m; path = PersonalCenter/FeedBookVC.m; sourceTree = "<group>"; };
+		E1602D7521022B10007EAFBA /* AboutUsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutUsVC.h; path = PersonalCenter/AboutUsVC.h; sourceTree = "<group>"; };
+		E1602D7621022B10007EAFBA /* AboutUsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutUsVC.m; path = PersonalCenter/AboutUsVC.m; sourceTree = "<group>"; };
+		E1602D7821022EEF007EAFBA /* VersionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionModel.h; sourceTree = "<group>"; };
+		E1602D7921022EEF007EAFBA /* VersionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionModel.m; sourceTree = "<group>"; };
 		E167B3F620FB853900FD7F75 /* TaskTreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTreeModel.h; sourceTree = "<group>"; };
 		E167B3F720FB853900FD7F75 /* TaskTreeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTreeModel.m; sourceTree = "<group>"; };
 		E16EE5E920F88116007E045A /* AreaLevelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AreaLevelCell.h; path = cells/AreaLevelCell.h; sourceTree = "<group>"; };
@@ -335,6 +352,9 @@
 		E1BC41E020F74F3D002B4047 /* NearestAreaRealModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearestAreaRealModel.m; sourceTree = "<group>"; };
 		E1D6CC7720F5B2F20023F0F0 /* EnvTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvTabBarController.h; path = TabBarController/EnvTabBarController.h; sourceTree = "<group>"; };
 		E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvTabBarController.m; path = TabBarController/EnvTabBarController.m; sourceTree = "<group>"; };
+		E1F520D92101BB4E00458A08 /* ReportCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportCell.h; path = cells/ReportCell.h; sourceTree = "<group>"; };
+		E1F520DA2101BB4E00458A08 /* ReportCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportCell.m; path = cells/ReportCell.m; sourceTree = "<group>"; };
+		E1F520DC2101C17500458A08 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		E1FCBD9220FF823200DCBE13 /* TaskDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskDetailVC.h; path = Management/TaskDetailVC.h; sourceTree = "<group>"; };
 		E1FCBD9320FF823200DCBE13 /* TaskDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskDetailVC.m; path = Management/TaskDetailVC.m; sourceTree = "<group>"; };
 		E1FCBD9520FF9F3B00DCBE13 /* GegionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GegionModel.h; sourceTree = "<group>"; };
@@ -350,6 +370,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F520DD2101C17500458A08 /* QuickLook.framework in Frameworks */,
 				E17DA5E120FDDD9C00FA4222 /* AssetsLibrary.framework in Frameworks */,
 				E134590420FB64B700D6B549 /* libc++.tbd in Frameworks */,
 				E134590220FB64AC00D6B549 /* libstdc++.tbd in Frameworks */,
@@ -381,6 +402,7 @@
 		BC03B9AAE6C1B1C6EA3E8BA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1F520DC2101C17500458A08 /* QuickLook.framework */,
 				E17DA5E020FDDD9C00FA4222 /* AssetsLibrary.framework */,
 				E134590320FB64B700D6B549 /* libc++.tbd */,
 				E134590120FB64AC00D6B549 /* libstdc++.tbd */,
@@ -486,6 +508,12 @@
 			children = (
 				E100803420F622AE00B75514 /* EnvPersonalCenterVC.h */,
 				E100803520F622AE00B75514 /* EnvPersonalCenterVC.m */,
+				E1602D6F210228F7007EAFBA /* HelpBookVC.h */,
+				E1602D70210228F7007EAFBA /* HelpBookVC.m */,
+				E1602D7221022AD5007EAFBA /* FeedBookVC.h */,
+				E1602D7321022AD5007EAFBA /* FeedBookVC.m */,
+				E1602D7521022B10007EAFBA /* AboutUsVC.h */,
+				E1602D7621022B10007EAFBA /* AboutUsVC.m */,
 			);
 			name = Personal;
 			sourceTree = "<group>";
@@ -582,6 +610,8 @@
 				E146D9DA20FE0C46004227AA /* TaskCell.m */,
 				E1FCBD9820FF9F7B00DCBE13 /* GegionCell.h */,
 				E1FCBD9920FF9F7B00DCBE13 /* GegionCell.m */,
+				E1F520D92101BB4E00458A08 /* ReportCell.h */,
+				E1F520DA2101BB4E00458A08 /* ReportCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -768,6 +798,10 @@
 		E1BC41D820F6EB30002B4047 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				E1602D7821022EEF007EAFBA /* VersionModel.h */,
+				E1602D7921022EEF007EAFBA /* VersionModel.m */,
+				E1602D6C21021B61007EAFBA /* YesterDayModel.h */,
+				E1602D6D21021B61007EAFBA /* YesterDayModel.m */,
 				E1576D8B2100ECBE00B3FFD8 /* ReportModel.h */,
 				E1576D8C2100ECBE00B3FFD8 /* ReportModel.m */,
 				E1576D7C2100C8F000B3FFD8 /* RailLinePointModel.h */,
@@ -988,6 +1022,7 @@
 				E1BA89C120EB62F3002CD41B /* ConfigObj.m in Sources */,
 				E13AD74820FCED450046A499 /* DealPalyView.m in Sources */,
 				E100802A20F621FF00B75514 /* EnvOnlineMonVC.m in Sources */,
+				E1602D7421022AD5007EAFBA /* FeedBookVC.m in Sources */,
 				E100803220F6226F00B75514 /* EnvAnalysisReportVC.m in Sources */,
 				E181741A20FA3A4800604652 /* UnitDataTimeModel.m in Sources */,
 				E1576D8D2100ECBE00B3FFD8 /* ReportModel.m in Sources */,
@@ -1041,10 +1076,12 @@
 				E17DA5D220FDDD3300FA4222 /* PictureView.m in Sources */,
 				E134590C20FB69D900D6B549 /* PlayView.m in Sources */,
 				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
+				E1602D7721022B10007EAFBA /* AboutUsVC.m in Sources */,
 				E181740420F9B98900604652 /* StatePointAnnotation.m in Sources */,
 				E18173FD20F9991E00604652 /* OnlineMonModel.m in Sources */,
 				E1B3AAFA210079A700A2FE1E /* RailLineMapVC.m in Sources */,
 				E181741120FA2F7300604652 /* EnvCameraInfoVC.m in Sources */,
+				E1602D6E21021B61007EAFBA /* YesterDayModel.m in Sources */,
 				E181740A20F9CEF300604652 /* DkeyModel.m in Sources */,
 				E167B3F820FB853900FD7F75 /* TaskTreeModel.m in Sources */,
 				E188A53120FB13AA00B68701 /* HistoryDataModel.m in Sources */,
@@ -1053,6 +1090,7 @@
 				E188A52820FAE7E600B68701 /* ListView.m in Sources */,
 				E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */,
 				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
+				E1602D71210228F7007EAFBA /* HelpBookVC.m in Sources */,
 				E181741720FA372C00604652 /* EnvUnitDataTimeVC.m in Sources */,
 				E142B1FD20FF0B980033BFF4 /* EnvChooseListVC.m in Sources */,
 				E100802E20F6223900B75514 /* EnvManagerVC.m in Sources */,
@@ -1061,10 +1099,12 @@
 				E12A38D320F8C44F00085665 /* QRadioButton.m in Sources */,
 				E146D9DB20FE0C46004227AA /* TaskCell.m in Sources */,
 				E100802520F621A300B75514 /* EnvAirQualityVC.m in Sources */,
+				E1602D7A21022EEF007EAFBA /* VersionModel.m in Sources */,
 				E1576D7B2100C6B800B3FFD8 /* RailLineModel.m in Sources */,
 				E1BC41D620F6E96E002B4047 /* SingalObj.m in Sources */,
 				E1FCBD9420FF823200DCBE13 /* TaskDetailVC.m in Sources */,
 				E146D9E420FE3328004227AA /* MonitorUserModel.m in Sources */,
+				E1F520DB2101BB4E00458A08 /* ReportCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

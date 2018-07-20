@@ -36,7 +36,7 @@ static UIButton *selectBtn;
         rootScrollView.delegate = self;
         rootScrollView.pagingEnabled = YES;
         rootScrollView.userInteractionEnabled = YES;
-        rootScrollView.bounces = NO;
+//        rootScrollView.bounces = NO;
         rootScrollView.showsHorizontalScrollIndicator = NO;
         rootScrollView.showsVerticalScrollIndicator = NO;
         [rootScrollView.panGestureRecognizer addTarget:self action:@selector(scrollHandlePan:)];//当列表滑出左右时传递手势去打开抽屉
