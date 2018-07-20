@@ -46,4 +46,9 @@
 #define API_GETTRACKID @"api/getTrackId"//请求轨迹ID
 #define API_APPPIONT @"api/addPoints" //上传轨迹点
 #define API_GETTRACKLIST @"api/getTrackList" //指定日期的轨迹列表
+#define API_GETTRACKBYID @"api/getTrackById" //获取定位点
+//分析报告
+#define API_GETYESTERDAYCOUNT2 @"api/getYesterdayCount2"//昨日汇总
+#define API_GETREPORTLIST @"api/getReportList" //分析报告
+
 #endif /* ApiConfig_h */

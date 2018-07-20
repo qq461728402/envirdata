@@ -7,19 +7,87 @@
 //
 
 #import "EnvAnalysisReportVC.h"
-
-@interface EnvAnalysisReportVC ()
-
+#import "SliderSwitchView.h"
+#import "StatisticsVC.h"
+#import "ReportVC.h"
+@interface EnvAnalysisReportVC ()<SUNSlideSwitchViewDelegate>
+{
+    SliderSwitchView *slideSwitchView;
+    NSMutableArray *tableList_arr;
+    NSMutableArray *typeList;
+    NSDictionary *typedic;
+    int curntnum;
+    BOOL isupdata;
+}
 @end
-
 @implementation EnvAnalysisReportVC
 -(void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor whiteColor]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    curntnum=0;
+    tableList_arr=[[NSMutableArray alloc]init];
+    typeList =[[NSMutableArray alloc]init];
+    
+    StatisticsVC *statistics =[[StatisticsVC alloc]init];
+    statistics.title=@"昨日统计";
+    [tableList_arr addObject:statistics];
+    
+    ReportVC *reportVc=[[ReportVC alloc]init];
+    reportVc.typeId=@"12";
+    reportVc.title=@"污染源监控";
+    [tableList_arr addObject:reportVc];
+    
+    
+    ReportVC *reportVc1=[[ReportVC alloc]init];
+    reportVc1.typeId=@"11";
+    reportVc1.title=@"空气质量研制";
+    [tableList_arr addObject:reportVc1];
+    
+    ReportVC *reportVc2=[[ReportVC alloc]init];
+    reportVc2.title=@"网格监管";
+    reportVc2.typeId=@"13";
+    [tableList_arr addObject:reportVc2];
+    
+    [self initsunslideview];
     // Do any additional setup after loading the view.
 }
+-(void)initsunslideview
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+    [view setBackgroundColor:COLOR_TOP];
+    [self.view addSubview:view];
+    slideSwitchView=[[SliderSwitchView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight-20-49)];
+    slideSwitchView.viewArray=tableList_arr;
+    slideSwitchView.slideSwitchViewDelegate=self;
+    [self.view addSubview:slideSwitchView];
+    slideSwitchView.tabItemNormalColor = UIColorFromRGB(0x868686);
+    slideSwitchView.tabItemSelectedColor = COLOR_TOP;
+    slideSwitchView.hdColor=COLOR_TOP;
+    [slideSwitchView buildUI];//创建srcolltop按钮
+    //默认加载第一个列表
+    if([[tableList_arr objectAtIndex:curntnum] isKindOfClass:[StatisticsVC class]]){//表示昨日统计
+        StatisticsVC *onlineList =   [tableList_arr objectAtIndex:curntnum];
+        [onlineList getYesterDay];
+    }else{
+        ReportVC *onlinemap =   [tableList_arr objectAtIndex:curntnum];
+        [onlinemap getReportList:NO];
+    }
+}
+
+- (void)slideSwitchView:(SliderSwitchView *)view didselectTab:(NSUInteger)number
+{
+    if([[tableList_arr objectAtIndex:number] isKindOfClass:[StatisticsVC class]]){//表示
+        StatisticsVC *onlineList =   [tableList_arr objectAtIndex:number];
+        [onlineList getYesterDay];
+    }else{
+        ReportVC *onlinemap =   [tableList_arr objectAtIndex:number];
+        [onlinemap getReportList:NO];
+    }
+    curntnum=(int)number;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -57,6 +57,13 @@
 		E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0D20F7927000872ADD /* SliderSwitchView.m */; };
 		E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */; };
 		E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1620F79ACA00872ADD /* AreaLevelModel.m */; };
+		E1576D7B2100C6B800B3FFD8 /* RailLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D7A2100C6B800B3FFD8 /* RailLineModel.m */; };
+		E1576D7E2100C8F000B3FFD8 /* RailLinePointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D7D2100C8F000B3FFD8 /* RailLinePointModel.m */; };
+		E1576D812100D62B00B3FFD8 /* StatisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D802100D62B00B3FFD8 /* StatisticsVC.m */; };
+		E1576D842100D65200B3FFD8 /* ReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D832100D65200B3FFD8 /* ReportVC.m */; };
+		E1576D892100DF1B00B3FFD8 /* dropdownMenu_cornerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E1576D862100DF1B00B3FFD8 /* dropdownMenu_cornerIcon.png */; };
+		E1576D8A2100DF1B00B3FFD8 /* LMJDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D882100DF1B00B3FFD8 /* LMJDropdownMenu.m */; };
+		E1576D8D2100ECBE00B3FFD8 /* ReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D8C2100ECBE00B3FFD8 /* ReportModel.m */; };
 		E167B3F820FB853900FD7F75 /* TaskTreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E167B3F720FB853900FD7F75 /* TaskTreeModel.m */; };
 		E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5EA20F88116007E045A /* AreaLevelCell.m */; };
 		E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E16EE5ED20F8A420007E045A /* EnvAreaLevelHistoryVC.m */; };
@@ -206,6 +213,19 @@
 		E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvAreaLevelListVC.m; path = AirQuality/EnvAreaLevelListVC.m; sourceTree = "<group>"; };
 		E148BD1520F79ACA00872ADD /* AreaLevelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaLevelModel.h; sourceTree = "<group>"; };
 		E148BD1620F79ACA00872ADD /* AreaLevelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaLevelModel.m; sourceTree = "<group>"; };
+		E1576D792100C6B800B3FFD8 /* RailLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RailLineModel.h; sourceTree = "<group>"; };
+		E1576D7A2100C6B800B3FFD8 /* RailLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RailLineModel.m; sourceTree = "<group>"; };
+		E1576D7C2100C8F000B3FFD8 /* RailLinePointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RailLinePointModel.h; sourceTree = "<group>"; };
+		E1576D7D2100C8F000B3FFD8 /* RailLinePointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RailLinePointModel.m; sourceTree = "<group>"; };
+		E1576D7F2100D62B00B3FFD8 /* StatisticsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticsVC.h; path = AnalysisReport/StatisticsVC.h; sourceTree = "<group>"; };
+		E1576D802100D62B00B3FFD8 /* StatisticsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatisticsVC.m; path = AnalysisReport/StatisticsVC.m; sourceTree = "<group>"; };
+		E1576D822100D65200B3FFD8 /* ReportVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportVC.h; path = AnalysisReport/ReportVC.h; sourceTree = "<group>"; };
+		E1576D832100D65200B3FFD8 /* ReportVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportVC.m; path = AnalysisReport/ReportVC.m; sourceTree = "<group>"; };
+		E1576D862100DF1B00B3FFD8 /* dropdownMenu_cornerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropdownMenu_cornerIcon.png; sourceTree = "<group>"; };
+		E1576D872100DF1B00B3FFD8 /* LMJDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMJDropdownMenu.h; sourceTree = "<group>"; };
+		E1576D882100DF1B00B3FFD8 /* LMJDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMJDropdownMenu.m; sourceTree = "<group>"; };
+		E1576D8B2100ECBE00B3FFD8 /* ReportModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportModel.h; sourceTree = "<group>"; };
+		E1576D8C2100ECBE00B3FFD8 /* ReportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportModel.m; sourceTree = "<group>"; };
 		E167B3F620FB853900FD7F75 /* TaskTreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTreeModel.h; sourceTree = "<group>"; };
 		E167B3F720FB853900FD7F75 /* TaskTreeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTreeModel.m; sourceTree = "<group>"; };
 		E16EE5E920F88116007E045A /* AreaLevelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AreaLevelCell.h; path = cells/AreaLevelCell.h; sourceTree = "<group>"; };
@@ -453,6 +473,10 @@
 			children = (
 				E100803020F6226F00B75514 /* EnvAnalysisReportVC.h */,
 				E100803120F6226F00B75514 /* EnvAnalysisReportVC.m */,
+				E1576D7F2100D62B00B3FFD8 /* StatisticsVC.h */,
+				E1576D802100D62B00B3FFD8 /* StatisticsVC.m */,
+				E1576D822100D65200B3FFD8 /* ReportVC.h */,
+				E1576D832100D65200B3FFD8 /* ReportVC.m */,
 			);
 			name = AnalysisReport;
 			sourceTree = "<group>";
@@ -520,6 +544,17 @@
 			);
 			name = TextViewPlaceHolder;
 			path = util/TextViewPlaceHolder;
+			sourceTree = "<group>";
+		};
+		E1576D852100DF1B00B3FFD8 /* LMJDropdownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E1576D862100DF1B00B3FFD8 /* dropdownMenu_cornerIcon.png */,
+				E1576D872100DF1B00B3FFD8 /* LMJDropdownMenu.h */,
+				E1576D882100DF1B00B3FFD8 /* LMJDropdownMenu.m */,
+			);
+			name = LMJDropdownMenu;
+			path = util/LMJDropdownMenu;
 			sourceTree = "<group>";
 		};
 		E16EE5E820F880EA007E045A /* cells */ = {
@@ -629,6 +664,7 @@
 		E1AF06BC20F481A7000E93F9 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				E1576D852100DF1B00B3FFD8 /* LMJDropdownMenu */,
 				E146D9E920FE3E51004227AA /* TextViewPlaceHolder */,
 				E146D9E520FE3D4E004227AA /* CTextField */,
 				E17DA5B920FDDD3300FA4222 /* PictureCollectionView */,
@@ -732,6 +768,12 @@
 		E1BC41D820F6EB30002B4047 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				E1576D8B2100ECBE00B3FFD8 /* ReportModel.h */,
+				E1576D8C2100ECBE00B3FFD8 /* ReportModel.m */,
+				E1576D7C2100C8F000B3FFD8 /* RailLinePointModel.h */,
+				E1576D7D2100C8F000B3FFD8 /* RailLinePointModel.m */,
+				E1576D792100C6B800B3FFD8 /* RailLineModel.h */,
+				E1576D7A2100C6B800B3FFD8 /* RailLineModel.m */,
 				E1FCBD9520FF9F3B00DCBE13 /* GegionModel.h */,
 				E1FCBD9620FF9F3B00DCBE13 /* GegionModel.m */,
 				E146D9E220FE3328004227AA /* MonitorUserModel.h */,
@@ -875,6 +917,7 @@
 				E17DA5D920FDDD3300FA4222 /* delete-circular.png in Resources */,
 				E17DA5DC20FDDD3300FA4222 /* No.png in Resources */,
 				E17DA5D420FDDD3300FA4222 /* AssetsPickerChecked@2x.png in Resources */,
+				E1576D892100DF1B00B3FFD8 /* dropdownMenu_cornerIcon.png in Resources */,
 				E1BA89C520EB6E3F002CD41B /* iconfont.ttf in Resources */,
 				E12A38D420F8C44F00085665 /* radio_checked.png in Resources */,
 				E1BA89B520EB1CAF002CD41B /* LaunchScreen.storyboard in Resources */,
@@ -947,6 +990,7 @@
 				E100802A20F621FF00B75514 /* EnvOnlineMonVC.m in Sources */,
 				E100803220F6226F00B75514 /* EnvAnalysisReportVC.m in Sources */,
 				E181741A20FA3A4800604652 /* UnitDataTimeModel.m in Sources */,
+				E1576D8D2100ECBE00B3FFD8 /* ReportModel.m in Sources */,
 				E181741420FA318600604652 /* WarnPointAnnotation.m in Sources */,
 				E100803620F622AE00B75514 /* EnvPersonalCenterVC.m in Sources */,
 				E181740720F9BB3B00604652 /* PointPointAnnotation.m in Sources */,
@@ -962,6 +1006,7 @@
 				E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */,
 				E134590820FB65C800D6B549 /* XMLReader.m in Sources */,
 				E188A53A20FB26C900B68701 /* HistoryViolationPictureModel.m in Sources */,
+				E1576D842100D65200B3FFD8 /* ReportVC.m in Sources */,
 				E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */,
 				E18173FA20F996E400604652 /* OnlineCell.m in Sources */,
 				E188A52420FAE68400B68701 /* NewUnitPicHourDataModel.m in Sources */,
@@ -977,6 +1022,7 @@
 				E1BC41DB20F6EB4A002B4047 /* UserInfoModel.m in Sources */,
 				E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */,
 				E188A52B20FAEE9500B68701 /* HourDataView.m in Sources */,
+				E1576D812100D62B00B3FFD8 /* StatisticsVC.m in Sources */,
 				E146D9D520FE07AD004227AA /* AddTaskViewController.m in Sources */,
 				E1FCBD9D20FFA13700DCBE13 /* GegionDetialVC.m in Sources */,
 				E1FCBD9720FF9F3B00DCBE13 /* GegionModel.m in Sources */,
@@ -987,7 +1033,9 @@
 				E181740E20F9D04100604652 /* LBpopView.m in Sources */,
 				E16EE5EB20F88116007E045A /* AreaLevelCell.m in Sources */,
 				E148BD0B20F78D0F00872ADD /* EnvAreaLevelVC.m in Sources */,
+				E1576D8A2100DF1B00B3FFD8 /* LMJDropdownMenu.m in Sources */,
 				E134648A20F4E98E006E4144 /* AFAppDotNetAPIClient.m in Sources */,
+				E1576D7E2100C8F000B3FFD8 /* RailLinePointModel.m in Sources */,
 				E18173F420F98ABF00604652 /* EnvOnlienListVC.m in Sources */,
 				E188A52120FAE60000B68701 /* CameraInfoModel.m in Sources */,
 				E17DA5D220FDDD3300FA4222 /* PictureView.m in Sources */,
@@ -1013,6 +1061,7 @@
 				E12A38D320F8C44F00085665 /* QRadioButton.m in Sources */,
 				E146D9DB20FE0C46004227AA /* TaskCell.m in Sources */,
 				E100802520F621A300B75514 /* EnvAirQualityVC.m in Sources */,
+				E1576D7B2100C6B800B3FFD8 /* RailLineModel.m in Sources */,
 				E1BC41D620F6E96E002B4047 /* SingalObj.m in Sources */,
 				E1FCBD9420FF823200DCBE13 /* TaskDetailVC.m in Sources */,
 				E146D9E420FE3328004227AA /* MonitorUserModel.m in Sources */,

@@ -82,8 +82,8 @@ static UIButton *selectBtn;
         if (i==0) {
             tabarbtn.selected=YES;
             selectBtn=tabarbtn;
-            shadowImageView.centerX=selectBtn.centerX;
             shadowImageView.width=textSize.width;
+            shadowImageView.centerX=selectBtn.centerX;
         }
     }
     [bbScrollView addSubview:shadowImageView];
@@ -108,10 +108,10 @@ static UIButton *selectBtn;
     if (!sender.selected) {
         sender.selected = YES;
         [UIView animateWithDuration:0.25 animations:^{
-            shadowImageView.centerX=sender.centerX;
             if (isScroll==NO) {
-               shadowImageView.width=sender.width;
+                shadowImageView.width=sender.width;
             }
+            shadowImageView.centerX=sender.centerX;
         } completion:^(BOOL finished) {
             //设置新页出现
             if (!_isRootScroll) {
