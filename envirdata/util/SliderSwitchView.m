@@ -9,9 +9,7 @@
 #import "SliderSwitchView.h"
 
 @implementation SliderSwitchView
-@synthesize bbScrollView,rootScrollView,isBuildUI,tabItemNormalColor,tabItemSelectedColor,tabItemNormalBackgroundImage,tabItemSelectedBackgroundImage,viewArray,shadowImageView,isScroll,hdColor,isNoMainScroll;
-static UIButton *selectBtn;
-
+@synthesize bbScrollView,rootScrollView,isBuildUI,tabItemNormalColor,tabItemSelectedColor,tabItemNormalBackgroundImage,tabItemSelectedBackgroundImage,viewArray,shadowImageView,isScroll,hdColor,isNoMainScroll,selectBtn;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -36,7 +34,7 @@ static UIButton *selectBtn;
         rootScrollView.delegate = self;
         rootScrollView.pagingEnabled = YES;
         rootScrollView.userInteractionEnabled = YES;
-//        rootScrollView.bounces = NO;
+        rootScrollView.bounces = NO;
         rootScrollView.showsHorizontalScrollIndicator = NO;
         rootScrollView.showsVerticalScrollIndicator = NO;
         [rootScrollView.panGestureRecognizer addTarget:self action:@selector(scrollHandlePan:)];//当列表滑出左右时传递手势去打开抽屉
