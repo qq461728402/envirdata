@@ -34,7 +34,7 @@
     settingTb.delegate=self;
     settingTb.dataSource=self;
     [self.view addSubview:settingTb];
-    __weak __typeof(self) weakSelf = self;//这里用一个弱引用来表示self，用于下面的Block中
+    WEAKSELF //这里用一个弱引用来表示self，用于下面的Block中
     //先确定view_1的约束
     [settingTb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.view.mas_top);

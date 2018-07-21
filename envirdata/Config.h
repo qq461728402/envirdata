@@ -10,12 +10,12 @@
 #define BaiduMapConfig_h
 
 //个推
-#define kGtAppId           @"iMahVVxurw6BNr7XSn9EF2"
-#define kGtAppKey          @"yIPfqwq6OMAPp6dkqgLpG5"
-#define kGtAppSecret       @"G0aBqAD6t79JfzTB6Z5lo5"
+#define kGtAppId           @"nZfGERR7OD9okVVnb92zE2"
+#define kGtAppKey          @"mWsRj74ycH6DVt4YcmUZa4"
+#define kGtAppSecret       @"xJMUPnN4rA8x0rrkrfL3F1"
 
 //百度定位
-#define BaiduAK @"EVVswanbL0jGOQqqAHeURvl9InrHai01"
+#define BaiduAK @"Xcgp9vhNpref2UHxsB63eFuMu4h0uB1z"
 
 //海康威视
 #define MSP_ADDRESS     @"139.159.247.230"

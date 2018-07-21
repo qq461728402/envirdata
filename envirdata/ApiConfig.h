@@ -53,7 +53,7 @@
 #define API_GETREPORTLIST @"api/getReportList" //分析报告
 //个人中心
 #define API_GETVERSION @"api/getVersion"//检测接口
-#define API_GETFEEDBACKLIST @"app/api/getFeedbackList"//意见反馈列表
+#define API_GETFEEDBACKLIST @"api/getFeedbackList"//意见反馈列表
 #define API_SUBMITFEEDBACK @"api/submitFeedback"//意见反馈接口
 #define API_HANDBOOK @"static/handbook/沙坪坝区环境监控移动平台用户操作手册.html"
 

@@ -114,6 +114,7 @@
 		E188A53420FB23B800B68701 /* HistoryViolationPictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53320FB23B800B68701 /* HistoryViolationPictureVC.m */; };
 		E188A53720FB254300B68701 /* HistoryViolationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53620FB254300B68701 /* HistoryViolationCell.m */; };
 		E188A53A20FB26C900B68701 /* HistoryViolationPictureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */; };
+		E18991FE21031AD8008D173C /* FeedBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18991FD21031AD8008D173C /* FeedBackModel.m */; };
 		E1ACF21A20FC63450027B274 /* UnusuallyPonitAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1ACF21920FC63450027B274 /* UnusuallyPonitAnnotation.m */; };
 		E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AF06C320F4A76B000E93F9 /* MBProgressHUD+PD.m */; };
 		E1B3AAFA210079A700A2FE1E /* RailLineMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B3AAF9210079A700A2FE1E /* RailLineMapVC.m */; };
@@ -320,6 +321,8 @@
 		E188A53620FB254300B68701 /* HistoryViolationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryViolationCell.m; path = cells/HistoryViolationCell.m; sourceTree = "<group>"; };
 		E188A53820FB26C900B68701 /* HistoryViolationPictureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViolationPictureModel.h; sourceTree = "<group>"; };
 		E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViolationPictureModel.m; sourceTree = "<group>"; };
+		E18991FC21031AD8008D173C /* FeedBackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackModel.h; sourceTree = "<group>"; };
+		E18991FD21031AD8008D173C /* FeedBackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackModel.m; sourceTree = "<group>"; };
 		E1ACF21820FC63450027B274 /* UnusuallyPonitAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnusuallyPonitAnnotation.h; path = cells/UnusuallyPonitAnnotation.h; sourceTree = "<group>"; };
 		E1ACF21920FC63450027B274 /* UnusuallyPonitAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnusuallyPonitAnnotation.m; path = cells/UnusuallyPonitAnnotation.m; sourceTree = "<group>"; };
 		E1AF06BD20F481D5000E93F9 /* MyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyConstants.h; path = util/MyConstants.h; sourceTree = "<group>"; };
@@ -840,6 +843,8 @@
 				E1BC41DA20F6EB4A002B4047 /* UserInfoModel.m */,
 				E181740820F9CEF300604652 /* DkeyModel.h */,
 				E181740920F9CEF300604652 /* DkeyModel.m */,
+				E18991FC21031AD8008D173C /* FeedBackModel.h */,
+				E18991FD21031AD8008D173C /* FeedBackModel.m */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -896,7 +901,6 @@
 				TargetAttributes = {
 					E1BA89A120EB1CAE002CD41B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3AD3NZVGH6;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1058,6 +1062,7 @@
 				E16EE5EE20F8A421007E045A /* EnvAreaLevelHistoryVC.m in Sources */,
 				E188A52B20FAEE9500B68701 /* HourDataView.m in Sources */,
 				E1576D812100D62B00B3FFD8 /* StatisticsVC.m in Sources */,
+				E18991FE21031AD8008D173C /* FeedBackModel.m in Sources */,
 				E146D9D520FE07AD004227AA /* AddTaskViewController.m in Sources */,
 				E1FCBD9D20FFA13700DCBE13 /* GegionDetialVC.m in Sources */,
 				E1FCBD9720FF9F3B00DCBE13 /* GegionModel.m in Sources */,
@@ -1218,7 +1223,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = envirdata/envirdata.entitlements;
-				DEVELOPMENT_TEAM = 3AD3NZVGH6;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZW24R4W9AU;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1231,7 +1237,7 @@
 				INFOPLIST_FILE = envirdata/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grand.ios.gs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
@@ -1243,7 +1249,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = envirdata/envirdata.entitlements;
-				DEVELOPMENT_TEAM = 3AD3NZVGH6;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZW24R4W9AU;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1256,7 +1263,7 @@
 				INFOPLIST_FILE = envirdata/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = QS.envirdata;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grand.ios.gs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
