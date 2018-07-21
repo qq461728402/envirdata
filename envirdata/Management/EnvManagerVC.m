@@ -253,6 +253,7 @@
                 [self nodeChildernpTree:tree];
             }
         }];
+        
         [self fillDisplayArray];
         [treeTb reloadData];
         [treeTb.mj_header endRefreshing];
@@ -268,7 +269,6 @@
         }
     }
     NSLog(@"%li",displayAry.count);
-//    NSLog(@"%@",[displayAry mj_JSONString]);
 }
 - (void)fillNodeWithChildrenArray:(NSMutableArray *)childrenArray{
     for (TaskTreeModel *tree in childrenArray) {
@@ -284,9 +284,11 @@
     [dataAry enumerateObjectsUsingBlock:^(TaskTreeModel *cTree, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([pTree.tid isEqualToString:cTree.pid]) {
             cTree.creatLevle=pTree.creatLevle+1;
-            [pTree.chlidren addObject:cTree];
-            [self nodeChildernpTree:cTree];
-            [dataAry removeObject:cTree];
+            TaskTreeModel *tempTree =cTree;
+            tempTree.chlidren=[[NSMutableArray alloc]init];
+            [pTree.chlidren addObject:tempTree];
+//            [dataAry removeObject:cTree];
+            [self nodeChildernpTree:tempTree];
         }
     }];
 }
@@ -330,7 +332,6 @@
         }
         cell.taskTreeModel=tree;
         return cell;
-        
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

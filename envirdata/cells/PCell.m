@@ -29,9 +29,9 @@
         aicon =[[UIImageView alloc]initWithFrame:CGRectMake(0, SCALE(8), SCALE(24), SCALE(24))];
         [self.contentView addSubview:aicon];
         aname =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCALE(200), SCALE(40))];
-        aname.font=Font(16);
+        aname.font=Font(15);
         aname.adjustsFontSizeToFitWidth=YES;
-        aname.textColor=[UIColor blackColor];
+        aname.textColor=[UIColor colorWithRGB:0x404040];
         [self.contentView addSubview:aname];
         
         dbrwnum =[[UILabel alloc]initWithFrame:CGRectMake(0, SCALE(12), SCALE(16), SCALE(16))];
@@ -110,17 +110,17 @@
     }else{
         folding.hidden=YES;
     }
-    if (self.isChoose==YES) {
+}
+-(void)setIsChoose:(BOOL)isChoose
+{
+    _isChoose=isChoose;
+    if (isChoose==YES) {
         telbut.hidden=YES;
         addrwbut.hidden=YES;
         rwbut.hidden=YES;
         folding.hidden=YES;
         dbrwnum.hidden=YES;
     }
-}
--(void)setIsChoose:(BOOL)isChoose
-{
-    _isChoose=isChoose;
 }
 
 #pragma mark---------打电话---------

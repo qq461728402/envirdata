@@ -23,9 +23,9 @@
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         aname =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCALE(250), SCALE(40))];
-        aname.font=BoldFont(16);
+        aname.font=BoldFont(15);
         aname.adjustsFontSizeToFitWidth=YES;
-        aname.textColor=[UIColor blackColor];
+        aname.textColor=[UIColor colorWithRGB:0x404040];
         [self.contentView addSubview:aname];
         
         folding =[UIButton buttonWithType:UIButtonTypeCustom];
@@ -43,6 +43,7 @@
     aname.left=SCALE(15)+taskTreeModel.creatLevle*SCALE(20);
     aname.text=taskTreeModel.name;
     if (taskTreeModel.chlidren.count>0) {
+        NSLog(@"%@========",aname.text);
         folding.hidden=NO;
         if (taskTreeModel.isExpanded==YES) {
             [folding setImage:PNGIMAGE(@"down_up") forState:UIControlStateNormal];
@@ -51,11 +52,6 @@
         }
     }else{
         folding.hidden=YES;
-    }
-    if (self.isChoose==YES) {
-        folding.hidden=YES;
-    }else{
-        folding.hidden=NO;
     }
 }
 -(void)touchUpOrDown:(UIButton*)sender{
@@ -66,10 +62,10 @@
 -(void)setIsChoose:(BOOL)isChoose
 {
     _isChoose=isChoose;
-    
+    if (isChoose==YES) {
+        folding.hidden=YES;
+    }
 }
-
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

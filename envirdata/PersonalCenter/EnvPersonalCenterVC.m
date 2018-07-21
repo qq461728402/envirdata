@@ -80,7 +80,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         UILabel *leb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
         leb.font=Font(16);
-        leb.backgroundColor=API_LEVEL3;
+        leb.backgroundColor=[UIColor colorWithRGB:0xfcb525];
         leb.textColor=[UIColor whiteColor];
         leb.text=itemStr;
         leb.textAlignment=NSTextAlignmentCenter;
@@ -93,7 +93,7 @@
         xxlb.font=Font(16);
         xxlb.textAlignment=NSTextAlignmentRight;
         xxlb.text=userInfo.passport;
-         [cell.contentView addSubview:xxlb];
+        [cell.contentView addSubview:xxlb];
     }else if([itemStr isEqualToString:@"所属单位"]){
         cell.textLabel.font=Font(16);
         cell.textLabel.text=itemStr;

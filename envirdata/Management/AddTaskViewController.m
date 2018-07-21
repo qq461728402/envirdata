@@ -75,7 +75,7 @@
     //转发
     if ([kind intValue]==2&&reldata) {//表示转发
         tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, SCALE(50))];
-        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 65, tempView.height)];
+        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
         sublb.textColor=[UIColor colorWithRGB:0x2e4057];
         sublb.font=Font(15);
         sublb.adjustsFontSizeToFitWidth=YES;
@@ -169,7 +169,7 @@
     
     //图片
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 70)];
-    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(12), 5, 65, 21)];
+    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 5, 65, 21)];
     sublb.textColor=[UIColor colorWithRGB:0x2e4057];
     sublb.font=Font(15);
     sublb.text=@"图片：";
@@ -223,7 +223,7 @@
     }];
     UIButton *addMonitorBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     addMonitorBtn.frame=CGRectMake(SCALE(8), tempView.bottom+20, SCREEN_WIDTH-SCALE(16), SCALE(50));
-    [addMonitorBtn bootstrapNoborderStyle:[UIColor colorWithRGB:0x0586e8] titleColor:[UIColor whiteColor] andbtnFont:Font(16)];
+    [addMonitorBtn bootstrapNoborderStyle:SUBMIT_COLOR titleColor:[UIColor whiteColor] andbtnFont:Font(16)];
     [addMonitorBtn setTitle:@"提 交" forState:UIControlStateNormal];
     ViewRadius(addMonitorBtn, 8);
     [addMonitorBtn bk_addEventHandler:^(id sender) {

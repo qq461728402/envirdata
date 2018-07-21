@@ -66,7 +66,7 @@
     [super viewDidLoad];
     [[BMKLocationAuth sharedInstance] checkPermisionWithKey:BaiduAK authDelegate:self];
     [self baiduConfig];
-    UIFont *defont=Font(14);
+    UIFont *defont=Font(15);
     
     //背景图片
     UIImageView *bgImage=[[UIImageView alloc]initWithImage:PNGIMAGE(@"sy_bg")];
@@ -91,7 +91,7 @@
     ViewRadius(areaLb, areaLb.height/2.0);
     [mainScr addSubview:areaLb];
     //污染物
-    UIView *primary_view=[[UIView alloc]initWithFrame:CGRectMake(SCALE(20), areaLb.bottom, SCREEN_WIDTH-SCALE(40), 300)];
+    UIView *primary_view=[[UIView alloc]initWithFrame:CGRectMake(SCALE(10), areaLb.bottom, SCREEN_WIDTH-SCALE(20), 300)];
     [mainScr addSubview:primary_view];
     //背景图片
     UIImageView *wrwImageBg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, primary_view.width, primary_view.height)];
@@ -147,13 +147,14 @@
     [primary_view addSubview:level];
     
     float pm2with =(primary_view.width-(primary_pollu1.left*4))/3.0;
+    float wdheight =18;
     //PM2.5
-    UILabel *PM2=[[UILabel alloc]initWithFrame:CGRectMake(primary_pollu1.left, level.bottom+10, pm2with, 18)];
+    UILabel *PM2=[[UILabel alloc]initWithFrame:CGRectMake(primary_pollu1.left, level.bottom+10, pm2with, 20)];
     PM2.text=@"PM2.5";
     PM2.textColor=COLOR_TOP;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
-    UILabel *dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    UILabel *dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
     dw.font=defont;
@@ -172,7 +173,7 @@
     PM2.textColor=COLOR_TOP;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
     dw.font=defont;
@@ -191,7 +192,7 @@
     PM2.textColor=COLOR_TOP;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
     dw.font=defont;
@@ -210,7 +211,7 @@
     PM2.textColor=COLOR_TOP;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
     dw.font=defont;
@@ -230,7 +231,7 @@
     PM2.textColor=COLOR_TOP;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
     dw.font=defont;
@@ -250,7 +251,7 @@
     PM2.textColor=COLOR_TOP;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=COLOR_TOP;
     dw.font=defont;
@@ -267,12 +268,12 @@
 
     
     //横线
-    UILabel *onlines=[[UILabel alloc]initWithFrame:CGRectMake(primary_view.left, primary_view.bottom+15, primary_view.width, 2)];
+    UILabel *onlines=[[UILabel alloc]initWithFrame:CGRectMake(primary_view.left, primary_view.bottom+10, primary_view.width, 2)];
     [onlines setBackgroundColor:[UIColor whiteColor]];
     [mainScr addSubview:onlines];
     
     
-    UIView *a_areview=[[UIView alloc]initWithFrame:CGRectMake(primary_view.left, onlines.bottom+15, primary_view.width, 300)];
+    UIView *a_areview=[[UIView alloc]initWithFrame:CGRectMake(primary_view.left, onlines.bottom+10, primary_view.width, 300)];
     [a_areview setBackgroundColor:[UIColor clearColor]];
     [mainScr addSubview:a_areview];
     
@@ -329,16 +330,14 @@
     [a_bgview setBackgroundColor:[UIColor colorWithRGB:0x02ddfd alpha:0.2]];
     [a_areview addSubview:a_bgview];
     
-    
     float a_pm2with =(a_bgview.width-(a_areanamelb.left*4))/3.0;
-    
     //PM2
-    PM2=[[UILabel alloc]initWithFrame:CGRectMake(a_primary.left, 10, a_pm2with, 18)];
+    PM2=[[UILabel alloc]initWithFrame:CGRectMake(a_primary.left, 10, a_pm2with, 20)];
     PM2.text=@"PM2.5";
     PM2.textColor=a_primary.textColor;
     PM2.font=Font(16);
     [a_bgview addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;
     dw.font=defont;
@@ -358,7 +357,7 @@
     PM2.textColor=a_primary.textColor;
     PM2.font=Font(16);
     [a_bgview addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;;
     dw.font=defont;
@@ -379,7 +378,7 @@
     PM2.textColor=a_primary.textColor;;
     PM2.font=Font(16);
     [a_bgview addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;;
     dw.font=defont;
@@ -399,7 +398,7 @@
     PM2.textColor=a_primary.textColor;;
     PM2.font=Font(16);
     [a_bgview addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;;
     dw.font=defont;
@@ -420,7 +419,7 @@
     PM2.textColor=a_primary.textColor;;
     PM2.font=Font(16);
     [a_bgview addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;;
     dw.font=defont;
@@ -440,7 +439,7 @@
     PM2.textColor=a_primary.textColor;
     PM2.font=Font(16);
     [a_bgview addSubview:PM2];
-    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, 16)];
+    dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
     dw.textColor=a_primary.textColor;
     dw.font=defont;

@@ -14,6 +14,10 @@
 #define COLOR_TOP [UIColor colorWithRGB:0x42afdf]
 //底部导航菜单的非选中颜色
 #define COLOR_TAB_UNSELECT [UIColor colorWithRGB:0x02ddfd]
+//提交按钮颜色
+#define SUBMIT_COLOR [UIColor colorWithRGB:0x02ddfd]
+
+
 //六因子颜色
 #define API_LEVEL1 [UIColor colorWithRGB:0x01FF01]
 

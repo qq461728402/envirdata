@@ -22,7 +22,7 @@
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         title_lb =[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), SCALE(8), SCREEN_WIDTH-SCALE(16), 21)];
-        title_lb.font=Font(16);
+        title_lb.font=Font(15);
         title_lb.numberOfLines=0;
         [self.contentView addSubview:title_lb];
         

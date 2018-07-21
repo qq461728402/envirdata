@@ -146,7 +146,7 @@ static dispatch_queue_t video_intercom_queue() {
         g_playMamager = [[RealPlayManager alloc] initWithDelegate:self];
         g_playManagerEx = [[RealPlayManagerEx alloc] initWithDelegate:self];
         [g_activity startAnimating];
-        g_currentQuality = STREAM_MAG;
+        g_currentQuality = STREAM_SUB;
         if ([carmeraInfo.syscode isNotBlank]&&[carmeraInfo.onlinestatus intValue]!=0) {//有sysCode 并且不处于离线状态
             [g_playMamager startRealPlay:carmeraInfo.syscode videoType:g_currentQuality playView:g_playView complete:^(BOOL finish, NSString *message) {
                 if (finish) {
@@ -574,6 +574,7 @@ static dispatch_queue_t video_intercom_queue() {
         [alertController addAction:[UIAlertAction actionWithTitle:@"添加站点警告" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }]];
+        [self presentViewController:alertController animated:YES completion:nil];
     } else {
         NSLog(@"截图失败");
     }

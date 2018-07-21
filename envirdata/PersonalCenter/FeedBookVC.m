@@ -53,7 +53,7 @@
     UIButton *submitBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     ViewRadius(submitBtn, 8);
     [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [submitBtn setBackgroundImage:[UIImage imageWithColor:COLOR_TOP] forState:UIControlStateNormal];
+    [submitBtn setBackgroundImage:[UIImage imageWithColor:SUBMIT_COLOR] forState:UIControlStateNormal];
     [submitBtn setTitle:@"提 交" forState:UIControlStateNormal];
     [submitBtn bk_addEventHandler:^(id sender) {
         [self submitBut];

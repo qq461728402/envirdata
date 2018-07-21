@@ -31,14 +31,14 @@
         
         statusLb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15 strLong:5], SCALE(40))];
         statusLb.right=SCREEN_WIDTH-SCALE(8);
-        statusLb.font=Font(13);
+        statusLb.font=Font(14);
         statusLb.adjustsFontSizeToFitWidth=YES;
         statusLb.textAlignment=NSTextAlignmentCenter;
         [self.contentView  addSubview:statusLb];
         
         utype_dvalLb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15 strLong:7], statusLb.height)];
         utype_dvalLb.right=statusLb.left;
-        utype_dvalLb.font=Font(13);
+        utype_dvalLb.font=Font(14);
         utype_dvalLb.adjustsFontSizeToFitWidth=YES;
         utype_dvalLb.textAlignment=NSTextAlignmentCenter;
         [self.contentView addSubview:utype_dvalLb];
@@ -67,7 +67,7 @@
         unameLb.left=iconImg.right+SCALE(5);
     }else{
         utype_dvalLb.text=onlineMonModel.utype_dval;
-        unameLb.font=Font(13);
+        unameLb.font=Font(14);
         unameLb.left=iconImg.right+SCALE(10);
         iconImg.hidden=YES;
     }

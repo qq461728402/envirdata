@@ -125,7 +125,7 @@
                 obj.key=key;
             }];
             [headerTitleView removeAllSubviews];
-            UILabel *namelb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCALE(70)+(6-xjjary.count)*SCALE(19), headerTitleView.height)];
+            UILabel *namelb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCALE(95)+(6-xjjary.count)*SCALE(19), headerTitleView.height)];
             namelb.font=Font(14);
             namelb.text=@"时间";
             namelb.textAlignment=NSTextAlignmentCenter;
@@ -188,7 +188,7 @@
     if (!cell){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        UILabel *namelb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCALE(70)+(6-histroyData.key.count)*SCALE(19), SCALE(35))];
+        UILabel *namelb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCALE(95)+(6-histroyData.key.count)*SCALE(19), SCALE(35))];
         namelb.font=Font(14);
         namelb.text=histroyData.time;
         namelb.textAlignment=NSTextAlignmentCenter;
