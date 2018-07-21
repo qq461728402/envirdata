@@ -245,7 +245,7 @@
         winddir_lb.text=unitDataTimeModel.winddir;
     }];
     [self networkPost:API_GETUNITPICSADDRESS parameter:@{@"uid":uid} progresHudText:@"加载中..." completionBlock:^(id rep) {
-        
+            
     }];
     
 }

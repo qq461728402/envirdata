@@ -86,9 +86,11 @@
     [dataAry enumerateObjectsUsingBlock:^(TaskTreeModel *cTree, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([pTree.tid isEqualToString:cTree.pid]) {
             cTree.creatLevle=pTree.creatLevle+1;
-            [pTree.chlidren addObject:cTree];
-            [self nodeChildernpTree:cTree];
-            [dataAry removeObject:cTree];
+            TaskTreeModel *tempTree =cTree;
+            tempTree.chlidren=[[NSMutableArray alloc]init];
+            [pTree.chlidren addObject:tempTree];
+            //            [dataAry removeObject:cTree];
+            [self nodeChildernpTree:tempTree];
         }
     }];
 }

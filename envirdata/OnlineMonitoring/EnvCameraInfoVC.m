@@ -23,7 +23,7 @@
 #import "Mcu_sdk/VPRecordInfo.h"
 #import "PlayView.h"
 #import "DealPalyView.h"
-
+#import "PointWarnVC.h"
 
 static dispatch_queue_t video_intercom_queue() {
     static dispatch_queue_t url_request_queue;
@@ -572,7 +572,13 @@ static dispatch_queue_t video_intercom_queue() {
             [weakSelf.navigationController pushViewController:addTaskVc animated:YES];
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"添加站点警告" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
+            PointWarnVC *pointWarn=[[PointWarnVC alloc]init];
+            pointWarn.pointImage=image;
+            pointWarn.title=@"新增站点警告";
+            [weakSelf.navigationController pushViewController:pointWarn animated:YES];
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [alertController dismissViewControllerAnimated:YES completion:nil];
         }]];
         [self presentViewController:alertController animated:YES completion:nil];
     } else {

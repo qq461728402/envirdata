@@ -115,6 +115,7 @@
 		E188A53720FB254300B68701 /* HistoryViolationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53620FB254300B68701 /* HistoryViolationCell.m */; };
 		E188A53A20FB26C900B68701 /* HistoryViolationPictureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */; };
 		E18991FE21031AD8008D173C /* FeedBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18991FD21031AD8008D173C /* FeedBackModel.m */; };
+		E189920121037585008D173C /* PointWarnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E189920021037585008D173C /* PointWarnVC.m */; };
 		E1ACF21A20FC63450027B274 /* UnusuallyPonitAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1ACF21920FC63450027B274 /* UnusuallyPonitAnnotation.m */; };
 		E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AF06C320F4A76B000E93F9 /* MBProgressHUD+PD.m */; };
 		E1B3AAFA210079A700A2FE1E /* RailLineMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B3AAF9210079A700A2FE1E /* RailLineMapVC.m */; };
@@ -323,6 +324,8 @@
 		E188A53920FB26C900B68701 /* HistoryViolationPictureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViolationPictureModel.m; sourceTree = "<group>"; };
 		E18991FC21031AD8008D173C /* FeedBackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackModel.h; sourceTree = "<group>"; };
 		E18991FD21031AD8008D173C /* FeedBackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackModel.m; sourceTree = "<group>"; };
+		E18991FF21037585008D173C /* PointWarnVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointWarnVC.h; path = OnlineMonitoring/PointWarnVC.h; sourceTree = "<group>"; };
+		E189920021037585008D173C /* PointWarnVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PointWarnVC.m; path = OnlineMonitoring/PointWarnVC.m; sourceTree = "<group>"; };
 		E1ACF21820FC63450027B274 /* UnusuallyPonitAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnusuallyPonitAnnotation.h; path = cells/UnusuallyPonitAnnotation.h; sourceTree = "<group>"; };
 		E1ACF21920FC63450027B274 /* UnusuallyPonitAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnusuallyPonitAnnotation.m; path = cells/UnusuallyPonitAnnotation.m; sourceTree = "<group>"; };
 		E1AF06BD20F481D5000E93F9 /* MyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyConstants.h; path = util/MyConstants.h; sourceTree = "<group>"; };
@@ -464,6 +467,8 @@
 				E188A52D20FAF64300B68701 /* HistoryDataMultIndexVC.m */,
 				E188A53220FB23B800B68701 /* HistoryViolationPictureVC.h */,
 				E188A53320FB23B800B68701 /* HistoryViolationPictureVC.m */,
+				E18991FF21037585008D173C /* PointWarnVC.h */,
+				E189920021037585008D173C /* PointWarnVC.m */,
 			);
 			name = OnlineMonitoring;
 			sourceTree = "<group>";
@@ -1042,6 +1047,7 @@
 				E146D9D820FE07C5004227AA /* TaskListViewController.m in Sources */,
 				E17DA5D020FDDD3300FA4222 /* AddImageCell.m in Sources */,
 				E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */,
+				E189920121037585008D173C /* PointWarnVC.m in Sources */,
 				E1AF06C420F4A76B000E93F9 /* MBProgressHUD+PD.m in Sources */,
 				E134590820FB65C800D6B549 /* XMLReader.m in Sources */,
 				E188A53A20FB26C900B68701 /* HistoryViolationPictureModel.m in Sources */,

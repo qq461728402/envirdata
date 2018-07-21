@@ -29,6 +29,7 @@
 
     UIImageView *iconImage=[[UIImageView alloc]initWithFrame:CGRectMake(0, SCALE(70), SCALE(120), SCALE(120))];
     iconImage.image=[ConfigObj getIconImge];
+    ViewRadius(iconImage, 20);
     iconImage.centerX=SCREEN_WIDTH/2.0;
     [self.view addSubview:iconImage];
     
@@ -91,9 +92,9 @@
     
     
     UIButton *loginbtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    loginbtn.frame=CGRectMake(loginView.left, loginView.bottom+20, loginView.width, SCALE(50));
+    loginbtn.frame=CGRectMake(loginView.left, loginView.bottom+30, loginView.width, SCALE(50));
     [loginbtn setTitle:@"登 录" forState:UIControlStateNormal];
-    ViewRadius(loginbtn, 4);
+    ViewRadius(loginbtn, 8);
     [loginbtn bk_addEventHandler:^(id sender) {
         [self loginP];
     } forControlEvents:UIControlEventTouchUpInside];
