@@ -49,11 +49,13 @@
             obj.chlidren=[[NSMutableArray alloc]init];
         }];
         [dataAry enumerateObjectsUsingBlock:^(TaskTreeModel *tree, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([tree.level isEqualToString:@"city"]) {
-                [assemblyAry addObject:tree];
-                tree.creatLevle=0;
-                [dataAry removeObject:tree];
-                [self nodeChildernpTree:tree];
+            if ([tree.pid isEqualToString:@"0"]) {//表示第一层
+                TaskTreeModel *tempTree =tree;
+                tempTree.creatLevle=0;
+                tempTree.chlidren=[NSMutableArray array];
+                [assemblyAry addObject:tempTree];
+                //                [dataAry removeObject:tree];
+                [self nodeChildernpTree:tempTree];
             }
         }];
         [self fillDisplayArray];

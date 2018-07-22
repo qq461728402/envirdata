@@ -36,7 +36,6 @@ BMKMapManager* _mapManager;
         NSLog(@"manager start failed!");
     }
     //海康威视
-    
     //初始化
      VP_InitSDK();
     //MSP 的 IP 端口配置
@@ -79,7 +78,6 @@ BMKMapManager* _mapManager;
 #pragma mark----------版本更新----------------
 -(void)getvison{
     [self networkPost:API_GETVERSION parameter:@{@"apptype":@(1)} progresHudText:@"加载中..." completionBlock:^(id rep) {
-        
         VersionModel *versionModel=[[VersionModel alloc]init];
         if ([rep isKindOfClass:[NSArray class]]) {
             NSArray * versonAry=[VersionModel mj_objectArrayWithKeyValuesArray:rep];
@@ -259,7 +257,6 @@ BMKMapManager* _mapManager;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"failure--%@",error);
-        
         NSData *data = error.userInfo[@"com.alamofire.serialization.response.error.data"] ;
         NSString *errorStr = [[ NSString alloc ] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"failure--%@",errorStr);

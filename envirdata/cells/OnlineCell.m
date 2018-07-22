@@ -32,6 +32,7 @@
         statusLb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15 strLong:5], SCALE(40))];
         statusLb.right=SCREEN_WIDTH-SCALE(8);
         statusLb.font=Font(14);
+        statusLb.textColor=[UIColor colorWithRGB:0x404040];
         statusLb.adjustsFontSizeToFitWidth=YES;
         statusLb.textAlignment=NSTextAlignmentCenter;
         [self.contentView  addSubview:statusLb];
@@ -39,6 +40,7 @@
         utype_dvalLb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15 strLong:7], statusLb.height)];
         utype_dvalLb.right=statusLb.left;
         utype_dvalLb.font=Font(14);
+        utype_dvalLb.textColor=[UIColor colorWithRGB:0x404040];
         utype_dvalLb.adjustsFontSizeToFitWidth=YES;
         utype_dvalLb.textAlignment=NSTextAlignmentCenter;
         [self.contentView addSubview:utype_dvalLb];

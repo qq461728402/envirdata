@@ -24,6 +24,7 @@
         title_lb =[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), SCALE(8), SCREEN_WIDTH-SCALE(16), 21)];
         title_lb.font=Font(15);
         title_lb.numberOfLines=0;
+        title_lb.textColor=[UIColor colorWithRGB:0x404040];
         [self.contentView addSubview:title_lb];
         
         subtitle_lb =[[UILabel alloc]initWithFrame:CGRectMake(title_lb.left, title_lb.bottom, title_lb.width, 18)];
