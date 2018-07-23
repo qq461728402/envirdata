@@ -131,35 +131,30 @@
         UserInfoModel *userInfo = [UserInfoModel mj_objectWithKeyValues:rep];
         //保存单位信息
         [[NSUserDefaults standardUserDefaults] setObject:@{@"appexpand1":userInfo.appexpand1,@"appexpand2":userInfo.appexpand2}
-                                                  forKey:@"unitInfo"];
+                                            forKey:@"unitInfo"];
         titlelb.text = userInfo.appexpand1;
         sutitlelb.text = userInfo.appexpand2;
-       [SingalObj defaultManager].userInfoModel=userInfo;
-        [self bindDeviece];
-        [self getTrackId];
-       [self performSelector:@selector(gogo) withObject:nil afterDelay:1.0];
+        [SingalObj defaultManager].userInfoModel=userInfo;
+        [self getMenu];
     }];
 }
-
-
 -(void)gogo{
+    [self bindDeviece];
     [[AppDelegate Share] gotohome];
 }
 -(void)bindDeviece{
     [self networkPost:API_BINDDEVICE parameter:@{@"userid":[SingalObj defaultManager].userInfoModel.userid,@"clientid":[NSString stringWithUUID]} progresHudText:nil completionBlock:^(id rep) {
-        
-    }];
-}
-//请求轨迹ID
--(void)getTrackId{
-    [self networkPost:API_GETTRACKID parameter:@{} progresHudText:nil completionBlock:^(id rep) {
-        //保存用户信息
-        [[NSUserDefaults standardUserDefaults] setObject:rep[@"trackid"] forKey:@"trackid"];
-        [SingalObj defaultManager].trackid=rep[@"trackid"];
     }];
 }
 
-
+-(void)getMenu{
+    NSDictionary *parameter = @{@"roleid":[SingalObj defaultManager].userInfoModel.roleid};
+    [self networkPost:API_GETMENU parameter:parameter progresHudText:nil completionBlock:^(id rep) {
+        //保存菜单信息
+        [[NSUserDefaults standardUserDefaults] setObject:rep forKey:@"menuInfo"];//保存菜单信息
+        [self performSelector:@selector(gogo) withObject:nil afterDelay:1.0];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

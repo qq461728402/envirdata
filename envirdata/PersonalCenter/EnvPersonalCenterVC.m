@@ -129,7 +129,8 @@
     if ([itemStr isEqualToString:@"退出登录"]) {
         UIAlertView *outlogin=[UIAlertView bk_showAlertViewWithTitle:@"温馨提示" message:@"确定退出登录" cancelButtonTitle:@"确定" otherButtonTitles:@[@"取消"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex==0) {
-                [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userInfo"];
+                [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userInfo"];//删除用户信息
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"menuInfo"];//删除菜单信息
                 [[AppDelegate Share] gotologin];
                 //退出海康威视
                 [[MCUVmsNetSDK shareInstance] logoutMsp:^(id object) {
@@ -156,7 +157,7 @@
         UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
         [nav pushViewController:helpBook animated:YES];
     }else if ([@"当前版本" isEqualToString:itemStr]){
-        [self networkPost:API_GETVERSION parameter:@{@"apptype":@(1)} progresHudText:@"加载中..." completionBlock:^(id rep) {
+        [self networkPost:API_GETVERSION parameter:@{@"apptype":@(999)} progresHudText:@"加载中..." completionBlock:^(id rep) {
             
             VersionModel *versionModel=[[VersionModel alloc]init];
             if ([rep isKindOfClass:[NSArray class]]) {

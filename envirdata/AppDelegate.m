@@ -60,6 +60,7 @@ BMKMapManager* _mapManager;
         [self gotologin];
     }
     [self getvison];
+    [self getTrackId];
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;
@@ -75,9 +76,20 @@ BMKMapManager* _mapManager;
     [SingalObj defaultManager].rootNav =tab_nav.navigationController;
     self.window.rootViewController=tab_nav;
 }
+#pragma mark----------获取TrackID---
+//请求轨迹ID
+-(void)getTrackId{
+    [self networkPost:API_GETTRACKID parameter:@{} progresHudText:nil completionBlock:^(id rep) {
+        //保存用户信息
+        NSString *trackId=rep[@"trackid"];
+        [[NSUserDefaults standardUserDefaults] setObject:trackId forKey:@"trackid"];
+        [SingalObj defaultManager].trackid=trackId;
+    }];
+}
+
 #pragma mark----------版本更新----------------
 -(void)getvison{
-    [self networkPost:API_GETVERSION parameter:@{@"apptype":@(1)} progresHudText:@"加载中..." completionBlock:^(id rep) {
+    [self networkPost:API_GETVERSION parameter:@{@"apptype":@(999)} progresHudText:@"加载中..." completionBlock:^(id rep) {
         VersionModel *versionModel=[[VersionModel alloc]init];
         if ([rep isKindOfClass:[NSArray class]]) {
             NSArray * versonAry=[VersionModel mj_objectArrayWithKeyValuesArray:rep];
@@ -245,12 +257,14 @@ BMKMapManager* _mapManager;
 
 
 -(void)networkPost:(NSString*)url parameter:(NSDictionary*)parameter progresHudText:(NSString*)hudText completionBlock:(void (^)(id rep))completionBlock{
-    if (hudText!=nil) {
-        [SVProgressHUD showWithStatus:hudText];
+    if ([hudText isNotBlank]) {
+         [SVProgressHUD showWithStatus:hudText];
     }
     NSDictionary * parameterdic = @{@"param":[parameter mj_JSONString]};
     [[AFAppDotNetAPIClient shareClient] POST:url parameters: parameterdic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [SVProgressHUD dismiss];
+        if ([hudText isNotBlank]) {
+            [SVProgressHUD dismiss];
+        }
         NSLog(@"%@",[responseObject mj_JSONString]);
         if ([responseObject[@"code"] intValue]==0) {
             completionBlock(responseObject[@"data"]);

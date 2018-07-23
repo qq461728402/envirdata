@@ -11,12 +11,14 @@
 @implementation UIViewController (util)
 @dynamic callback;
 -(void)networkGet:(NSString *)url parameter:(NSDictionary *)parameter progresHudText:(NSString *)hudText completionBlock:(void (^)(id))completionBlock{
-    if (hudText!=nil) {
+    if ([hudText isNotBlank]) {
         [SVProgressHUD showWithStatus:hudText];
     }
      NSDictionary * parameterdic = @{@"param":[parameter mj_JSONString]};
     [[AFAppDotNetAPIClient shareClient] GET:url parameters:parameterdic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [SVProgressHUD dismiss];
+        if ([hudText isNotBlank]) {
+            [SVProgressHUD dismiss];
+        }
         NSLog(@"%@",[responseObject mj_JSONString]);
         if ([responseObject[@"code"] intValue]==0) {
             completionBlock(responseObject[@"data"]);
@@ -30,12 +32,14 @@
     }];
 }
 -(void)networkPost:(NSString*)url parameter:(NSDictionary*)parameter progresHudText:(NSString*)hudText completionBlock:(void (^)(id rep))completionBlock{
-    if (hudText!=nil) {
+    if ([hudText isNotBlank]) {
         [SVProgressHUD showWithStatus:hudText];
     }
     NSDictionary * parameterdic = @{@"param":[parameter mj_JSONString]};
     [[AFAppDotNetAPIClient shareClient] POST:url parameters: parameterdic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [SVProgressHUD dismiss];
+        if ([hudText isNotBlank]) {
+             [SVProgressHUD dismiss];
+        }
         NSLog(@"%@",[responseObject mj_JSONString]);
         if ([responseObject[@"code"] intValue]==0) {
             completionBlock(responseObject[@"data"]);
@@ -52,12 +56,11 @@
     }];
 }
 -(void)networkPostAll:(NSString*)url parameter:(NSDictionary*)parameter progresHudText:(NSString*)hudText completionBlock:(void (^)(id rep))completionBlock{
-    if (hudText!=nil) {
+    if ([hudText isNotBlank]) {
         [SVProgressHUD showWithStatus:hudText];
     }
     NSDictionary * parameterdic = @{@"param":[parameter mj_JSONString]};
     [[AFAppDotNetAPIClient shareClient] POST:url parameters: parameterdic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [SVProgressHUD dismiss];
         NSLog(@"%@",[responseObject mj_JSONString]);
         completionBlock(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

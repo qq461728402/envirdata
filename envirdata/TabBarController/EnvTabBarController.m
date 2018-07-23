@@ -12,8 +12,8 @@
 #import "EnvManagerVC.h"
 #import "EnvAnalysisReportVC.h"
 #import "EnvPersonalCenterVC.h"
-
-
+#import "MangerMentToVC.h"
+#import "EnvAnalysisReportToVC.h"
 #import "ViewController.h"
 @interface EnvTabBarController ()<UITabBarControllerDelegate>
 
@@ -44,7 +44,15 @@
     [super viewDidLoad];
     self.tabBar.translucent=NO;//设置背景颜色
     self.tabBar.barTintColor=COLOR_TAB_UNSELECT;//设置背景颜色
-   
+    
+    NSArray *menuAry = USER_DEFAULTS(@"menuInfo");
+    BOOL isglxt1 = [menuAry bk_match:^BOOL(NSDictionary *itemobj) {
+        if ([itemobj[@"mark"] isEqualToString:@"glxt1"]) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }];
     EnvAirQualityVC *airQuality=[[EnvAirQualityVC alloc]init];
     airQuality.tabBarItem.title=@"空气质量";
     airQuality.tabBarItem.image=[PNGIMAGE(@"tab_kqzl") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -56,15 +64,34 @@
     onlineMon.tabBarItem.image=[PNGIMAGE(@"tab_wgjk") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [onlineMon.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
     
+    
+    
     EnvManagerVC * manager =[[EnvManagerVC alloc]init];
     manager.tabBarItem.title=@"管理协同";
     manager.tabBarItem.image=[PNGIMAGE(@"tab_xtgl") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [manager.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
     
+    
+    MangerMentToVC *mangermantTo =[[MangerMentToVC alloc]init];
+    mangermantTo.tabBarItem.title=@"管理协同";
+    mangermantTo.tabBarItem.image=[PNGIMAGE(@"tab_xtgl") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [mangermantTo.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
+    
+    
+    
+    
+    
     EnvAnalysisReportVC *analysisReport =[[EnvAnalysisReportVC alloc]init];
     analysisReport.tabBarItem.title=@"分析报告";
     analysisReport.tabBarItem.image=[PNGIMAGE(@"tab_fxbg") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [analysisReport.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
+    
+    EnvAnalysisReportToVC *analysisReportTo =[[EnvAnalysisReportToVC alloc]init];
+    analysisReportTo.tabBarItem.title=@"分析报告";
+    analysisReportTo.tabBarItem.image=[PNGIMAGE(@"tab_fxbg") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [analysisReportTo.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
+    
+    
     
     EnvPersonalCenterVC *personallCenter=[[EnvPersonalCenterVC alloc]init];
     personallCenter.tabBarItem.title=@"个人中心";
@@ -73,7 +100,11 @@
     [personallCenter.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR_Withe} forState:UIControlStateNormal];
     
     self.tabBar.tintColor=COLOR_Withe;
-    self.viewControllers=@[airQuality,onlineMon,manager,analysisReport,personallCenter];
+    if (isglxt1==YES) {
+         self.viewControllers=@[airQuality,onlineMon,manager,analysisReport,personallCenter];
+    }else{
+        self.viewControllers=@[airQuality,onlineMon,mangermantTo,analysisReportTo,personallCenter];
+    }
     CGSize indicatorImageSize =CGSizeMake(self.tabBar.bounds.size.width/self.tabBar.items.count, self.tabBar.bounds.size.height);
     self.tabBar.selectionIndicatorImage=[UIImage imageWithColor:COLOR_TOP size:indicatorImageSize];
     self.delegate=self;

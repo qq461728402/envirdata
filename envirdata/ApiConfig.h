@@ -15,6 +15,7 @@
 #define API_CHECKUSER @"api/checkUser"  //登录接口
 #define API_BINDDEVICE @"api/bindDevice" //绑定设备号
 #define FILE_UPLOADING @"uploadImg" //图片上传
+#define API_GETMENU @"api/getMenu" //获取功能模块
 
 //空气质量
 #define API_GETNEARESTGKZREAL @"api/getNearestGkzReal" //最近国控站实况接口
