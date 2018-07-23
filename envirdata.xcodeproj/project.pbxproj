@@ -57,6 +57,11 @@
 		E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD0D20F7927000872ADD /* SliderSwitchView.m */; };
 		E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */; };
 		E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E148BD1620F79ACA00872ADD /* AreaLevelModel.m */; };
+		E152F2DB2106182E00F1DA8A /* GetTasksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E152F2DA2106182E00F1DA8A /* GetTasksVC.m */; };
+		E152F2DE2106230600F1DA8A /* PatrolTasksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E152F2DD2106230600F1DA8A /* PatrolTasksModel.m */; };
+		E152F2E12106235700F1DA8A /* ComplaintTasksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E152F2E02106235700F1DA8A /* ComplaintTasksModel.m */; };
+		E152F2E42106283500F1DA8A /* PatrolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E152F2E32106283500F1DA8A /* PatrolCell.m */; };
+		E152F2E721062A3D00F1DA8A /* ComplaintCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E152F2E621062A3D00F1DA8A /* ComplaintCell.m */; };
 		E1576D7B2100C6B800B3FFD8 /* RailLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D7A2100C6B800B3FFD8 /* RailLineModel.m */; };
 		E1576D7E2100C8F000B3FFD8 /* RailLinePointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D7D2100C8F000B3FFD8 /* RailLinePointModel.m */; };
 		E1576D812100D62B00B3FFD8 /* StatisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D802100D62B00B3FFD8 /* StatisticsVC.m */; };
@@ -224,6 +229,16 @@
 		E148BD1020F7951200872ADD /* EnvAreaLevelListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvAreaLevelListVC.m; path = AirQuality/EnvAreaLevelListVC.m; sourceTree = "<group>"; };
 		E148BD1520F79ACA00872ADD /* AreaLevelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaLevelModel.h; sourceTree = "<group>"; };
 		E148BD1620F79ACA00872ADD /* AreaLevelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaLevelModel.m; sourceTree = "<group>"; };
+		E152F2D92106182E00F1DA8A /* GetTasksVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetTasksVC.h; path = managermentTo/GetTasksVC.h; sourceTree = "<group>"; };
+		E152F2DA2106182E00F1DA8A /* GetTasksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetTasksVC.m; path = managermentTo/GetTasksVC.m; sourceTree = "<group>"; };
+		E152F2DC2106230600F1DA8A /* PatrolTasksModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatrolTasksModel.h; sourceTree = "<group>"; };
+		E152F2DD2106230600F1DA8A /* PatrolTasksModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatrolTasksModel.m; sourceTree = "<group>"; };
+		E152F2DF2106235700F1DA8A /* ComplaintTasksModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplaintTasksModel.h; sourceTree = "<group>"; };
+		E152F2E02106235700F1DA8A /* ComplaintTasksModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplaintTasksModel.m; sourceTree = "<group>"; };
+		E152F2E22106283500F1DA8A /* PatrolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatrolCell.h; path = cells/PatrolCell.h; sourceTree = "<group>"; };
+		E152F2E32106283500F1DA8A /* PatrolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatrolCell.m; path = cells/PatrolCell.m; sourceTree = "<group>"; };
+		E152F2E521062A3D00F1DA8A /* ComplaintCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplaintCell.h; path = cells/ComplaintCell.h; sourceTree = "<group>"; };
+		E152F2E621062A3D00F1DA8A /* ComplaintCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComplaintCell.m; path = cells/ComplaintCell.m; sourceTree = "<group>"; };
 		E1576D792100C6B800B3FFD8 /* RailLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RailLineModel.h; sourceTree = "<group>"; };
 		E1576D7A2100C6B800B3FFD8 /* RailLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RailLineModel.m; sourceTree = "<group>"; };
 		E1576D7C2100C8F000B3FFD8 /* RailLinePointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RailLinePointModel.h; sourceTree = "<group>"; };
@@ -628,6 +643,10 @@
 				E1FCBD9920FF9F7B00DCBE13 /* GegionCell.m */,
 				E1F520D92101BB4E00458A08 /* ReportCell.h */,
 				E1F520DA2101BB4E00458A08 /* ReportCell.m */,
+				E152F2E22106283500F1DA8A /* PatrolCell.h */,
+				E152F2E32106283500F1DA8A /* PatrolCell.m */,
+				E152F2E521062A3D00F1DA8A /* ComplaintCell.h */,
+				E152F2E621062A3D00F1DA8A /* ComplaintCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -815,6 +834,10 @@
 		E1BC41D820F6EB30002B4047 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				E152F2DF2106235700F1DA8A /* ComplaintTasksModel.h */,
+				E152F2E02106235700F1DA8A /* ComplaintTasksModel.m */,
+				E152F2DC2106230600F1DA8A /* PatrolTasksModel.h */,
+				E152F2DD2106230600F1DA8A /* PatrolTasksModel.m */,
 				E1602D7821022EEF007EAFBA /* VersionModel.h */,
 				E1602D7921022EEF007EAFBA /* VersionModel.m */,
 				E1602D6C21021B61007EAFBA /* YesterDayModel.h */,
@@ -877,6 +900,8 @@
 			children = (
 				E1F7BA882105BA6800D49609 /* MangerMentToVC.h */,
 				E1F7BA892105BA6800D49609 /* MangerMentToVC.m */,
+				E152F2D92106182E00F1DA8A /* GetTasksVC.h */,
+				E152F2DA2106182E00F1DA8A /* GetTasksVC.m */,
 			);
 			name = Mangerment2;
 			sourceTree = "<group>";
@@ -1055,6 +1080,7 @@
 				E1576D8D2100ECBE00B3FFD8 /* ReportModel.m in Sources */,
 				E181741420FA318600604652 /* WarnPointAnnotation.m in Sources */,
 				E100803620F622AE00B75514 /* EnvPersonalCenterVC.m in Sources */,
+				E152F2E721062A3D00F1DA8A /* ComplaintCell.m in Sources */,
 				E181740720F9BB3B00604652 /* PointPointAnnotation.m in Sources */,
 				E17DA5B820FDA0CA00FA4222 /* PCell.m in Sources */,
 				E148BD1120F7951200872ADD /* EnvAreaLevelListVC.m in Sources */,
@@ -1072,6 +1098,7 @@
 				E1576D842100D65200B3FFD8 /* ReportVC.m in Sources */,
 				E1BA89BE20EB1ED9002CD41B /* LoginVC.m in Sources */,
 				E18173FA20F996E400604652 /* OnlineCell.m in Sources */,
+				E152F2DE2106230600F1DA8A /* PatrolTasksModel.m in Sources */,
 				E188A52420FAE68400B68701 /* NewUnitPicHourDataModel.m in Sources */,
 				E146D9E120FE28C4004227AA /* TaskModel.m in Sources */,
 				E17DA5D120FDDD3300FA4222 /* ImgCell.m in Sources */,
@@ -1087,6 +1114,7 @@
 				E188A52B20FAEE9500B68701 /* HourDataView.m in Sources */,
 				E1576D812100D62B00B3FFD8 /* StatisticsVC.m in Sources */,
 				E18991FE21031AD8008D173C /* FeedBackModel.m in Sources */,
+				E152F2DB2106182E00F1DA8A /* GetTasksVC.m in Sources */,
 				E146D9D520FE07AD004227AA /* AddTaskViewController.m in Sources */,
 				E1FCBD9D20FFA13700DCBE13 /* GegionDetialVC.m in Sources */,
 				E1FCBD9720FF9F3B00DCBE13 /* GegionModel.m in Sources */,
@@ -1103,6 +1131,7 @@
 				E18173F420F98ABF00604652 /* EnvOnlienListVC.m in Sources */,
 				E188A52120FAE60000B68701 /* CameraInfoModel.m in Sources */,
 				E17DA5D220FDDD3300FA4222 /* PictureView.m in Sources */,
+				E152F2E12106235700F1DA8A /* ComplaintTasksModel.m in Sources */,
 				E134590C20FB69D900D6B549 /* PlayView.m in Sources */,
 				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
 				E1602D7721022B10007EAFBA /* AboutUsVC.m in Sources */,
@@ -1120,6 +1149,7 @@
 				E17DA5B520FDA0B800FA4222 /* ACell.m in Sources */,
 				E188A52820FAE7E600B68701 /* ListView.m in Sources */,
 				E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */,
+				E152F2E42106283500F1DA8A /* PatrolCell.m in Sources */,
 				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
 				E1602D71210228F7007EAFBA /* HelpBookVC.m in Sources */,
 				E181741720FA372C00604652 /* EnvUnitDataTimeVC.m in Sources */,

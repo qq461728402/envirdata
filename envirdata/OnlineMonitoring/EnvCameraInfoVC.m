@@ -201,9 +201,7 @@ static dispatch_queue_t video_intercom_queue() {
                     historyData.uid=uid;
                     [self.navigationController pushViewController:historyData animated:YES];
                 }else if ([newunit.type intValue]==2&&[newunit.value isNotBlank]){//查看异常图片
-                    
                     NSArray *urlAry  = [newunit.value componentsSeparatedByString:@","];
-                    
                     if (urlAry.count>0) {
                         NSMutableArray *photos = [NSMutableArray new];
                         [urlAry enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -216,7 +214,6 @@ static dispatch_queue_t video_intercom_queue() {
                         browser.showStyle = GKPhotoBrowserShowStyleNone;
                         [browser showFromVC:self];
                     }
-                    
                 }
             }];
             [hourView addSubview:hourDataView];
@@ -574,6 +571,8 @@ static dispatch_queue_t video_intercom_queue() {
         [alertController addAction:[UIAlertAction actionWithTitle:@"添加站点警告" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             PointWarnVC *pointWarn=[[PointWarnVC alloc]init];
             pointWarn.pointImage=image;
+            pointWarn.pointName=carmeraInfo.uname;
+            pointWarn.uid=carmeraInfo.uid;
             pointWarn.title=@"新增站点警告";
             [weakSelf.navigationController pushViewController:pointWarn animated:YES];
         }]];

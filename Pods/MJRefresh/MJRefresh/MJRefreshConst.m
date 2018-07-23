@@ -21,12 +21,12 @@ NSString *const MJRefreshHeaderRefreshingText = @"MJRefreshHeaderRefreshingText"
 
 NSString *const MJRefreshAutoFooterIdleText = @"MJRefreshAutoFooterIdleText";
 NSString *const MJRefreshAutoFooterRefreshingText = @"MJRefreshAutoFooterRefreshingText";
-NSString *const MJRefreshAutoFooterNoMoreDataText = @"MJRefreshAutoFooterNoMoreDataText";
+NSString *const MJRefreshAutoFooterNoMoreDataText = @"";
 
 NSString *const MJRefreshBackFooterIdleText = @"MJRefreshBackFooterIdleText";
 NSString *const MJRefreshBackFooterPullingText = @"MJRefreshBackFooterPullingText";
 NSString *const MJRefreshBackFooterRefreshingText = @"MJRefreshBackFooterRefreshingText";
-NSString *const MJRefreshBackFooterNoMoreDataText = @"MJRefreshBackFooterNoMoreDataText";
+NSString *const MJRefreshBackFooterNoMoreDataText = @"";
 
 NSString *const MJRefreshHeaderLastTimeText = @"MJRefreshHeaderLastTimeText";
 NSString *const MJRefreshHeaderDateTodayText = @"MJRefreshHeaderDateTodayText";

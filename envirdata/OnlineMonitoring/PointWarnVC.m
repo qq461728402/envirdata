@@ -8,19 +8,28 @@
 
 #import "PointWarnVC.h"
 #import "CTextField.h"
-@interface PointWarnVC ()
+#import "LBpopView.h"
+#import "DkeyModel.h"
+@interface PointWarnVC ()<LBpopDelegate>
 @property (nonatomic,strong)CTextField *pointName_tf;
 @property (nonatomic,strong)CTextField *pointType_tf;
+@property (nonatomic,strong)NSString *pics;
+@property (nonatomic,strong)LBpopView *lbpopView;
+@property (nonatomic,strong)NSArray *dkeylistAry;
+@property (nonatomic,assign)int utypeindex;
+@property (nonatomic,strong)NSNumber *utype;
+
+
 @end
 
 @implementation PointWarnVC
-@synthesize pointName_tf,pointType_tf,pointName;
-
+@synthesize pointName_tf,pointType_tf,pointName,pics,lbpopView,dkeylistAry,utypeindex,utype,uid;
 -(void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor colorWithRGB:0xf1f1f1]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    dkeylistAry =[DkeyModel mj_objectArrayWithKeyValuesArray:@[@{@"dkid":@(3),@"dval":@"施工扬尘"},@{@"dkid":@(4),@"dval":@"道路扬尘"},@{@"dkid":@(0),@"dval":@"道路扬尘"}]];
     //添加站点
     UIView *tempView=[[UIView alloc]initWithFrame:CGRectMake(0, 64+10, SCREEN_WIDTH, SCALE(50))];
     UILabel *sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 50, tempView.height)];
@@ -55,7 +64,15 @@
     ViewRadius(pointType_tf, 4);
     pointType_tf.userInteractionEnabled=YES;
     [pointType_tf bk_whenTapped:^{
-        NSLog(@"1111");
+        if (!lbpopView) {
+            lbpopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        lbpopView.popType=@"utype";
+        lbpopView.selectRowIndex=utypeindex;
+        lbpopView.delegate=self;
+        lbpopView.popArray=dkeylistAry;
+        lbpopView.popTitle=@"请选择站点类型";
+        [lbpopView show];
     }];
     [tempView addSubview:pointType_tf];
     oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
@@ -86,15 +103,33 @@
     [self upImage];
     // Do any additional setup after loading the view.
 }
+#pragma mark------------------popViewdelegate----------------
+-(void)getIndexRow:(int)indexrow warranty:(id)warranty
+{
+    if ([warranty isEqualToString:@"utype"]) {
+        utypeindex =indexrow;
+        DkeyModel *dkeyMode=dkeylistAry[utypeindex];
+        pointType_tf.text=dkeyMode.dval;
+        utype =dkeyMode.dkid;
+    }
+}
 -(void)submitData{
- 
-    
-    
-
+    if (![[utype stringValue] isNotBlank]) {
+        [self showMsgInfo:@"请选择类型"];
+        return;
+    }
+    NSDictionary *parmetr =@{@"type":utype,@"uid":uid,@"pics":pics};
+    [self networkPost:API_ADDBURNPOINT parameter:parmetr progresHudText:@"提交中..." completionBlock:^(id rep) {
+        [SVProgressHUD showSuccessWithStatus:@"提交成功"];
+        [self bk_performBlock:^(id obj) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } afterDelay:1.0];
+    }];
 }
 -(void)upImage{
     [self networkUpfile:FILE_UPLOADING imageAry:_pointImage parameter:@{} progresHudText:@"加载中..." completionBlock:^(id rep) {
         [SVProgressHUD dismiss];
+        pics =rep[@"url"];
     }];
 }
 

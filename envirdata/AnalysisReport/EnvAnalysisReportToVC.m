@@ -54,6 +54,7 @@
     [view setBackgroundColor:COLOR_TOP];
     [self.view addSubview:view];
     slideSwitchView12=[[SliderSwitchView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight-20-49)];
+    slideSwitchView12.isScroll=YES;
     slideSwitchView12.viewArray=tableList_arr;
     slideSwitchView12.slideSwitchViewDelegate=self;
     [self.view addSubview:slideSwitchView12];
@@ -70,7 +71,6 @@
         [onlinemap getReportList:NO];
     }
 }
-
 - (void)slideSwitchView:(SliderSwitchView *)view didselectTab:(NSUInteger)number
 {
     if([[tableList_arr objectAtIndex:number] isKindOfClass:[StatisticsVC class]]){//表示

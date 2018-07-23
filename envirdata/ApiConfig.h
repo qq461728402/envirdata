@@ -35,6 +35,7 @@
 #define API_GETUNITPICSADDRESS @"api/getUnitPicsAddress" //站点监测图片列表接口
 #define API_GETHISTORDATAMULTIINDEX @"api/getHistorDataMultiIndex" //站点浓度监测历史接口
 #define API_GETHISTORYVIOLATIONPICTURE @"api/getHistoryViolationPicture"//站点历史违规图片
+#define API_ADDBURNPOINT @"api/addBurnPoint" //添加警告站点
 
 //管理协同
 #define API_GETMONITORTASKTREE3  @"api/getMonitorTaskTree3"
@@ -44,6 +45,10 @@
 #define API_ADDMONITORTASK @"api/addMonitorTask"//添加任务
 #define API_UPDMONITORTASK @"api/updMonitorTask" //处置任务
 #define API_FINISHTASK @"api/finishTask"//任务销号处理
+//管理协同2
+#define API_GETPATROLTASKS @"api/getPatrolTasks" //移动巡查任务列表
+#define API_GETCOMPLAINTTAKS @"api/getComplaintTasks" //监察任务列表
+
 //GPS轨迹
 #define API_GETTRACKID @"api/getTrackId"//请求轨迹ID
 #define API_APPPIONT @"api/addPoints" //上传轨迹点

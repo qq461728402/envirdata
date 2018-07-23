@@ -18,5 +18,6 @@
 @property (nonatomic, strong) NSString * utype_dval;
 @property (nonatomic, strong) NSNumber * wd;
 @property (nonatomic, strong) NSNumber * warinid;//预警ID
+@property (nonatomic, strong) NSString * pic;
 
 @end

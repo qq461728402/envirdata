@@ -27,8 +27,8 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"failure--%@",error);
+        [SVProgressHUD dismiss];
 //        [SVProgressHUD showInfoWithStatus:@"加载错误"];
-        completionBlock(nil);
     }];
 }
 -(void)networkPost:(NSString*)url parameter:(NSDictionary*)parameter progresHudText:(NSString*)hudText completionBlock:(void (^)(id rep))completionBlock{
@@ -48,10 +48,10 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"failure--%@",error);
-        
         NSData *data = error.userInfo[@"com.alamofire.serialization.response.error.data"] ;
         NSString *errorStr = [[ NSString alloc ] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"failure--%@",errorStr);
+        [SVProgressHUD dismiss];
 //        [SVProgressHUD showInfoWithStatus:@"加载错误"];
     }];
 }
@@ -68,7 +68,7 @@
         NSData *data = error.userInfo[@"com.alamofire.serialization.response.error.data"] ;
         NSString *errorStr = [[ NSString alloc ] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"failure--%@",errorStr);
-//        [SVProgressHUD showInfoWithStatus:@"加载错误"];
+        [SVProgressHUD dismiss];
     }];
 }
 //只支持单张图片上传

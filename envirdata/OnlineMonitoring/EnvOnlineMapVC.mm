@@ -17,6 +17,8 @@
 #import "EnvCameraInfoVC.h"
 #import "EnvUnitDataTimeVC.h"
 #import "UnusuallyPonitAnnotation.h"
+#import "GKPhoto.h"
+#import "GKPhotoBrowser.h"
 @interface EnvOnlineMapVC ()<BMKMapViewDelegate,BMKLocationServiceDelegate,LBpopDelegate>
 @property (nonatomic,strong)BMKLocationService *locService;
 @property (nonatomic,strong)BMKMapView *onlineMap;
@@ -216,14 +218,14 @@
                                                            reuseIdentifier:reuseIndetifier];
         }
         annotationView.canShowCallout=NO;
-        annotationView.image = PNGIMAGE(@"预警");
+        annotationView.image = PNGIMAGE(@"warnPoint");
         return annotationView;
     
     }
     return nil;
 }
 -(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view{
-    if ([view.annotation isKindOfClass:[PointPointAnnotation class]]) {
+    if ([view.annotation isKindOfClass:[PointPointAnnotation class]] ||[view.annotation isKindOfClass:[UnusuallyPonitAnnotation class]]) {
         PointPointAnnotation *pointPointA=(PointPointAnnotation*)view.annotation;
         NSLog(@"%@",pointPointA.title);
         OnlineMonModel *onlineModel = pointPointA.onlineModel;
@@ -236,7 +238,6 @@
         cameraInfo.u_type=[onlineModel.utype stringValue];
         cameraInfo.title=onlineModel.uname;
         self.callback(cameraInfo);
-        
     }else if ([view.annotation isKindOfClass:[StatePointAnnotation class]]){
         StatePointAnnotation *pointPointA=(StatePointAnnotation*)view.annotation;
         NSLog(@"%@",pointPointA.title);
@@ -245,6 +246,22 @@
         unitDataTime.uid=onlineModel.uid;
         unitDataTime.title=onlineModel.uname;
         self.callback(unitDataTime);
+    }else if ([view.annotation isKindOfClass:[WarnPointAnnotation class]]){
+        WarnPointAnnotation *pointPointA=(WarnPointAnnotation*)view.annotation;
+        OnlineMonModel *onlineModel = pointPointA.onlineModel;
+        NSArray *urlAry  = [onlineModel.pic componentsSeparatedByString:@","];
+        if (urlAry.count>0) {
+            NSMutableArray *photos = [NSMutableArray new];
+            [urlAry enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                GKPhoto *photo = [GKPhoto new];
+                photo.url = [NSURL URLWithString:obj];
+                [photos addObject:photo];
+            }];
+            GKPhotoBrowser *browser = [GKPhotoBrowser photoBrowserWithPhotos:photos currentIndex:0];
+//            browser.delegate=self;
+            browser.showStyle = GKPhotoBrowserShowStyleNone;
+            [browser showFromVC:self];
+        }
     }
 }
 #pragma mark------------------popViewdelegate----------------
@@ -257,7 +274,6 @@
         [self getdataInfo];
     }
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

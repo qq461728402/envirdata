@@ -11,4 +11,5 @@
 @interface PointWarnVC : UIViewController
 @property (nonatomic,strong)NSString *pointName;
 @property (nonatomic,strong)UIImage *pointImage;
+@property (nonatomic,strong)NSString *uid;
 @end

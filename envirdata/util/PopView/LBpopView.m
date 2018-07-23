@@ -75,7 +75,6 @@
 }
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    
     if (!headView) {
         headView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, view_userContact.width, 44)];
         headView.backgroundColor=COLOR_TOP;
