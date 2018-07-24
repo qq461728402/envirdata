@@ -48,7 +48,7 @@
     sutitlelb.text=@"";
     [self.view addSubview:sutitlelb];
     
-    UIView *loginView=[[UIView alloc]initWithFrame:CGRectMake(SCALE(30), sutitlelb.bottom+10, SCREEN_WIDTH-SCALE(60), 80)];
+    UIView *loginView=[[UIView alloc]initWithFrame:CGRectMake(SCALE(30), sutitlelb.bottom+15, SCREEN_WIDTH-SCALE(60), 80)];
     [loginView setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(loginView, 2);
     [self.view addSubview:loginView];
