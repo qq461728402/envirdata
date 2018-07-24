@@ -282,7 +282,7 @@
             }
             if (location.rgcData) {
                 BMKLocationReGeocode *regoecode  =  location.rgcData;
-                position_tf.text=[NSString stringWithFormat:@"%@%@%@%@",regoecode.city,regoecode.district,regoecode.street,regoecode.streetNumber];
+                position_tf.text=[NSString stringWithFormat:@"%@%@%@%@",regoecode.city,regoecode.district,regoecode.street,regoecode.streetNumber!=nil?regoecode.streetNumber:@""];
                 NSLog(@"rgc = %@",[location.rgcData description]);
             }
         }
@@ -358,7 +358,7 @@
 }
 #pragma mark--------获取类型信息---
 -(void)getTypeDescipt{
-    NSString *dkey=@"patrolType";
+    NSString *dkey=@"bioPatrolType";
     [self networkPost:API_GETTYPEDESCIPT parameter:@{@"dkey":dkey} progresHudText:@"加载中..." completionBlock:^(id rep) {
         dkeyAry=[DkeyModel mj_objectArrayWithKeyValuesArray:rep];
     }];

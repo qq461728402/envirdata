@@ -34,29 +34,13 @@
 }
 -(void)setPatrolTaskModel:(PatrolTasksModel *)patrolTaskModel{
     _patrolTaskModel=patrolTaskModel;
-    NSMutableString *titleStr=[NSMutableString string];
-    NSString *statusStr=@"";
-    if ([patrolTaskModel.status intValue]==1) {//待处理
-        statusStr =@"（待处理）";
-    }else if ([patrolTaskModel.status intValue]==2){//已完成
-        statusStr =@"（已处理）";
-    }
-    [titleStr appendString:statusStr];
-    [titleStr appendString:patrolTaskModel.des];
-    NSMutableAttributedString *titleAttStr=[[NSMutableAttributedString alloc]initWithString:titleStr];
-    [titleAttStr addAttribute:NSForegroundColorAttributeName value:[patrolTaskModel.status intValue]==1?[UIColor redColor]:[patrolTaskModel.status intValue]==2?[UIColor colorWithRGB:0x228fff]:[UIColor blackColor] range:NSMakeRange(0,statusStr.length)];
-    title_lb.attributedText=titleAttStr;
-    CGSize contentSize =[titleStr boundingRectWithSize:CGSizeMake(title_lb.width, 500) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:title_lb.font} context:nil].size;
+    title_lb.text=[patrolTaskModel.uname stringByAppendingString:patrolTaskModel.dval];
+    CGSize contentSize =[title_lb.text boundingRectWithSize:CGSizeMake(title_lb.width, 500) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:title_lb.font} context:nil].size;
     title_lb.height=title_lb.height>contentSize.height?title_lb.height:contentSize.height;
     subtitle_lb.top=title_lb.bottom;
-    subtitle_lb.text=[NSString stringWithFormat:@"%@（来源：%@）",patrolTaskModel.ctime, patrolTaskModel.cname];
+    subtitle_lb.text=[NSString stringWithFormat:@"%@",patrolTaskModel.ctime];
     self.contentView.height=subtitle_lb.bottom;
 }
-
-
-
-
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

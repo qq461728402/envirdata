@@ -159,7 +159,7 @@
     }else if ([@"当前版本" isEqualToString:itemStr]){
         [self networkPost:API_GETVERSION parameter:@{@"apptype":@(999)} progresHudText:@"加载中..." completionBlock:^(id rep) {
             
-            VersionModel *versionModel=[[VersionModel alloc]init];
+            VersionModel *versionModel;
             if ([rep isKindOfClass:[NSArray class]]) {
                 NSArray * versonAry=[VersionModel mj_objectArrayWithKeyValuesArray:rep];
                 if (versonAry.count>0) {
@@ -167,6 +167,9 @@
                 }
             }else{
                 versionModel = [VersionModel mj_objectWithKeyValues:rep];
+            }
+            if (!versionModel) {
+                return ;
             }
             NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
             NSString *currentVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];

@@ -45,6 +45,7 @@
 #define API_ADDMONITORTASK @"api/addMonitorTask"//添加任务
 #define API_UPDMONITORTASK @"api/updMonitorTask" //处置任务
 #define API_FINISHTASK @"api/finishTask"//任务销号处理
+
 //管理协同2
 #define API_GETPATROLTASKS @"api/getPatrolTasks" //移动巡查任务列表
 #define API_GETCOMPLAINTTAKS @"api/getComplaintTasks" //监察任务列表
@@ -53,7 +54,8 @@
 #define API_GETBYAREAIDDEPARTMENTINFOS @"api/getByareaidDepartmentInfos"//获取单位信息
 #define API_GETADDPATROLTASKS @"api/getAddPatrolTasks"//发起移动巡查任务接口
 #define API_INSETCOMPLAINT @"api/insetComplaint"//新增投诉
-
+#define API_HANDLEPATROLTASKS @"api/handlePatrolTasks"//处理任务
+#define API_HANDLECOMPLAINT @"api/handleComplaint" //处理投诉
 //GPS轨迹
 #define API_GETTRACKID @"api/getTrackId"//请求轨迹ID
 #define API_APPPIONT @"api/addPoints" //上传轨迹点

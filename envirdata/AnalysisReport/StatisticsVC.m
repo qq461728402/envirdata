@@ -43,61 +43,66 @@
         make.left.equalTo(weakSelf.view.mas_left);
     }];
     areaName_lb =[[UILabel alloc]initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 30)];
-    areaName_lb.font=BoldFont(24);
-    areaName_lb.textColor=[UIColor colorWithRGB:0x404040];
+    areaName_lb.font=Font(24);
+    areaName_lb.textColor=[UIColor colorWithRGB:0x919190];
     areaName_lb.textAlignment=NSTextAlignmentCenter;
     [mainScr addSubview:areaName_lb];
     
     time_lb=[[UILabel alloc]initWithFrame:CGRectMake(0, areaName_lb.bottom, areaName_lb.width, 18)];
     time_lb.font=Font(16);
-    time_lb.textColor=[UIColor colorWithRGB:0x404040];
+    time_lb.textColor=[UIColor colorWithRGB:0x919190];
     time_lb.textAlignment=NSTextAlignmentCenter;
     [mainScr addSubview:time_lb];
     
-    UILabel *kqzl=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), time_lb.bottom, 200, 30)];
+    UIFont * cFont=Font(15);
+    float itemH=35;
+    
+    UILabel *kqzl=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), time_lb.bottom, 200, itemH)];
     kqzl.font=Font(16);
     kqzl.text=@"空气质量情况";
     kqzl.textColor=[UIColor colorWithRGB:0x919190];
     [mainScr addSubview:kqzl];
 
     
+    
+    
     float vw =(SCREEN_WIDTH-SCALE(8))/2.0;
-    UILabel *aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(kqzl.left, kqzl.bottom, [ConfigObj font_sizeWithStr:14 str:@"AQI："], 30)];
-    aql_lb.font=Font(14);
+    UILabel *aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(kqzl.left, kqzl.bottom, [ConfigObj font_sizeWithStr:15 str:@"AQI："], itemH)];
+    aql_lb.font=cFont;
     aql_lb.text=@"AQI：";
     [mainScr addSubview:aql_lb];
     aqi_vlb =[[UILabel alloc]initWithFrame:CGRectMake(aql_lb.right, aql_lb.top, vw-aql_lb.width, aql_lb.height)];
-    aqi_vlb.font=Font(14);
+    aqi_vlb.font=cFont;
     aqi_vlb.textColor=COLOR_TOP;
     [mainScr addSubview:aqi_vlb];
     
-    UILabel *ylts_lb=[[UILabel alloc]initWithFrame:CGRectMake(aqi_vlb.right, aql_lb.top, [ConfigObj font_sizeWithStr:14 str:@"优良天数："], aql_lb.height)];
+    UILabel *ylts_lb=[[UILabel alloc]initWithFrame:CGRectMake(aqi_vlb.right, aql_lb.top, [ConfigObj font_sizeWithStr:15 str:@"优良天数："], aql_lb.height)];
     ylts_lb.text=@"优良天数：";
-    ylts_lb.font=Font(14);
+    ylts_lb.font=cFont;
     [mainScr addSubview:ylts_lb];
     ylts_vlb =[[UILabel alloc]initWithFrame:CGRectMake(ylts_lb.right, aql_lb.top, vw-ylts_lb.width, aql_lb.height)];
-    ylts_vlb.font=Font(14);
+    ylts_vlb.font=cFont;
     ylts_vlb.textColor=COLOR_TOP;
     [mainScr addSubview:ylts_vlb];
     
-    UILabel *sy_lb=[[UILabel alloc]initWithFrame:CGRectMake(aql_lb.left, aql_lb.bottom, [ConfigObj font_sizeWithStr:14 str:@"首要污染物："], aql_lb.height)];
+    UILabel *sy_lb=[[UILabel alloc]initWithFrame:CGRectMake(aql_lb.left, aql_lb.bottom, [ConfigObj font_sizeWithStr:15 str:@"首要污染物："], aql_lb.height)];
     sy_lb.text=@"首要污染物：";
-    sy_lb.font=Font(14);
+    sy_lb.font=cFont;
     [mainScr addSubview:sy_lb];
     primary_polluvlb =[[UILabel alloc]initWithFrame:CGRectMake(sy_lb.right, sy_lb.top, vw-sy_lb.width, sy_lb.height)];
-    primary_polluvlb.font=Font(14);
+    primary_polluvlb.font=cFont;
     primary_polluvlb.textColor=COLOR_TOP;
     [mainScr addSubview:primary_polluvlb];
     
     //站点监测情况
-    kqzl=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), sy_lb.bottom, 200, 30)];
+    kqzl=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), sy_lb.bottom, 200, itemH)];
     kqzl.font=Font(16);
     kqzl.text=@"站点监测情况";
     kqzl.textColor=[UIColor colorWithRGB:0x919190];
     [mainScr addSubview:kqzl];
     
-    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(kqzl.left, kqzl.bottom, [ConfigObj font_sizeWithStr:14 str:@"监测站点："], 30)];
-    aql_lb.font=Font(14);
+    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(kqzl.left, kqzl.bottom, [ConfigObj font_sizeWithStr:15 str:@"监测站点："], itemH)];
+    aql_lb.font=cFont;
     aql_lb.text=@"监测站点：";
     [mainScr addSubview:aql_lb];
     unit_totalvlb =[[UILabel alloc]initWithFrame:CGRectMake(aql_lb.right, aql_lb.top, vw-aql_lb.width, aql_lb.height)];
@@ -105,8 +110,8 @@
     unit_totalvlb.textColor=COLOR_TOP;
     [mainScr addSubview:unit_totalvlb];
     
-    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(unit_totalvlb.right, aql_lb.top, [ConfigObj font_sizeWithStr:14 str:@"正常站点："], aql_lb.height)];
-    aql_lb.font=Font(14);
+    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(unit_totalvlb.right, aql_lb.top, [ConfigObj font_sizeWithStr:15 str:@"正常站点："], aql_lb.height)];
+    aql_lb.font=cFont;
     aql_lb.text=@"正常站点：";
     [mainScr addSubview:aql_lb];
     
@@ -116,8 +121,8 @@
     [mainScr addSubview:unit_nomvlb];
     
     
-    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(kqzl.left, aql_lb.bottom, [ConfigObj font_sizeWithStr:14 str:@"违规站点："], aql_lb.height)];
-    aql_lb.font=Font(14);
+    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(kqzl.left, aql_lb.bottom, [ConfigObj font_sizeWithStr:15 str:@"违规站点："], aql_lb.height)];
+    aql_lb.font=cFont;
     aql_lb.text=@"违规站点：";
     [mainScr addSubview:aql_lb];
     
@@ -127,8 +132,8 @@
     [mainScr addSubview:unit_illegallb];
     
     
-    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(unit_illegallb.right, aql_lb.top, [ConfigObj font_sizeWithStr:14 str:@"违规图片："], aql_lb.height)];
-    aql_lb.font=Font(14);
+    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(unit_illegallb.right, aql_lb.top, [ConfigObj font_sizeWithStr:15 str:@"违规图片："], aql_lb.height)];
+    aql_lb.font=cFont;
     aql_lb.text=@"违规图片：";
     [mainScr addSubview:aql_lb];
     unit_illegalpiclb =[[UILabel alloc]initWithFrame:CGRectMake(aql_lb.right, aql_lb.top, vw-aql_lb.width, aql_lb.height)];
@@ -142,18 +147,18 @@
     kqzl.textColor=[UIColor colorWithRGB:0x919190];
     [mainScr addSubview:kqzl];
     
-    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(kqzl.left, kqzl.bottom, [ConfigObj font_sizeWithStr:14 str:@"新增任务："], aql_lb.height)];
-    aql_lb.font=Font(14);
+    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(kqzl.left, kqzl.bottom, [ConfigObj font_sizeWithStr:15 str:@"新增任务："], aql_lb.height)];
+    aql_lb.font=cFont;
     aql_lb.text=@"新增任务：";
     [mainScr addSubview:aql_lb];
     task_numlb =[[UILabel alloc]initWithFrame:CGRectMake(aql_lb.right, aql_lb.top, vw-aql_lb.width, aql_lb.height)];
-    task_numlb.font=Font(14);
+    task_numlb.font=cFont;
     task_numlb.textColor=COLOR_TOP;
     [mainScr addSubview:task_numlb];
     
     
-    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(task_numlb.right, aql_lb.top, [ConfigObj font_sizeWithStr:14 str:@"处理任务："], aql_lb.height)];
-    aql_lb.font=Font(14);
+    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(task_numlb.right, aql_lb.top, [ConfigObj font_sizeWithStr:15 str:@"处理任务："], aql_lb.height)];
+    aql_lb.font=cFont;
     aql_lb.text=@"处理任务：";
     [mainScr addSubview:aql_lb];
     finish_numlb =[[UILabel alloc]initWithFrame:CGRectMake(aql_lb.right, aql_lb.top, vw-aql_lb.width, aql_lb.height)];
@@ -161,8 +166,8 @@
     finish_numlb.textColor=COLOR_TOP;
     [mainScr addSubview:finish_numlb];
 
-    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(kqzl.left, aql_lb.bottom, [ConfigObj font_sizeWithStr:14 str:@"超期任务："], aql_lb.height)];
-    aql_lb.font=Font(14);
+    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(kqzl.left, aql_lb.bottom, [ConfigObj font_sizeWithStr:15 str:@"超期任务："], aql_lb.height)];
+    aql_lb.font=cFont;
     aql_lb.text=@"超期任务：";
     [mainScr addSubview:aql_lb];
     
@@ -171,12 +176,12 @@
     notfinish_numlb.textColor=COLOR_TOP;
     [mainScr addSubview:notfinish_numlb];
     
-    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(notfinish_numlb.right, aql_lb.top, [ConfigObj font_sizeWithStr:14 str:@"巡查总数："], aql_lb.height)];
-    aql_lb.font=Font(14);
+    aql_lb=[[UILabel alloc]initWithFrame:CGRectMake(notfinish_numlb.right, aql_lb.top, [ConfigObj font_sizeWithStr:15 str:@"巡查总数："], aql_lb.height)];
+    aql_lb.font=cFont;
     aql_lb.text=@"巡查总数：";
     [mainScr addSubview:aql_lb];
     patrol_numlb =[[UILabel alloc]initWithFrame:CGRectMake(aql_lb.right, aql_lb.top, vw-aql_lb.width, aql_lb.height)];
-    patrol_numlb.font=Font(14);
+    patrol_numlb.font=cFont;
     patrol_numlb.textColor=COLOR_TOP;
     [mainScr addSubview:patrol_numlb];
     

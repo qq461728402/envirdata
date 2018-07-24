@@ -666,7 +666,7 @@
         NSString *curruntDate= [[NSDate date] stringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
         //地址
         BMKLocationReGeocode *regoecode  =  location.rgcData;
-        NSString *address=[NSString stringWithFormat:@"%@%@%@%@",regoecode.city,regoecode.district,regoecode.street,regoecode.streetNumber];
+        NSString *address=[NSString stringWithFormat:@"%@%@%@%@",regoecode.city,regoecode.district,regoecode.street,regoecode.streetNumber!=nil?regoecode.streetNumber:@""];
         //经纬度
         NSNumber *lng =[NSNumber numberWithDouble:location.location.coordinate.longitude];
         NSNumber *lat =[NSNumber numberWithDouble:location.location.coordinate.latitude];

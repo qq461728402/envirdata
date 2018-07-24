@@ -23,6 +23,7 @@
         if ([responseObject[@"code"] intValue]==0) {
             completionBlock(responseObject[@"data"]);
         }else{
+             [SVProgressHUD dismiss];
             [self showMsgInfo:responseObject[@"msg"]];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -44,6 +45,7 @@
         if ([responseObject[@"code"] intValue]==0) {
             completionBlock(responseObject[@"data"]);
         }else{
+             [SVProgressHUD dismiss];
             [self showMsgInfo:responseObject[@"msg"]];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

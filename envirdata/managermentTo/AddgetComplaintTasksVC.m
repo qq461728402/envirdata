@@ -213,7 +213,7 @@
             }
             if (location.rgcData) {
                 BMKLocationReGeocode *regoecode  =  location.rgcData;
-                position_tf.text=[NSString stringWithFormat:@"%@%@%@%@",regoecode.city,regoecode.district,regoecode.street,regoecode.streetNumber];
+                position_tf.text=[NSString stringWithFormat:@"%@%@%@%@",regoecode.city,regoecode.district,regoecode.street,regoecode.streetNumber!=nil?regoecode.streetNumber:@""];
                 NSLog(@"rgc = %@",[location.rgcData description]);
             }
         }

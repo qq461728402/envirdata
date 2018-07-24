@@ -27,10 +27,13 @@
         make.right.equalTo(weakSelf.view.mas_right);
         make.left.equalTo(weakSelf.view.mas_left);
     }];
+    UIColor *titleColor =[UIColor colorWithRGB:0x2c2c2c];
+    UIColor *subColor =[UIColor colorWithRGB:0x00b5ff];
+    
     //标题
     UIView *tempView=[[UIView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 40)];
     UILabel *sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.text=@"标题：";
     [tempView addSubview:sublb];
@@ -46,12 +49,13 @@
     //描述
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.text=@"描述：";
     [tempView addSubview:sublb];
     titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
     titlelb.numberOfLines=0;
+    titlelb.textColor=subColor;
     titlelb.text=gegionModel.content;
     titlelb.font=Font(15);
     [tempView addSubview:titlelb];
@@ -64,7 +68,7 @@
     //位置
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.text=@"位置：";
     [tempView addSubview:sublb];
@@ -87,7 +91,7 @@
     titlelb.font=Font(15);
     NSMutableAttributedString *retitle=[[NSMutableAttributedString alloc]initWithString:gegionModel.position];
     [retitle addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, gegionModel.position.length)];
-    [retitle addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, gegionModel.position.length)];
+    [retitle addAttribute:NSForegroundColorAttributeName value:subColor range:NSMakeRange(0, gegionModel.position.length)];
     [titlelb setAttributedText:retitle];
     [tempView addSubview:titlelb];
     oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, titlelb.bottom-0.5, tempView.width, 0.5)];
@@ -97,12 +101,13 @@
     //时限
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.text=@"时限：";
     [tempView addSubview:sublb];
     titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
     titlelb.numberOfLines=2;
+    titlelb.textColor=subColor;
     titlelb.text=gegionModel.limittime;
     titlelb.font=Font(15);
     [tempView addSubview:titlelb];
@@ -113,7 +118,7 @@
     //图片
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 70)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(12), 5, 75, 21)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.text=@"图片：";
     [tempView addSubview:sublb];
@@ -130,12 +135,13 @@
     //创建人
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.text=@"创建人：";
     [tempView addSubview:sublb];
     titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
     titlelb.numberOfLines=2;
+    titlelb.textColor=subColor;
     titlelb.text=gegionModel.receivername;
     titlelb.font=Font(15);
     [tempView addSubview:titlelb];
@@ -147,13 +153,14 @@
     //创建时间
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.adjustsFontSizeToFitWidth=YES;
     sublb.text=@"创建时间：";
     [tempView addSubview:sublb];
     titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
     titlelb.numberOfLines=2;
+    titlelb.textColor=subColor;
     titlelb.text=gegionModel.ctime;
     titlelb.font=Font(15);
     [tempView addSubview:titlelb];
@@ -166,13 +173,14 @@
     //描述
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.adjustsFontSizeToFitWidth=YES;
     sublb.text=@"处理描述：";
     [tempView addSubview:sublb];
     titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
     titlelb.numberOfLines=0;
+    titlelb.textColor=subColor;
     titlelb.text=gegionModel.hcontent;
     titlelb.font=Font(15);
     [tempView addSubview:titlelb];
@@ -185,7 +193,7 @@
     //图片
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 75)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 5, 75, 21)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.adjustsFontSizeToFitWidth=YES;
     sublb.text=@"描述图片：";
@@ -201,12 +209,13 @@
     //创建人
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.text=@"处理人：";
     [tempView addSubview:sublb];
     titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
     titlelb.numberOfLines=2;
+    titlelb.textColor=subColor;
     titlelb.text=gegionModel.sendorname;
     titlelb.font=Font(15);
     [tempView addSubview:titlelb];
@@ -218,13 +227,14 @@
     //创建时间
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.adjustsFontSizeToFitWidth=YES;
     sublb.text=@"处理时间：";
     [tempView addSubview:sublb];
     titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
     titlelb.numberOfLines=2;
+    titlelb.textColor=subColor;
     titlelb.text=gegionModel.htime;
     titlelb.font=Font(15);
     [tempView addSubview:titlelb];

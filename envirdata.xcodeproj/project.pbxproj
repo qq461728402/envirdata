@@ -14,11 +14,13 @@
 		E100803220F6226F00B75514 /* EnvAnalysisReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E100803120F6226F00B75514 /* EnvAnalysisReportVC.m */; };
 		E100803620F622AE00B75514 /* EnvPersonalCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E100803520F622AE00B75514 /* EnvPersonalCenterVC.m */; };
 		E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = E100803920F636DB00B75514 /* UIButton+Bootstrap.m */; };
+		E116B41221075A58003E622C /* ComplaintDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E116B41121075A58003E622C /* ComplaintDetailVC.m */; };
 		E12A38D320F8C44F00085665 /* QRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A38CE20F8C44F00085665 /* QRadioButton.m */; };
 		E12A38D420F8C44F00085665 /* radio_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38CF20F8C44F00085665 /* radio_checked.png */; };
 		E12A38D520F8C44F00085665 /* radio_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38D020F8C44F00085665 /* radio_checked@2x.png */; };
 		E12A38D620F8C44F00085665 /* radio_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38D120F8C44F00085665 /* radio_unchecked.png */; };
 		E12A38D720F8C44F00085665 /* radio_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E12A38D220F8C44F00085665 /* radio_unchecked@2x.png */; };
+		E12BD42321074EC5003AE961 /* PatrolDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BD42221074EC5003AE961 /* PatrolDetailVC.m */; };
 		E13458E820FB640F00D6B549 /* Mcu_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458E720FB640F00D6B549 /* Mcu_sdk.framework */; };
 		E13458EA20FB642400D6B549 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458E920FB642400D6B549 /* libbz2.tbd */; };
 		E13458EC20FB643000D6B549 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13458EB20FB643000D6B549 /* CoreGraphics.framework */; };
@@ -167,12 +169,16 @@
 		E100803520F622AE00B75514 /* EnvPersonalCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvPersonalCenterVC.m; path = PersonalCenter/EnvPersonalCenterVC.m; sourceTree = "<group>"; };
 		E100803820F636DB00B75514 /* UIButton+Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Bootstrap.h"; path = "util/UIButton+Bootstrap.h"; sourceTree = "<group>"; };
 		E100803920F636DB00B75514 /* UIButton+Bootstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Bootstrap.m"; path = "util/UIButton+Bootstrap.m"; sourceTree = "<group>"; };
+		E116B41021075A58003E622C /* ComplaintDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplaintDetailVC.h; path = managermentTo/ComplaintDetailVC.h; sourceTree = "<group>"; };
+		E116B41121075A58003E622C /* ComplaintDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComplaintDetailVC.m; path = managermentTo/ComplaintDetailVC.m; sourceTree = "<group>"; };
 		E12A38CD20F8C44F00085665 /* QRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRadioButton.h; sourceTree = "<group>"; };
 		E12A38CE20F8C44F00085665 /* QRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRadioButton.m; sourceTree = "<group>"; };
 		E12A38CF20F8C44F00085665 /* radio_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_checked.png; sourceTree = "<group>"; };
 		E12A38D020F8C44F00085665 /* radio_checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_checked@2x.png"; sourceTree = "<group>"; };
 		E12A38D120F8C44F00085665 /* radio_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_unchecked.png; sourceTree = "<group>"; };
 		E12A38D220F8C44F00085665 /* radio_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_unchecked@2x.png"; sourceTree = "<group>"; };
+		E12BD42121074EC5003AE961 /* PatrolDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatrolDetailVC.h; path = managermentTo/PatrolDetailVC.h; sourceTree = "<group>"; };
+		E12BD42221074EC5003AE961 /* PatrolDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatrolDetailVC.m; path = managermentTo/PatrolDetailVC.m; sourceTree = "<group>"; };
 		E13458E720FB640F00D6B549 /* Mcu_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mcu_sdk.framework; sourceTree = "<group>"; };
 		E13458E920FB642400D6B549 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		E13458EB20FB643000D6B549 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -914,6 +920,8 @@
 		E1F7BA872105BA2F00D49609 /* Mangerment2 */ = {
 			isa = PBXGroup;
 			children = (
+				E116B41021075A58003E622C /* ComplaintDetailVC.h */,
+				E116B41121075A58003E622C /* ComplaintDetailVC.m */,
 				E1C613D521070C0B008BFED8 /* AddgetComplaintTasksVC.h */,
 				E1C613D621070C0B008BFED8 /* AddgetComplaintTasksVC.m */,
 				E1F7BA882105BA6800D49609 /* MangerMentToVC.h */,
@@ -922,6 +930,8 @@
 				E152F2DA2106182E00F1DA8A /* GetTasksVC.m */,
 				E1C613CF2106F77F008BFED8 /* AddPatrolTasksVC.h */,
 				E1C613D02106F77F008BFED8 /* AddPatrolTasksVC.m */,
+				E12BD42121074EC5003AE961 /* PatrolDetailVC.h */,
+				E12BD42221074EC5003AE961 /* PatrolDetailVC.m */,
 			);
 			name = Mangerment2;
 			sourceTree = "<group>";
@@ -1096,6 +1106,7 @@
 				E100802A20F621FF00B75514 /* EnvOnlineMonVC.m in Sources */,
 				E1602D7421022AD5007EAFBA /* FeedBookVC.m in Sources */,
 				E100803220F6226F00B75514 /* EnvAnalysisReportVC.m in Sources */,
+				E12BD42321074EC5003AE961 /* PatrolDetailVC.m in Sources */,
 				E181741A20FA3A4800604652 /* UnitDataTimeModel.m in Sources */,
 				E1576D8D2100ECBE00B3FFD8 /* ReportModel.m in Sources */,
 				E181741420FA318600604652 /* WarnPointAnnotation.m in Sources */,
@@ -1137,6 +1148,7 @@
 				E152F2DB2106182E00F1DA8A /* GetTasksVC.m in Sources */,
 				E146D9D520FE07AD004227AA /* AddTaskViewController.m in Sources */,
 				E1FCBD9D20FFA13700DCBE13 /* GegionDetialVC.m in Sources */,
+				E116B41221075A58003E622C /* ComplaintDetailVC.m in Sources */,
 				E1FCBD9720FF9F3B00DCBE13 /* GegionModel.m in Sources */,
 				E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */,
 				E1C613DD21070F7B008BFED8 /* MUnitModel.m in Sources */,

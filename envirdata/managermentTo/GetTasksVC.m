@@ -14,6 +14,8 @@
 #import "ComplaintCell.h"
 #import "AddPatrolTasksVC.h"
 #import "AddgetComplaintTasksVC.h"
+#import "PatrolDetailVC.h"
+#import "ComplaintDetailVC.h"
 @interface GetTasksVC ()<QRadioButtonDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)NSString *status;
 @property (nonatomic,strong)UITableView *getTaskTb;
@@ -52,9 +54,9 @@
     UIButton *addBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     addBtn.frame=CGRectMake(0, SCALE(5), SCALE(40), SCALE(30));
     addBtn.right=headerView.width-SCALE(5);
-    addBtn.titleLabel.font=[UIFont fontWithName:@"iconfont" size:20];
+    addBtn.titleLabel.font=[UIFont fontWithName:@"iconfont" size:28];
     [addBtn setTitle:@"\U0000e622" forState:UIControlStateNormal];
-    [addBtn setTitleColor:[UIColor colorWithRGB:0x02ddfd] forState:UIControlStateNormal];
+    [addBtn setTitleColor:[UIColor colorWithRGB:0x0586e8] forState:UIControlStateNormal];
     [addBtn bk_addEventHandler:^(id sender) {
         if ([type intValue]==1) {
             AddPatrolTasksVC *addpatrol=[[AddPatrolTasksVC alloc]init];
@@ -205,7 +207,27 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    if ([type intValue]==1) {
+        PatrolDetailVC *patrolDetail =[[PatrolDetailVC alloc]init];
+        patrolDetail.title=@"任务详情";
+        patrolDetail.patrolTasksModel=getTaskAry[indexPath.row];
+        patrolDetail.callback =^(BOOL issu){
+            if (issu==YES) {
+                [getTaskTb.mj_header beginRefreshing];
+            }
+        };
+        self.callback(patrolDetail);
+    }else if ([type intValue]==2){
+        ComplaintDetailVC *complaintDetail =[[ComplaintDetailVC alloc]init];
+        complaintDetail.title=@"任务详情";
+        complaintDetail.complaintTasksModel=getTaskAry[indexPath.row];
+        complaintDetail.callback =^(BOOL issu){
+            if (issu==YES) {
+                [getTaskTb.mj_header beginRefreshing];
+            }
+        };
+        self.callback(complaintDetail);
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
