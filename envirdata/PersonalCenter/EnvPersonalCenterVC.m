@@ -110,9 +110,10 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         UISwitch *switchs = [[UISwitch alloc] initWithFrame:CGRectMake(0, 7, 100, 30)];
         switchs.right=SCREEN_WIDTH-8;
-        [switchs setOn:YES];
+        [switchs setOn:[[NSUserDefaults standardUserDefaults] boolForKey:@"pushMode"]];
         [switchs bk_addEventHandler:^(UISwitch *sender) {
-            
+            [[NSUserDefaults standardUserDefaults] setBool:sender.isOn forKey:@"pushMode"];
+            [GeTuiSdk setPushModeForOff:!sender.isOn];//设置关闭推送模式
         } forControlEvents:UIControlEventValueChanged];
         [cell addSubview:switchs];
     }else{
@@ -131,6 +132,8 @@
             if (buttonIndex==0) {
                 [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userInfo"];//删除用户信息
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"menuInfo"];//删除菜单信息
+                
+               // [GeTuiSdk unbindAlias:<#(NSString *)#> andSequenceNum:[NSString stringWithUUID] andIsSelf:YES] 解除绑定
                 [[AppDelegate Share] gotologin];
                 //退出海康威视
                 [[MCUVmsNetSDK shareInstance] logoutMsp:^(id object) {

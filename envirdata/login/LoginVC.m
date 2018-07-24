@@ -23,6 +23,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"pushMode"];
+    
     UIImageView *bgImage=[[UIImageView alloc]initWithImage:PNGIMAGE(@"login_bg")];
     bgImage.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     [self.view addSubview:bgImage];
@@ -129,6 +132,14 @@
         //保存用户信息
         [[NSUserDefaults standardUserDefaults] setObject:rep forKey:@"userInfo"];
         UserInfoModel *userInfo = [UserInfoModel mj_objectWithKeyValues:rep];
+        
+        //个推绑定
+        
+        
+        //[GeTuiSdk bindAlias:<#(NSString *)#> andSequenceNum:[NSString stringWithUUID]]
+        
+        
+        
         //保存单位信息
         [[NSUserDefaults standardUserDefaults] setObject:@{@"appexpand1":userInfo.appexpand1,@"appexpand2":userInfo.appexpand2}
                                             forKey:@"unitInfo"];
