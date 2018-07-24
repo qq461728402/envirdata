@@ -8,6 +8,7 @@
 
 #import "ConfigObj.h"
 #import <QuickLook/QuickLook.h>
+#import <math.h>
 @implementation ConfigObj
 +(void)configObj{
     //设置状态栏颜色
@@ -102,6 +103,155 @@
     return[weekdays objectAtIndex:theComponents.weekday];
     
 }
++(int)getIAQIbyFactor:(NSString*)factor val:(double)val{
+    double value = 0;
+    if(val){
+        value = val;
+    }
+    double IH = 0;
+    double IL = 0;
+    double BH = 0;
+    double BL = 0;
+    NSString *fac =  [factor lowercaseString];
+    if ([fac isEqualToString:@"so2_1"]) {
+       int x = [self calcStartStr:SO2_1 :value];
+        NSArray *SO2_1Ary =[SO2_1 componentsSeparatedByString:@","];
+        if(x==0){
+            return 0;
+        }
+        IH = [AQI_NUM[x] doubleValue];
+        IL = [AQI_NUM[x-1] doubleValue];
+        BH = [SO2_1Ary[x] doubleValue];
+        BL = [SO2_1Ary[x-1] doubleValue];
+    }else if ([fac isEqualToString:@"so2_24"]){
+        int x = [self calcStartStr:SO2_24 :value];
+        NSArray *SO2_1Ary =[SO2_24 componentsSeparatedByString:@","];
+        if(x==0){
+            return 0;
+        }
+        IH = [AQI_NUM[x] doubleValue];
+        IL = [AQI_NUM[x-1] doubleValue];
+        BH = [SO2_1Ary[x] doubleValue];
+        BL = [SO2_1Ary[x-1] doubleValue];
+    }
+    else if ([fac isEqualToString:@"no2_24"]){
+        int x = [self calcStartStr:NO2_24 :value];
+        NSArray *SO2_1Ary =[NO2_24 componentsSeparatedByString:@","];
+        if(x==0){
+            return 0;
+        }
+        IH = [AQI_NUM[x] doubleValue];
+        IL = [AQI_NUM[x-1] doubleValue];
+        BH = [SO2_1Ary[x] doubleValue];
+        BL = [SO2_1Ary[x-1] doubleValue];
+    }
+    else if ([fac isEqualToString:@"no2_1"]){
+        int x = [self calcStartStr:NO2_1 :value];
+        NSArray *SO2_1Ary =[NO2_1 componentsSeparatedByString:@","];
+        if(x==0){
+            return 0;
+        }
+        IH = [AQI_NUM[x] doubleValue];
+        IL = [AQI_NUM[x-1] doubleValue];
+        BH = [SO2_1Ary[x] doubleValue];
+        BL = [SO2_1Ary[x-1] doubleValue];
+    }
+    else if ([fac isEqualToString:@"o3_1"]){
+        int x = [self calcStartStr:O3_1 :value];
+        NSArray *SO2_1Ary =[O3_1 componentsSeparatedByString:@","];
+        if(x==0){
+            return 0;
+        }
+        IH = [AQI_NUM[x] doubleValue];
+        IL = [AQI_NUM[x-1] doubleValue];
+        BH = [SO2_1Ary[x] doubleValue];
+        BL = [SO2_1Ary[x-1] doubleValue];
+    }
+    else if ([fac isEqualToString:@"o3_8"]){
+        int x = [self calcStartStr:O3_8 :value];
+        NSArray *SO2_1Ary =[O3_8 componentsSeparatedByString:@","];
+        if(x==0){
+            return 0;
+        }
+        IH = [AQI_NUM[x] doubleValue];
+        IL = [AQI_NUM[x-1] doubleValue];
+        BH = [SO2_1Ary[x] doubleValue];
+        BL = [SO2_1Ary[x-1] doubleValue];
+    }
+    else if ([fac isEqualToString:@"pm10"]){
+        int x = [self calcStartStr:PM10 :value];
+        NSArray *SO2_1Ary =[PM10 componentsSeparatedByString:@","];
+        if(x==0){
+            return 0;
+        }
+        IH = [AQI_NUM[x] doubleValue];
+        IL = [AQI_NUM[x-1] doubleValue];
+        BH = [SO2_1Ary[x] doubleValue];
+        BL = [SO2_1Ary[x-1] doubleValue];
+    }
+    else if ([fac isEqualToString:@"pm25"]){
+        int x = [self calcStartStr:PM25 :value];
+        NSArray *SO2_1Ary =[PM25 componentsSeparatedByString:@","];
+        if(x==0){
+            return 0;
+        }
+        IH = [AQI_NUM[x] doubleValue];
+        IL = [AQI_NUM[x-1] doubleValue];
+        BH = [SO2_1Ary[x] doubleValue];
+        BL = [SO2_1Ary[x-1] doubleValue];
+    }
+    else if ([fac isEqualToString:@"co_1"]){
+        int x = [self calcStartStr:CO_1 :value];
+        NSArray *SO2_1Ary =[CO_1 componentsSeparatedByString:@","];
+        if(x==0){
+            return 0;
+        }
+        IH = [AQI_NUM[x] doubleValue];
+        IL = [AQI_NUM[x-1] doubleValue];
+        BH = [SO2_1Ary[x] doubleValue];
+        BL = [SO2_1Ary[x-1] doubleValue];
+    }else if ([fac isEqualToString:@"co_24"]){
+        int x = [self calcStartStr:CO_24 :value];
+        NSArray *SO2_1Ary =[CO_24 componentsSeparatedByString:@","];
+        if(x==0){
+            return 0;
+        }
+        IH = [AQI_NUM[x] doubleValue];
+        IL = [AQI_NUM[x-1] doubleValue];
+        BH = [SO2_1Ary[x] doubleValue];
+        BL = [SO2_1Ary[x-1] doubleValue];
+    }
+    if (IH>0) {
+      return  (int) ceil((IH-IL)*(value-BL)/(BH-BL) + IL);
+    }
+    return 0;
+}
+
++(int) calcStartStr:(NSString*)soure :(double)val{
+    
+    NSArray *soureAry = [soure componentsSeparatedByString:@","];
+    double value = 0;
+    if(val){
+        value = val;
+    }
+    int position = -1;
+    int num = (int)soureAry.count;
+    double err = 0.001;
+    for (int i = 0; i < num; i++) {
+        double temp = [soureAry[i] doubleValue];
+        if(value+err <= temp || value-err<=temp){
+            position = i;
+            break;
+        }
+    }
+    if(position<0){
+        position = num - 1;
+    }
+    return position;
+}
+
+
+
 +(int)getLevelByAQI:(double)aqiD{
     
     double aqi = 0;

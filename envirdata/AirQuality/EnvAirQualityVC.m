@@ -517,7 +517,27 @@
          areaLb.text =[NSString stringWithFormat:@"%@ \U0000e611",nearestGkz.uname];
          time.text=[NSString stringWithFormat:@"%@ 时",nearestGkz.time];
          aqi.text=[NSString stringWithFormat:@"%@",nearestGkz.aqi];
-        level.backgroundColor=oneline1.backgroundColor=oneline2.backgroundColor=oneline3.backgroundColor=oneline4.backgroundColor=oneline5.backgroundColor=oneline6.backgroundColor=[ConfigObj getColorByLevel:nearestGkz.level];
+    
+        int PM25AQI = [ConfigObj getIAQIbyFactor:@"pm25" val:[nearestGkz.pm25 doubleValue]];
+        NSLog(@"%i",PM25AQI);
+        
+        int PM10AQI =[ConfigObj getIAQIbyFactor:@"pm10" val:[nearestGkz.pm10 doubleValue]];
+        int SO2_1AQI =[ConfigObj getIAQIbyFactor:@"so2_1" val:[nearestGkz.so2 doubleValue]];
+        
+        int NO2_1AQI =[ConfigObj getIAQIbyFactor:@"no2_1" val:[nearestGkz.no2 doubleValue]];
+        
+        int O3_1AQI =[ConfigObj getIAQIbyFactor:@"o3_1" val:[nearestGkz.o3 doubleValue]];
+        
+         int CO_1AQI =[ConfigObj getIAQIbyFactor:@"co_1" val:[nearestGkz.co doubleValue]];
+        
+        
+       oneline1.backgroundColor = [ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:PM25AQI]];
+       oneline2.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:PM10AQI]];
+       oneline3.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:SO2_1AQI]];
+       oneline4.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:NO2_1AQI]];
+        oneline5.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:O3_1AQI]];
+        oneline6.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:CO_1AQI]];
+        level.backgroundColor=[ConfigObj getColorByLevel:nearestGkz.level];
         level.text=[ConfigObj getLevelName:nearestGkz.level];
         pm25v.text=[NSString stringWithFormat:@"%@",nearestGkz.pm25];
         pm10v.text=[NSString stringWithFormat:@"%@",nearestGkz.pm10];
@@ -549,7 +569,28 @@
         a_primary_pollu.text=areaRealModel.primary_pollu;
         a_tiem.text=[NSString stringWithFormat:@"%@ 时",areaRealModel.time];
         a_aqi.text=[NSString stringWithFormat:@"%@",areaRealModel.aqi];
-        a_level.backgroundColor=a_oneline1.backgroundColor=a_oneline2.backgroundColor=a_oneline3.backgroundColor=a_oneline4.backgroundColor=a_oneline5.backgroundColor=a_oneline6.backgroundColor=[ConfigObj getColorByLevel:areaRealModel.level];
+        
+        
+        int PM25AQI = [ConfigObj getIAQIbyFactor:@"pm25" val:[areaRealModel.pm25 doubleValue]];
+        NSLog(@"%i",PM25AQI);
+        
+        int PM10AQI =[ConfigObj getIAQIbyFactor:@"pm10" val:[areaRealModel.pm10 doubleValue]];
+        int SO2_1AQI =[ConfigObj getIAQIbyFactor:@"so2_1" val:[areaRealModel.so2 doubleValue]];
+        
+        int NO2_1AQI =[ConfigObj getIAQIbyFactor:@"no2_1" val:[areaRealModel.no2 doubleValue]];
+        
+        int O3_1AQI =[ConfigObj getIAQIbyFactor:@"o3_1" val:[areaRealModel.o3 doubleValue]];
+        
+        int CO_1AQI =[ConfigObj getIAQIbyFactor:@"co_1" val:[areaRealModel.co doubleValue]];
+
+        a_oneline1.backgroundColor = [ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:PM25AQI]];
+        a_oneline2.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:PM10AQI]];
+        a_oneline3.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:SO2_1AQI]];
+        a_oneline4.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:NO2_1AQI]];
+        a_oneline5.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:O3_1AQI]];
+        a_oneline6.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:CO_1AQI]];
+        
+        a_level.backgroundColor=[ConfigObj getColorByLevel:areaRealModel.level];
         a_level.text=[ConfigObj getLevelName:areaRealModel.level];
         a_pm25v.text=[NSString stringWithFormat:@"%@",areaRealModel.pm25];
         a_pm10v.text=[NSString stringWithFormat:@"%@",areaRealModel.pm10];
