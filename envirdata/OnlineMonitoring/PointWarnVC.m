@@ -29,7 +29,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    dkeylistAry =[DkeyModel mj_objectArrayWithKeyValuesArray:@[@{@"dkid":@(3),@"dval":@"施工扬尘"},@{@"dkid":@(4),@"dval":@"道路扬尘"},@{@"dkid":@(0),@"dval":@"道路扬尘"}]];
+    dkeylistAry =[DkeyModel mj_objectArrayWithKeyValuesArray:@[@{@"dkid":@(13),@"dval":@"施工扬尘"},@{@"dkid":@(12),@"dval":@"道路扬尘"},@{@"dkid":@(17),@"dval":@"其他违规"}]];
     //添加站点
     UIView *tempView=[[UIView alloc]initWithFrame:CGRectMake(0, 64+10, SCREEN_WIDTH, SCALE(50))];
     UILabel *sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 50, tempView.height)];

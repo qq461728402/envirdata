@@ -9,6 +9,8 @@
 #import "LBpopView.h"
 #import "AppDelegate.h"
 #import "DkeyModel.h"
+#import "MDepModel.h"
+#import "MUnitModel.h"
 @interface LBpopView()<UITableViewDataSource,UITableViewDelegate>
 {
     UIView *view_userContact;
@@ -107,9 +109,20 @@
     if (!cell){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    if (indexPath.row==self.selectRowIndex) {
+        cell.accessoryType=UITableViewCellAccessoryCheckmark;
+    }else{
+        cell.accessoryType=UITableViewCellAccessoryNone;
+    }
     if ([[self.popArray objectAtIndex:indexPath.row] isKindOfClass:[DkeyModel class]]) {
         DkeyModel *dekyModel=[self.popArray objectAtIndex:indexPath.row];
         cell.textLabel.text=dekyModel.dval;
+    }else if ([[self.popArray objectAtIndex:indexPath.row] isKindOfClass:[MUnitModel class]]){
+        MUnitModel *dekyModel=[self.popArray objectAtIndex:indexPath.row];
+        cell.textLabel.text=dekyModel.uname;
+    }else if ([[self.popArray objectAtIndex:indexPath.row] isKindOfClass:[MDepModel class]]){
+        MDepModel *dekyModel=[self.popArray objectAtIndex:indexPath.row];
+        cell.textLabel.text=dekyModel.dname;
     }
     return cell;
 }

@@ -34,10 +34,18 @@
     GetTasksVC *statistics =[[GetTasksVC alloc]init];
     statistics.title=@"现场巡查";
     statistics.type=@"1";
+    statistics.callback=^(UIViewController *pushview){
+        UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
+        [nav pushViewController:pushview animated:YES];
+    };
     [tableList_arr addObject:statistics];
     GetTasksVC *reportVc=[[GetTasksVC alloc]init];
     reportVc.title=@"监察任务";
     reportVc.type=@"2";
+    reportVc.callback=^(UIViewController *pushview){
+        UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
+        [nav pushViewController:pushview animated:YES];
+    };
     [tableList_arr addObject:reportVc];
     [self initsunslideview];
     // Do any additional setup after loading the view.

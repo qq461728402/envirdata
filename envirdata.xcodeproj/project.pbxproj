@@ -136,6 +136,10 @@
 		E1BC41DB20F6EB4A002B4047 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41DA20F6EB4A002B4047 /* UserInfoModel.m */; };
 		E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41DD20F73276002B4047 /* NearestGkzRealModel.m */; };
 		E1BC41E120F74F3D002B4047 /* NearestAreaRealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC41E020F74F3D002B4047 /* NearestAreaRealModel.m */; };
+		E1C613D12106F77F008BFED8 /* AddPatrolTasksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C613D02106F77F008BFED8 /* AddPatrolTasksVC.m */; };
+		E1C613D721070C0B008BFED8 /* AddgetComplaintTasksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C613D621070C0B008BFED8 /* AddgetComplaintTasksVC.m */; };
+		E1C613DC21070F7B008BFED8 /* MDepModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C613D921070F7B008BFED8 /* MDepModel.m */; };
+		E1C613DD21070F7B008BFED8 /* MUnitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C613DB21070F7B008BFED8 /* MUnitModel.m */; };
 		E1D6CC7920F5B2F20023F0F0 /* EnvTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */; };
 		E1F520DB2101BB4E00458A08 /* ReportCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F520DA2101BB4E00458A08 /* ReportCell.m */; };
 		E1F520DD2101C17500458A08 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F520DC2101C17500458A08 /* QuickLook.framework */; };
@@ -373,6 +377,14 @@
 		E1BC41DD20F73276002B4047 /* NearestGkzRealModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearestGkzRealModel.m; sourceTree = "<group>"; };
 		E1BC41DF20F74F3D002B4047 /* NearestAreaRealModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearestAreaRealModel.h; sourceTree = "<group>"; };
 		E1BC41E020F74F3D002B4047 /* NearestAreaRealModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearestAreaRealModel.m; sourceTree = "<group>"; };
+		E1C613CF2106F77F008BFED8 /* AddPatrolTasksVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddPatrolTasksVC.h; path = managermentTo/AddPatrolTasksVC.h; sourceTree = "<group>"; };
+		E1C613D02106F77F008BFED8 /* AddPatrolTasksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddPatrolTasksVC.m; path = managermentTo/AddPatrolTasksVC.m; sourceTree = "<group>"; };
+		E1C613D521070C0B008BFED8 /* AddgetComplaintTasksVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddgetComplaintTasksVC.h; path = managermentTo/AddgetComplaintTasksVC.h; sourceTree = "<group>"; };
+		E1C613D621070C0B008BFED8 /* AddgetComplaintTasksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddgetComplaintTasksVC.m; path = managermentTo/AddgetComplaintTasksVC.m; sourceTree = "<group>"; };
+		E1C613D821070F7B008BFED8 /* MDepModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDepModel.h; sourceTree = "<group>"; };
+		E1C613D921070F7B008BFED8 /* MDepModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDepModel.m; sourceTree = "<group>"; };
+		E1C613DA21070F7B008BFED8 /* MUnitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUnitModel.h; sourceTree = "<group>"; };
+		E1C613DB21070F7B008BFED8 /* MUnitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUnitModel.m; sourceTree = "<group>"; };
 		E1D6CC7720F5B2F20023F0F0 /* EnvTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvTabBarController.h; path = TabBarController/EnvTabBarController.h; sourceTree = "<group>"; };
 		E1D6CC7820F5B2F20023F0F0 /* EnvTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvTabBarController.m; path = TabBarController/EnvTabBarController.m; sourceTree = "<group>"; };
 		E1F520D92101BB4E00458A08 /* ReportCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportCell.h; path = cells/ReportCell.h; sourceTree = "<group>"; };
@@ -834,6 +846,10 @@
 		E1BC41D820F6EB30002B4047 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				E1C613D821070F7B008BFED8 /* MDepModel.h */,
+				E1C613D921070F7B008BFED8 /* MDepModel.m */,
+				E1C613DA21070F7B008BFED8 /* MUnitModel.h */,
+				E1C613DB21070F7B008BFED8 /* MUnitModel.m */,
 				E152F2DF2106235700F1DA8A /* ComplaintTasksModel.h */,
 				E152F2E02106235700F1DA8A /* ComplaintTasksModel.m */,
 				E152F2DC2106230600F1DA8A /* PatrolTasksModel.h */,
@@ -898,10 +914,14 @@
 		E1F7BA872105BA2F00D49609 /* Mangerment2 */ = {
 			isa = PBXGroup;
 			children = (
+				E1C613D521070C0B008BFED8 /* AddgetComplaintTasksVC.h */,
+				E1C613D621070C0B008BFED8 /* AddgetComplaintTasksVC.m */,
 				E1F7BA882105BA6800D49609 /* MangerMentToVC.h */,
 				E1F7BA892105BA6800D49609 /* MangerMentToVC.m */,
 				E152F2D92106182E00F1DA8A /* GetTasksVC.h */,
 				E152F2DA2106182E00F1DA8A /* GetTasksVC.m */,
+				E1C613CF2106F77F008BFED8 /* AddPatrolTasksVC.h */,
+				E1C613D02106F77F008BFED8 /* AddPatrolTasksVC.m */,
 			);
 			name = Mangerment2;
 			sourceTree = "<group>";
@@ -1119,6 +1139,7 @@
 				E1FCBD9D20FFA13700DCBE13 /* GegionDetialVC.m in Sources */,
 				E1FCBD9720FF9F3B00DCBE13 /* GegionModel.m in Sources */,
 				E148BD1720F79ACA00872ADD /* AreaLevelModel.m in Sources */,
+				E1C613DD21070F7B008BFED8 /* MUnitModel.m in Sources */,
 				E1BC41DE20F73276002B4047 /* NearestGkzRealModel.m in Sources */,
 				E1ACF21A20FC63450027B274 /* UnusuallyPonitAnnotation.m in Sources */,
 				E17DA5DF20FDDD3300FA4222 /* ZYQAssetPickerController.m in Sources */,
@@ -1134,6 +1155,8 @@
 				E152F2E12106235700F1DA8A /* ComplaintTasksModel.m in Sources */,
 				E134590C20FB69D900D6B549 /* PlayView.m in Sources */,
 				E148BD0E20F7927000872ADD /* SliderSwitchView.m in Sources */,
+				E1C613DC21070F7B008BFED8 /* MDepModel.m in Sources */,
+				E1C613D721070C0B008BFED8 /* AddgetComplaintTasksVC.m in Sources */,
 				E1602D7721022B10007EAFBA /* AboutUsVC.m in Sources */,
 				E181740420F9B98900604652 /* StatePointAnnotation.m in Sources */,
 				E18173FD20F9991E00604652 /* OnlineMonModel.m in Sources */,
@@ -1142,6 +1165,7 @@
 				E181741120FA2F7300604652 /* EnvCameraInfoVC.m in Sources */,
 				E1602D6E21021B61007EAFBA /* YesterDayModel.m in Sources */,
 				E181740A20F9CEF300604652 /* DkeyModel.m in Sources */,
+				E1C613D12106F77F008BFED8 /* AddPatrolTasksVC.m in Sources */,
 				E1F7BA8A2105BA6800D49609 /* MangerMentToVC.m in Sources */,
 				E167B3F820FB853900FD7F75 /* TaskTreeModel.m in Sources */,
 				E188A53120FB13AA00B68701 /* HistoryDataModel.m in Sources */,

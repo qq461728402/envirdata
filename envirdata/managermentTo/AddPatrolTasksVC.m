@@ -1,39 +1,65 @@
 //
-//  AddTaskViewController.m
+//  AddPatrolTasksVC.m
 //  envirdata
 //
-//  Created by 熊佳佳 on 18/7/17.
+//  Created by 熊佳佳 on 18/7/24.
 //  Copyright © 2018年 熊佳佳. All rights reserved.
 //
 
-#import "AddTaskViewController.h"
+#import "AddPatrolTasksVC.h"
 #import "CTextField.h"
 #import "UITextViewPlaceHolder.h"
 #import "PictureView.h"
-#import "EnvChooseListVC.h"
-#import "PGDatePickManager.h"
-#import "PGDatePicker.h"
-#import "TaskDetailVC.h"
-@interface AddTaskViewController ()<ChoosePerosonDelegate,PGDatePickerDelegate,PictureViewDelegate>
-@property (nonatomic,strong)PictureView *picture_view;//上传图片
-@property (nonatomic,strong)CTextField *receiver_tf;//接受者
-@property (nonatomic,strong)CTextField *title_tf;//标题
+#import "MUnitModel.h"
+#import "MDepModel.h"
+#import "DkeyModel.h"
+#import "LBpopView.h"
+@interface AddPatrolTasksVC ()<PictureViewDelegate,LBpopDelegate>
+@property (nonatomic,strong)CTextField *ponit_tf;//站点名称
+@property (nonatomic,strong)CTextField *type_tf;//类型
 @property (nonatomic,strong)CTextField *position_tf;//位置
 @property (nonatomic,strong)UITextViewPlaceHolder *content_tv;//内容
-@property (nonatomic,strong)CTextField *limittime_tf;//处理时限
+@property (nonatomic,strong)PictureView *picture_view;//上传图片
+@property (nonatomic,strong)CTextField *dep_tf;//部门
 @property (nonatomic,strong)UIScrollView *mianScr;//
-@property (nonatomic,strong)PGDatePickManager *datePickManager;
+@property (nonatomic,strong)NSMutableArray*pricrAry;
+
+@property (nonatomic,strong)LBpopView *unitPopView;
+@property (nonatomic,strong)NSArray *unitAry;//站点数组
+@property (nonatomic,assign)NSInteger unitSelect;
+@property (nonatomic,strong)MUnitModel *unitModel;
+
+
+@property (nonatomic,strong)LBpopView *dkeyPopView;
+@property (nonatomic,strong)NSArray *dkeyAry;//站点数组
+@property (nonatomic,assign)NSInteger dkeySelect;
+@property (nonatomic,strong)DkeyModel *dkeyModel;
+
+
+@property (nonatomic,strong)LBpopView *depPopView;
+@property (nonatomic,strong)NSArray *depAry;//站点数组
+@property (nonatomic,assign)NSInteger depSelect;
+@property (nonatomic,strong)MDepModel *depModel;
+
 @end
 
-@implementation AddTaskViewController
-@synthesize mianScr,receiver_tf,title_tf,content_tv,position_tf,limittime_tf,datePickManager,picture_view,locationManager;
-@synthesize uid,uname,kind,pricrAry,jd,wd,reldata;
+@implementation AddPatrolTasksVC
+@synthesize mianScr;
+@synthesize ponit_tf,type_tf,position_tf,content_tv,picture_view,dep_tf,jd,wd,locationManager,pricrAry;
+@synthesize unitAry,unitModel,unitSelect,unitPopView;
+@synthesize dkeyPopView,dkeyAry,dkeySelect,dkeyModel;
+@synthesize depPopView,depAry,depSelect,depModel;
 -(void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor colorWithRGB:0xf1f1f1]];
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    unitSelect=-1;
+    dkeySelect=-1;
+    depSelect=-1;
+    [self getUnitList];
+    [self getTypeDescipt];
+    [self getByareaidDepartmentInfos];
     [self.view setBackgroundColor:[UIColor colorWithRGB:0xebeced]];
     mianScr =[[UIScrollView alloc]init];
     [self.view addSubview:mianScr];
@@ -45,98 +71,73 @@
         make.right.equalTo(weakSelf.view.mas_right);
         make.left.equalTo(weakSelf.view.mas_left);
     }];
+
     //添加接受人
     UIView *tempView=[[UIView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, SCALE(50))];
     UILabel *sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 65, tempView.height)];
     sublb.textColor=[UIColor colorWithRGB:0x2e4057];
     sublb.font=Font(15);
-    sublb.text=@"接收人：";
+    sublb.text=@"站点：";
     [tempView addSubview:sublb];
-    receiver_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
-    receiver_tf.font=Font(15);
-    receiver_tf.text=uname;
-    receiver_tf.placeholder=@"请选择接收人";
-    receiver_tf.enabled=YES;
-    [receiver_tf setBackgroundColor:[UIColor whiteColor]];
-    ViewRadius(receiver_tf, 4);
-    receiver_tf.userInteractionEnabled=YES;
-    [receiver_tf bk_whenTapped:^{
-        EnvChooseListVC *personInfo=[[EnvChooseListVC alloc]init];
-        personInfo.title=@"选择人员";
-        personInfo.delegate=self;
-        [self.navigationController pushViewController:personInfo animated:YES];
+    ponit_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
+    ponit_tf.font=Font(15);
+
+    ponit_tf.placeholder=@"请选择站点";
+    ponit_tf.enabled=YES;
+    [ponit_tf setBackgroundColor:[UIColor whiteColor]];
+    ViewRadius(ponit_tf, 4);
+    ponit_tf.userInteractionEnabled=YES;
+    [ponit_tf bk_whenTapped:^{
+        if (!unitPopView) {
+            unitPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        unitPopView.popType=@"unittype";
+        unitPopView.selectRowIndex=unitSelect;
+        unitPopView.delegate=self;
+        unitPopView.popArray=unitAry;
+        unitPopView.popTitle=@"请选择站点";
+        [unitPopView show];
+
     }];
-    [tempView addSubview:receiver_tf];
-    
+    [tempView addSubview:ponit_tf];
     UILabel *oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
     [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
     [tempView addSubview:oneline];
     [mianScr addSubview:tempView];
-    //转发
-    if ([kind intValue]==2&&reldata) {//表示转发
-        tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, SCALE(50))];
-        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-        sublb.textColor=[UIColor colorWithRGB:0x2e4057];
-        sublb.font=Font(15);
-        sublb.adjustsFontSizeToFitWidth=YES;
-        sublb.text=@"关联任务：";
-        [tempView addSubview:sublb];
     
-        UILabel *reldataTitle=[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
-        reldataTitle.numberOfLines=2;
-        reldataTitle.userInteractionEnabled=YES;
-        [reldataTitle bk_whenTapped:^{
-            TaskDetailVC *taskDetail =[[TaskDetailVC alloc]init];
-            taskDetail.title=@"任务详情";
-            taskDetail.taskModel=reldata;
-            taskDetail.isOnlyLook=YES;
-            [self.navigationController pushViewController:taskDetail animated:YES];
-        }];
-        NSMutableAttributedString *retitle=[[NSMutableAttributedString alloc]initWithString:reldata.title];
-        [retitle addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, reldata.title.length)];
-        [retitle addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, reldata.title.length)];
-        [reldataTitle setAttributedText:retitle];
-        [tempView addSubview:reldataTitle];
-        oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
-        [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
-        [tempView addSubview:oneline];
-        [mianScr addSubview:tempView];
-    }
-    //标题
+    //类型
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, SCALE(50))];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 65, tempView.height)];
     sublb.textColor=[UIColor colorWithRGB:0x2e4057];
     sublb.font=Font(15);
-    sublb.text=@"标题：";
+    sublb.text=@"类型：";
     [tempView addSubview:sublb];
-    title_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
-    title_tf.font=Font(15);
-    title_tf.placeholder=@"请输入标题";
-    [title_tf setBackgroundColor:[UIColor whiteColor]];
-    ViewRadius(title_tf, 4);
+    type_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
+    type_tf.font=Font(15);
+    type_tf.placeholder=@"请选择类型";
+    [type_tf setBackgroundColor:[UIColor whiteColor]];
+    ViewRadius(type_tf, 4);
+    type_tf.enabled=YES;
+    type_tf.userInteractionEnabled=YES;
+    [type_tf bk_whenTapped:^{
+        if (!dkeyPopView) {
+            dkeyPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        dkeyPopView.popType=@"dkeytype";
+        dkeyPopView.selectRowIndex=dkeySelect;
+        dkeyPopView.delegate=self;
+        dkeyPopView.popArray=dkeyAry;
+        dkeyPopView.popTitle=@"请选择站点类型";
+        [dkeyPopView show];
+    }];
+    
+    
     oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
     [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
     [tempView addSubview:oneline];
-    [tempView addSubview:title_tf];
+    [tempView addSubview:type_tf];
+    [mianScr addSubview:tempView];
     
-    [mianScr addSubview:tempView];
-    //内容
-    tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, SCALE(80))];
-    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 65, 21)];
-    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
-    sublb.font=Font(15);
-    sublb.text=@"内容：";
-    [tempView addSubview:sublb];
-    content_tv =[[UITextViewPlaceHolder alloc]initWithFrame:CGRectMake(sublb.right, SCALE(5), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(70))];
-    content_tv.font=Font(15);
-    [content_tv setBackgroundColor:[UIColor whiteColor]];
-    ViewRadius(content_tv, 4);
-    content_tv.placeholder=@"请输入内容";
-    [tempView addSubview:content_tv];
-    oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, tempView.height-0.5, tempView.width, 0.5)];
-    [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
-    [tempView addSubview:oneline];
-    [mianScr addSubview:tempView];
     //位置
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, SCALE(50))];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 65, tempView.height)];
@@ -167,6 +168,24 @@
     [tempView addSubview:oneline];
     [mianScr addSubview:tempView];
     
+    //内容
+    tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, SCALE(80))];
+    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 65, 21)];
+    sublb.textColor=[UIColor colorWithRGB:0x2e4057];
+    sublb.font=Font(15);
+    sublb.text=@"内容：";
+    [tempView addSubview:sublb];
+    content_tv =[[UITextViewPlaceHolder alloc]initWithFrame:CGRectMake(sublb.right, SCALE(5), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(70))];
+    content_tv.font=Font(15);
+    [content_tv setBackgroundColor:[UIColor whiteColor]];
+    ViewRadius(content_tv, 4);
+    content_tv.placeholder=@"请输入内容";
+    [tempView addSubview:content_tv];
+    oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, tempView.height-0.5, tempView.width, 0.5)];
+    [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
+    [tempView addSubview:oneline];
+    [mianScr addSubview:tempView];
+    
     //图片
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 70)];
     sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 5, 65, 21)];
@@ -184,74 +203,51 @@
     [tempView addSubview:oneline];
     [mianScr addSubview:tempView];
     
-    
-    
+    //部门
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, SCALE(50))];
-    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 65, tempView.height)];
+    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 80, tempView.height)];
     sublb.textColor=[UIColor colorWithRGB:0x2e4057];
     sublb.font=Font(15);
-    sublb.adjustsFontSizeToFitWidth=YES;
-    sublb.text=@"时限：";
+    sublb.text=@"责任部门：";
     [tempView addSubview:sublb];
+    dep_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
+    dep_tf.font=Font(15);
+    dep_tf.placeholder=@"请选择部门";
+    [dep_tf setBackgroundColor:[UIColor whiteColor]];
+    ViewRadius(dep_tf, 4);
     
-    limittime_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
-    limittime_tf.font=Font(15);
-    limittime_tf.enabled=YES;
-    limittime_tf.placeholder=@"请选择最晚完成时间";
-    [limittime_tf setBackgroundColor:[UIColor whiteColor]];
-    ViewRadius(limittime_tf, 4);
-    [tempView addSubview:limittime_tf];
+    dep_tf.enabled=YES;
+    dep_tf.userInteractionEnabled=YES;
+    [dep_tf bk_whenTapped:^{
+        if (!depPopView) {
+            depPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        depPopView.popType=@"deptype";
+        depPopView.selectRowIndex=depSelect;
+        depPopView.delegate=self;
+        depPopView.popArray=depAry;
+        depPopView.popTitle=@"请选择部门";
+        [depPopView show];
+    }];
+    
+    
     oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
     [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
     [tempView addSubview:oneline];
+    [tempView addSubview:dep_tf];
     [mianScr addSubview:tempView];
-    limittime_tf.userInteractionEnabled=YES;
-    [limittime_tf bk_whenTapped:^{
-        if (!datePickManager) {
-            datePickManager = [[PGDatePickManager alloc]init];
-            datePickManager.isShadeBackgroud = true;
-            datePickManager.style = PGDatePickManagerStyle3;
-            PGDatePicker *datePicker = datePickManager.datePicker;
-            datePicker.delegate = self;
-            [datePicker setDate:[NSDate date]];
-            datePicker.datePickerType = PGPickerViewType1;
-            datePicker.isHiddenMiddleText = false;
-            datePicker.isHiddenWheels = false;
-            datePicker.datePickerMode = PGDatePickerModeDate;
-        }
-        [self presentViewController:datePickManager animated:false completion:nil];
-    }];
+    
     UIButton *addMonitorBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     addMonitorBtn.frame=CGRectMake(SCALE(8), tempView.bottom+20, SCREEN_WIDTH-SCALE(16), SCALE(50));
     [addMonitorBtn bootstrapNoborderStyle:SUBMIT_COLOR titleColor:[UIColor whiteColor] andbtnFont:Font(16)];
     [addMonitorBtn setTitle:@"提 交" forState:UIControlStateNormal];
     ViewRadius(addMonitorBtn, 8);
     [addMonitorBtn bk_addEventHandler:^(id sender) {
-        [self addMonitor];
+        [self addPatrolTasks];
     } forControlEvents:UIControlEventTouchUpInside];
     [mianScr addSubview:addMonitorBtn];
     [mianScr setContentSize:CGSizeMake(SCREEN_WIDTH, addMonitorBtn.bottom+30)];
     // Do any additional setup after loading the view.
-}
--(void)selelctPerson:(NSString *)userId userName:(NSString *)userName{
-    uid=userId;
-    uname=userName;
-    receiver_tf.text=uname;
-}
-#pragma PGDatePickerDelegate
-- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
-    NSLog(@"dateComponents = %@", dateComponents);
-    NSCalendar * calendar = [NSCalendar currentCalendar];
-    NSDate * date = [calendar dateFromComponents:dateComponents];
-    limittime_tf.text=[date stringWithFormat:@"yyyy-MM-dd"];
-}
-#pragma mark-------选取图片--------
--(void)addPicker:(UIImagePickerController *)picker{
-    [self presentViewController:picker animated:YES completion:nil];
-}
--(void)addUIImagePicker:(UIImagePickerController *)picker
-{
-    [self presentViewController:picker animated:YES completion:nil];
 }
 #pragma mark--------定位--------
 -(void)baiduConfig{
@@ -292,13 +288,21 @@
         }
     }];
 }
-#pragma mark--------------发起任务---------
--(void)addMonitor{
-    if (![receiver_tf.text isNotBlank]) {
-        [self showMsgInfo:@"请选择接收人"];
+#pragma mark-------选取图片--------
+-(void)addPicker:(UIImagePickerController *)picker{
+    [self presentViewController:picker animated:YES completion:nil];
+}
+-(void)addUIImagePicker:(UIImagePickerController *)picker
+{
+    [self presentViewController:picker animated:YES completion:nil];
+}
+#pragma mark-----------新增任务----
+-(void)addPatrolTasks{
+    if (![ponit_tf.text isNotBlank]) {
+        [self showMsgInfo:@"请选择站点"];
         return;
-    }else if (![title_tf.text isNotBlank]){
-        [self showMsgInfo:@"请输入标题"];
+    }else if (![type_tf.text isNotBlank]){
+        [self showMsgInfo:@"请选择类型"];
         return;
     }else if (![content_tv.text isNotBlank]){
         [self showMsgInfo:@"请输入内容"];
@@ -309,46 +313,81 @@
     }else if(picture_view.pictureAry.count==0){
         [self showMsgInfo:@"请选择图片"];
         return;
-    }else if(![limittime_tf.text isNotBlank]){
-        [self showMsgInfo:@"请选择时限"];
+    }else if(![dep_tf.text isNotBlank]){
+        [self showMsgInfo:@"请选择责任部门"];
         return;
     }
     WEAKSELF
-     __block int i=0;
+    __block int i=0;
     __block NSMutableArray *imageAry=[[NSMutableArray alloc]init];
     for(UIImage *image in picture_view.pictureAry){
         [self networkUpfile:FILE_UPLOADING imageAry:image parameter:nil progresHudText:@"提交中..." completionBlock:^(id rep) {
             i++;
             [imageAry addObject:rep[@"url"]];
             if (i>=picture_view.pictureAry.count) {
-               NSString *pics =  [imageAry componentsJoinedByString:@","];
-                [weakSelf  addMonitorTask:pics];
+                NSString *pics =  [imageAry componentsJoinedByString:@","];
+                [weakSelf  addPatrolWithPics:pics];
             }
         }];
     }
 }
-#pragma mark-------添加任务-----------
--(void)addMonitorTask:(NSString*)pics{
-    
-   NSNumber *sendor =  [SingalObj defaultManager].userInfoModel.userid;
-    NSDictionary *parmeter=@{};
-    if (reldata) {
-         parmeter=@{@"receiver":[uid numberValue],@"title":title_tf.text,@"content":content_tv.text,@"pics":pics,@"position":position_tf.text,@"jd":jd,@"wd":wd,@"relid":reldata.id,@"kind":[kind numberValue],@"limittime":limittime_tf.text,@"sendor":sendor};
-    }else{
-         parmeter=@{@"receiver":[uid numberValue],@"title":title_tf.text,@"content":content_tv.text,@"pics":pics,@"position":position_tf.text,@"jd":jd,@"wd":wd,@"kind":[kind numberValue],@"limittime":limittime_tf.text,@"sendor":sendor};
-    }
-    [self networkPost:API_ADDMONITORTASK parameter:parmeter progresHudText:nil completionBlock:^(id rep) {
-        [SVProgressHUD showSuccessWithStatus:@"提交成功!"];
-        [self performSelector:@selector(gogo) withObject:nil afterDelay:1.0];
+-(void)addPatrolWithPics:(NSString*)pics{
+    NSString *unitid =unitModel.uid;
+    NSNumber *type =dkeyModel.dkid;
+    NSString *address =position_tf.text;
+    NSString *des =content_tv.text;
+    NSNumber *depid =depModel.depid;
+    NSNumber *cuserid =[SingalObj defaultManager].userInfoModel.userid;
+    [self networkPost:API_GETADDPATROLTASKS parameter:@{@"unitid":unitid,@"type":type,@"address":address,@"jd":jd,@"wd":wd,@"des":des,@"pics":pics,@"depid":depid,@"cuserid":cuserid} progresHudText:nil completionBlock:^(id rep) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showSuccessWithStatus:@"提交成功"];
+        [self bk_performBlock:^(id obj) {
+            if (self.callback) {
+                self.callback(YES);
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        } afterDelay:1];
     }];
 }
--(void)gogo{
-    if (self.callback) {
-        self.callback(YES);
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+#pragma mark---------初始化数据----------
+-(void)getUnitList{//获取站点信息
+    NSNumber *roleid =[SingalObj defaultManager].userInfoModel.roleid;
+    [self networkPost:API_GETUNITLIST parameter:@{@"roleid":roleid} progresHudText:@"加载中..." completionBlock:^(id rep) {
+        unitAry =[MUnitModel mj_objectArrayWithKeyValuesArray:rep];
+    }];
+}
+#pragma mark--------获取类型信息---
+-(void)getTypeDescipt{
+    NSString *dkey=@"patrolType";
+    [self networkPost:API_GETTYPEDESCIPT parameter:@{@"dkey":dkey} progresHudText:@"加载中..." completionBlock:^(id rep) {
+        dkeyAry=[DkeyModel mj_objectArrayWithKeyValuesArray:rep];
+    }];
+}
+#pragma mark--------获取部门信息-----
+-(void)getByareaidDepartmentInfos{
+    NSNumber *areaid =[SingalObj defaultManager].userInfoModel.areaid;
+    [self networkPost:API_GETBYAREAIDDEPARTMENTINFOS parameter:@{@"areaid":areaid} progresHudText:@"加载中..." completionBlock:^(id rep) {
+        depAry =[MDepModel mj_objectArrayWithKeyValuesArray:rep];
+    }];
 }
 
+#pragma mark------------------popViewdelegate----------------
+-(void)getIndexRow:(int)indexrow warranty:(id)warranty
+{
+    if ([warranty isEqualToString:@"unittype"]) {
+        unitSelect =indexrow;
+        unitModel=unitAry[indexrow];
+        ponit_tf.text=unitModel.uname;
+    }else if ([warranty isEqualToString:@"dkeytype"]){
+        dkeySelect=indexrow;
+        dkeyModel=dkeyAry[indexrow];
+        type_tf.text=dkeyModel.dval;
+    }else if ([warranty isEqualToString:@"deptype"]){
+        depSelect=indexrow;
+        depModel =depAry[indexrow];
+        dep_tf.text=depModel.dname;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

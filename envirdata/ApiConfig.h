@@ -48,6 +48,11 @@
 //管理协同2
 #define API_GETPATROLTASKS @"api/getPatrolTasks" //移动巡查任务列表
 #define API_GETCOMPLAINTTAKS @"api/getComplaintTasks" //监察任务列表
+#define API_GETUNITLIST @"api/getUnitList"//获取站点信息
+#define API_GETTYPEDESCIPT @"api/getTypeDescipt"//获取类型信息
+#define API_GETBYAREAIDDEPARTMENTINFOS @"api/getByareaidDepartmentInfos"//获取单位信息
+#define API_GETADDPATROLTASKS @"api/getAddPatrolTasks"//发起移动巡查任务接口
+#define API_INSETCOMPLAINT @"api/insetComplaint"//新增投诉
 
 //GPS轨迹
 #define API_GETTRACKID @"api/getTrackId"//请求轨迹ID

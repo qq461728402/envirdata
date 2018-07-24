@@ -12,6 +12,8 @@
 #import "PatrolTasksModel.h"
 #import "PatrolCell.h"
 #import "ComplaintCell.h"
+#import "AddPatrolTasksVC.h"
+#import "AddgetComplaintTasksVC.h"
 @interface GetTasksVC ()<QRadioButtonDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)NSString *status;
 @property (nonatomic,strong)UITableView *getTaskTb;
@@ -54,10 +56,31 @@
     [addBtn setTitle:@"\U0000e622" forState:UIControlStateNormal];
     [addBtn setTitleColor:[UIColor colorWithRGB:0x02ddfd] forState:UIControlStateNormal];
     [addBtn bk_addEventHandler:^(id sender) {
-        
+        if ([type intValue]==1) {
+            AddPatrolTasksVC *addpatrol=[[AddPatrolTasksVC alloc]init];
+            addpatrol.title=@"现场巡查";
+            addpatrol.callback=^(BOOL issu){
+                if (issu==YES) {
+                    [getTaskTb.mj_header beginRefreshing];
+                }
+            };
+            if (self.callback) {
+                self.callback(addpatrol);
+            }
+        }else if ([type intValue]==2){
+            AddgetComplaintTasksVC *addcomplaint =[[AddgetComplaintTasksVC alloc]init];
+            addcomplaint.title=@"新增投诉";
+            addcomplaint.callback=^(BOOL issu){
+                if (issu==YES) {
+                    [getTaskTb.mj_header beginRefreshing];
+                }
+            };
+            if (self.callback) {
+                self.callback(addcomplaint);
+            }
+        }
     } forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:addBtn];
-
     getTaskTb=[[UITableView alloc]initWithFrame:CGRectMake(0, headerView.bottom, self.view.width, SCREEN_HEIGHT-headerView.bottom-49) style:UITableViewStyleGrouped];
     getTaskTb.translatesAutoresizingMaskIntoConstraints=NO;
     getTaskTb.delegate=self;
