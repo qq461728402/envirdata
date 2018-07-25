@@ -86,7 +86,7 @@
         TaskListViewController *taskList =[[TaskListViewController alloc]init];
         NSString *pstr = my_selfTree.tid;
         NSString *uid = [pstr substringFromIndex:1];
-        taskList.receiver=uid;
+        taskList.sendor=uid;
         taskList.status=@"2";
         taskList.title=@"我的审核";
         taskList.callback =^(BOOL issu){
@@ -343,9 +343,15 @@
     if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[PCell class]]) {//选择人员  进入人员列表
         NSString *pstr = tree.tid;
         NSString *uid = [pstr substringFromIndex:1];
+        
+        NSString *userId =[[SingalObj defaultManager].userInfoModel.userid stringValue];
         EnvPersonInfoVC *personInfo=[[EnvPersonInfoVC alloc]init];
         personInfo.userid=uid;
-        personInfo.receiver=uid;
+        if ([uid isEqualToString:userId]) {
+            personInfo.sendor=userId;
+        }else{
+            personInfo.receiver=uid;
+        }
         personInfo.title=@"人员信息";
         UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
         [nav pushViewController:personInfo animated:YES];
@@ -383,7 +389,7 @@
     NSString *uid = [pstr substringFromIndex:1];
     taskList.receiver=uid;
     taskList.sendor=[taskTreeModel.tid substringFromIndex:1];
-    taskList.status=@"2";
+//    taskList.status=@"2";
     taskList.title=@"任务列表";
     UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
     [nav pushViewController:taskList animated:YES];

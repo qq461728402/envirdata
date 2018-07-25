@@ -26,7 +26,7 @@
 @implementation EnvPersonInfoVC
 @synthesize receiver,userid;
 @synthesize nameView,xzqView,depView,linkView,rwlistView;
-@synthesize monitorUser,taskAry,taskListTb;
+@synthesize monitorUser,taskAry,taskListTb,sendor;
 -(void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor whiteColor]];
 }
@@ -69,7 +69,14 @@
         linkView.valuelb.text=monitorUser.phone;
         linkView.islink=YES;
     }];
-    [self networkPost:API_GETMONITORTASKLIST parameter:@{@"receiver":[receiver numberValue]} progresHudText:@"加载中..." completionBlock:^(id rep) {
+    
+    NSMutableDictionary *parameter=[[NSMutableDictionary alloc]init];;
+    if ([receiver isNotBlank]) {
+        [parameter setObject: [receiver numberValue] forKey:@"receiver"];
+    }if ([sendor isNotBlank]) {
+        [parameter setObject: [sendor numberValue] forKey:@"sendor"];
+    }
+    [self networkPost:API_GETMONITORTASKLIST parameter:parameter progresHudText:@"加载中..." completionBlock:^(id rep) {
         taskAry = [TaskModel mj_objectArrayWithKeyValuesArray:rep];
         [taskListTb reloadData];
     }];
@@ -112,11 +119,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    TaskDetailVC *taskDetail =[[TaskDetailVC alloc]init];
-    taskDetail.title=@"任务详情";
-    taskDetail.isOnlyLook=YES;
-    taskDetail.taskModel=taskAry[indexPath.row];
-    [self.navigationController pushViewController:taskDetail animated:YES];
+    if ([sendor isNotBlank]) {
+        TaskDetailVC *taskDetail =[[TaskDetailVC alloc]init];
+        taskDetail.title=@"任务详情";
+        taskDetail.isOnlyLook=YES;
+        taskDetail.taskModel=taskAry[indexPath.row];
+        [self.navigationController pushViewController:taskDetail animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

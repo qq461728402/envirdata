@@ -24,7 +24,7 @@
 #import "PlayView.h"
 #import "DealPalyView.h"
 #import "PointWarnVC.h"
-
+#import "AddPatrolTasksVC.h"
 static dispatch_queue_t video_intercom_queue() {
     static dispatch_queue_t url_request_queue;
     static dispatch_once_t onceToken;
@@ -429,12 +429,14 @@ static dispatch_queue_t video_intercom_queue() {
         }
         case PLAY_STATE_FAILED: {//播放失败
             NSLog(@"failed");
-            //g_refreshButton.hidden = NO;
+            [g_activity stopAnimating];
+            deal_playView.isPausing=NO;
             break;
         }
         case PLAY_STATE_EXCEPTION: {//播放异常
             NSLog(@"exception");
-            //g_refreshButton.hidden = NO;
+            [g_activity stopAnimating];
+            deal_playView.isPausing=NO;
             break;
         }
         default:
@@ -562,11 +564,27 @@ static dispatch_queue_t video_intercom_queue() {
         WEAKSELF
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选择操作" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         [alertController addAction:[UIAlertAction actionWithTitle:@"发起任务" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            AddTaskViewController *addTaskVc=[[AddTaskViewController alloc]init];
-            addTaskVc.title=@"发起任务";
-            addTaskVc.kind=@"1";
-            addTaskVc.pricrAry=[NSMutableArray arrayWithObject:image];
-            [weakSelf.navigationController pushViewController:addTaskVc animated:YES];
+            //判断类型
+            NSArray *menuAry = USER_DEFAULTS(@"menuInfo");
+            BOOL isglxt1 = [menuAry bk_match:^BOOL(NSDictionary *itemobj) {
+                if ([itemobj[@"mark"] isEqualToString:@"glxt1"]) {
+                    return YES;
+                }else{
+                    return NO;
+                }
+            }];
+            if(isglxt1==YES){
+                AddTaskViewController *addTaskVc=[[AddTaskViewController alloc]init];
+                addTaskVc.title=@"发起任务";
+                addTaskVc.kind=@"1";
+                addTaskVc.pricrAry=[NSMutableArray arrayWithObject:image];
+                [weakSelf.navigationController pushViewController:addTaskVc animated:YES];
+            }else{
+                AddPatrolTasksVC *addpatrol=[[AddPatrolTasksVC alloc]init];
+                addpatrol.title=@"现场巡查";
+                addpatrol.pricrAry=[NSMutableArray arrayWithObject:image];
+                [weakSelf.navigationController pushViewController:addpatrol animated:YES];
+            }
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"添加站点警告" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             PointWarnVC *pointWarn=[[PointWarnVC alloc]init];
@@ -584,12 +602,10 @@ static dispatch_queue_t video_intercom_queue() {
         NSLog(@"截图失败");
     }
 }
-- (void)didMoveToParentViewController:(UIViewController *)parent
-{
-    NSLog(@"返回滑动");
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self stopRealPlay];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

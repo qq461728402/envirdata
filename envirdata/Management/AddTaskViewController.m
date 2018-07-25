@@ -14,6 +14,7 @@
 #import "PGDatePickManager.h"
 #import "PGDatePicker.h"
 #import "TaskDetailVC.h"
+#import "TaskListViewController.h"
 @interface AddTaskViewController ()<ChoosePerosonDelegate,PGDatePickerDelegate,PictureViewDelegate>
 @property (nonatomic,strong)PictureView *picture_view;//上传图片
 @property (nonatomic,strong)CTextField *receiver_tf;//接受者
@@ -349,7 +350,16 @@
 -(void)gogo{
     if (self.callback) {
         self.callback(YES);
-        [self.navigationController popViewControllerAnimated:YES];
+        if ([kind intValue]==2) {//表示转发
+            NSArray *views = self.navigationController.viewControllers;
+            [views bk_each:^(UIViewController* viewcontrol) {
+                if ([viewcontrol isKindOfClass:[TaskListViewController class]]) {
+                    [self.navigationController popToViewController:viewcontrol animated:YES];
+                }
+            }];
+        }else{
+             [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 

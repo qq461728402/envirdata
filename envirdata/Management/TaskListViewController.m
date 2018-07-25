@@ -52,7 +52,7 @@
     if ([status isNotBlank]) {
         [parameter setObject:[status numberValue] forKey:@"status"];
     }
-    [self networkGet:API_GETMONITORTASKLIST parameter:parameter progresHudText:isrefrsh==NO?@"加载中...":nil completionBlock:^(id rep) {
+    [self networkPost:API_GETMONITORTASKLIST parameter:parameter progresHudText:isrefrsh==NO?@"加载中...":nil completionBlock:^(id rep) {
        taskAry = [TaskModel mj_objectArrayWithKeyValuesArray:rep];
         [taskListTb.mj_header endRefreshing];
        [taskListTb reloadData];

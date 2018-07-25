@@ -139,6 +139,8 @@
     titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
     titlelb.numberOfLines=2;
     titlelb.textColor=subColor;
+    
+    
     titlelb.text=taskModel.limittime;
     titlelb.font=Font(15);
     [tempView addSubview:titlelb];
@@ -275,7 +277,13 @@
         sublb.adjustsFontSizeToFitWidth=YES;
         sublb.text=@"描述图片：";
         [tempView addSubview:sublb];
-        NSMutableArray *pricrAry1 =[NSMutableArray arrayWithArray:[taskModel.hpics componentsSeparatedByString:@","]];
+        NSMutableArray *pricrAry1;
+        if ([taskModel.hpics isNotBlank]) {
+            pricrAry1=[NSMutableArray arrayWithArray:[taskModel.hpics componentsSeparatedByString:@","]];
+        }else{
+            pricrAry1=[[NSMutableArray alloc]init];
+        }
+    
         PictureView *picture_view2=[[PictureView alloc]initWithFrame:CGRectMake(sublb.right,5, tempView.width-sublb.right-SCALE(8), 60) pictureAry:pricrAry1 size:CGSizeMake(60, 60) isUpPic:NO];
         picture_view2.vself=self;
         [tempView addSubview:picture_view2];
@@ -312,7 +320,18 @@
         titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
         titlelb.numberOfLines=2;
         titlelb.textColor=subColor;
-        titlelb.text=taskModel.htime;
+        NSDate *hdate = [NSDate dateWithString:taskModel.htime format:@"yyyy-MM-dd HH:mm:ss"];
+        
+        NSString *limtStr= [taskModel.limittime stringByAppendingString:@" 23:59:59"];
+        
+        NSDate *limtdate=[NSDate dateWithString:limtStr format:@"yyyy-MM-dd HH:mm:ss"];
+        NSComparisonResult result  =[hdate compare:limtdate];
+        if (result==NSOrderedDescending) {
+             titlelb.text=[taskModel.htime  stringByAppendingString:@"（超期）"];
+        }
+        else{
+            titlelb.text=taskModel.htime;
+        }
         titlelb.font=Font(15);
         [tempView addSubview:titlelb];
         oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
@@ -352,17 +371,15 @@
         [SVProgressHUD dismiss];
         [SVProgressHUD showSuccessWithStatus:@"提交成功!"];
         [self bk_performBlock:^(id obj) {
+            if (self.callback) {
+                self.callback(YES);
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+
             
         } afterDelay:1.0];
     }];
 }
--(void)gogo{
-    if (self.callback) {
-        self.callback(YES);
-    }
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 -(void)turnToOther:(UIButton*)sender{
     AddTaskViewController *addtask=[[AddTaskViewController alloc]init];
     addtask.kind=@"2";
@@ -380,7 +397,13 @@
 -(void)sureTask:(UIButton*)sender{
     [self networkPost:API_FINISHTASK parameter:@{@"id":taskModel.id} progresHudText:@"正在处理..." completionBlock:^(id rep) {
         [SVProgressHUD showSuccessWithStatus:@"处理成功!"];
-        [self performSelector:@selector(gogo) withObject:nil afterDelay:1.0];
+        
+        [self bk_performBlock:^(id obj) {
+            if (self.callback) {
+                self.callback(YES);
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        } afterDelay:1.0];
     }];
 
 }

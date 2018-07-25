@@ -101,6 +101,8 @@
 }
 #pragma mark - Event Response
 -(void)ptzDirection:(UIButton*)button{
+    
+    button.selected=NO;
     int ptzDirection=0;
     if (button.tag==1000) {//left
         ptzDirection =PTZ_COMMAND_PAN_LEFT;
@@ -113,10 +115,11 @@
     }
     if (ptzDirection!=0) {
         [self ptzOperation:ptzDirection stop:YES end:NO];
-        double delayInSeconds = 0.1;
+        double delayInSeconds = 0.5;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             //执行事件
+            button.selected=YES;
             [self ptzOperation:ptzDirection stop:YES end:YES];
         });
     }

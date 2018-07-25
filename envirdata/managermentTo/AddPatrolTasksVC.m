@@ -22,7 +22,7 @@
 @property (nonatomic,strong)PictureView *picture_view;//上传图片
 @property (nonatomic,strong)CTextField *dep_tf;//部门
 @property (nonatomic,strong)UIScrollView *mianScr;//
-@property (nonatomic,strong)NSMutableArray*pricrAry;
+
 
 @property (nonatomic,strong)LBpopView *unitPopView;
 @property (nonatomic,strong)NSArray *unitAry;//站点数组

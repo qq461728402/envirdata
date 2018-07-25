@@ -11,4 +11,5 @@
 @interface EnvPersonInfoVC : UIViewController
 @property (nonatomic,strong)NSString *receiver;
 @property (nonatomic,strong)NSString *userid;
+@property (nonatomic,strong)NSString *sendor;
 @end

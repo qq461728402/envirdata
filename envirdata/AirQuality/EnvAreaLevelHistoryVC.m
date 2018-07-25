@@ -21,10 +21,11 @@
 @property (nonatomic,strong)PYEchartsView *pyEchartsView;
 @property (nonatomic,strong)NSMutableArray *arelevelList;
 @property (nonatomic,strong)UITableView *arealevelTb;
+@property (nonatomic,strong)PGDatePicker *datePicker;
 @end
 
 @implementation EnvAreaLevelHistoryVC
-@synthesize a_id,timetf,time,datePickManager,timetype,type,times,pyEchartsView,arelevelList,arealevelTb;
+@synthesize a_id,timetf,time,datePickManager,timetype,type,times,pyEchartsView,arelevelList,arealevelTb,datePicker;
 -(void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor whiteColor]];
 }
@@ -74,13 +75,17 @@
             datePickManager = [[PGDatePickManager alloc]init];
             datePickManager.isShadeBackgroud = true;
             datePickManager.style = PGDatePickManagerStyle3;
-            PGDatePicker *datePicker = datePickManager.datePicker;
+            datePicker = datePickManager.datePicker;
             datePicker.delegate = self;
             [datePicker setDate:[NSDate date]];
             datePicker.datePickerType = PGPickerViewType1;
             datePicker.isHiddenMiddleText = false;
             datePicker.isHiddenWheels = false;
+        }
+        if ([timetype isEqualToString:@"hour"]) {
             datePicker.datePickerMode = PGDatePickerModeDate;
+        }else if ([timetype isEqualToString:@"month"]){
+            datePicker.datePickerMode = PGDatePickerModeYearAndMonth;
         }
         [self presentViewController:datePickManager animated:false completion:nil];
     }];
@@ -138,13 +143,21 @@
     NSLog(@"dateComponents = %@", dateComponents);
     NSCalendar * calendar = [NSCalendar currentCalendar];
     NSDate * date = [calendar dateFromComponents:dateComponents];
-    time = [date stringWithFormat:@"yyyy-MM-dd"];
-    timetf.text=time;
+    if ([timetype isEqualToString:@"hour"]) {
+        time = [date stringWithFormat:@"yyyy-MM-dd"];
+        timetf.text=time;
+    }else if ([timetype isEqualToString:@"month"]){
+        time = [date stringWithFormat:@"yyyy-MM"];
+        timetf.text=time;
+    }
     [self getHistoryValueData];
 }
 -(void)didSelectedRadioButton:(QRadioButton *)radio groupId:(NSString *)groupId{
     if ([groupId isEqualToString:@"js"]) {
         if (radio.tag==1000) {
+            NSDate * nowDate =[NSDate date];
+            time = [nowDate stringWithFormat:@"yyyy-MM-dd"];
+            timetf.text=time;
             timetype=@"hour";
             times.hidden=NO;
             timetf.hidden=NO;
@@ -153,8 +166,11 @@
             timetf.hidden=YES;
             timetype=@"week";
         }else if (radio.tag==1002){
-            times.hidden=YES;
-            timetf.hidden=YES;
+            NSDate * nowDate =[NSDate date];
+            time = [nowDate stringWithFormat:@"yyyy-MM"];
+            timetf.text=time;
+            times.hidden=NO;
+            timetf.hidden=NO;
             timetype=@"month";
         }
         [self getHistoryValueData];
@@ -186,7 +202,7 @@
                 areaLevel.showtime=[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd HH"] stringWithFormat:@"MM-dd HH"];
                 [time1 addObject:[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd HH"] stringWithFormat:@"HH:mm"]];
             }else{
-                areaLevel.showtime=[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd"] stringWithFormat:@"MM-dd HH"];
+                areaLevel.showtime=[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd"] stringWithFormat:@"MM-dd"];
                 [time1 addObject:[[NSDate dateWithString:areaLevel.time format:@"yyyy-MM-dd"] stringWithFormat:@"yyyy-MM-dd"]];
             }
         }

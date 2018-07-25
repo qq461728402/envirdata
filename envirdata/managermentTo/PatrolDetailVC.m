@@ -239,7 +239,12 @@
         sublb.adjustsFontSizeToFitWidth=YES;
         sublb.text=@"描述图片：";
         [tempView addSubview:sublb];
-        NSMutableArray *pricrAry1 =[NSMutableArray arrayWithArray:[patrolTasksModel.handle_pics componentsSeparatedByString:@","]];
+        NSMutableArray *pricrAry1;
+        if ([patrolTasksModel.handle_pics isNotBlank]) {
+            pricrAry1=[NSMutableArray arrayWithArray:[patrolTasksModel.handle_pics componentsSeparatedByString:@","]];
+        }else{
+            pricrAry1=[[NSMutableArray alloc]init];
+        }
         PictureView *picture_view2=[[PictureView alloc]initWithFrame:CGRectMake(sublb.right,5, tempView.width-sublb.right-SCALE(8), 60) pictureAry:pricrAry1 size:CGSizeMake(60, 60) isUpPic:NO];
         picture_view2.vself=self;
         [tempView addSubview:picture_view2];

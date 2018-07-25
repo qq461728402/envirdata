@@ -11,6 +11,7 @@
 @interface AddPatrolTasksVC : UIViewController<BMKLocationAuthDelegate,BMKLocationManagerDelegate>
 @property (nonatomic,copy) void (^callback)(BOOL issu);
 @property (nonatomic,strong)BMKLocationManager *locationManager;
+@property (nonatomic,strong)NSMutableArray*pricrAry;
 @property (nonatomic,strong)NSNumber *jd;
 @property (nonatomic,strong)NSNumber *wd;
 @end
