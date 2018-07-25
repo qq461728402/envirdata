@@ -789,14 +789,16 @@ static UIColor *titleColor;
 - (void)setupButtons
 {
     ZYQAssetPickerController *picker = (ZYQAssetPickerController *)self.navigationController;
-    
     if (picker.showCancelButton)
     {
-        self.navigationItem.rightBarButtonItem =
-        [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"取消", nil)
-                                         style:UIBarButtonItemStylePlain
-                                        target:self
-                                        action:@selector(dismiss:)];
+        UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+        but.frame =CGRectMake(0,0, 60, 44);
+        [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        but.titleLabel.font=Font(16);
+        [but addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
+        [but setTitle:@"取消"forState:UIControlStateNormal];
+        UIBarButtonItem  *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
+        self.navigationItem.rightBarButtonItem = barBut;
     }
 }
 
@@ -818,14 +820,13 @@ static UIColor *titleColor;
     
     ZYQAssetPickerController *picker = (ZYQAssetPickerController *)self.navigationController;
     ALAssetsFilter *assetsFilter = picker.assetsFilter;
-    
     ALAssetsLibraryGroupsEnumerationResultsBlock resultsBlock = ^(ALAssetsGroup *group, BOOL *stop) {
-        
         if (group)
         {
-            [group setAssetsFilter:assetsFilter];
-            if (group.numberOfAssets > 0 || picker.showEmptyGroups)
-                [self.groups addObject:group];
+            [self.groups addObject:group];
+//            [group setAssetsFilter:assetsFilter];
+//            if (group.numberOfAssets > 0 || picker.showEmptyGroups)
+//                [self.groups addObject:group];
         }
         else
         {

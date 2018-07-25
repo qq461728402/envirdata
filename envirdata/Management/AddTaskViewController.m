@@ -56,7 +56,9 @@
     receiver_tf.font=Font(15);
     receiver_tf.text=uname;
     receiver_tf.placeholder=@"请选择接收人";
-    receiver_tf.enabled=YES;
+    receiver_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
+        return NO;
+    };
     [receiver_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(receiver_tf, 4);
     receiver_tf.userInteractionEnabled=YES;
@@ -196,7 +198,9 @@
     
     limittime_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
     limittime_tf.font=Font(15);
-    limittime_tf.enabled=YES;
+    limittime_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
+        return NO;
+    };
     limittime_tf.placeholder=@"请选择最晚完成时间";
     [limittime_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(limittime_tf, 4);
@@ -205,7 +209,7 @@
     [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
     [tempView addSubview:oneline];
     [mianScr addSubview:tempView];
-    limittime_tf.userInteractionEnabled=YES;
+     limittime_tf.userInteractionEnabled=YES;
     [limittime_tf bk_whenTapped:^{
         if (!datePickManager) {
             datePickManager = [[PGDatePickManager alloc]init];

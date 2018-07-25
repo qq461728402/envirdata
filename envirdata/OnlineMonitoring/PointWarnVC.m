@@ -59,7 +59,9 @@
     pointType_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
     pointType_tf.font=Font(15);
     pointType_tf.placeholder=@"请选择类型";
-    pointType_tf.enabled=YES;
+    pointType_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
+        return NO;
+    };
     [pointType_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(pointType_tf, 4);
     pointType_tf.userInteractionEnabled=YES;

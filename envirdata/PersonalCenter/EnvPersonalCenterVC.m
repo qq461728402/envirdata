@@ -116,7 +116,15 @@
             [GeTuiSdk setPushModeForOff:!sender.isOn];//设置关闭推送模式
         } forControlEvents:UIControlEventValueChanged];
         [cell addSubview:switchs];
-    }else{
+    }else if ([itemStr isEqualToString:@"当前版本"]){
+    
+        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+        NSString *currentVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.font=Font(16);
+        cell.textLabel.text=[itemStr stringByAppendingString:currentVersion];
+    }
+    else{
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.font=Font(16);
         cell.textLabel.text=itemStr;

@@ -173,7 +173,7 @@
     titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
     titlelb.numberOfLines=2;
     titlelb.textColor=subColor;
-    titlelb.text=taskModel.receivername;
+    titlelb.text=taskModel.sendorname;
     titlelb.font=Font(15);
     [tempView addSubview:titlelb];
     oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
@@ -293,7 +293,7 @@
         titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
         titlelb.numberOfLines=2;
         titlelb.textColor=subColor;
-        titlelb.text=taskModel.sendorname;
+        titlelb.text=taskModel.receivername;
         titlelb.font=Font(15);
         [tempView addSubview:titlelb];
         oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];

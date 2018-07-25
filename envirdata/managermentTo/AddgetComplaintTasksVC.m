@@ -147,8 +147,9 @@
     dep_tf.placeholder=@"请选择部门";
     [dep_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(dep_tf, 4);
-    
-    dep_tf.enabled=YES;
+    dep_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
+        return NO;
+    };
     dep_tf.userInteractionEnabled=YES;
     [dep_tf bk_whenTapped:^{
         if (!depPopView) {

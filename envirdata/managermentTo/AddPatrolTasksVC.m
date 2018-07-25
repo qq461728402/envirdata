@@ -81,9 +81,10 @@
     [tempView addSubview:sublb];
     ponit_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
     ponit_tf.font=Font(15);
-
+    ponit_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
+        return NO;
+    };
     ponit_tf.placeholder=@"请选择站点";
-    ponit_tf.enabled=YES;
     [ponit_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(ponit_tf, 4);
     ponit_tf.userInteractionEnabled=YES;
@@ -117,7 +118,9 @@
     type_tf.placeholder=@"请选择类型";
     [type_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(type_tf, 4);
-    type_tf.enabled=YES;
+    type_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
+        return NO;
+    };
     type_tf.userInteractionEnabled=YES;
     [type_tf bk_whenTapped:^{
         if (!dkeyPopView) {
@@ -215,8 +218,9 @@
     dep_tf.placeholder=@"请选择部门";
     [dep_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(dep_tf, 4);
-    
-    dep_tf.enabled=YES;
+    dep_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
+        return NO;
+    };
     dep_tf.userInteractionEnabled=YES;
     [dep_tf bk_whenTapped:^{
         if (!depPopView) {
