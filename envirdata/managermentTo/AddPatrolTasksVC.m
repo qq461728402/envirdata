@@ -341,7 +341,14 @@
     NSString *des =content_tv.text;
     NSNumber *depid =depModel.depid;
     NSNumber *cuserid =[SingalObj defaultManager].userInfoModel.userid;
-    [self networkPost:API_GETADDPATROLTASKS parameter:@{@"unitid":unitid,@"type":type,@"address":address,@"jd":jd,@"wd":wd,@"des":des,@"pics":pics,@"depid":depid,@"cuserid":cuserid} progresHudText:nil completionBlock:^(id rep) {
+    NSDictionary *parameter;
+    
+    if ([jd intValue]==0) {
+       parameter= @{@"unitid":unitid,@"type":type,@"address":address,@"jd":jd,@"wd":wd,@"des":des,@"pics":pics,@"depid":depid,@"cuserid":cuserid};
+    }else{
+        parameter= @{@"unitid":unitid,@"type":type,@"address":address,@"des":des,@"pics":pics,@"depid":depid,@"cuserid":cuserid};
+    }
+    [self networkPost:API_GETADDPATROLTASKS parameter:parameter progresHudText:nil completionBlock:^(id rep) {
         [SVProgressHUD dismiss];
         [SVProgressHUD showSuccessWithStatus:@"提交成功"];
         [self bk_performBlock:^(id obj) {

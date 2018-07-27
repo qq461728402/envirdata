@@ -311,8 +311,8 @@
     }else if(![position_tf.text isNotBlank]){
         [self showMsgInfo:@"请选择或输入位置"];
         return;
-    }else if(picture_view.pictureAry.count==0){
-        [self showMsgInfo:@"请选择图片"];
+    }else if(picture_view.pictureAry.count==0||picture_view.pictureAry.count>3){
+        [self showMsgInfo:@"请选择小于4张图片"];
         return;
     }else if(![limittime_tf.text isNotBlank]){
         [self showMsgInfo:@"请选择时限"];
@@ -338,9 +338,17 @@
     NSNumber *sendor =  [SingalObj defaultManager].userInfoModel.userid;
     NSDictionary *parmeter=@{};
     if (reldata) {
-         parmeter=@{@"receiver":[uid numberValue],@"title":title_tf.text,@"content":content_tv.text,@"pics":pics,@"position":position_tf.text,@"jd":jd,@"wd":wd,@"relid":reldata.id,@"kind":[kind numberValue],@"limittime":limittime_tf.text,@"sendor":sendor};
+        if ([jd intValue]==0) {
+            parmeter=@{@"receiver":[uid numberValue],@"title":title_tf.text,@"content":content_tv.text,@"pics":pics,@"position":position_tf.text,@"relid":reldata.id,@"kind":[kind numberValue],@"limittime":limittime_tf.text,@"sendor":sendor};
+        }else{
+            parmeter=@{@"receiver":[uid numberValue],@"title":title_tf.text,@"content":content_tv.text,@"pics":pics,@"position":position_tf.text,@"jd":jd,@"wd":wd,@"relid":reldata.id,@"kind":[kind numberValue],@"limittime":limittime_tf.text,@"sendor":sendor};
+        }
     }else{
-         parmeter=@{@"receiver":[uid numberValue],@"title":title_tf.text,@"content":content_tv.text,@"pics":pics,@"position":position_tf.text,@"jd":jd,@"wd":wd,@"kind":[kind numberValue],@"limittime":limittime_tf.text,@"sendor":sendor};
+        if ([jd intValue]==0) {
+            parmeter=@{@"receiver":[uid numberValue],@"title":title_tf.text,@"content":content_tv.text,@"pics":pics,@"position":position_tf.text,@"kind":[kind numberValue],@"limittime":limittime_tf.text,@"sendor":sendor};
+        }else{
+            parmeter=@{@"receiver":[uid numberValue],@"title":title_tf.text,@"content":content_tv.text,@"pics":pics,@"position":position_tf.text,@"jd":jd,@"wd":wd,@"kind":[kind numberValue],@"limittime":limittime_tf.text,@"sendor":sendor};
+        }
     }
     [self networkPost:API_ADDMONITORTASK parameter:parmeter progresHudText:nil completionBlock:^(id rep) {
         [SVProgressHUD showSuccessWithStatus:@"提交成功!"];
