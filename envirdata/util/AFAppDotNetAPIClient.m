@@ -23,7 +23,7 @@ static AFAppDotNetAPIClient * _afAppDotNetApi;
         _afAppDotNetApi.requestSerializer.timeoutInterval=10;
         //申明返回的数据是JSON类型
         //请求设置Conten-Type
-        _afAppDotNetApi.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", @"multipart/form-data", @"application/json", @"text/html", @"image/jpeg", @"image/png", @"application/octet-stream", @"text/json",@"application/x-www-form-urlencoded",nil];
+        _afAppDotNetApi.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", @"multipart/form-data", @"text/html", @"image/jpeg", @"image/png", @"application/octet-stream", @"text/json",@"application/x-www-form-urlencoded",nil];
 //         [_afAppDotNetApi.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         _afAppDotNetApi.responseSerializer =[AFJSONResponseSerializer serializer];
 //        _afAppDotNetApi.requestSerializer =[AFJSONRequestSerializer serializer];

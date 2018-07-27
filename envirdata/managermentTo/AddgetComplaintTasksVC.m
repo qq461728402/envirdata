@@ -36,6 +36,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    jd=@(0);
+    wd=@(0);
     depSelect=-1;
     [self getByareaidDepartmentInfos];
     [self.view setBackgroundColor:[UIColor colorWithRGB:0xebeced]];
@@ -238,8 +240,8 @@
     }else if(![position_tf.text isNotBlank]){
         [self showMsgInfo:@"请选择或输入位置"];
         return;
-    }else if(picture_view.pictureAry.count==0){
-        [self showMsgInfo:@"请选择图片"];
+    }else if(picture_view.pictureAry.count==0||picture_view.pictureAry.count>3){
+        [self showMsgInfo:@"请选择小于4张图片"];
         return;
     }else if(![dep_tf.text isNotBlank]){
         [self showMsgInfo:@"请选择责任部门"];

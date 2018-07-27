@@ -106,6 +106,8 @@
     PictureView *picture_view=[[PictureView alloc]initWithFrame:CGRectMake(sublb.right,5, tempView.width-sublb.right-SCALE(8), 60) pictureAry:pricrAry size:CGSizeMake(60, 60) isUpPic:NO];
     picture_view.vself=self;
     [tempView addSubview:picture_view];
+    tempView.height=picture_view.bottom+10;
+    
     
     oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, tempView.height-0.5, tempView.width, 0.5)];
     [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
@@ -225,6 +227,7 @@
         NSMutableArray *pricrAry1 =[NSMutableArray arrayWithArray:[complaintTasksModel.handle_pics componentsSeparatedByString:@","]];
         PictureView *picture_view2=[[PictureView alloc]initWithFrame:CGRectMake(sublb.right,5, tempView.width-sublb.right-SCALE(8), 60) pictureAry:pricrAry1 size:CGSizeMake(60, 60) isUpPic:NO];
         picture_view2.vself=self;
+        tempView.height=picture_view2.bottom+10;
         [tempView addSubview:picture_view2];
         oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, tempView.height-0.5, tempView.width, 0.5)];
         [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
