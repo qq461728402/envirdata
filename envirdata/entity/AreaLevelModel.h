@@ -12,14 +12,14 @@
 
 @property (nonatomic, strong) NSNumber * O3_8h;
 @property (nonatomic, strong) NSNumber * aqi;
-@property (nonatomic, strong) NSNumber * co;
+@property (nonatomic, strong) NSString * co;
 @property (nonatomic, strong) NSString * id;
 @property (nonatomic, strong) NSString * name;
-@property (nonatomic, strong) NSNumber * no2;
-@property (nonatomic, strong) NSNumber * o3;
-@property (nonatomic, strong) NSNumber * pm10;
-@property (nonatomic, strong) NSNumber * pm25;
-@property (nonatomic, strong) NSNumber * so2;
+@property (nonatomic, strong) NSString * no2;
+@property (nonatomic, strong) NSString * o3;
+@property (nonatomic, strong) NSString * pm10;
+@property (nonatomic, strong) NSString * pm25;
+@property (nonatomic, strong) NSString * so2;
 @property (nonatomic, strong) NSString * time;
 @property (nonatomic, strong) NSString *showtime;
 

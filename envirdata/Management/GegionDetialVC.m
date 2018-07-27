@@ -23,19 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithRGB:0xebeced]];
-    
-    if ([gegionModel.status intValue]==0) {//表示我待办
-        UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
-        but.frame =CGRectMake(0,0, 60, 44);
-        [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        but.titleLabel.font=Font(16);
-        [but addTarget:self action:@selector(turnToOther:) forControlEvents:UIControlEventTouchUpInside];
-        [but setTitle:@"转发"forState:UIControlStateNormal];
-        UIBarButtonItem  *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
-        self.navigationItem.rightBarButtonItem = barBut;
-        
-    }
-    
     mianScr =[[UIScrollView alloc]init];
     [self.view addSubview:mianScr];
     WEAKSELF
@@ -190,145 +177,96 @@
     [mianScr addSubview:tempView];
 
     
-    if ([gegionModel.status intValue]==1) {//表示我待办
-        //内容
-        tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, SCALE(80))];
-        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, 21)];
-        sublb.textColor=titleColor;
-        sublb.font=Font(15);
-        sublb.adjustsFontSizeToFitWidth=YES;
-        sublb.text=@"处理描述：";
-        [tempView addSubview:sublb];
-        hcontent_tv =[[UITextViewPlaceHolder alloc]initWithFrame:CGRectMake(sublb.right, SCALE(5), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(70))];
-        hcontent_tv.font=Font(15);
-        [hcontent_tv setBackgroundColor:[UIColor whiteColor]];
-        ViewRadius(hcontent_tv, 4);
-        hcontent_tv.placeholder=@"请输入处理描述";
-        [tempView addSubview:hcontent_tv];
-        oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, tempView.height-0.5, tempView.width, 0.5)];
-        [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
-        [tempView addSubview:oneline];
-        [mianScr addSubview:tempView];
-        
-        //图片
-        tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 70)];
-        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 5, 75, 21)];
-        sublb.textColor=titleColor;
-        sublb.font=Font(15);
-        sublb.text=@"图片：";
-        [tempView addSubview:sublb];
-        
-        picture_view1=[[PictureView alloc]initWithFrame:CGRectMake(sublb.right,5, tempView.width-sublb.right-SCALE(8), 60) pictureAry:[[NSMutableArray alloc]init] size:CGSizeMake(60, 60) isUpPic:YES];
-        picture_view1.delegate = self;
-        [tempView addSubview:picture_view1];
-        
-        oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, tempView.height-0.5, tempView.width, 0.5)];
-        [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
-        [tempView addSubview:oneline];
-        [mianScr addSubview:tempView];
-        UIButton *addMonitorBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-        addMonitorBtn.frame=CGRectMake(SCALE(8), tempView.bottom+20, SCREEN_WIDTH-SCALE(16), SCALE(50));
-        [addMonitorBtn bootstrapNoborderStyle:SUBMIT_COLOR titleColor:[UIColor whiteColor] andbtnFont:Font(16)];
-        [addMonitorBtn setTitle:@"提 交" forState:UIControlStateNormal];
-        ViewRadius(addMonitorBtn, 8);
-        [addMonitorBtn bk_addEventHandler:^(id sender) {
-            [self dealTask];
-        } forControlEvents:UIControlEventTouchUpInside];
-        [mianScr addSubview:addMonitorBtn];
-        [mianScr setContentSize:CGSizeMake(SCREEN_WIDTH, addMonitorBtn.bottom+30)];
-        
-    }else  if ([gegionModel.status intValue]==2) {//表示待处理
-        //描述
-        tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
-        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-        sublb.textColor=titleColor;
-        sublb.font=Font(15);
-        sublb.adjustsFontSizeToFitWidth=YES;
-        sublb.text=@"处理描述：";
-        [tempView addSubview:sublb];
-        titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
-        titlelb.numberOfLines=0;
-        titlelb.textColor=subColor;
-        titlelb.text=gegionModel.hcontent;
-        titlelb.font=Font(15);
-        [tempView addSubview:titlelb];
-        CGSize conentSize1 =[titlelb.text boundingRectWithSize:CGSizeMake(titlelb.width, 500) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName:titlelb.font} context:nil].size;
-        titlelb.height=titlelb.height>conentSize1.height?titlelb.height:conentSize1.height;
-        oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, titlelb.bottom-0.5, tempView.width, 0.5)];
-        [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
-        [tempView addSubview:oneline];
-        [mianScr addSubview:tempView];
-        //图片
-        tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 75)];
-        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 5, 75, 21)];
-        sublb.textColor=titleColor;
-        sublb.font=Font(15);
-        sublb.adjustsFontSizeToFitWidth=YES;
-        sublb.text=@"描述图片：";
-        [tempView addSubview:sublb];
-        NSMutableArray *pricrAry1;
-        if ([gegionModel.hpics isNotBlank]) {
-            pricrAry1=[NSMutableArray arrayWithArray:[gegionModel.hpics componentsSeparatedByString:@","]];
-        }else{
-            pricrAry1=[[NSMutableArray alloc]init];
-        }
-        
-        PictureView *picture_view2=[[PictureView alloc]initWithFrame:CGRectMake(sublb.right,5, tempView.width-sublb.right-SCALE(8), 60) pictureAry:pricrAry1 size:CGSizeMake(60, 60) isUpPic:NO];
-        picture_view2.vself=self;
-        [tempView addSubview:picture_view2];
-        oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, tempView.height-0.5, tempView.width, 0.5)];
-        [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
-        [tempView addSubview:oneline];
-        [mianScr addSubview:tempView];
-        //创建人
-        tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
-        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-        sublb.textColor=titleColor;
-        sublb.font=Font(15);
-        sublb.text=@"处理人：";
-        [tempView addSubview:sublb];
-        titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
-        titlelb.numberOfLines=2;
-        titlelb.textColor=subColor;
-        titlelb.text=gegionModel.receivername;
-        titlelb.font=Font(15);
-        [tempView addSubview:titlelb];
-        oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
-        [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
-        [tempView addSubview:oneline];
-        [mianScr addSubview:tempView];
-        
-        //创建时间
-        tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
-        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
-        sublb.textColor=titleColor;
-        sublb.font=Font(15);
-        sublb.adjustsFontSizeToFitWidth=YES;
-        sublb.text=@"处理时间：";
-        [tempView addSubview:sublb];
-        titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
-        titlelb.numberOfLines=2;
-        titlelb.textColor=subColor;
-        NSDate *hdate = [NSDate dateWithString:gegionModel.htime format:@"yyyy-MM-dd HH:mm:ss"];
-        
-        NSString *limtStr= [gegionModel.limittime stringByAppendingString:@" 23:59:59"];
-        
-        NSDate *limtdate=[NSDate dateWithString:limtStr format:@"yyyy-MM-dd HH:mm:ss"];
-        NSComparisonResult result  =[hdate compare:limtdate];
-        if (result==NSOrderedDescending) {
-            titlelb.text=[gegionModel.htime  stringByAppendingString:@"（超期）"];
-        }
-        else{
-            titlelb.text=gegionModel.htime;
-        }
-        titlelb.font=Font(15);
-        [tempView addSubview:titlelb];
-        oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
-        [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
-        [tempView addSubview:oneline];
-        [mianScr addSubview:tempView];
-        [mianScr setContentSize:CGSizeMake(SCREEN_WIDTH, tempView.bottom+30)];
+    //描述
+    tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
+    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
+    sublb.textColor=titleColor;
+    sublb.font=Font(15);
+    sublb.adjustsFontSizeToFitWidth=YES;
+    sublb.text=@"处理描述：";
+    [tempView addSubview:sublb];
+    titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
+    titlelb.numberOfLines=0;
+    titlelb.textColor=subColor;
+    titlelb.text=gegionModel.hcontent;
+    titlelb.font=Font(15);
+    [tempView addSubview:titlelb];
+    CGSize conentSize1 =[titlelb.text boundingRectWithSize:CGSizeMake(titlelb.width, 500) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName:titlelb.font} context:nil].size;
+    titlelb.height=titlelb.height>conentSize1.height?titlelb.height:conentSize1.height;
+    oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, titlelb.bottom-0.5, tempView.width, 0.5)];
+    [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
+    [tempView addSubview:oneline];
+    [mianScr addSubview:tempView];
+    //图片
+    tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 75)];
+    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 5, 75, 21)];
+    sublb.textColor=titleColor;
+    sublb.font=Font(15);
+    sublb.adjustsFontSizeToFitWidth=YES;
+    sublb.text=@"描述图片：";
+    [tempView addSubview:sublb];
+    NSMutableArray *pricrAry1;
+    if ([gegionModel.hpics isNotBlank]) {
+        pricrAry1=[NSMutableArray arrayWithArray:[gegionModel.hpics componentsSeparatedByString:@","]];
+    }else{
+        pricrAry1=[[NSMutableArray alloc]init];
     }
+    
+    PictureView *picture_view2=[[PictureView alloc]initWithFrame:CGRectMake(sublb.right,5, tempView.width-sublb.right-SCALE(8), 60) pictureAry:pricrAry1 size:CGSizeMake(60, 60) isUpPic:NO];
+    picture_view2.vself=self;
+    [tempView addSubview:picture_view2];
+    oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, tempView.height-0.5, tempView.width, 0.5)];
+    [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
+    [tempView addSubview:oneline];
+    [mianScr addSubview:tempView];
+    //创建人
+    tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
+    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
+    sublb.textColor=titleColor;
+    sublb.font=Font(15);
+    sublb.text=@"处理人：";
+    [tempView addSubview:sublb];
+    titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
+    titlelb.numberOfLines=2;
+    titlelb.textColor=subColor;
+    titlelb.text=gegionModel.receivername;
+    titlelb.font=Font(15);
+    [tempView addSubview:titlelb];
+    oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
+    [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
+    [tempView addSubview:oneline];
+    [mianScr addSubview:tempView];
+    
+    //创建时间
+    tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
+    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
+    sublb.textColor=titleColor;
+    sublb.font=Font(15);
+    sublb.adjustsFontSizeToFitWidth=YES;
+    sublb.text=@"处理时间：";
+    [tempView addSubview:sublb];
+    titlelb =[[UILabel alloc]initWithFrame:CGRectMake(sublb.right, 0, SCREEN_WIDTH-sublb.right-SCALE(8), sublb.height)];
+    titlelb.numberOfLines=2;
+    titlelb.textColor=subColor;
+    NSDate *hdate = [NSDate dateWithString:gegionModel.htime format:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSString *limtStr= [gegionModel.limittime stringByAppendingString:@" 23:59:59"];
+    
+    NSDate *limtdate=[NSDate dateWithString:limtStr format:@"yyyy-MM-dd HH:mm:ss"];
+    NSComparisonResult result  =[hdate compare:limtdate];
+    if (result==NSOrderedDescending) {
+        titlelb.text=[gegionModel.htime  stringByAppendingString:@"（超期）"];
+    }
+    else{
+        titlelb.text=gegionModel.htime;
+    }
+    titlelb.font=Font(15);
+    [tempView addSubview:titlelb];
+    oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
+    [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
+    [tempView addSubview:oneline];
+    [mianScr addSubview:tempView];
+    [mianScr setContentSize:CGSizeMake(SCREEN_WIDTH, tempView.bottom+30)];
     // Do any additional setup after loading the view.
 }
 #pragma mark------------进入导航--------
@@ -395,60 +333,7 @@
 {
     [self presentViewController:picker animated:YES completion:nil];
 }
--(void)dealTask{
 
-    if (![hcontent_tv.text isNotBlank]) {
-        [self showMsgInfo:@"请输入处理描述"];
-        return;
-    }
-    if (picture_view1.pictureAry.count==0) {
-        [self showMsgInfo:@"请选择处理图片"];
-        return;
-    }
-    WEAKSELF
-    __block int i=0;
-    __block NSMutableArray *imageAry=[[NSMutableArray alloc]init];
-    for(UIImage *image in picture_view1.pictureAry){
-        [self networkUpfile:FILE_UPLOADING imageAry:image parameter:nil progresHudText:@"提交中..." completionBlock:^(id rep) {
-            i++;
-            [imageAry addObject:rep[@"url"]];
-            if (i>=picture_view1.pictureAry.count) {
-                NSString *pics =  [imageAry componentsJoinedByString:@","];
-                [weakSelf  updMonitorTask:pics];
-            }
-        }];
-    }
-    
-}
--(void)updMonitorTask:(NSString*)pics{
-    [self networkPost:API_UPDMONITORTASK parameter:@{@"id":gegionModel.id,@"hcontent":hcontent_tv.text,@"hpics":pics} progresHudText:nil completionBlock:^(id rep) {
-        [SVProgressHUD dismiss];
-        [SVProgressHUD showSuccessWithStatus:@"提交成功!"];
-        [self bk_performBlock:^(id obj) {
-            if (self.callback) {
-                self.callback(YES);
-            }
-            [self.navigationController popViewControllerAnimated:YES];
-            
-            
-        } afterDelay:1.0];
-    }];
-}
--(void)turnToOther:(UIButton*)sender{
-    AddTaskViewController *addtask=[[AddTaskViewController alloc]init];
-    addtask.kind=@"2";
-    TaskModel *taskModel =[TaskModel mj_objectWithKeyValues:[gegionModel mj_JSONString]];
-    addtask.reldata=taskModel;//关联任务
-    addtask.callback =^(BOOL issu){
-        if (issu==YES) {
-            if (self.callback) {
-                self.callback(YES);
-            }
-        }
-    };
-    addtask.title=@"发起任务";
-    [self.navigationController pushViewController:addtask animated:YES];
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

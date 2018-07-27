@@ -25,6 +25,7 @@
 #import "DealPalyView.h"
 #import "PointWarnVC.h"
 #import "AddPatrolTasksVC.h"
+#import "MUnitModel.h"
 static dispatch_queue_t video_intercom_queue() {
     static dispatch_queue_t url_request_queue;
     static dispatch_once_t onceToken;
@@ -582,6 +583,8 @@ static dispatch_queue_t video_intercom_queue() {
             }else{
                 AddPatrolTasksVC *addpatrol=[[AddPatrolTasksVC alloc]init];
                 addpatrol.title=@"现场巡查";
+                addpatrol.isChoose=YES;
+                addpatrol.unitModel=[MUnitModel mj_objectWithKeyValues:[carmeraInfo mj_JSONString]];
                 addpatrol.pricrAry=[NSMutableArray arrayWithObject:image];
                 [weakSelf.navigationController pushViewController:addpatrol animated:YES];
             }

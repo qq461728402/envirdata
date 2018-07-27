@@ -114,7 +114,7 @@
     
     //责任部门
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
-    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
+    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 85, tempView.height)];
     sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.text=@"责任部门：";
@@ -132,7 +132,7 @@
     
     //创建时间
     tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
-    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];
+    sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 85, tempView.height)];
     sublb.textColor=titleColor;
     sublb.font=Font(15);
     sublb.text=@"创建时间：";
@@ -150,7 +150,7 @@
     if ([complaintTasksModel.status intValue]==1) {//表示我待办
         //内容
         tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, SCALE(80))];
-        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, 21)];
+        sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 85, 21)];
         sublb.textColor=titleColor;
         sublb.font=Font(15);
         sublb.adjustsFontSizeToFitWidth=YES;

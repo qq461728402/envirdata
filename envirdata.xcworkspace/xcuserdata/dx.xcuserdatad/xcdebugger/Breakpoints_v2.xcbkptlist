@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "envirdata/util/ZYQAssetPickerController/ZYQAssetPickerController.m"
-            timestampString = "554202098.039428"
+            filePath = "envirdata/AppDelegate.m"
+            timestampString = "554307060.277959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "840"
-            endingLineNumber = "840"
-            landmarkName = "-setupGroup"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "-GeTuiSdkDidReceivePayloadData:andTaskId:andMsgId:andOffLine:fromGtAppId:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

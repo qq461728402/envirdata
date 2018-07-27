@@ -824,36 +824,31 @@ static UIColor *titleColor;
         if (group)
         {
             [self.groups addObject:group];
-//            [group setAssetsFilter:assetsFilter];
-//            if (group.numberOfAssets > 0 || picker.showEmptyGroups)
-//                [self.groups addObject:group];
+            [group setAssetsFilter:assetsFilter];
+            if (group.numberOfAssets > 0 || picker.showEmptyGroups)
+                [self.groups addObject:group];
         }
         else
         {
             [self reloadData];
         }
     };
-    
-    
     ALAssetsLibraryAccessFailureBlock failureBlock = ^(NSError *error) {
-        
         [self showNotAllowed];
-        
     };
-    
     // Enumerate Camera roll first
-    [self.assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
+    [self.assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll
                                       usingBlock:resultsBlock
                                     failureBlock:failureBlock];
     
     // Then all other groups
-    NSUInteger type =
-    ALAssetsGroupLibrary | ALAssetsGroupAlbum | ALAssetsGroupEvent |
-    ALAssetsGroupFaces | ALAssetsGroupPhotoStream;
-    
-    [self.assetsLibrary enumerateGroupsWithTypes:type
-                                      usingBlock:resultsBlock
-                                    failureBlock:failureBlock];
+//    NSUInteger type =
+//    ALAssetsGroupLibrary | ALAssetsGroupAlbum | ALAssetsGroupEvent |
+//    ALAssetsGroupFaces | ALAssetsGroupPhotoStream;
+//    
+//    [self.assetsLibrary enumerateGroupsWithTypes:type
+//                                      usingBlock:resultsBlock
+//                                    failureBlock:failureBlock];
 }
 
 

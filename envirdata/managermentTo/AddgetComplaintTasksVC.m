@@ -12,7 +12,7 @@
 #import "PictureView.h"
 #import "LBpopView.h"
 #import "MDepModel.h"
-@interface AddgetComplaintTasksVC ()<PictureViewDelegate,LBpopDelegate>
+@interface AddgetComplaintTasksVC ()<PictureViewDelegate,LBpopDelegate,UITextFieldDelegate>
 @property (nonatomic,strong)CTextField *title_tf;//站点名称
 @property (nonatomic,strong)CTextField *position_tf;//位置
 @property (nonatomic,strong)UITextViewPlaceHolder *content_tv;//内容
@@ -144,25 +144,10 @@
     [tempView addSubview:sublb];
     dep_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
     dep_tf.font=Font(15);
+    dep_tf.delegate=self;
     dep_tf.placeholder=@"请选择部门";
     [dep_tf setBackgroundColor:[UIColor whiteColor]];
-    ViewRadius(dep_tf, 4);
-    dep_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
-        return NO;
-    };
-    dep_tf.userInteractionEnabled=YES;
-    [dep_tf bk_whenTapped:^{
-        if (!depPopView) {
-            depPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        }
-        depPopView.popType=@"deptype";
-        depPopView.selectRowIndex=depSelect;
-        depPopView.delegate=self;
-        depPopView.popArray=depAry;
-        depPopView.popTitle=@"请选择部门";
-        [depPopView show];
-    }];
-    
+    ViewRadius(dep_tf, 4);    
     oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
     [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
     [tempView addSubview:oneline];
@@ -227,6 +212,20 @@
 -(void)addUIImagePicker:(UIImagePickerController *)picker
 {
     [self presentViewController:picker animated:YES completion:nil];
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (textField==dep_tf) {
+        if (!depPopView) {
+            depPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        depPopView.popType=@"deptype";
+        depPopView.selectRowIndex=depSelect;
+        depPopView.delegate=self;
+        depPopView.popArray=depAry;
+        depPopView.popTitle=@"请选择部门";
+        [depPopView show];
+    }
+    return NO;
 }
 #pragma mark-----------新增任务----
 -(void)addPatrolTasks{

@@ -10,7 +10,7 @@
 #import "CTextField.h"
 #import "LBpopView.h"
 #import "DkeyModel.h"
-@interface PointWarnVC ()<LBpopDelegate>
+@interface PointWarnVC ()<LBpopDelegate,UITextFieldDelegate>
 @property (nonatomic,strong)CTextField *pointName_tf;
 @property (nonatomic,strong)CTextField *pointType_tf;
 @property (nonatomic,strong)NSString *pics;
@@ -40,7 +40,6 @@
     pointName_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
     pointName_tf.font=Font(15);
     pointName_tf.text=pointName;
-    pointName_tf.enabled=YES;
     [pointName_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(pointName_tf, 4);
     [tempView addSubview:pointName_tf];
@@ -58,24 +57,10 @@
     [tempView addSubview:sublb];
     pointType_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
     pointType_tf.font=Font(15);
+    pointType_tf.delegate=self;
     pointType_tf.placeholder=@"请选择类型";
-    pointType_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
-        return NO;
-    };
     [pointType_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(pointType_tf, 4);
-    pointType_tf.userInteractionEnabled=YES;
-    [pointType_tf bk_whenTapped:^{
-        if (!lbpopView) {
-            lbpopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        }
-        lbpopView.popType=@"utype";
-        lbpopView.selectRowIndex=utypeindex;
-        lbpopView.delegate=self;
-        lbpopView.popArray=dkeylistAry;
-        lbpopView.popTitle=@"请选择站点类型";
-        [lbpopView show];
-    }];
     [tempView addSubview:pointType_tf];
     oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
     [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
@@ -104,6 +89,20 @@
     [self.view addSubview:addMonitorBtn];
     [self upImage];
     // Do any additional setup after loading the view.
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (textField==pointType_tf) {
+        if (!lbpopView) {
+            lbpopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        lbpopView.popType=@"utype";
+        lbpopView.selectRowIndex=utypeindex;
+        lbpopView.delegate=self;
+        lbpopView.popArray=dkeylistAry;
+        lbpopView.popTitle=@"请选择站点类型";
+        [lbpopView show];
+    }
+    return NO;
 }
 #pragma mark------------------popViewdelegate----------------
 -(void)getIndexRow:(int)indexrow warranty:(id)warranty

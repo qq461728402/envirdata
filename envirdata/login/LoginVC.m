@@ -135,11 +135,6 @@
         
         //个推绑定
         
-        
-        //[GeTuiSdk bindAlias:<#(NSString *)#> andSequenceNum:[NSString stringWithUUID]]
-        
-        
-        
         //保存单位信息
         [[NSUserDefaults standardUserDefaults] setObject:@{@"appexpand1":userInfo.appexpand1,@"appexpand2":userInfo.appexpand2}
                                             forKey:@"unitInfo"];
@@ -154,10 +149,10 @@
     [[AppDelegate Share] gotohome];
 }
 -(void)bindDeviece{
-    [self networkPost:API_BINDDEVICE parameter:@{@"userid":[SingalObj defaultManager].userInfoModel.userid,@"clientid":[NSString stringWithUUID]} progresHudText:nil completionBlock:^(id rep) {
+    NSString *clientId = USER_DEFAULTS(@"clientId");
+    [self networkPost:API_BINDDEVICE parameter:@{@"userid":[SingalObj defaultManager].userInfoModel.userid,@"clientid":clientId} progresHudText:nil completionBlock:^(id rep) {
     }];
 }
-
 -(void)getMenu{
     NSDictionary *parameter = @{@"roleid":[SingalObj defaultManager].userInfoModel.roleid};
     [self networkPost:API_GETMENU parameter:parameter progresHudText:nil completionBlock:^(id rep) {

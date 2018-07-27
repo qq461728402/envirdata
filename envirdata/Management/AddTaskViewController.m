@@ -15,7 +15,7 @@
 #import "PGDatePicker.h"
 #import "TaskDetailVC.h"
 #import "TaskListViewController.h"
-@interface AddTaskViewController ()<ChoosePerosonDelegate,PGDatePickerDelegate,PictureViewDelegate>
+@interface AddTaskViewController ()<ChoosePerosonDelegate,PGDatePickerDelegate,PictureViewDelegate,UITextFieldDelegate>
 @property (nonatomic,strong)PictureView *picture_view;//上传图片
 @property (nonatomic,strong)CTextField *receiver_tf;//接受者
 @property (nonatomic,strong)CTextField *title_tf;//标题
@@ -38,6 +38,8 @@
     [self.view setBackgroundColor:[UIColor colorWithRGB:0xebeced]];
     mianScr =[[UIScrollView alloc]init];
     [self.view addSubview:mianScr];
+    jd=@(0);
+    wd=@(0);
     WEAKSELF
     //先确定view_1的约束
     [mianScr mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -57,18 +59,9 @@
     receiver_tf.font=Font(15);
     receiver_tf.text=uname;
     receiver_tf.placeholder=@"请选择接收人";
-    receiver_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
-        return NO;
-    };
+    receiver_tf.delegate=self;
     [receiver_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(receiver_tf, 4);
-    receiver_tf.userInteractionEnabled=YES;
-    [receiver_tf bk_whenTapped:^{
-        EnvChooseListVC *personInfo=[[EnvChooseListVC alloc]init];
-        personInfo.title=@"选择人员";
-        personInfo.delegate=self;
-        [self.navigationController pushViewController:personInfo animated:YES];
-    }];
     [tempView addSubview:receiver_tf];
     
     UILabel *oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
@@ -199,9 +192,7 @@
     
     limittime_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
     limittime_tf.font=Font(15);
-    limittime_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
-        return NO;
-    };
+    limittime_tf.delegate=self;
     limittime_tf.placeholder=@"请选择最晚完成时间";
     [limittime_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(limittime_tf, 4);
@@ -210,22 +201,6 @@
     [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
     [tempView addSubview:oneline];
     [mianScr addSubview:tempView];
-     limittime_tf.userInteractionEnabled=YES;
-    [limittime_tf bk_whenTapped:^{
-        if (!datePickManager) {
-            datePickManager = [[PGDatePickManager alloc]init];
-            datePickManager.isShadeBackgroud = true;
-            datePickManager.style = PGDatePickManagerStyle3;
-            PGDatePicker *datePicker = datePickManager.datePicker;
-            datePicker.delegate = self;
-            [datePicker setDate:[NSDate date]];
-            datePicker.datePickerType = PGPickerViewType1;
-            datePicker.isHiddenMiddleText = false;
-            datePicker.isHiddenWheels = false;
-            datePicker.datePickerMode = PGDatePickerModeDate;
-        }
-        [self presentViewController:datePickManager animated:false completion:nil];
-    }];
     UIButton *addMonitorBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     addMonitorBtn.frame=CGRectMake(SCALE(8), tempView.bottom+20, SCREEN_WIDTH-SCALE(16), SCALE(50));
     [addMonitorBtn bootstrapNoborderStyle:SUBMIT_COLOR titleColor:[UIColor whiteColor] andbtnFont:Font(16)];
@@ -297,6 +272,31 @@
         }
     }];
 }
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+
+    if (textField==receiver_tf) {
+        EnvChooseListVC *personInfo=[[EnvChooseListVC alloc]init];
+        personInfo.title=@"选择人员";
+        personInfo.delegate=self;
+        [self.navigationController pushViewController:personInfo animated:YES];
+    }else if (textField==limittime_tf){
+        if (!datePickManager) {
+            datePickManager = [[PGDatePickManager alloc]init];
+            datePickManager.isShadeBackgroud = true;
+            datePickManager.style = PGDatePickManagerStyle3;
+            PGDatePicker *datePicker = datePickManager.datePicker;
+            datePicker.delegate = self;
+            [datePicker setDate:[NSDate date]];
+            datePicker.datePickerType = PGPickerViewType1;
+            datePicker.isHiddenMiddleText = false;
+            datePicker.isHiddenWheels = false;
+            datePicker.datePickerMode = PGDatePickerModeDate;
+        }
+        [self presentViewController:datePickManager animated:false completion:nil];
+    }
+    return NO;
+}
+
 #pragma mark--------------发起任务---------
 -(void)addMonitor{
     if (![receiver_tf.text isNotBlank]) {
@@ -335,7 +335,7 @@
 #pragma mark-------添加任务-----------
 -(void)addMonitorTask:(NSString*)pics{
     
-   NSNumber *sendor =  [SingalObj defaultManager].userInfoModel.userid;
+    NSNumber *sendor =  [SingalObj defaultManager].userInfoModel.userid;
     NSDictionary *parmeter=@{};
     if (reldata) {
          parmeter=@{@"receiver":[uid numberValue],@"title":title_tf.text,@"content":content_tv.text,@"pics":pics,@"position":position_tf.text,@"jd":jd,@"wd":wd,@"relid":reldata.id,@"kind":[kind numberValue],@"limittime":limittime_tf.text,@"sendor":sendor};
@@ -350,16 +350,16 @@
 -(void)gogo{
     if (self.callback) {
         self.callback(YES);
-        if ([kind intValue]==2) {//表示转发
-            NSArray *views = self.navigationController.viewControllers;
-            [views bk_each:^(UIViewController* viewcontrol) {
-                if ([viewcontrol isKindOfClass:[TaskListViewController class]]) {
-                    [self.navigationController popToViewController:viewcontrol animated:YES];
-                }
-            }];
-        }else{
-             [self.navigationController popViewControllerAnimated:YES];
-        }
+    }
+    if ([kind intValue]==2) {//表示转发
+        NSArray *views = self.navigationController.viewControllers;
+        [views bk_each:^(UIViewController* viewcontrol) {
+            if ([viewcontrol isKindOfClass:[TaskListViewController class]]) {
+                [self.navigationController popToViewController:viewcontrol animated:YES];
+            }
+        }];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

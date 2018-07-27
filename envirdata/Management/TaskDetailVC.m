@@ -23,7 +23,6 @@
     [super viewDidLoad];
     if (isOnlyLook==NO) {
         if ([taskModel.status intValue]==1) {//表示我待办
-            
             UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
             but.frame =CGRectMake(0,0, 60, 44);
             [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -32,9 +31,8 @@
             [but setTitle:@"转发"forState:UIControlStateNormal];
             UIBarButtonItem  *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
             self.navigationItem.rightBarButtonItem = barBut;
-            
         }
-        else if([taskModel.status intValue]==2){
+        else if([taskModel.status intValue]==2&& [taskModel.sendor intValue] == [[SingalObj defaultManager].userInfoModel.userid intValue]){
             UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
             but.frame =CGRectMake(0,0, 75, 44);
             [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -248,7 +246,7 @@
         [mianScr addSubview:addMonitorBtn];
         [mianScr setContentSize:CGSizeMake(SCREEN_WIDTH, addMonitorBtn.bottom+30)];
     
-    }else  if ([taskModel.status intValue]==2||isOnlyLook==YES) {//表示待处理
+    }else  if ([taskModel.status intValue]!=1||isOnlyLook==YES) {//表示已处理
         //描述
         tempView=[[UIView alloc]initWithFrame:CGRectMake(0, tempView.bottom, SCREEN_WIDTH, 40)];
         sublb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 75, tempView.height)];

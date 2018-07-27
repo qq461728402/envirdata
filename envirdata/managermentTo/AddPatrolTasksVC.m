@@ -10,11 +10,10 @@
 #import "CTextField.h"
 #import "UITextViewPlaceHolder.h"
 #import "PictureView.h"
-#import "MUnitModel.h"
 #import "MDepModel.h"
 #import "DkeyModel.h"
 #import "LBpopView.h"
-@interface AddPatrolTasksVC ()<PictureViewDelegate,LBpopDelegate>
+@interface AddPatrolTasksVC ()<PictureViewDelegate,LBpopDelegate,UITextFieldDelegate>
 @property (nonatomic,strong)CTextField *ponit_tf;//站点名称
 @property (nonatomic,strong)CTextField *type_tf;//类型
 @property (nonatomic,strong)CTextField *position_tf;//位置
@@ -27,7 +26,7 @@
 @property (nonatomic,strong)LBpopView *unitPopView;
 @property (nonatomic,strong)NSArray *unitAry;//站点数组
 @property (nonatomic,assign)NSInteger unitSelect;
-@property (nonatomic,strong)MUnitModel *unitModel;
+
 
 
 @property (nonatomic,strong)LBpopView *dkeyPopView;
@@ -48,7 +47,7 @@
 @synthesize ponit_tf,type_tf,position_tf,content_tv,picture_view,dep_tf,jd,wd,locationManager,pricrAry;
 @synthesize unitAry,unitModel,unitSelect,unitPopView;
 @synthesize dkeyPopView,dkeyAry,dkeySelect,dkeyModel;
-@synthesize depPopView,depAry,depSelect,depModel;
+@synthesize depPopView,depAry,depSelect,depModel,isChoose;
 -(void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor colorWithRGB:0xf1f1f1]];
 }
@@ -57,6 +56,8 @@
     unitSelect=-1;
     dkeySelect=-1;
     depSelect=-1;
+    jd=@(0);
+    wd=@(0);
     [self getUnitList];
     [self getTypeDescipt];
     [self getByareaidDepartmentInfos];
@@ -81,25 +82,13 @@
     [tempView addSubview:sublb];
     ponit_tf =[[CTextField alloc]initWithFrame:CGRectMake(sublb.right, SCALE(7), SCREEN_WIDTH-sublb.right-SCALE(8), SCALE(36))];
     ponit_tf.font=Font(15);
-    ponit_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
-        return NO;
-    };
+    ponit_tf.delegate=self;
     ponit_tf.placeholder=@"请选择站点";
+    if (unitModel) {
+        ponit_tf.text=unitModel.uname;
+    }
     [ponit_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(ponit_tf, 4);
-    ponit_tf.userInteractionEnabled=YES;
-    [ponit_tf bk_whenTapped:^{
-        if (!unitPopView) {
-            unitPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        }
-        unitPopView.popType=@"unittype";
-        unitPopView.selectRowIndex=unitSelect;
-        unitPopView.delegate=self;
-        unitPopView.popArray=unitAry;
-        unitPopView.popTitle=@"请选择站点";
-        [unitPopView show];
-
-    }];
     [tempView addSubview:ponit_tf];
     UILabel *oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
     [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
@@ -118,21 +107,9 @@
     type_tf.placeholder=@"请选择类型";
     [type_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(type_tf, 4);
-    type_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
-        return NO;
-    };
+    type_tf.delegate=self;
     type_tf.userInteractionEnabled=YES;
-    [type_tf bk_whenTapped:^{
-        if (!dkeyPopView) {
-            dkeyPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        }
-        dkeyPopView.popType=@"dkeytype";
-        dkeyPopView.selectRowIndex=dkeySelect;
-        dkeyPopView.delegate=self;
-        dkeyPopView.popArray=dkeyAry;
-        dkeyPopView.popTitle=@"请选择站点类型";
-        [dkeyPopView show];
-    }];
+    
     
     
     oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
@@ -218,23 +195,8 @@
     dep_tf.placeholder=@"请选择部门";
     [dep_tf setBackgroundColor:[UIColor whiteColor]];
     ViewRadius(dep_tf, 4);
-    dep_tf.bk_shouldEndEditingBlock=^(UITextField *tf){
-        return NO;
-    };
-    dep_tf.userInteractionEnabled=YES;
-    [dep_tf bk_whenTapped:^{
-        if (!depPopView) {
-            depPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        }
-        depPopView.popType=@"deptype";
-        depPopView.selectRowIndex=depSelect;
-        depPopView.delegate=self;
-        depPopView.popArray=depAry;
-        depPopView.popTitle=@"请选择部门";
-        [depPopView show];
-    }];
-    
-    
+    dep_tf.delegate=self;
+  
     oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, sublb.bottom-0.5, tempView.width, 0.5)];
     [oneline setBackgroundColor:[UIColor colorWithRGB:0xc8c8c8]];
     [tempView addSubview:oneline];
@@ -252,6 +214,43 @@
     [mianScr addSubview:addMonitorBtn];
     [mianScr setContentSize:CGSizeMake(SCREEN_WIDTH, addMonitorBtn.bottom+30)];
     // Do any additional setup after loading the view.
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField==ponit_tf) {
+        if (isChoose!=YES) {
+            if (!unitPopView) {
+                unitPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            }
+            unitPopView.popType=@"unittype";
+            unitPopView.selectRowIndex=unitSelect;
+            unitPopView.delegate=self;
+            unitPopView.popArray=unitAry;
+            unitPopView.popTitle=@"请选择站点";
+            [unitPopView show];
+        }
+    }else if (textField==type_tf){
+        if (!dkeyPopView) {
+            dkeyPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        dkeyPopView.popType=@"dkeytype";
+        dkeyPopView.selectRowIndex=dkeySelect;
+        dkeyPopView.delegate=self;
+        dkeyPopView.popArray=dkeyAry;
+        dkeyPopView.popTitle=@"请选择站点类型";
+        [dkeyPopView show];
+    }else if (textField==dep_tf){
+        if (!depPopView) {
+            depPopView=[[LBpopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        depPopView.popType=@"deptype";
+        depPopView.selectRowIndex=depSelect;
+        depPopView.delegate=self;
+        depPopView.popArray=depAry;
+        depPopView.popTitle=@"请选择部门";
+        [depPopView show];
+    }
+    return NO;
 }
 #pragma mark--------定位--------
 -(void)baiduConfig{
@@ -348,8 +347,8 @@
         [self bk_performBlock:^(id obj) {
             if (self.callback) {
                 self.callback(YES);
-                [self.navigationController popViewControllerAnimated:YES];
             }
+            [self.navigationController popViewControllerAnimated:YES];
         } afterDelay:1];
     }];
 }

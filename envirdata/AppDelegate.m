@@ -28,6 +28,7 @@ BMKMapManager* _mapManager;
     [ConfigObj configObj];
     //个推
     [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
+    [GeTuiSdk runBackgroundEnable:true];
     //启动百度地图
     _mapManager = [[BMKMapManager alloc]init];
     
@@ -159,9 +160,15 @@ BMKMapManager* _mapManager;
     [GeTuiSdk registerDeviceToken:token];
 }
 
-
+/** APP已经接收到“远程”通知(推送) - (App运行在后台/App运行在前台) */
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    application.applicationIconBadgeNumber = 0; // 标签
+    NSLog(@"\n>>>[Receive RemoteNotification]:%@\n\n", userInfo);
+}
 /** APP已经接收到“远程”通知(推送) - 透传推送消息  */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+    
+    application.applicationIconBadgeNumber = 0;
     // 处理APNs代码，通过userInfo可以取到推送的信息（包括内容，角标，自定义参数等）。如果需要弹窗等其他操作，则需要自行编码。
     NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n",userInfo);
     //静默推送收到消息后也需要将APNs信息传给个推统计
@@ -196,8 +203,18 @@ BMKMapManager* _mapManager;
 - (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
     //个推SDK已注册，返回clientId
     NSLog(@"\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
+    [[NSUserDefaults standardUserDefaults]setObject:clientId forKey:@"clientId"];
+    if ([SingalObj defaultManager].userInfoModel!=nil) {
+        [self bindDeviece];//绑定
+    }
 }
 
+-(void)bindDeviece{
+    NSString *clientId = USER_DEFAULTS(@"clientId");
+    [self networkPost:API_BINDDEVICE parameter:@{@"userid":[SingalObj defaultManager].userInfoModel.userid,@"clientid":clientId} progresHudText:nil completionBlock:^(id rep) {
+        
+    }];
+}
 /** SDK收到透传消息回调 */
 - (void)GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId andMsgId:(NSString *)msgId andOffLine:(BOOL)offLine fromGtAppId:(NSString *)appId {
     //收到个推消息
@@ -205,9 +222,14 @@ BMKMapManager* _mapManager;
     if (payloadData) {
         payloadMsg = [[NSString alloc] initWithBytes:payloadData.bytes length:payloadData.length encoding:NSUTF8StringEncoding];
     }
-    
+    if (payloadMsg) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"收到一条消息" delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+        [alertView show];
+        
+    }
     NSString *msg = [NSString stringWithFormat:@"taskId=%@,messageId:%@,payloadMsg:%@%@",taskId,msgId, payloadMsg,offLine ? @"<离线消息>" : @""];
     NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
+    
 }
 - (void)onGetNetworkState:(int)iError
 {
