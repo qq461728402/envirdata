@@ -62,6 +62,9 @@ BMKMapManager* _mapManager;
     }
     [self getvison];
     [self getTrackId];
+    //去掉badge
+    application.applicationIconBadgeNumber = 0;
+    [GeTuiSdk setBadge:0];
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;

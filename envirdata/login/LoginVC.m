@@ -127,8 +127,8 @@
          [self showMsgInfo:@"请输入密码"];
         return;
     }
-    [self networkPost:API_CHECKUSER parameter:@{@"passport":usertf.text,@"pwd":passwordtf.text} progresHudText:@"加载中..." completionBlock:^(id rep) {
-        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+    [self networkPost:API_CHECKUSER parameter:@{@"passport":usertf.text,@"pwd":passwordtf.text} progresHudText:@"登录中..." completionBlock:^(id rep) {
+        
         //保存用户信息
         [[NSUserDefaults standardUserDefaults] setObject:rep forKey:@"userInfo"];
         UserInfoModel *userInfo = [UserInfoModel mj_objectWithKeyValues:rep];
@@ -156,9 +156,11 @@
 -(void)getMenu{
     NSDictionary *parameter = @{@"roleid":[SingalObj defaultManager].userInfoModel.roleid};
     [self networkPost:API_GETMENU parameter:parameter progresHudText:nil completionBlock:^(id rep) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
         //保存菜单信息
         [[NSUserDefaults standardUserDefaults] setObject:rep forKey:@"menuInfo"];//保存菜单信息
-        [self performSelector:@selector(gogo) withObject:nil afterDelay:1.0];
+        [self performSelector:@selector(gogo) withObject:nil afterDelay:0.5];
     }];
 }
 - (void)didReceiveMemoryWarning {

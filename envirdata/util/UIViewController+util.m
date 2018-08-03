@@ -38,7 +38,7 @@
     }
     NSDictionary * parameterdic = @{@"param":[parameter mj_JSONString]};
     [[AFAppDotNetAPIClient shareClient] POST:url parameters: parameterdic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if ([hudText isNotBlank]) {
+        if ([hudText isNotBlank]&&![hudText isEqualToString:@"登录中..."]) {
              [SVProgressHUD dismiss];
         }
         NSLog(@"%@",[responseObject mj_JSONString]);

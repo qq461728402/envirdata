@@ -279,7 +279,11 @@
         [self showMsgInfo:@"请输入处理描述"];
         return;
     }
-    if (picture_view1.pictureAry.count==0||picture_view1.pictureAry.count>3) {
+    else if (picture_view1.pictureAry.count==0){
+        [self showMsgInfo:@"请上传处理图片"];
+        return;
+    }
+    if (picture_view1.pictureAry.count>3) {
         [self showMsgInfo:@"请选择小于4张处理图片"];
         return;
     }

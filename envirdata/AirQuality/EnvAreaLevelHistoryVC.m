@@ -17,15 +17,15 @@
 @property (nonatomic,strong)NSString *time;//日期 格式：2018-04-03
 @property (nonatomic,strong)UILabel *timetf;
 @property (nonatomic,strong)UILabel *times;
-@property (nonatomic,strong)PGDatePickManager *datePickManager;
+@property (nonatomic,strong)PGDatePickManager *hdatePickManager;
+@property (nonatomic,strong)PGDatePickManager *mdatePickManager;
 @property (nonatomic,strong)PYEchartsView *pyEchartsView;
 @property (nonatomic,strong)NSMutableArray *arelevelList;
 @property (nonatomic,strong)UITableView *arealevelTb;
-@property (nonatomic,strong)PGDatePicker *datePicker;
 @end
 
 @implementation EnvAreaLevelHistoryVC
-@synthesize a_id,timetf,time,datePickManager,timetype,type,times,pyEchartsView,arelevelList,arealevelTb,datePicker;
+@synthesize a_id,timetf,time,hdatePickManager,mdatePickManager,timetype,type,times,pyEchartsView,arelevelList,arealevelTb;
 -(void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor whiteColor]];
 }
@@ -71,23 +71,38 @@
     timetf.font=Font(14);
     timetf.userInteractionEnabled=YES;
     [timetf bk_whenTapped:^{
-        if (!datePickManager) {
-            datePickManager = [[PGDatePickManager alloc]init];
-            datePickManager.isShadeBackgroud = true;
-            datePickManager.style = PGDatePickManagerStyle3;
-            datePicker = datePickManager.datePicker;
-            datePicker.delegate = self;
-            [datePicker setDate:[NSDate date]];
-            datePicker.datePickerType = PGPickerViewType1;
-            datePicker.isHiddenMiddleText = false;
-            datePicker.isHiddenWheels = false;
-        }
+        
         if ([timetype isEqualToString:@"hour"]) {
-            datePicker.datePickerMode = PGDatePickerModeDate;
+            if (!hdatePickManager) {
+                hdatePickManager = [[PGDatePickManager alloc]init];
+                hdatePickManager.isShadeBackgroud = true;
+                hdatePickManager.style = PGDatePickManagerStyle3;
+                PGDatePicker *datePicker = hdatePickManager.datePicker;
+                datePicker.delegate = self;
+                [datePicker setDate:[NSDate date]];
+                datePicker.datePickerType = PGPickerViewType1;
+                datePicker.isHiddenMiddleText = false;
+                datePicker.isHiddenWheels = false;
+                datePicker.datePickerMode = PGDatePickerModeDate;
+                
+            }
+             [self presentViewController:hdatePickManager animated:false completion:nil];
         }else if ([timetype isEqualToString:@"month"]){
-            datePicker.datePickerMode = PGDatePickerModeYearAndMonth;
+            if (!mdatePickManager) {
+                mdatePickManager = [[PGDatePickManager alloc]init];
+                mdatePickManager.isShadeBackgroud = true;
+                mdatePickManager.style = PGDatePickManagerStyle3;
+                PGDatePicker *datePicker = mdatePickManager.datePicker;
+                datePicker.delegate = self;
+                [datePicker setDate:[NSDate date]];
+                datePicker.datePickerType = PGPickerViewType1;
+                datePicker.isHiddenMiddleText = false;
+                datePicker.isHiddenWheels = false;
+                datePicker.datePickerMode = PGDatePickerModeYearAndMonth;
+            }
+             [self presentViewController:mdatePickManager animated:false completion:nil];
         }
-        [self presentViewController:datePickManager animated:false completion:nil];
+       
     }];
     timetf.right=SCREEN_WIDTH-SCALE(10);
     [headerView addSubview:timetf];
