@@ -11,6 +11,7 @@
 #import "NearestAreaRealModel.h"
 #import "ForecastAreaModel.h"
 #import "EnvAreaLevelVC.h"
+#import <AdSupport/AdSupport.h>
 @interface EnvAirQualityVC ()
 @property (nonatomic,strong)NearestGkzRealModel *nearestGkz;
 @property (nonatomic,strong)NearestAreaRealModel *areaRealModel;
@@ -50,9 +51,6 @@
 @property (nonatomic,strong)UILabel *a_oneline5;
 @property (nonatomic,strong)UILabel *a_oneline6;
 @property (nonatomic,strong)UIView *f_dataView;
-
-
-
 @end
 
 @implementation EnvAirQualityVC
@@ -65,6 +63,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[BMKLocationAuth sharedInstance] checkPermisionWithKey:BaiduAK authDelegate:self];
+    [SingalObj defaultManager].isFrist=NO;
     [self baiduConfig];
     UIFont *defont=Font(15);
     
@@ -76,6 +75,7 @@
     WEAKSELF
     mainScr =[[UIScrollView alloc]initWithFrame:self.view.bounds];
     mainScr.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [SingalObj defaultManager].isFrist=NO;
         [weakSelf baiduConfig];
     }];
     [self.view addSubview:mainScr];
@@ -478,9 +478,9 @@
     //设置delegate
     _locationManager.delegate = self;
     //设置返回位置的坐标系类型
-    _locationManager.coordinateType = BMKLocationCoordinateTypeGCJ02;//适应高德地图
+    _locationManager.coordinateType = BMKLocationCoordinateTypeBMK09LL;//适应高德地图
     //设置距离过滤参数（M）
-    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    _locationManager.distanceFilter = 10;
     //设置预期精度参数
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     //设置应用位置类型
@@ -493,19 +493,20 @@
     _locationManager.locationTimeout = 10;
     //设置获取地址信息超时时间
     _locationManager.reGeocodeTimeout = 10;
-    [_locationManager requestLocationWithReGeocode:YES withNetworkState:YES completionBlock:^(BMKLocation * _Nullable location, BMKLocationNetworkState state, NSError * _Nullable error) {
-        if (location) {//得到定位信息，添加annotation
-            if (location.location) {
-                [SingalObj defaultManager].userLocation=location.location;
-                NSLog(@"LOC = %@",location.location);}
-            [self getNearestGkzReal:location.location];
-                      if (location.rgcData) {
-                        NSLog(@"rgc = %@",[location.rgcData description]);
-                    }
-            }
-        //开启连续定位
-        [_locationManager startUpdatingLocation];
-    }];
+//    [_locationManager requestLocationWithReGeocode:YES withNetworkState:YES completionBlock:^(BMKLocation * _Nullable location, BMKLocationNetworkState state, NSError * _Nullable error) {
+//        if (location) {//得到定位信息，添加annotation
+//            if (location.location) {
+//                [SingalObj defaultManager].userLocation=location.location;
+//                NSLog(@"LOC = %@",location.location);}
+//                [self getNearestGkzReal:location.location];
+//                      if (location.rgcData) {
+//                        NSLog(@"rgc = %@",[location.rgcData description]);
+//                    }
+//            }
+//        //开启连续定位
+//       
+//    }];
+     [_locationManager startUpdatingLocation];
 }
 #pragma mark----------------最近国控站实况接口-------
 -(void)getNearestGkzReal:(CLLocation *)location{
@@ -662,6 +663,11 @@
         if (location.rgcData) {
             NSLog(@"rgc = %@",[location.rgcData description]);
         }
+        if ([SingalObj defaultManager].isFrist==NO) {
+            [SingalObj defaultManager].isFrist=YES;//表示第一次
+            [SingalObj defaultManager].userLocation=location.location;
+            [self getNearestGkzReal:location.location];
+        }
         //当前时间
         NSString *curruntDate= [[NSDate date] stringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
         //地址
@@ -670,21 +676,24 @@
         //经纬度
         NSNumber *lng =[NSNumber numberWithDouble:location.location.coordinate.longitude];
         NSNumber *lat =[NSNumber numberWithDouble:location.location.coordinate.latitude];
-        NSDictionary *pointDic =@{@"time":curruntDate,@"address":address,@"lng":lng,@"lat":lat};
+        NSDictionary *pointDic =@{@"time":curruntDate,@"address":@"",@"lng":lng,@"lat":lat};
         [self addPoints:@[pointDic]];
     }
 }
 #pragma mark--------------上传运动轨迹-----------------
 -(void)addPoints:(NSArray *)points{
+    if ([SingalObj defaultManager].userInfoModel==nil) {
+        return;
+    }
     NSNumber *userid=[SingalObj defaultManager].userInfoModel.userid;
     NSString *trackid =[SingalObj defaultManager].trackid;
     if (![trackid isNotBlank]) {
         [self getTrackId];
         return;
     }
-    NSString *mac =[NSString stringWithUUID];
-    NSString *gps =[points mj_JSONObject];
-    [self networkPostAll:API_APPPIONT parameter:@{@"userid":userid,@"trackid":trackid,@"mac":mac,@"gps":gps} progresHudText:nil completionBlock:^(id rep) {
+    NSString *mac =[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    NSString *gps =[points mj_JSONString];
+    [self networkPostAll:API_APPPIONT parameter:@{@"userid":[userid stringValue],@"trackid":trackid,@"mac":mac,@"gps":gps} progresHudText:nil completionBlock:^(id rep) {
         if ([rep[@"code"] intValue]==-2) {//表示trackId 过期
             [self getTrackId];
         }

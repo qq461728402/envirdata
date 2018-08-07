@@ -132,6 +132,9 @@
 -(void)getTrackById:(NSString*)trackid{
     [self networkPost:API_GETTRACKBYID parameter:@{@"trackid":trackid} progresHudText:@"获取中..." completionBlock:^(id rep) {
         NSArray * railPointAry =[RailLinePointModel mj_objectArrayWithKeyValuesArray:rep];
+        if (railPointAry.count==0) {
+            return ;
+        }
         if (_isFrist==NO&&railPointAry.count>0) {
             RailLinePointModel *centerModel=railPointAry[0];
             CLLocationCoordinate2D centerCoor;

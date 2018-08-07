@@ -15,4 +15,5 @@
 @property (nonatomic,strong)NSString *trackid;//保存轨迹ID
 @property (nonatomic,strong)UINavigationController *rootNav;
 @property (nonatomic,strong)CLLocation *userLocation;
+@property (nonatomic,assign)BOOL isFrist;
 @end

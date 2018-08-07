@@ -361,6 +361,7 @@
         NSString *uid = [pstr substringFromIndex:1];
         GegionVC *gegionvc=[[GegionVC alloc]init];
         gegionvc.regionid=uid;
+        gegionvc.isonlylook=YES;
         gegionvc.title=@"任务列表";
         UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
         [nav pushViewController:gegionvc animated:YES];

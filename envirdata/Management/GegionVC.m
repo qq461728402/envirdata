@@ -88,10 +88,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GegionDetialVC *gegionDetail=[[GegionDetialVC alloc]init];
-    gegionDetail.title=@"任务详情";
-    gegionDetail.gegionModel=gegionAry[indexPath.row];
-    [self.navigationController pushViewController:gegionDetail animated:YES];
+    if (self.isonlylook==NO) {
+        GegionDetialVC *gegionDetail=[[GegionDetialVC alloc]init];
+        gegionDetail.title=@"任务详情";
+        gegionDetail.gegionModel=gegionAry[indexPath.row];
+        [self.navigationController pushViewController:gegionDetail animated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -18,16 +18,18 @@
 @property (nonatomic,strong)NSMutableArray *reportAry;
 @property (nonatomic,strong)QLPreviewController  *documentController;
 @property (nonatomic,strong)NSString *openURL;
+@property (nonatomic,strong)NSArray *typeAry;
 @end
 
 @implementation ReportVC
-@synthesize roleid,page,typeId,timeType,sonTypeId,reportTb,reportAry;
+@synthesize roleid,page,typeId,timeType,sonTypeId,reportTb,reportAry,typeAry;
 - (void)viewDidLoad {
     [super viewDidLoad];
     roleid =[[SingalObj defaultManager].userInfoModel.roleid stringValue];
     page=1;
     timeType =@"2";//默认
     sonTypeId =@"0";
+    typeAry=@[@"全部分类",@"扬尘污染",@"生物质燃烧",@"工业VOCS",@"生活污染"];
     UIView *headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE(40))];
     [headerView setBackgroundColor:[UIColor colorWithRGB:0xebeced]];
     [self.view addSubview:headerView];
@@ -36,7 +38,7 @@
     if ([typeId intValue]==12) {
         LMJDropdownMenu * dropdownMenu = [[LMJDropdownMenu alloc] init];
         [dropdownMenu setFrame:CGRectMake(SCALE(8), SCALE(5), 130, SCALE(30))];
-        [dropdownMenu setMenuTitles:@[@"全部分类",@"废弃物燃烧",@"扬尘污染",@"工业VOCS",@"生活污染"] rowHeight:35];
+        [dropdownMenu setMenuTitles:typeAry rowHeight:35];
         dropdownMenu.delegate = self;
         [self.view addSubview:dropdownMenu];
         left=dropdownMenu.right+SCALE(8);

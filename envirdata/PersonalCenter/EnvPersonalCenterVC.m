@@ -140,7 +140,7 @@
             if (buttonIndex==0) {
                 [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userInfo"];//删除用户信息
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"menuInfo"];//删除菜单信息
-                
+                [SingalObj defaultManager].userInfoModel=nil;
                // [GeTuiSdk unbindAlias:<#(NSString *)#> andSequenceNum:[NSString stringWithUUID] andIsSelf:YES] 解除绑定
                 [[AppDelegate Share] gotologin];
                 //退出海康威视

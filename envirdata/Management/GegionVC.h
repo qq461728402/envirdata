@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GegionVC : UIViewController
+@property (nonatomic,assign)BOOL isonlylook;//是否只能查看任务列表
 @property (nonatomic,strong)NSString *regionid;
 @end
