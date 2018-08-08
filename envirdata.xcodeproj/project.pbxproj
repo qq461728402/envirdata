@@ -1328,7 +1328,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grand.ios.gs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1355,7 +1355,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/files/PrefixHeader.pch";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = envirdata/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grand.ios.gs;
 				PRODUCT_NAME = "$(TARGET_NAME)";

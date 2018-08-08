@@ -12,6 +12,7 @@
 #import "TaskCell.h"
 #import "TaskModel.h"
 #import "TaskDetailVC.h"
+#import "RailLineMapVC.h"
 @interface EnvPersonInfoVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)MonitorUserModel *monitorUser;
 @property (nonatomic,strong)ListView *nameView;
@@ -32,6 +33,18 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+    but.frame =CGRectMake(0,0, 80, 44);
+    [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    but.titleLabel.font=Font(16);
+    [but addTarget:self action:@selector(turnToLineMap:) forControlEvents:UIControlEventTouchUpInside];
+    [but setTitle:@"巡查轨迹"forState:UIControlStateNormal];
+    UIBarButtonItem  *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
+    self.navigationItem.rightBarButtonItem = barBut;
+    
+    
+    
     nameView=[[ListView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCALE(40)) name:@"姓名：" value:@""];
     [self.view addSubview:nameView];
     xzqView=[[ListView alloc]initWithFrame:CGRectMake(0, nameView.bottom, SCREEN_WIDTH, SCALE(40)) name:@"行政区域：" value:@""];
@@ -126,6 +139,13 @@
         taskDetail.taskModel=taskAry[indexPath.row];
         [self.navigationController pushViewController:taskDetail animated:YES];
     }
+}
+-(void)turnToLineMap:(UIButton*)sender{
+    
+    RailLineMapVC *railLineMap =[[RailLineMapVC alloc]init];
+    railLineMap.title=@"巡查轨迹";
+    railLineMap.userId=userid;
+   [self.navigationController pushViewController:railLineMap animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

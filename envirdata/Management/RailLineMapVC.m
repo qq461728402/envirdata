@@ -126,6 +126,8 @@
             [taskIdAry bk_each:^(RailLineModel *obj) {
                 [self getTrackById:obj.trackid];
             }];
+        }else{
+            [self showMsgInfo:@"今日暂无巡查轨迹"];
         }
     }];
 }

@@ -9,8 +9,11 @@
 #ifndef ApiConfig_h
 #define ApiConfig_h
 
-#define HOST_API @"http://139.159.243.179:22816/"
-#define BASE_API  @"http://139.159.243.179:22816/app/"
+//#define HOST_API @"http://139.159.243.179:22816/"
+//#define BASE_API  @"http://139.159.243.179:22816/app/"
+
+#define HOST_API @"http://192.168.0.226:8080/"
+#define BASE_API  @"http://192.168.0.226:8080/app/"
 
 #define API_CHECKUSER @"api/checkUser"  //登录接口
 #define API_BINDDEVICE @"api/bindDevice" //绑定设备号
