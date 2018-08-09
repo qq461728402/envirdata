@@ -23,18 +23,18 @@
     UIView *headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE(40))];
     [headerView setBackgroundColor:[UIColor whiteColor]];
     
-    UILabel *stateslb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15 strLong:5], headerView.height)];
+    UILabel *stateslb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15*SCREEN_WIDTH/375.0 strLong:4], headerView.height)];
     stateslb.right=headerView.width-SCALE(8);
-    stateslb.font=Font(15);
+    stateslb.font=Font(15*SCREEN_WIDTH/375.0);
     stateslb.text=@"状态";
     stateslb.textColor=[UIColor colorWithRGB:0x2e4057];
     stateslb.adjustsFontSizeToFitWidth=YES;
     stateslb.textAlignment=NSTextAlignmentCenter;
     [headerView addSubview:stateslb];
     
-    UILabel *typelb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15 strLong:7], stateslb.height)];
+    UILabel *typelb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15*SCREEN_WIDTH/375.0 strLong:6], stateslb.height)];
     typelb.right=stateslb.left;
-    typelb.font=Font(15);
+    typelb.font=Font(15*SCREEN_WIDTH/375.0);
     typelb.text=@"类型";
     typelb.textColor=[UIColor colorWithRGB:0x2e4057];
     typelb.adjustsFontSizeToFitWidth=YES;
@@ -43,7 +43,7 @@
     
     UILabel *namelb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, headerView.width-typelb.width-stateslb.width-SCALE(8), headerView.height)];
     namelb.right=typelb.left;
-    namelb.font=Font(15);
+    namelb.font=Font(15*SCREEN_WIDTH/375.0);
     namelb.text=@"站点";
     namelb.textColor=[UIColor colorWithRGB:0x2e4057];
     namelb.adjustsFontSizeToFitWidth=YES;

@@ -29,8 +29,9 @@
         [self.contentView addSubview:aname];
         
         folding =[UIButton buttonWithType:UIButtonTypeCustom];
-        folding.frame=CGRectMake(0, 0, SCALE(32), SCALE(40));
-        folding.right=SCREEN_WIDTH-SCALE(10);
+        folding.frame=CGRectMake(0, 0, 50, SCALE(40));
+        folding.imageEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+        folding.right=SCREEN_WIDTH;
         [folding addTarget:self action:@selector(touchUpOrDown:) forControlEvents:UIControlEventTouchUpInside];
     
         [self.contentView addSubview:folding];

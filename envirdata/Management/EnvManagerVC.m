@@ -191,7 +191,7 @@
     WEAKSELF
     //先确定view_1的约束
     [treeTb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.view.mas_top).with.offset(SCALE(104));
+        make.top.equalTo(weakSelf.view.mas_top).with.offset(104);
         make.bottom.equalTo(weakSelf.view.mas_bottom);
         make.right.equalTo(weakSelf.view.mas_right);
         make.left.equalTo(weakSelf.view.mas_left);

@@ -516,6 +516,9 @@
          nearestGkz = [NearestGkzRealModel mj_objectWithKeyValues:rep];
          primary_pollu.text=nearestGkz.primary_pollu;
          areaLb.text =[NSString stringWithFormat:@"%@ \U0000e611",nearestGkz.uname];
+        CGSize sizemark=[areaLb.text sizeWithAttributes:@{NSFontAttributeName:areaLb.font}];
+        areaLb.width=sizemark.width+30;
+        areaLb.centerX=SCREEN_WIDTH/2.0;
          time.text=[NSString stringWithFormat:@"%@ 时",nearestGkz.time];
          aqi.text=[NSString stringWithFormat:@"%@",nearestGkz.aqi];
     

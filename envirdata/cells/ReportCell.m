@@ -39,7 +39,7 @@
     _reportModel=reportModel;
     title_lb.text=reportModel.name;
     CGSize connentSize =[title_lb.text boundingRectWithSize:CGSizeMake(title_lb.width, 500) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName:title_lb.font} context:nil].size;
-    title_lb.height=title_lb.height>connentSize.height?title_lb.height:connentSize.height;
+    title_lb.height=21>connentSize.height?21:connentSize.height;
     subtitle_lb.top=title_lb.bottom;
     subtitle_lb.text=reportModel.time;
     self.contentView.height=subtitle_lb.bottom+SCALE(8);

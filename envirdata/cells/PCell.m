@@ -61,8 +61,9 @@
         [self.contentView addSubview:telbut];
     
         folding =[UIButton buttonWithType:UIButtonTypeCustom];
-        folding.frame=CGRectMake(0, 0, SCALE(32), SCALE(40));
-        folding.right=SCREEN_WIDTH-SCALE(10);
+        folding.frame=CGRectMake(0, 0, 50, SCALE(40));
+        folding.imageEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+        folding.right=SCREEN_WIDTH;
         [folding addTarget:self action:@selector(touchUpOrDown:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:folding];
         
@@ -78,7 +79,7 @@
     aicon.left=SCALE(15)+taskTreeModel.creatLevle*SCALE(20);
     aname.left=aicon.right+SCALE(5);
     aname.text=taskTreeModel.name;
-    aname.width=[aname.text sizeWithAttributes:@{NSFontAttributeName:aname.font}].width>200?200:[aname.text sizeWithAttributes:@{NSFontAttributeName:aname.font}].width;
+    aname.width=[aname.text sizeWithAttributes:@{NSFontAttributeName:aname.font}].width>SCALE(200)?SCALE(200):[aname.text sizeWithAttributes:@{NSFontAttributeName:aname.font}].width;
     dbrwnum.left=aname.right+SCALE(2);
     if ([taskTreeModel.todonum intValue]>0) {
         dbrwnum.hidden=NO;
@@ -107,8 +108,14 @@
         }else{
             [folding setImage:PNGIMAGE(@"up_down") forState:UIControlStateNormal];
         }
+        telbut.right=folding.left-SCALE(10);
+        addrwbut.right=telbut.left-SCALE(10);
+        rwbut.right=addrwbut.left-SCALE(10);
     }else{
         folding.hidden=YES;
+        telbut.right= SCREEN_WIDTH-SCALE(10);
+        addrwbut.right=telbut.left-SCALE(10);
+        rwbut.right=addrwbut.left-SCALE(10);
     }
 }
 -(void)setIsChoose:(BOOL)isChoose

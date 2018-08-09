@@ -38,46 +38,46 @@
         float itemW =(SCREEN_WIDTH-namelb.right)/7.0;
         aqilb =[[UILabel alloc]initWithFrame:CGRectMake(namelb.right, SCALE(5), itemW-SCALE(5), SCALE(25))];
         aqilb.centerX=itemW/2.0+namelb.right;
-        aqilb.font=Font(14);
+        aqilb.font=Font(14*SCREEN_WIDTH/375.0);
         ViewRadius(aqilb, 4);
         aqilb.textAlignment=NSTextAlignmentCenter;
         aqilb.adjustsFontSizeToFitWidth=YES;
         [self.contentView addSubview:aqilb];
         
         pm25lb =[[UILabel alloc]initWithFrame:CGRectMake(namelb.right+itemW, namelb.top, itemW, namelb.height)];
-        pm25lb.font=Font(14);
+        pm25lb.font=Font(14*SCREEN_WIDTH/375.0);
         pm25lb.textAlignment=NSTextAlignmentCenter;
         pm25lb.adjustsFontSizeToFitWidth=YES;
         [self.contentView addSubview:pm25lb];
         
         
         pm10lb =[[UILabel alloc]initWithFrame:CGRectMake(pm25lb.right, namelb.top, itemW, namelb.height)];
-        pm10lb.font=Font(14);
+        pm10lb.font=Font(14*SCREEN_WIDTH/375.0);
         pm10lb.textAlignment=NSTextAlignmentCenter;
         pm10lb.adjustsFontSizeToFitWidth=YES;
         [self.contentView addSubview:pm10lb];
         
         solb =[[UILabel alloc]initWithFrame:CGRectMake(pm10lb.right, namelb.top, itemW, namelb.height)];
-        solb.font=Font(14);
+        solb.font=Font(14*SCREEN_WIDTH/375.0);
         solb.textAlignment=NSTextAlignmentCenter;
         solb.adjustsFontSizeToFitWidth=YES;
         [self.contentView addSubview:solb];
         
         
         nolb =[[UILabel alloc]initWithFrame:CGRectMake(solb.right, namelb.top, itemW, namelb.height)];
-        nolb.font=Font(14);
+        nolb.font=Font(14*SCREEN_WIDTH/375.0);
         nolb.textAlignment=NSTextAlignmentCenter;
         nolb.adjustsFontSizeToFitWidth=YES;
         [self.contentView addSubview:nolb];
         
         colb =[[UILabel alloc]initWithFrame:CGRectMake(nolb.right, namelb.top, itemW, namelb.height)];
-        colb.font=Font(14);
+        colb.font=Font(14*SCREEN_WIDTH/375.0);
         colb.textAlignment=NSTextAlignmentCenter;
         colb.adjustsFontSizeToFitWidth=YES;
         [self.contentView addSubview:colb];
         
         o3lb =[[UILabel alloc]initWithFrame:CGRectMake(colb.right, namelb.top, itemW, namelb.height)];
-        o3lb.font=Font(14);
+        o3lb.font=Font(14*SCREEN_WIDTH/375.0);
         o3lb.textAlignment=NSTextAlignmentCenter;
         o3lb.adjustsFontSizeToFitWidth=YES;
         [self.contentView addSubview:o3lb];

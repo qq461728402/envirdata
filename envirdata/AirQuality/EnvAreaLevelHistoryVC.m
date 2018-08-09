@@ -119,7 +119,7 @@
     UIView *headerView3=[[UIView alloc]initWithFrame:CGRectMake(0, pyEchartsView.bottom, SCREEN_WIDTH, SCALE(30))];
     [headerView3 setBackgroundColor:[UIColor colorWithRGB:0xebeced]];
     UILabel *namelb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, headerView3.height)];
-    namelb.font=Font(14);
+    namelb.font=Font(14*SCREEN_WIDTH/375.0);
     namelb.text=@"时间";
     namelb.textColor=[UIColor colorWithRGB:0x2e4057];
     namelb.textAlignment=NSTextAlignmentCenter;
@@ -130,7 +130,7 @@
     for (int i=0; i<itemAry.count; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(offiesW+i*itemW, namelb.top, itemW, namelb.height)];
         label.text=itemAry[i];
-        label.font=Font(14);
+        label.font=Font(14*SCREEN_WIDTH/375.0);
         label.textColor=[UIColor colorWithRGB:0x2e4057];
         label.textAlignment=NSTextAlignmentCenter;
         [headerView3 addSubview:label];
@@ -276,11 +276,10 @@
         .calculableEqual(YES)
         .gridEqual([PYGrid initPYGridWithBlock:^(PYGrid *grid) {
             grid.y=@(25);
-            grid.x=@(30);
-            grid.y2=@(50);
-            grid.x2=@(30);
+            grid.x=@(35);
+            grid.y2=@(70);
+            grid.x2=@(20);
         }])
-        
         .addXAxis([PYAxis initPYAxisWithBlock:^(PYAxis *axis) {
             axis.typeEqual(PYAxisTypeCategory)
             .boundaryGapEqual(@NO).addDataArr(time1);
@@ -301,7 +300,6 @@
 //        .endEqual(@20)
 //        .yEqual(@0);
 //    }])
-    
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {

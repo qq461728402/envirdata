@@ -35,7 +35,7 @@
     UIView *headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, SCALE(30))];
     [headerView setBackgroundColor:[UIColor colorWithRGB:0xebeced]];
     UILabel *namelb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, headerView.height)];
-    namelb.font=Font(14);
+    namelb.font=Font(14*SCREEN_WIDTH/375.0);
     namelb.text=@"名称";
     namelb.textColor=[UIColor colorWithRGB:0x2e4057];
     namelb.textAlignment=NSTextAlignmentCenter;
@@ -46,7 +46,7 @@
     for (int i=0; i<itemAry.count; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(offiesW+i*itemW, namelb.top, itemW, namelb.height)];
         label.text=itemAry[i];
-        label.font=Font(14);
+        label.font=Font(14*SCREEN_WIDTH/375.0);
         label.textColor=[UIColor colorWithRGB:0x2e4057];
         label.textAlignment=NSTextAlignmentCenter;
         [headerView addSubview:label];

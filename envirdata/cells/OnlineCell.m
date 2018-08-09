@@ -29,17 +29,17 @@
         [iconImg setImage:PNGIMAGE(@"gk")];
         [self.contentView addSubview:iconImg];
         
-        statusLb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15 strLong:5], SCALE(40))];
+        statusLb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15*SCREEN_WIDTH/375.0 strLong:4], SCALE(40))];
         statusLb.right=SCREEN_WIDTH-SCALE(8);
-        statusLb.font=Font(14);
+        statusLb.font=Font(14*SCREEN_WIDTH/375.0);
         statusLb.textColor=[UIColor colorWithRGB:0x404040];
-        statusLb.adjustsFontSizeToFitWidth=YES;
+//        statusLb.adjustsFontSizeToFitWidth=YES;
         statusLb.textAlignment=NSTextAlignmentCenter;
         [self.contentView  addSubview:statusLb];
         
-        utype_dvalLb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15 strLong:7], statusLb.height)];
+        utype_dvalLb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15*SCREEN_WIDTH/375.0 strLong:6], statusLb.height)];
         utype_dvalLb.right=statusLb.left;
-        utype_dvalLb.font=Font(14);
+        utype_dvalLb.font=Font(14*SCREEN_WIDTH/375.0);
         utype_dvalLb.textColor=[UIColor colorWithRGB:0x404040];
         utype_dvalLb.adjustsFontSizeToFitWidth=YES;
         utype_dvalLb.textAlignment=NSTextAlignmentCenter;
@@ -64,12 +64,14 @@
     _onlineMonModel=onlineMonModel;
     unameLb.text=onlineMonModel.uname;
     if ([onlineMonModel.utype intValue]==1) {//表示国控点
-         unameLb.font=Font(15);
+         unameLb.font=Font(15*SCREEN_WIDTH/375.0);
         iconImg.hidden=NO;
+        utype_dvalLb.text=@"";
+        statusLb.text=@"";
         unameLb.left=iconImg.right+SCALE(5);
     }else{
         utype_dvalLb.text=onlineMonModel.utype_dval;
-        unameLb.font=Font(14);
+        unameLb.font=Font(14*SCREEN_WIDTH/375.0);
         unameLb.left=iconImg.right+SCALE(10);
         iconImg.hidden=YES;
     }
