@@ -168,7 +168,7 @@
         UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;
         [nav pushViewController:helpBook animated:YES];
     }else if ([@"当前版本" isEqualToString:itemStr]){
-        [self networkPost:API_GETVERSION parameter:@{@"apptype":@(999)} progresHudText:@"加载中..." completionBlock:^(id rep) {
+        [self networkPost:API_GETVERSION parameter:@{@"apptype":@(999)} progresHudText:@"检测版本中..." completionBlock:^(id rep) {
             
             VersionModel *versionModel;
             if ([rep isKindOfClass:[NSArray class]]) {
@@ -180,6 +180,7 @@
                 versionModel = [VersionModel mj_objectWithKeyValues:rep];
             }
             if (!versionModel) {
+                [self showMsgInfo:@"暂无版本更新"];
                 return ;
             }
             NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
@@ -191,6 +192,8 @@
                     }
                 }];
                 [alert show];
+            }else{
+                [self showMsgInfo:@"已是最新版本"];
             }
         }];
     }

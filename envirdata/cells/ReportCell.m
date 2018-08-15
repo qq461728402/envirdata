@@ -23,7 +23,7 @@
     if (self) {
         title_lb =[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), SCALE(8), SCREEN_WIDTH-SCALE(16), 21)];
         title_lb.font=Font(15);
-        title_lb.numberOfLines=0;
+//        title_lb.numberOfLines=0;
         title_lb.textColor=[UIColor colorWithRGB:0x404040];
         [self.contentView addSubview:title_lb];
         
@@ -38,8 +38,8 @@
 {
     _reportModel=reportModel;
     title_lb.text=reportModel.name;
-    CGSize connentSize =[title_lb.text boundingRectWithSize:CGSizeMake(title_lb.width, 500) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName:title_lb.font} context:nil].size;
-    title_lb.height=21>connentSize.height?21:connentSize.height;
+//    CGSize connentSize =[title_lb.text boundingRectWithSize:CGSizeMake(title_lb.width, 500) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName:title_lb.font} context:nil].size;
+//    title_lb.height=21>connentSize.height?21:connentSize.height;
     subtitle_lb.top=title_lb.bottom;
     subtitle_lb.text=reportModel.time;
     self.contentView.height=subtitle_lb.bottom+SCALE(8);

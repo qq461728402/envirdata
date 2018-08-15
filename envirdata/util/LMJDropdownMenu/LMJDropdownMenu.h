@@ -34,7 +34,7 @@
 
 
 
-@interface LMJDropdownMenu : UIView <UITableViewDataSource,UITableViewDelegate>
+@interface LMJDropdownMenu : UIView <UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) UIButton * mainBtn;  // 主按钮 可以自定义样式 可在.m文件中修改默认的一些属性
 

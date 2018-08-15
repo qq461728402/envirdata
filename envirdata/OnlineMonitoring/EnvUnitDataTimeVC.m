@@ -51,9 +51,10 @@
     levelLb.textAlignment=NSTextAlignmentCenter;
     levelLb.centerX=bgView.width/2.0;
     [bgView addSubview:levelLb];
-    timelb =[[UILabel alloc]initWithFrame:CGRectMake(0, bgView.bottom-SCALE(90), SCALE(120), SCALE(30))];
+    timelb =[[UILabel alloc]initWithFrame:CGRectMake(0, bgView.bottom-SCALE(90), SCALE(160), SCALE(30))];
     timelb.font=Font(15);
     timelb.textColor=COLOR_TOP;
+    timelb.textAlignment=NSTextAlignmentCenter;
     timelb.centerX=SCREEN_WIDTH/2.0;
     [self.view addSubview:timelb];
     UILabel *oneline=[[UILabel alloc]initWithFrame:CGRectMake(0, timelb.bottom+10, SCREEN_WIDTH, 2)];
@@ -235,6 +236,7 @@
         levelLb.text = [ConfigObj getLevelName:level];
         [bgView setBackgroundColor:[ConfigObj getColorByLevel:level]];
         timelb.text=unitDataTimeModel.time;
+        
         pm25_lb.text=[NSString stringWithFormat:@"%@",unitDataTimeModel.pm25];
         pm10_lb.text=[NSString stringWithFormat:@"%@",unitDataTimeModel.pm10];
         so2_lb.text=[NSString stringWithFormat:@"%@",unitDataTimeModel.so2];

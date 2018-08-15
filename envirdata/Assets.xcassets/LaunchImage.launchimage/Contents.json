@@ -1,88 +1,61 @@
 {
   "images" : [
     {
-      "minimum-system-version" : "7.0",
+      "extent" : "full-screen",
       "idiom" : "ipad",
-      "extent" : "full-screen",
-      "scale" : "2x",
-      "orientation" : "portrait"
+      "minimum-system-version" : "7.0",
+      "orientation" : "landscape",
+      "scale" : "1x"
     },
     {
-      "minimum-system-version" : "7.0",
+      "extent" : "full-screen",
       "idiom" : "ipad",
-      "extent" : "full-screen",
-      "scale" : "1x",
-      "orientation" : "landscape"
-    },
-    {
       "minimum-system-version" : "7.0",
-      "idiom" : "ipad",
-      "extent" : "full-screen",
-      "scale" : "2x",
-      "orientation" : "landscape"
-    },
-    {
-      "minimum-system-version" : "7.0",
-      "idiom" : "iphone",
-      "scale" : "2x",
-      "orientation" : "portrait"
-    },
-    {
-      "minimum-system-version" : "7.0",
-      "idiom" : "iphone",
-      "scale" : "2x",
-      "subtype" : "retina4",
-      "orientation" : "portrait"
-    },
-    {
-      "minimum-system-version" : "7.0",
-      "idiom" : "ipad",
-      "extent" : "full-screen",
-      "scale" : "1x",
-      "orientation" : "portrait"
-    },
-    {
-      "extent" : "full-screen",
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "filename" : "启动页1iPhoneXPortraitiOS11_375x812pt@3x.png",
-      "minimum-system-version" : "11.0",
-      "subtype" : "2436h",
-      "scale" : "3x"
-    },
-    {
-      "extent" : "full-screen",
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "filename" : "启动页1iPhonePortraitiOS89_414x736pt@3x.png",
-      "minimum-system-version" : "8.0",
-      "subtype" : "736h",
-      "scale" : "3x"
-    },
-    {
-      "extent" : "full-screen",
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "filename" : "启动页1iPhonePortraitiOS89_375x667pt@2x.png",
-      "minimum-system-version" : "8.0",
-      "subtype" : "667h",
+      "orientation" : "landscape",
       "scale" : "2x"
     },
     {
       "extent" : "full-screen",
+      "idiom" : "iphone",
+      "subtype" : "2436h",
+      "filename" : "启动页1iPhoneXPortraitiOS11_375x812pt@3x.png",
+      "minimum-system-version" : "11.0",
       "orientation" : "portrait",
+      "scale" : "3x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "subtype" : "736h",
+      "filename" : "启动页1iPhonePortraitiOS89_414x736pt@3x.png",
+      "minimum-system-version" : "8.0",
+      "orientation" : "portrait",
+      "scale" : "3x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "subtype" : "667h",
+      "filename" : "启动页1iPhonePortraitiOS89_375x667pt@2x.png",
+      "minimum-system-version" : "8.0",
+      "orientation" : "portrait",
+      "scale" : "2x"
+    },
+    {
+      "extent" : "full-screen",
       "idiom" : "iphone",
       "filename" : "启动页1iPhonePortraitiOS789_320x480pt@2x.png",
       "minimum-system-version" : "7.0",
+      "orientation" : "portrait",
       "scale" : "2x"
     },
     {
       "extent" : "full-screen",
-      "orientation" : "portrait",
       "idiom" : "iphone",
+      "subtype" : "retina4",
       "filename" : "启动页1iPhonePortraitiOS789_320x568pt@2x.png",
       "minimum-system-version" : "7.0",
-      "subtype" : "retina4",
+      "orientation" : "portrait",
       "scale" : "2x"
     },
     {
@@ -103,9 +76,53 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "filename" : "启动页1iPhonePortraitiOS56_320x568pt@2x.png",
+      "orientation" : "portrait",
       "subtype" : "retina4",
+      "scale" : "2x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "ipad",
+      "minimum-system-version" : "7.0",
+      "filename" : "启动页1iPadPortraitiOS789_768x1024pt.png",
+      "orientation" : "portrait",
+      "scale" : "1x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "ipad",
+      "minimum-system-version" : "7.0",
+      "filename" : "启动页1iPadPortraitiOS789_768x1024pt@2x.png",
       "orientation" : "portrait",
       "scale" : "2x"
+    },
+    {
+      "extent" : "to-status-bar",
+      "idiom" : "ipad",
+      "filename" : "启动页1iPadPortraitWOSBiOS56_768x1004pt.png",
+      "scale" : "1x",
+      "orientation" : "portrait"
+    },
+    {
+      "extent" : "to-status-bar",
+      "idiom" : "ipad",
+      "filename" : "启动页1iPadPortraitWOSBiOS56_768x1004pt@2x.png",
+      "scale" : "2x",
+      "orientation" : "portrait"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "ipad",
+      "filename" : "启动页1iPadPortraitiOS56_768x1024pt.png",
+      "scale" : "1x",
+      "orientation" : "portrait"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "ipad",
+      "filename" : "启动页1iPadPortraitiOS56_768x1024pt@2x.png",
+      "scale" : "2x",
+      "orientation" : "portrait"
     }
   ],
   "info" : {

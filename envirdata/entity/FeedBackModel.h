@@ -11,4 +11,5 @@
 @interface FeedBackModel : NSObject
 @property (nonatomic,strong)NSNumber *dkid;
 @property (nonatomic,strong)NSString *dval;
+@property (nonatomic,assign)BOOL isselect;
 @end

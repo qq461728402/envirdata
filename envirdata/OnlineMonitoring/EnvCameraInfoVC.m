@@ -136,6 +136,7 @@ static dispatch_queue_t video_intercom_queue() {
     [self networkPost:API_GETCAMERAINFO parameter:@{@"uid":uid} progresHudText:@"加载中..." completionBlock:^(id rep) {
         carmeraInfo =[CameraInfoModel mj_objectWithKeyValues:rep];
         unameview.valuelb.text=carmeraInfo.address;
+        unameview.valuelb.numberOfLines=2;
         manageview.valuelb.text=carmeraInfo.manager;
         linkPhoneview.valuelb.text=carmeraInfo.phone;
         linkPhoneview.islink=YES;

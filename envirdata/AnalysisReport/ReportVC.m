@@ -7,8 +7,6 @@
 //
 
 #import "ReportVC.h"
-#import "LMJDropdownMenu.h"
-#import "QRadioButton.h"
 #import "ReportModel.h"
 #import "ReportCell.h"
 #import <QuickLook/QuickLook.h>
@@ -19,10 +17,12 @@
 @property (nonatomic,strong)QLPreviewController  *documentController;
 @property (nonatomic,strong)NSString *openURL;
 @property (nonatomic,strong)NSArray *typeAry;
+
+@property (nonatomic,strong)UIView *bgView;
 @end
 
 @implementation ReportVC
-@synthesize roleid,page,typeId,timeType,sonTypeId,reportTb,reportAry,typeAry;
+@synthesize roleid,page,typeId,timeType,sonTypeId,reportTb,reportAry,typeAry,dropdownMenu,bgView,weekQ;
 - (void)viewDidLoad {
     [super viewDidLoad];
     roleid =[[SingalObj defaultManager].userInfoModel.roleid stringValue];
@@ -36,14 +36,14 @@
     //距离left
     float left=SCALE(8);
     if ([typeId intValue]==12) {
-        LMJDropdownMenu * dropdownMenu = [[LMJDropdownMenu alloc] init];
+        dropdownMenu = [[LMJDropdownMenu alloc] init];
         [dropdownMenu setFrame:CGRectMake(SCALE(8), SCALE(5), 130, SCALE(30))];
         [dropdownMenu setMenuTitles:typeAry rowHeight:35];
         dropdownMenu.delegate = self;
         [self.view addSubview:dropdownMenu];
         left=dropdownMenu.right+SCALE(8);
     }
-    QRadioButton *weekQ=[[QRadioButton alloc]initWithDelegate:nil groupId:[NSString stringWithFormat:@"js%@",typeId]];
+    weekQ=[[QRadioButton alloc]initWithDelegate:nil groupId:[NSString stringWithFormat:@"js%@",typeId]];
     weekQ.tag=1000;
     [weekQ setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     weekQ.frame=CGRectMake(left, SCALE(5), 60, SCALE(30));
@@ -84,6 +84,7 @@
     }];
     reportTb.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         page=1;
+        [dropdownMenu hideDropDown];
         [weakSelf getReportList:YES];
     }];
     reportTb.mj_footer=[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{

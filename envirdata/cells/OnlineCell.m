@@ -63,6 +63,14 @@
 {
     _onlineMonModel=onlineMonModel;
     unameLb.text=onlineMonModel.uname;
+    
+    if ([onlineMonModel.status intValue]==0) {
+        statusLb.textColor=COLOR_TOP;
+        statusLb.text=@"正常 >";
+    }else{
+        statusLb.textColor=[UIColor redColor];
+        statusLb.text=@"异常 >";
+    }
     if ([onlineMonModel.utype intValue]==1) {//表示国控点
          unameLb.font=Font(15*SCREEN_WIDTH/375.0);
         iconImg.hidden=NO;
@@ -75,12 +83,6 @@
         unameLb.left=iconImg.right+SCALE(10);
         iconImg.hidden=YES;
     }
-    if ([onlineMonModel.status intValue]==0) {
-        statusLb.textColor=COLOR_TOP;
-        statusLb.text=@"正常 >";
-    }else{
-        statusLb.textColor=[UIColor redColor];
-        statusLb.text=@"异常 >";
-    }
+   
 }
 @end

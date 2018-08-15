@@ -278,7 +278,7 @@
             grid.y=@(25);
             grid.x=@(35);
             grid.y2=@(70);
-            grid.x2=@(20);
+            grid.x2=@(35);
         }])
         .addXAxis([PYAxis initPYAxisWithBlock:^(PYAxis *axis) {
             axis.typeEqual(PYAxisTypeCategory)

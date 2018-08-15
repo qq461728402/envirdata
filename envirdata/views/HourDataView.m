@@ -22,7 +22,7 @@
         self.valuelb.font=Font(14);
         self.valuelb.right=self.width-SCALE(10);
         self.valuelb.text=value;
-        if ([name isEqualToString:@"异常"]) {
+        if ([value isEqualToString:@"异常"]) {
             self.valuelb.textColor=[UIColor redColor];
         }else{
             self.valuelb.textColor=COLOR_TOP;

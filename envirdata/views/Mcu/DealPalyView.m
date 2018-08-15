@@ -32,7 +32,7 @@
         [self addSubview:g_nopalyImageView];
         
         g_leftBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-        g_leftBtn.frame=CGRectMake(0, 0, 20, 20);
+        g_leftBtn.frame=CGRectMake(0, 0, 25, 25);
         [g_leftBtn setImage:PNGIMAGE(@"g_left") forState:UIControlStateNormal];
         g_leftBtn.tag=1000;
         g_leftBtn.hidden=YES;
@@ -40,7 +40,7 @@
         [self addSubview:g_leftBtn];
         
         g_topBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-        g_topBtn.frame=CGRectMake(0, 0, 20, 20);
+        g_topBtn.frame=CGRectMake(0, 0, 25, 25);
         [g_topBtn setImage:PNGIMAGE(@"g_top") forState:UIControlStateNormal];
         g_topBtn.tag=1001;
         g_topBtn.hidden=YES;
@@ -48,7 +48,7 @@
         [self addSubview:g_topBtn];
         
         g_rightBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-        g_rightBtn.frame=CGRectMake(0, 0, 20, 20);
+        g_rightBtn.frame=CGRectMake(0, 0, 25, 25);
         [g_rightBtn setImage:PNGIMAGE(@"g_right") forState:UIControlStateNormal];
         g_rightBtn.tag=1002;
         g_rightBtn.hidden=YES;
@@ -56,7 +56,7 @@
         [self addSubview:g_rightBtn];
         
         g_bottomBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-        g_bottomBtn.frame=CGRectMake(0, 0, 20, 20);
+        g_bottomBtn.frame=CGRectMake(0, 0, 25, 25);
         [g_bottomBtn setImage:PNGIMAGE(@"g_bottom") forState:UIControlStateNormal];
         g_bottomBtn.tag=1003;
         g_bottomBtn.hidden=YES;
@@ -64,7 +64,7 @@
         [self addSubview:g_bottomBtn];
         
         g_shopBtn  =[UIButton buttonWithType:UIButtonTypeCustom];
-        g_shopBtn.frame=CGRectMake(SCALE(5), SCALE(5), 20, 20);
+        g_shopBtn.frame=CGRectMake(SCALE(5), SCALE(5), 25, 25);
         [g_shopBtn setImage:PNGIMAGE(@"暂停") forState:UIControlStateNormal];
         g_shopBtn.hidden=YES;
         isplay=YES;
@@ -73,7 +73,7 @@
         
         
         g_capture =[UIButton buttonWithType:UIButtonTypeCustom];
-        g_capture.frame=CGRectMake(self.width-SCALE(5), SCALE(10), 20, 20);
+        g_capture.frame=CGRectMake(self.width-SCALE(5), SCALE(10), 25, 25);
         g_capture.right=self.width-SCALE(5);
         [g_capture setImage:PNGIMAGE(@"照相") forState:UIControlStateNormal];
         g_capture.hidden=YES;

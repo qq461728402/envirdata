@@ -111,28 +111,43 @@
     if (self == nil) {
         return;
     }
-    
     _titleArr  = [NSArray arrayWithArray:titlesArr];
     _rowHeight = rowHeight;
-
-    
     // 下拉列表背景View
     _listView = [[UIView alloc] init];
-    _listView.frame = CGRectMake(VIEW_X(self) , VIEW_Y_Bottom(self), VIEW_WIDTH(self),  0);
+    _listView.frame = CGRectMake(VIEW_X(self) , VIEW_Y_Bottom(self), SCREEN_WIDTH,  SCREEN_HEIGHT);
+    
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDropDown)];
+    tap.delegate=self;//这句不要漏掉
+    [_listView addGestureRecognizer:tap];
     _listView.clipsToBounds       = YES;
     _listView.layer.masksToBounds = NO;
     _listView.layer.borderColor   = [UIColor lightTextColor].CGColor;
     _listView.layer.borderWidth   = 0.5f;
-
+    
     
     // 下拉列表TableView
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,VIEW_WIDTH(_listView), VIEW_HEIGHT(_listView))];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,VIEW_WIDTH(self), 0)];
     _tableView.delegate        = self;
     _tableView.dataSource      = self;
     _tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
     _tableView.bounces         = NO;
     [_listView addSubview:_tableView];
 }
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    // 若为UITableViewCellContentView（即点击了tableViewCell），则不截获Touch事件(只解除的是cell与手势间的冲突，cell以外仍然响应手势)
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"])
+    {
+        return NO;
+    }
+    // 若为UITableView（即点击了tableView任意区域），则不截获Touch事件(完全解除tableView与手势间的冲突，cell以外也不会再响应手势)
+    if ([touch.view isKindOfClass:[UITableView class]]){
+            return NO;
+    }
+        return YES;
+    }
 
 - (void)clickMainBtn:(UIButton *)button{
     
@@ -154,9 +169,8 @@
     }
     [UIView animateWithDuration:AnimateTime animations:^{
         _arrowMark.transform = CGAffineTransformMakeRotation(M_PI);
-        _listView.frame  = CGRectMake(VIEW_X(_listView), VIEW_Y(_listView), VIEW_WIDTH(_listView), _rowHeight *_titleArr.count);
-        _tableView.frame = CGRectMake(0, 0, VIEW_WIDTH(_listView), VIEW_HEIGHT(_listView));
-        
+        _listView.height=SCREEN_HEIGHT;
+        _tableView.height=_rowHeight *_titleArr.count;
     }completion:^(BOOL finished) {
         
         if ([self.delegate respondsToSelector:@selector(dropdownMenuDidShow:)]) {
@@ -164,33 +178,22 @@
         }
     }];
     
-    
-    
     _mainBtn.selected = YES;
 }
 - (void)hideDropDown{  // 隐藏下拉列表
     
-    
     if ([self.delegate respondsToSelector:@selector(dropdownMenuWillHidden:)]) {
         [self.delegate dropdownMenuWillHidden:self]; // 将要隐藏回调代理
     }
-    
-    
     [UIView animateWithDuration:AnimateTime animations:^{
-        
         _arrowMark.transform = CGAffineTransformIdentity;
-        _listView.frame  = CGRectMake(VIEW_X(_listView), VIEW_Y(_listView), VIEW_WIDTH(_listView), 0);
-        _tableView.frame = CGRectMake(0, 0, VIEW_WIDTH(_listView), VIEW_HEIGHT(_listView));
-        
+        _listView.height=0;
+        _tableView.height=0;
     }completion:^(BOOL finished) {
-        
         if ([self.delegate respondsToSelector:@selector(dropdownMenuDidHidden:)]) {
             [self.delegate dropdownMenuDidHidden:self]; // 已经隐藏回调代理
         }
     }];
-    
-    
-    
     _mainBtn.selected = NO;
 }
 

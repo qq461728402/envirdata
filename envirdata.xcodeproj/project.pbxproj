@@ -64,6 +64,7 @@
 		E152F2E12106235700F1DA8A /* ComplaintTasksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E152F2E02106235700F1DA8A /* ComplaintTasksModel.m */; };
 		E152F2E42106283500F1DA8A /* PatrolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E152F2E32106283500F1DA8A /* PatrolCell.m */; };
 		E152F2E721062A3D00F1DA8A /* ComplaintCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E152F2E621062A3D00F1DA8A /* ComplaintCell.m */; };
+		E155A5E6211D1CAA00D2270A /* FeedBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E155A5E5211D1CAA00D2270A /* FeedBookCell.m */; };
 		E1576D7B2100C6B800B3FFD8 /* RailLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D7A2100C6B800B3FFD8 /* RailLineModel.m */; };
 		E1576D7E2100C8F000B3FFD8 /* RailLinePointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D7D2100C8F000B3FFD8 /* RailLinePointModel.m */; };
 		E1576D812100D62B00B3FFD8 /* StatisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1576D802100D62B00B3FFD8 /* StatisticsVC.m */; };
@@ -249,6 +250,8 @@
 		E152F2E32106283500F1DA8A /* PatrolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatrolCell.m; path = cells/PatrolCell.m; sourceTree = "<group>"; };
 		E152F2E521062A3D00F1DA8A /* ComplaintCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplaintCell.h; path = cells/ComplaintCell.h; sourceTree = "<group>"; };
 		E152F2E621062A3D00F1DA8A /* ComplaintCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComplaintCell.m; path = cells/ComplaintCell.m; sourceTree = "<group>"; };
+		E155A5E4211D1CAA00D2270A /* FeedBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedBookCell.h; path = cells/FeedBookCell.h; sourceTree = "<group>"; };
+		E155A5E5211D1CAA00D2270A /* FeedBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedBookCell.m; path = cells/FeedBookCell.m; sourceTree = "<group>"; };
 		E1576D792100C6B800B3FFD8 /* RailLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RailLineModel.h; sourceTree = "<group>"; };
 		E1576D7A2100C6B800B3FFD8 /* RailLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RailLineModel.m; sourceTree = "<group>"; };
 		E1576D7C2100C8F000B3FFD8 /* RailLinePointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RailLinePointModel.h; sourceTree = "<group>"; };
@@ -665,6 +668,8 @@
 				E152F2E32106283500F1DA8A /* PatrolCell.m */,
 				E152F2E521062A3D00F1DA8A /* ComplaintCell.h */,
 				E152F2E621062A3D00F1DA8A /* ComplaintCell.m */,
+				E155A5E4211D1CAA00D2270A /* FeedBookCell.h */,
+				E155A5E5211D1CAA00D2270A /* FeedBookCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -956,7 +961,7 @@
 				E1BA899E20EB1CAE002CD41B /* Sources */,
 				E1BA899F20EB1CAE002CD41B /* Frameworks */,
 				E1BA89A020EB1CAE002CD41B /* Resources */,
-				BCC5470E1F4B394C91331657 /* [CP] Copy Pods Resources */,
+				333FCE59991778786597F0C8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1046,7 +1051,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BCC5470E1F4B394C91331657 /* [CP] Copy Pods Resources */ = {
+		333FCE59991778786597F0C8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1185,6 +1190,7 @@
 				E17DA5B520FDA0B800FA4222 /* ACell.m in Sources */,
 				E188A52820FAE7E600B68701 /* ListView.m in Sources */,
 				E148BD0820F77FAC00872ADD /* ForecastAreaModel.m in Sources */,
+				E155A5E6211D1CAA00D2270A /* FeedBookCell.m in Sources */,
 				E152F2E42106283500F1DA8A /* PatrolCell.m in Sources */,
 				E100803A20F636DB00B75514 /* UIButton+Bootstrap.m in Sources */,
 				E1602D71210228F7007EAFBA /* HelpBookVC.m in Sources */,
@@ -1333,6 +1339,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grand.ios.gs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -1361,6 +1368,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grand.ios.gs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;

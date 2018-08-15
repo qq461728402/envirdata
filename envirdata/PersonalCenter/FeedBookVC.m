@@ -9,6 +9,7 @@
 #import "FeedBookVC.h"
 #import "FeedBackModel.h"
 #import "UITextViewPlaceHolder.h"
+#import "FeedBookCell.h"
 @interface FeedBookVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *feedbookTb;
 @property (nonatomic,strong)NSArray *feedBackAry;
@@ -133,32 +134,29 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellId =@"cellId";
-    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:cellId];
+    FeedBookCell *cell =(FeedBookCell*)[tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell =[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        cell =[[FeedBookCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
-    cell.accessoryType=UITableViewCellAccessoryNone;
-    [slelectAry bk_each:^(NSIndexPath *selectIndexPath) {
-        if (selectIndexPath ==indexPath) {
-            cell.accessoryType=UITableViewCellAccessoryCheckmark;
-        }
-    }];
     FeedBackModel *feenBackModel=feedBackAry[indexPath.row];
-    cell.textLabel.text=feenBackModel.dval;
-    cell.textLabel.font=Font(13);
+    cell.feedBackModel=feenBackModel;
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //获取到点击的cell
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell.accessoryType == UITableViewCellAccessoryCheckmark) { //如果为选中状态
-        cell.accessoryType = UITableViewCellAccessoryNone; //切换为未选中
+    FeedBookCell *cell = (FeedBookCell*)[tableView cellForRowAtIndexPath:indexPath];
+    FeedBackModel *feenBackModel=feedBackAry[indexPath.row];
+    
+    if (feenBackModel.isselect==YES) { //如果为选中状态
+        feenBackModel.isselect=NO; //切换为未选中
         [slelectAry removeObject:indexPath]; //数据移除
     }else { //未选中
-        cell.accessoryType = UITableViewCellAccessoryCheckmark; //切换为选中
+        feenBackModel.isselect=YES; //切换为选中
         [slelectAry addObject:indexPath]; //添加索引数据到数组
     }
+    cell.feedBackModel=feenBackModel;
+//    [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
