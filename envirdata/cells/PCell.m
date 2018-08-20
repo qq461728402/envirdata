@@ -70,6 +70,7 @@
         telbut.right=folding.left-SCALE(10);
         addrwbut.right=telbut.left-SCALE(10);
         rwbut.right=addrwbut.left-SCALE(10);
+        self.contentView.height=aname.bottom;
     }
     return  self;
 }

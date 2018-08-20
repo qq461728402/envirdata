@@ -70,7 +70,7 @@ DEPENDENCIES:
   - Masonry (~> 1.1.0)
   - MBProgressHUD (~> 1.1.0)
   - MJExtension (~> 3.0.13)
-  - MJRefresh (~> 3.1.15.1)
+  - MJRefresh
   - PGDatePicker
   - SVProgressHUD (~> 2.1.1)
   - YYKit (~> 1.0.9)
@@ -118,6 +118,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 3124767e446ce14a3c733d46950769c7dfe4b6ba
+PODFILE CHECKSUM: 11091d1e12c1001cb8e78cfca5122a7dc7b4585b
 
 COCOAPODS: 1.5.3

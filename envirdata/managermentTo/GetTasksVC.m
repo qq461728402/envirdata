@@ -96,6 +96,13 @@
         make.right.equalTo(weakSelf.view.mas_right);
         make.left.equalTo(weakSelf.view.mas_left);
     }];
+    
+    if (@available(iOS 11.0, *)) {
+        getTaskTb.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
+    }else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    
     getTaskTb.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         page=1;
         [weakSelf gettasks:YES];
@@ -159,6 +166,15 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.01;
+}
+#pragma mark 此方法加上是为了适配iOS 11出现的问题
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return nil;
+}
+#pragma mark 此方法加上是为了适配iOS 11出现的问题
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return nil;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -33,7 +33,7 @@
         folding.imageEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
         folding.right=SCREEN_WIDTH;
         [folding addTarget:self action:@selector(touchUpOrDown:) forControlEvents:UIControlEventTouchUpInside];
-    
+        self.contentView.height=aname.bottom;
         [self.contentView addSubview:folding];
     }
     return  self;

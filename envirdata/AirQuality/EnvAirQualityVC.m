@@ -73,7 +73,20 @@
     [self.view addSubview:bgImage];
     
     WEAKSELF
-    mainScr =[[UIScrollView alloc]initWithFrame:self.view.bounds];
+    mainScr =[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    if (@available(iOS 11.0, *)) {
+        mainScr.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
+    }else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+//    mainScr.translatesAutoresizingMaskIntoConstraints=NO;
+//    [mainScr mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(weakSelf.view.mas_top);
+//        make.bottom.equalTo(weakSelf.view.mas_bottom);
+//        make.right.equalTo(weakSelf.view.mas_right);
+//        make.left.equalTo(weakSelf.view.mas_left);
+//    }];
+    
     mainScr.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [SingalObj defaultManager].isFrist=NO;
         [weakSelf baiduConfig];
@@ -136,7 +149,7 @@
     [primary_view addSubview:aqi];
     
     CGSize aqiw=[@"30" sizeWithAttributes:@{NSFontAttributeName:aqi.font}];
-    level =[[UILabel alloc]initWithFrame:CGRectMake(0, aqi.bottom+5, aqiw.width, SCALE(30))];
+    level =[[UILabel alloc]initWithFrame:CGRectMake(0, aqi.bottom+5, aqiw.width, 30)];
     level.right=aqi.right;
     level.font=Font(14);
     level.adjustsFontSizeToFitWidth=YES;
@@ -316,7 +329,7 @@
     [a_areview addSubview:a_aqi];
     
     
-    a_level =[[UILabel alloc]initWithFrame:CGRectMake(0, a_aqi.bottom+5, aqiw.width, SCALE(30))];
+    a_level =[[UILabel alloc]initWithFrame:CGRectMake(0, a_aqi.bottom+5, aqiw.width, 30)];
     a_level.right=a_aqi.right;
     ViewRadius(a_level, 4);
     a_level.font=Font(14);
@@ -543,6 +556,8 @@
         oneline6.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:CO_1AQI]];
         level.backgroundColor=[ConfigObj getColorByLevel:nearestGkz.level];
         level.text=[ConfigObj getLevelName:nearestGkz.level];
+        level.width=[level.text sizeWithAttributes:@{NSFontAttributeName:primary_pollu.font}].width+20;
+        level.right=aqi.right;
         pm25v.text=[NSString stringWithFormat:@"%@",nearestGkz.pm25];
         pm10v.text=[NSString stringWithFormat:@"%@",nearestGkz.pm10];
         SO2v.text=[NSString stringWithFormat:@"%@",nearestGkz.so2];
@@ -573,8 +588,6 @@
         a_primary_pollu.text=areaRealModel.primary_pollu;
         a_tiem.text=[NSString stringWithFormat:@"%@ 时",areaRealModel.time];
         a_aqi.text=[NSString stringWithFormat:@"%@",areaRealModel.aqi];
-        
-        
         int PM25AQI = [ConfigObj getIAQIbyFactor:@"pm25" val:[areaRealModel.pm25 doubleValue]];
         NSLog(@"%i",PM25AQI);
         
@@ -593,9 +606,10 @@
         a_oneline4.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:NO2_1AQI]];
         a_oneline5.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:O3_1AQI]];
         a_oneline6.backgroundColor=[ConfigObj getColorByLevel:[ConfigObj getLevelByAQI:CO_1AQI]];
-        
         a_level.backgroundColor=[ConfigObj getColorByLevel:areaRealModel.level];
         a_level.text=[ConfigObj getLevelName:areaRealModel.level];
+        a_level.width=[a_level.text sizeWithAttributes:@{NSFontAttributeName:primary_pollu.font}].width+20;
+        a_level.right=a_aqi.right;
         a_pm25v.text=[NSString stringWithFormat:@"%@",areaRealModel.pm25];
         a_pm10v.text=[NSString stringWithFormat:@"%@",areaRealModel.pm10];
         a_so2v.text=[NSString stringWithFormat:@"%@",areaRealModel.so2];
@@ -632,7 +646,7 @@
             wdlb.textAlignment=NSTextAlignmentCenter;
             wdlb.text=foreModel.aqirank;
             [f_dataView addSubview:wdlb];
-            UILabel *f_levellb =[[UILabel alloc]initWithFrame:CGRectMake(0, wdlb.bottom, aqiw.width, SCALE(30))];
+            UILabel *f_levellb =[[UILabel alloc]initWithFrame:CGRectMake(0, wdlb.bottom, aqiw.width, 30)];
             f_levellb.font=Font(14);
             f_levellb.adjustsFontSizeToFitWidth=YES;
             f_levellb.textColor=[UIColor whiteColor];

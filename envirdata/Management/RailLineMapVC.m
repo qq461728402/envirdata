@@ -79,8 +79,8 @@
     railLineMap.userTrackingMode=BMKUserTrackingModeNone;
     railLineMap.showsUserLocation=YES;//显示定位图层
     railLineMap.showMapScaleBar=YES;
-    railLineMap.minZoomLevel=12;
-    railLineMap.maxZoomLevel=20;
+    //railLineMap.minZoomLevel=12;
+    //railLineMap.maxZoomLevel=20;
     railLineMap.delegate=self;
     [self.view addSubview:railLineMap];
     [self getTrackList];

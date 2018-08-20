@@ -45,13 +45,15 @@
     self.tabBar.barTintColor=COLOR_TAB_UNSELECT;//设置背景颜色
     
     NSArray *menuAry = USER_DEFAULTS(@"menuInfo");
-    BOOL isglxt1 = [menuAry bk_match:^BOOL(NSDictionary *itemobj) {
+    
+    BOOL  isglxt1=NO;
+    for (int i=0; i<menuAry.count; i++) {
+        NSDictionary *itemobj=menuAry[i];
         if ([itemobj[@"mark"] isEqualToString:@"glxt1"]) {
-            return YES;
-        }else{
-            return NO;
+            isglxt1= YES;
+            break;
         }
-    }];
+    }
     EnvAirQualityVC *airQuality=[[EnvAirQualityVC alloc]init];
     airQuality.tabBarItem.title=@"空气质量";
     airQuality.tabBarItem.image=[PNGIMAGE(@"tab_kqzl") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

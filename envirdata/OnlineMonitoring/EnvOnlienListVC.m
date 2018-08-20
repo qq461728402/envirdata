@@ -52,6 +52,13 @@
     [self.view addSubview:headerView];
     
     onlineTb=[[UITableView alloc]initWithFrame:CGRectMake(0, headerView.bottom, self.view.width, self.view.height) style:UITableViewStyleGrouped];
+    
+    if (@available(iOS 11.0, *)) {
+        onlineTb.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
+    }else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    
     onlineTb.translatesAutoresizingMaskIntoConstraints=NO;
     onlineTb.delegate=self;
     onlineTb.dataSource=self;
@@ -108,7 +115,15 @@
 {
     return 0.01;
 }
+#pragma mark 此方法加上是为了适配iOS 11出现的问题
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return nil;
+}
+#pragma mark 此方法加上是为了适配iOS 11出现的问题
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return nil;
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;

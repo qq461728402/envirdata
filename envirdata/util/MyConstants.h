@@ -9,6 +9,7 @@
 #ifndef MyConstants_h
 #define MyConstants_h
 
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 // View 圆角和加边框
 #define ViewBorderRadius(View, Radius, Width, Color)\
 \
@@ -27,7 +28,7 @@
 
 #define FONT(NAME, FONTSIZE)    [UIFont fontWithName:(NAME) size:(FONTSIZE)]
 #define BoldFont(x) [UIFont boldSystemFontOfSize:x]
-#define Font(x) [UIFont systemFontOfSize:x]
+#define Font(x) [UIFont systemFontOfSize:x>20?20:x]
 
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 #define CurrentSystemVersion [[UIDevice currentDevice] systemVersion]
@@ -45,7 +46,7 @@
 //
 #define USER_DEFAULTS(NAME) [[NSUserDefaults standardUserDefaults] objectForKey:(NAME)];
 
-#define SCALE(scale)   scale*kScreenWidth/375.0
+#define SCALE(scale)  scale*kScreenWidth/375.0
 
 #define WEAKSELF     typeof(self) __weak weakSelf = self;
 

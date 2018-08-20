@@ -31,6 +31,8 @@
         
         statusLb=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [ConfigObj font_sizeWith:15*SCREEN_WIDTH/375.0 strLong:4], SCALE(40))];
         statusLb.right=SCREEN_WIDTH-SCALE(8);
+        NSLog(@"%f",14*SCREEN_WIDTH/375.0);
+        
         statusLb.font=Font(14*SCREEN_WIDTH/375.0);
         statusLb.textColor=[UIColor colorWithRGB:0x404040];
 //        statusLb.adjustsFontSizeToFitWidth=YES;

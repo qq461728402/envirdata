@@ -37,7 +37,7 @@
     WEAKSELF //这里用一个弱引用来表示self，用于下面的Block中
     //先确定view_1的约束
     [settingTb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.view.mas_top);
+        make.top.equalTo(weakSelf.view.mas_top).with.offset(IS_IPHONE?0:64);
         make.bottom.equalTo(weakSelf.view.mas_bottom);
         make.right.equalTo(weakSelf.view.mas_right);
         make.left.equalTo(weakSelf.view.mas_left); //view_1de左，距离self.view是30px

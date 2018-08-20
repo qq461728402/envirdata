@@ -71,6 +71,9 @@
     weekQ.delegate=self;
     reportTb=[[UITableView alloc]initWithFrame:CGRectMake(0, headerView.bottom, self.view.width, SCREEN_HEIGHT-headerView.bottom-49) style:UITableViewStyleGrouped];
     reportTb.translatesAutoresizingMaskIntoConstraints=NO;
+    
+   
+
     reportTb.delegate=self;
     reportTb.dataSource=self;
     [self.view addSubview:reportTb];
@@ -82,6 +85,12 @@
         make.right.equalTo(weakSelf.view.mas_right);
         make.left.equalTo(weakSelf.view.mas_left);
     }];
+    if (@available(iOS 11.0, *)) {
+        reportTb.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+
     reportTb.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         page=1;
         [dropdownMenu hideDropDown];
@@ -141,6 +150,16 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.01;
+}
+
+#pragma mark 此方法加上是为了适配iOS 11出现的问题
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return nil;
+}
+#pragma mark 此方法加上是为了适配iOS 11出现的问题
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return nil;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

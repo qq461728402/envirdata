@@ -37,6 +37,13 @@
     taskListTb.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getMonitorTaskList:YES];
     }];
+    
+    if (@available(iOS 11.0, *)) {
+        taskListTb.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
+    }else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    
     taskListTb.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     [self getMonitorTaskList:NO];
     // Do any additional setup after loading the view.
@@ -67,7 +74,15 @@
 {
     return 0.01;
 }
+#pragma mark 此方法加上是为了适配iOS 11出现的问题
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return nil;
+}
+#pragma mark 此方法加上是为了适配iOS 11出现的问题
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return nil;
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
