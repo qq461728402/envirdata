@@ -29,7 +29,7 @@
     WEAKSELF
     //先确定view_1的约束
     [taskListTb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.view.mas_top);
+        make.top.equalTo(weakSelf.view.mas_top).with.offset(64);
         make.bottom.equalTo(weakSelf.view.mas_bottom);
         make.right.equalTo(weakSelf.view.mas_right);
         make.left.equalTo(weakSelf.view.mas_left);

@@ -51,12 +51,13 @@
 @property (nonatomic,strong)UILabel *a_oneline5;
 @property (nonatomic,strong)UILabel *a_oneline6;
 @property (nonatomic,strong)UIView *f_dataView;
+@property (nonatomic,strong)UIColor *topc;
 @end
 
 @implementation EnvAirQualityVC
 @synthesize mainScr,areaLb,nearestGkz,primary_pollu,time,aqi,level,pm25v,oneline1,oneline2,pm10v,SO2v,oneline3,NO2v,oneline4,O3v,oneline5,COv,oneline6,areaRealModel;
 @synthesize a_primary_pollu,a_areanamelb,a_aqi,a_level,a_pm25v,a_pm10v,a_so2v,a_no2v,a_o3v,a_cov,a_oneline1,a_oneline2,a_oneline3,a_oneline4,a_oneline5,a_oneline6,a_tiem;
-@synthesize f_dataView;
+@synthesize f_dataView,topc;
 -(void)viewWillAppear:(BOOL)animated{
     [self.view setBackgroundColor:[UIColor whiteColor]];
 }
@@ -66,7 +67,7 @@
     [SingalObj defaultManager].isFrist=NO;
     [self baiduConfig];
     UIFont *defont=Font(15);
-    
+    topc=[UIColor colorWithRGB:0x0092cb];
     //背景图片
     UIImageView *bgImage=[[UIImageView alloc]initWithImage:PNGIMAGE(@"sy_bg")];
     bgImage.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -131,13 +132,13 @@
     
     UILabel *sjlb=[[UILabel alloc]initWithFrame:CGRectMake(primary_pollu1.left, primary_pollu1.bottom, [ConfigObj font_sizeWith:14 strLong:5], primary_pollu1.height)];
     sjlb.font=Font(14);
-    sjlb.textColor=COLOR_TOP;
+    sjlb.textColor=[UIColor colorWithRGB:0x42caf5];
     sjlb.text=@"更新时间：";
     [primary_view addSubview:sjlb];
     
     time =[[UILabel alloc]initWithFrame:CGRectMake(sjlb.right, sjlb.top, primary_pollu.width, sjlb.height)];
     time.font=Font(14);
-    time.textColor=COLOR_TOP;
+    time.textColor=[UIColor colorWithRGB:0x42caf5];
     [primary_view addSubview:time];
     
     aqi=[[UILabel alloc]initWithFrame:CGRectMake(0, primary_pollu1.top, 120, 30)];
@@ -164,16 +165,16 @@
     //PM2.5
     UILabel *PM2=[[UILabel alloc]initWithFrame:CGRectMake(primary_pollu1.left, level.bottom+10, pm2with, 20)];
     PM2.text=@"PM2.5";
-    PM2.textColor=COLOR_TOP;
+    PM2.textColor=topc;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
     UILabel *dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
-    dw.textColor=COLOR_TOP;
+    dw.textColor=topc;
     dw.font=defont;
     [primary_view addSubview:dw];
     pm25v =[[UILabel alloc]initWithFrame:dw.frame];
-    pm25v.textColor=COLOR_TOP;
+    pm25v.textColor=topc;
     pm25v.textAlignment=NSTextAlignmentRight;
     pm25v.font=dw.font;
     [primary_view addSubview:pm25v];
@@ -183,16 +184,16 @@
     //PM10
     PM2=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, oneline1.bottom+8, PM2.width, PM2.height)];
     PM2.text=@"PM10";
-    PM2.textColor=COLOR_TOP;
+    PM2.textColor=topc;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
-    dw.textColor=COLOR_TOP;
+    dw.textColor=topc;
     dw.font=defont;
     [primary_view addSubview:dw];
     pm10v =[[UILabel alloc]initWithFrame:dw.frame];
-    pm10v.textColor=COLOR_TOP;
+    pm10v.textColor=topc;
     pm10v.textAlignment=NSTextAlignmentRight;
     pm10v.font=dw.font;
     [primary_view addSubview:pm10v];
@@ -202,16 +203,16 @@
     //SO2
     PM2=[[UILabel alloc]initWithFrame:CGRectMake(PM2.right+primary_pollu1.left, level.bottom+10, PM2.width, PM2.height)];
     PM2.text=@"SO₂";
-    PM2.textColor=COLOR_TOP;
+    PM2.textColor=topc;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
-    dw.textColor=COLOR_TOP;
+    dw.textColor=topc;
     dw.font=defont;
     [primary_view addSubview:dw];
     SO2v =[[UILabel alloc]initWithFrame:dw.frame];
-    SO2v.textColor=COLOR_TOP;
+    SO2v.textColor=topc;
     SO2v.textAlignment=NSTextAlignmentRight;
     SO2v.font=dw.font;
     [primary_view addSubview:SO2v];
@@ -221,16 +222,16 @@
     //NO2
     PM2=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, oneline3.bottom+8, PM2.width, PM2.height)];
     PM2.text=@"NO₂";
-    PM2.textColor=COLOR_TOP;
+    PM2.textColor=topc;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
-    dw.textColor=COLOR_TOP;
+    dw.textColor=topc;
     dw.font=defont;
     [primary_view addSubview:dw];
     NO2v =[[UILabel alloc]initWithFrame:dw.frame];
-    NO2v.textColor=COLOR_TOP;
+    NO2v.textColor=topc;
     NO2v.textAlignment=NSTextAlignmentRight;
     NO2v.font=dw.font;
     [primary_view addSubview:NO2v];
@@ -241,16 +242,16 @@
     //O3
     PM2=[[UILabel alloc]initWithFrame:CGRectMake(PM2.right+primary_pollu1.left, level.bottom+10, PM2.width, PM2.height)];
     PM2.text=@"O₃";
-    PM2.textColor=COLOR_TOP;
+    PM2.textColor=topc;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
-    dw.textColor=COLOR_TOP;
+    dw.textColor=topc;
     dw.font=defont;
     [primary_view addSubview:dw];
     O3v =[[UILabel alloc]initWithFrame:dw.frame];
-    O3v.textColor=COLOR_TOP;
+    O3v.textColor=topc;
     O3v.textAlignment=NSTextAlignmentRight;
     O3v.font=dw.font;
     [primary_view addSubview:O3v];
@@ -261,16 +262,16 @@
     //CO
     PM2=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, oneline5.bottom+8, PM2.width, PM2.height)];
     PM2.text=@"CO";
-    PM2.textColor=COLOR_TOP;
+    PM2.textColor=topc;
     PM2.font=Font(16);
     [primary_view addSubview:PM2];
     dw=[[UILabel alloc]initWithFrame:CGRectMake(PM2.left, PM2.bottom, PM2.width, wdheight)];
     dw.text=@"ug/m³";
-    dw.textColor=COLOR_TOP;
+    dw.textColor=topc;
     dw.font=defont;
     [primary_view addSubview:dw];
     COv =[[UILabel alloc]initWithFrame:dw.frame];
-    COv.textColor=COLOR_TOP;
+    COv.textColor=topc;
     COv.textAlignment=NSTextAlignmentRight;
     COv.font=dw.font;
     [primary_view addSubview:COv];
@@ -634,14 +635,14 @@
             f_hight=0;
             ForecastAreaModel *foreModel = [foreArray objectAtIndex:i];
             UILabel *namelb=[[UILabel alloc]initWithFrame:CGRectMake(i*w, SCALE(5), w, 21)];
-            namelb.textColor=COLOR_TOP;
+            namelb.textColor=topc;
             namelb.font=Font(14);
             namelb.textAlignment=NSTextAlignmentCenter;
             namelb.text=[ConfigObj getWeekDay:foreModel.time];
             [f_dataView addSubview:namelb];
             
             UILabel *wdlb=[[UILabel alloc]initWithFrame:CGRectMake(namelb.left, namelb.bottom, namelb.width, namelb.height)];
-            wdlb.textColor=COLOR_TOP;
+            wdlb.textColor=topc;
             wdlb.font=Font(14);
             wdlb.textAlignment=NSTextAlignmentCenter;
             wdlb.text=foreModel.aqirank;
@@ -657,7 +658,7 @@
             f_levellb.text=[ConfigObj getLevelName:foreModel.level];
             [f_dataView addSubview:f_levellb];
             UILabel *f_primary_pollu=[[UILabel alloc]initWithFrame:CGRectMake(namelb.left, f_levellb.bottom, namelb.width, namelb.height)];
-            f_primary_pollu.textColor=COLOR_TOP;
+            f_primary_pollu.textColor=topc;
             f_primary_pollu.font=Font(14);
             f_primary_pollu.textAlignment=NSTextAlignmentCenter;
             f_primary_pollu.text=foreModel.primarypollu;

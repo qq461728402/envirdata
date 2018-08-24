@@ -74,7 +74,7 @@
     [_locService startUserLocationService];
     
     railLineMap =[[BMKMapView alloc]initWithFrame:CGRectMake(0, headerView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-headerView.bottom)];
-    railLineMap.zoomLevel = 20;//缩放等级
+    railLineMap.zoomLevel = 16;//缩放等级
     [railLineMap setMapType:BMKMapTypeStandard];//地图类型
     railLineMap.userTrackingMode=BMKUserTrackingModeNone;
     railLineMap.showsUserLocation=YES;//显示定位图层

@@ -294,7 +294,6 @@
         }
     }];
 }
-
 #pragma mark -----------UITableViewDelegate---------------
 //显示有多少个段
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -405,6 +404,7 @@
             [self getMonitorTaskTree3];
         }
     };
+    
     addTask.uid=[taskTreeModel.tid substringFromIndex:1];
     addTask.uname=taskTreeModel.name;
     UINavigationController *nav =(UINavigationController*)self.view.window.rootViewController;

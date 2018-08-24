@@ -81,9 +81,15 @@
         [onlinemap getReportList:NO];
     }
     curntnum=(int)number;
+    [tableList_arr bk_each:^(id obj) {
+        if ([obj isKindOfClass:[ReportVC class]]) {
+            [[(ReportVC*)obj dropdownMenu] hideDropDown];
+            [[(ReportVC*)obj dropdownMenu] setSelectIndex:0];
+            [(ReportVC*)obj weekQ].checked=YES;
+            [(ReportVC*)obj setSonTypeId:@"0"];
+        }
+    }];
 }
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -40,6 +40,7 @@
 
 @property (nonatomic, assign) id <LMJDropdownMenuDelegate>delegate;
 
+@property (nonatomic, assign) int selectIndex;//选择项
 
 - (void)setMenuTitles:(NSArray *)titlesArr rowHeight:(CGFloat)rowHeight;  // 设置下拉菜单控件样式
 

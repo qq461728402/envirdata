@@ -111,6 +111,7 @@
     if (self == nil) {
         return;
     }
+    
     _titleArr  = [NSArray arrayWithArray:titlesArr];
     _rowHeight = rowHeight;
     // 下拉列表背景View
@@ -234,5 +235,8 @@
     }
     
     [self hideDropDown];
+}
+-(void)setSelectIndex:(int)selectIndex{
+    [_mainBtn setTitle:_titleArr[selectIndex] forState:UIControlStateNormal];
 }
 @end

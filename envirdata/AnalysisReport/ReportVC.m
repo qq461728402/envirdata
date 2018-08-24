@@ -71,9 +71,6 @@
     weekQ.delegate=self;
     reportTb=[[UITableView alloc]initWithFrame:CGRectMake(0, headerView.bottom, self.view.width, SCREEN_HEIGHT-headerView.bottom-49) style:UITableViewStyleGrouped];
     reportTb.translatesAutoresizingMaskIntoConstraints=NO;
-    
-   
-
     reportTb.delegate=self;
     reportTb.dataSource=self;
     [self.view addSubview:reportTb];
@@ -90,7 +87,6 @@
     }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-
     reportTb.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         page=1;
         [dropdownMenu hideDropDown];
@@ -101,6 +97,7 @@
         [weakSelf getReportList:YES];
     }];
     reportTb.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    reportTb.mj_footer.hidden=YES;
     // Do any additional setup after loading the view.
 }
 - (void)dropdownMenu:(LMJDropdownMenu *)menu selectedCellNumber:(NSInteger)number{
@@ -131,6 +128,11 @@
         if (page==1) {
             reportAry=[[NSMutableArray alloc]initWithArray:reportList];
             [reportTb.mj_header endRefreshing];
+            if(reportAry.count<20){
+                reportTb.mj_footer.hidden=YES;
+            }else{
+                reportTb.mj_footer.hidden=NO;
+            }
             [reportTb.mj_footer resetNoMoreData];
         }else{
             [reportAry addObjectsFromArray:reportList];

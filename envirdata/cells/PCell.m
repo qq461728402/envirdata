@@ -94,6 +94,11 @@
     if ([uid isEqualToString:[[SingalObj defaultManager].userInfoModel.userid stringValue]]) {//表示自己
         telbut.hidden=YES;
         addrwbut.hidden=YES;
+        if (![taskTreeModel.level isEqualToString:@"city"]) {
+            addrwbut.hidden=NO;
+        }else{
+            addrwbut.hidden=YES;
+        }
         rwbut.hidden=YES;
         [aicon setImage:PNGIMAGE(@"icon_myself")];
     } else{
