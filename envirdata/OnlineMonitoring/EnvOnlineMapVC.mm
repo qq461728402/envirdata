@@ -42,10 +42,10 @@
     _locService.delegate = self;
     [_locService startUserLocationService];
     onlineMap =[[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    onlineMap.zoomLevel = 13;//缩放等级
-    if ([SingalObj defaultManager].userLocation) {
-        onlineMap.centerCoordinate = [SingalObj defaultManager].userLocation.coordinate;
-    }
+//    onlineMap.zoomLevel = 13;//缩放等级
+//    if ([SingalObj defaultManager].userLocation) {
+//        onlineMap.centerCoordinate = [SingalObj defaultManager].userLocation.coordinate;
+//    }
     [onlineMap setMapType:BMKMapTypeStandard];//地图类型
     onlineMap.userTrackingMode=BMKUserTrackingModeNone;
     onlineMap.showsUserLocation=YES;//显示定位图层
@@ -102,20 +102,19 @@
     [self getTypeDescipt];
     // Do any additional setup after loading the view.
 }
-- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
-{
-    [onlineMap updateLocationData:userLocation];
-}
-- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
-{
-    [onlineMap updateLocationData:userLocation];
-    
-    if (![SingalObj defaultManager].userLocation) {
-        
-        [SingalObj defaultManager].userLocation=userLocation.location;
-        onlineMap.centerCoordinate = [SingalObj defaultManager].userLocation.coordinate;
-    }
-}
+//- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
+//{
+//    [onlineMap updateLocationData:userLocation];
+//}
+//- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
+//{
+//    [onlineMap updateLocationData:userLocation];
+////    if (![SingalObj defaultManager].userLocation) {
+////
+////        [SingalObj defaultManager].userLocation=userLocation.location;
+////        onlineMap.centerCoordinate = [SingalObj defaultManager].userLocation.coordinate;
+////    }
+//}
 #pragma mark----------获取Typelist----------------------
 -(void)getTypeDescipt{
     [self networkPost:API_GETTYPEDESCIPT parameter:@{@"dkey":@"utype"} progresHudText:nil completionBlock:^(id rep) {
@@ -156,7 +155,9 @@
                 [onlineMap addAnnotation:pointPoint];
                 [allpointAry addObject:pointPoint];
             }
+            
         }
+        [self setCenterPoint:onlinelistAry];
     }];
     //获取预警点数据
     [self networkPost:API_GETUNITWARNINGPICS parameter:@{@"areaid":areaid,@"utype":utype} progresHudText:@"加载中..." completionBlock:^(id rep) {
@@ -172,6 +173,48 @@
     }];
     
 }
+-(void)setCenterPoint:(NSArray*)allPonit{
+    double minLat=0;
+    double maxLat=0;
+    double minLon=0;
+    double maxLon=0;
+    for (NSInteger i=0; i<allPonit.count; i++) {
+        OnlineMonModel *onlineMon =allPonit[i];
+        if (i==0) {
+            minLon =[onlineMon.jd doubleValue];
+            maxLon =[onlineMon.jd doubleValue];
+            minLat =[onlineMon.wd doubleValue];
+            maxLat =[onlineMon.wd doubleValue];
+        }else{
+            minLon =MIN(minLon, [onlineMon.jd doubleValue]);
+            maxLon =MAX(maxLon, [onlineMon.jd doubleValue]);
+            minLat =MIN(minLat, [onlineMon.wd doubleValue]);
+            maxLat =MAX(maxLat, [onlineMon.wd doubleValue]);
+        }
+    }
+    if (allPonit.count>0) {
+        CLLocationCoordinate2D centCoor;
+        centCoor.latitude = (CLLocationDegrees)((minLat+maxLat) * 0.5f);
+        centCoor.longitude = (CLLocationDegrees)((minLon+maxLon) * 0.5f);
+//        onlineMap.centerCoordinate = centCoor;
+        BMKCoordinateRegion region ;
+        //计算地理位置的跨度
+        BMKCoordinateSpan span;
+        span.latitudeDelta = maxLat - minLat;
+        span.longitudeDelta = maxLon - minLon;
+        region.span=span;
+        region.center=centCoor;
+        [onlineMap setRegion:region];
+//        [onlineMap setRegion:BMKCoordinateRegionMake(centCoor,span)];
+//        MKCoordinateRegion _region = BMKCoordinateRegionMake(centCoor,span);
+    
+//        //计算地理位置的跨度
+//        span.latitudeDelta = maxLat - minLat;
+//        span.longitudeDelta = maxLon - minLon;
+//        BMKCoordinateRegion * _region = BMKCoordinateRegionMake(centCoor, span);
+    }
+}
+
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation{
     if ([annotation isKindOfClass:[StatePointAnnotation class]]) {
         static NSString *reuseIndetifier = @"stateIndetifier";

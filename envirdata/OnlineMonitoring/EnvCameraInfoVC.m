@@ -46,6 +46,7 @@ static dispatch_queue_t video_intercom_queue() {
     RealPlayManagerEx *g_playManagerEx;
     UIActivityIndicatorView *g_activity;
     VP_STREAM_TYPE  g_currentQuality;/**< 当前播放码流*/
+    BOOL isfished;
 }
 @property (nonatomic,strong)UIScrollView *mainScr;
 @property (nonatomic,strong)NSArray *unitAry;
@@ -151,6 +152,7 @@ static dispatch_queue_t video_intercom_queue() {
         g_currentQuality = STREAM_SUB;
         if ([carmeraInfo.syscode isNotBlank]&&[carmeraInfo.onlinestatus intValue]!=0) {//有sysCode 并且不处于离线状态
             [g_playMamager startRealPlay:carmeraInfo.syscode videoType:g_currentQuality playView:g_playView complete:^(BOOL finish, NSString *message) {
+                isfished=YES;
                 if (finish) {
                     NSLog(@"调用预览成功%@", message);
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -169,6 +171,7 @@ static dispatch_queue_t video_intercom_queue() {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [g_activity stopAnimating];
                  deal_playView.isPausing=NO;
+                isfished=YES;
                 [self showMsgInfo:@"设备离线,无法使用视频！"];
             });
         }
@@ -226,6 +229,10 @@ static dispatch_queue_t video_intercom_queue() {
          HourDataView *hourDataView =[[HourDataView alloc]initWithFrame:CGRectMake(0, hourView.bottom+5, hourView.width, SCALE(40)) name:@"历史违规" value:@"详情》"];
         hourDataView.userInteractionEnabled=YES;
         [hourDataView bk_whenTapped:^{
+            if (isfished==NO) {
+                [self showMsgInfo:@"请等待视频加载完成"];
+                return ;
+            }
             HistoryViolationPictureVC * histroy=[[HistoryViolationPictureVC alloc]init];
             histroy.uid=uid;
             histroy.title=@"历史违规";
@@ -515,10 +522,12 @@ static dispatch_queue_t video_intercom_queue() {
  重新预览 就是重新调用开始预览的方法
  */
 - (void)refreshRealPlay {
+    isfished=NO;
     g_activity.hidden = NO;
     [g_activity startAnimating];
     if ([carmeraInfo.syscode isNotBlank]&&[carmeraInfo.onlinestatus intValue]!=0) {
         [g_playMamager startRealPlay:carmeraInfo.syscode videoType:STREAM_SUB playView:g_playView complete:^(BOOL finish,NSString *message) {
+            isfished=YES;
             if (finish) {
                 NSLog(@"调用预览成功");
 #warning 刷新UI必须在主线程操作
@@ -536,6 +545,7 @@ static dispatch_queue_t video_intercom_queue() {
             }
         }];
     }else{
+        isfished=YES;
         dispatch_async(dispatch_get_main_queue(), ^{
             [g_activity stopAnimating];
             deal_playView.isPausing=NO;

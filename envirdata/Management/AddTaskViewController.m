@@ -142,7 +142,7 @@
     [tempView addSubview:sublb];
     
     UIButton *potsionBut=[UIButton buttonWithType:UIButtonTypeCustom];
-    potsionBut.frame=CGRectMake(0, SCALE(7), 40, SCALE(36));
+    potsionBut.frame=CGRectMake(0, SCALE(7), 45, SCALE(36));
     potsionBut.right=tempView.width-SCALE(8);
     potsionBut.titleLabel.font=[UIFont fontWithName:@"iconfont" size:20];
     [potsionBut setTitle:@"\U0000e650" forState:UIControlStateNormal];

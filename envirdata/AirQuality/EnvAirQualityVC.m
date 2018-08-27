@@ -142,7 +142,7 @@
     [primary_view addSubview:time];
     
     aqi=[[UILabel alloc]initWithFrame:CGRectMake(0, primary_pollu1.top, 120, 30)];
-    aqi.font=Font(30);
+    aqi.font=[UIFont systemFontOfSize:30];
     aqi.textColor=COLOR_TOP;
     aqi.text=@"";
     aqi.textAlignment=NSTextAlignmentRight;
@@ -152,7 +152,7 @@
     CGSize aqiw=[@"30" sizeWithAttributes:@{NSFontAttributeName:aqi.font}];
     level =[[UILabel alloc]initWithFrame:CGRectMake(0, aqi.bottom+5, aqiw.width, 30)];
     level.right=aqi.right;
-    level.font=Font(14);
+    level.font=BoldFont(14);
     level.adjustsFontSizeToFitWidth=YES;
     level.textColor=[UIColor whiteColor];
     level.textAlignment=NSTextAlignmentCenter;
@@ -322,7 +322,7 @@
     
     
     a_aqi =[[UILabel alloc]initWithFrame:CGRectMake(0, a_primary_pollu.top-25, 200, 30)];
-    a_aqi.font=Font(30);
+    a_aqi.font=[UIFont systemFontOfSize:30];
     a_aqi.textColor=a_primary.textColor;
     a_aqi.text=@"";
     a_aqi.textAlignment=NSTextAlignmentRight;
@@ -333,7 +333,7 @@
     a_level =[[UILabel alloc]initWithFrame:CGRectMake(0, a_aqi.bottom+5, aqiw.width, 30)];
     a_level.right=a_aqi.right;
     ViewRadius(a_level, 4);
-    a_level.font=Font(14);
+    a_level.font=BoldFont(14);
     a_level.adjustsFontSizeToFitWidth=YES;
     a_level.textColor=[UIColor whiteColor];
     a_level.textAlignment=NSTextAlignmentCenter;
@@ -470,19 +470,15 @@
     a_areview.height=a_bgview.bottom;
     UIView *f_bgview=[[UIView alloc]initWithFrame:CGRectMake(a_areview.left, a_areview.bottom+SCALE(10), a_areview.width, SCALE(40))];
     
-    [f_bgview setBackgroundColor:[UIColor colorWithRGB:0x02ddfd alpha:0.2]];
+    [f_bgview setBackgroundColor:[UIColor colorWithRGB:0x32e6ff alpha:0.2]];
     [mainScr addSubview:f_bgview];
     UILabel *f_kqlb=[[UILabel alloc]initWithFrame:CGRectMake(SCALE(8), 0, 200, f_bgview.height)];
     f_kqlb.font=Font(16);
     f_kqlb.textColor=[UIColor whiteColor];
     f_kqlb.text=@"空气质量预报";
     [f_bgview addSubview:f_kqlb];
-    
     f_dataView =[[UIView alloc]initWithFrame:CGRectMake(f_bgview.left, f_bgview.bottom+SCALE(8), f_bgview.width,10)];
-    
     [mainScr addSubview:f_dataView];
-    
-    
     // Do any additional setup after loading the view.
 }
 #pragma mark----------baidu配置---------
@@ -647,15 +643,16 @@
             wdlb.textAlignment=NSTextAlignmentCenter;
             wdlb.text=foreModel.aqirank;
             [f_dataView addSubview:wdlb];
-            UILabel *f_levellb =[[UILabel alloc]initWithFrame:CGRectMake(0, wdlb.bottom, aqiw.width, 30)];
-            f_levellb.font=Font(14);
+            UILabel *f_levellb =[[UILabel alloc]initWithFrame:CGRectMake(0, wdlb.bottom, aqiw.width, 21)];
+            f_levellb.font=BoldFont(14);
             f_levellb.adjustsFontSizeToFitWidth=YES;
             f_levellb.textColor=[UIColor whiteColor];
             f_levellb.textAlignment=NSTextAlignmentCenter;
             ViewRadius(f_levellb, 4);
-            f_levellb.centerX=wdlb.centerX;
             f_levellb.backgroundColor=[ConfigObj getColorByLevel:foreModel.level];
             f_levellb.text=[ConfigObj getLevelName:foreModel.level];
+            f_levellb.width=[f_levellb.text sizeWithAttributes:@{NSFontAttributeName:f_levellb.font}].width+20;
+            f_levellb.centerX=wdlb.centerX;
             [f_dataView addSubview:f_levellb];
             UILabel *f_primary_pollu=[[UILabel alloc]initWithFrame:CGRectMake(namelb.left, f_levellb.bottom, namelb.width, namelb.height)];
             f_primary_pollu.textColor=topc;
